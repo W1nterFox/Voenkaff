@@ -17,3 +17,12 @@ D:\Projects\Voenkaf\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj.GenerateResource
 D:\Projects\Voenkaf\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj.CoreCompileInputs.cache
 D:\Projects\Voenkaf\Voenkaff\Voenkaff\obj\Debug\Voenkaff.exe
 D:\Projects\Voenkaf\Voenkaff\Voenkaff\obj\Debug\Voenkaff.pdb
+D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaf2\Voenkaff\Voenkaff\bin\Debug\Voenkaff.exe.config
+D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaf2\Voenkaff\Voenkaff\obj\Debug\Voenkaff.exe
+D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaf2\Voenkaff\Voenkaff\obj\Debug\Voenkaff.pdb
+D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaf2\Voenkaff\Voenkaff\bin\Debug\Voenkaff.exe
+D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaf2\Voenkaff\Voenkaff\bin\Debug\Voenkaff.pdb
+D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaf2\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csprojResolveAssemblyReference.cache
+D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaf2\Voenkaff\Voenkaff\obj\Debug\Voenkaff.Form1.resources
+D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaf2\Voenkaff\Voenkaff\obj\Debug\Voenkaff.Properties.Resources.resources
+D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaf2\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj.GenerateResource.Cache
