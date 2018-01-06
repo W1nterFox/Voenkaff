@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.panelQuestionStart = new System.Windows.Forms.Panel();
-            this.panelAnswerStart = new System.Windows.Forms.Panel();
+            this.panelQuestion = new System.Windows.Forms.Panel();
+            this.panelAnswer = new System.Windows.Forms.Panel();
             this.panelListOfTasks = new System.Windows.Forms.Panel();
-            this.panelTaskStart = new System.Windows.Forms.Panel();
             this.buttonTaskCreate = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panelTaskStart = new System.Windows.Forms.Panel();
             this.panelMiddle = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panelListOfTasks.SuspendLayout();
@@ -56,6 +56,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(122, 642);
             this.panel1.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(13, 373);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
             // 
             // button3
             // 
@@ -87,26 +94,26 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panelQuestionStart
+            // panelQuestion
             // 
-            this.panelQuestionStart.AutoScroll = true;
-            this.panelQuestionStart.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panelQuestionStart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelQuestionStart.Location = new System.Drawing.Point(5, 5);
-            this.panelQuestionStart.Name = "panelQuestionStart";
-            this.panelQuestionStart.Size = new System.Drawing.Size(1100, 632);
-            this.panelQuestionStart.TabIndex = 1;
-            this.panelQuestionStart.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.panelQuestion.AutoScroll = true;
+            this.panelQuestion.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panelQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelQuestion.Location = new System.Drawing.Point(5, 5);
+            this.panelQuestion.Name = "panelQuestion";
+            this.panelQuestion.Size = new System.Drawing.Size(1100, 632);
+            this.panelQuestion.TabIndex = 1;
+            this.panelQuestion.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // panelAnswerStart
+            // panelAnswer
             // 
-            this.panelAnswerStart.AutoScroll = true;
-            this.panelAnswerStart.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.panelAnswerStart.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelAnswerStart.Location = new System.Drawing.Point(165, 524);
-            this.panelAnswerStart.Name = "panelAnswerStart";
-            this.panelAnswerStart.Size = new System.Drawing.Size(1110, 118);
-            this.panelAnswerStart.TabIndex = 3;
+            this.panelAnswer.AutoScroll = true;
+            this.panelAnswer.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelAnswer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelAnswer.Location = new System.Drawing.Point(165, 524);
+            this.panelAnswer.Name = "panelAnswer";
+            this.panelAnswer.Size = new System.Drawing.Size(1110, 118);
+            this.panelAnswer.TabIndex = 3;
             // 
             // panelListOfTasks
             // 
@@ -118,18 +125,6 @@
             this.panelListOfTasks.Name = "panelListOfTasks";
             this.panelListOfTasks.Size = new System.Drawing.Size(165, 642);
             this.panelListOfTasks.TabIndex = 4;
-            // 
-            // panelTaskStart
-            // 
-            this.panelTaskStart.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panelTaskStart.Controls.Add(this.panelQuestionStart);
-            this.panelTaskStart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTaskStart.Location = new System.Drawing.Point(165, 0);
-            this.panelTaskStart.Margin = new System.Windows.Forms.Padding(10);
-            this.panelTaskStart.Name = "panelTaskStart";
-            this.panelTaskStart.Padding = new System.Windows.Forms.Padding(5);
-            this.panelTaskStart.Size = new System.Drawing.Size(1110, 642);
-            this.panelTaskStart.TabIndex = 5;
             // 
             // buttonTaskCreate
             // 
@@ -144,12 +139,17 @@
             this.buttonTaskCreate.UseVisualStyleBackColor = false;
             this.buttonTaskCreate.Click += new System.EventHandler(this.buttonTaskCreate_Click);
             // 
-            // textBox1
+            // panelTaskStart
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 373);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.panelTaskStart.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelTaskStart.Controls.Add(this.panelQuestion);
+            this.panelTaskStart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTaskStart.Location = new System.Drawing.Point(165, 0);
+            this.panelTaskStart.Margin = new System.Windows.Forms.Padding(10);
+            this.panelTaskStart.Name = "panelTaskStart";
+            this.panelTaskStart.Padding = new System.Windows.Forms.Padding(5);
+            this.panelTaskStart.Size = new System.Drawing.Size(1110, 642);
+            this.panelTaskStart.TabIndex = 5;
             // 
             // panelMiddle
             // 
@@ -165,7 +165,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1397, 642);
-            this.Controls.Add(this.panelAnswerStart);
+            this.Controls.Add(this.panelAnswer);
             this.Controls.Add(this.panelTaskStart);
             this.Controls.Add(this.panelMiddle);
             this.Controls.Add(this.panelListOfTasks);
@@ -185,9 +185,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panelQuestionStart;
+        private System.Windows.Forms.Panel panelQuestion;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel panelAnswerStart;
+        private System.Windows.Forms.Panel panelAnswer;
         private System.Windows.Forms.Panel panelListOfTasks;
         private System.Windows.Forms.Panel panelTaskStart;
         private System.Windows.Forms.Button buttonTaskCreate;

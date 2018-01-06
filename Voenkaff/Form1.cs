@@ -26,14 +26,15 @@ namespace Voenkaff
             listPanelsTasks = new List<Panel>();
             listPanelsTasks.Add(panelTaskStart);
 
-            panelTaskStart.Controls.Add(panelQuestionStart);
-            panelTaskStart.Controls.Add(panelAnswerStart);
+            panelTaskStart.Controls.Add(panelQuestion);
+            panelTaskStart.Controls.Add(panelAnswer);
             
-            panelAnswerStart.BringToFront();
+            panelAnswer.BringToFront();
             //panelTask.Visible = false;
 
-            currentPanelQuestion = panelQuestionStart;
-            currentPanelAnswer = panelAnswerStart;
+            currentTask = panelTaskStart;
+            currentPanelQuestion = panelQuestion;
+            currentPanelAnswer = panelAnswer;
 
             panelListOfTasks.Controls.Add(createLinkLabel(0));
             
