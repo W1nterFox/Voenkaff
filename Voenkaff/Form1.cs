@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Voenkaff.Entity;
 
@@ -11,20 +8,19 @@ namespace Voenkaff
 {
     public partial class Form1 : Form
     {
-        private int _identifier = 1;
-        List<Panel> listPanelsTasks;
+        List<PanelWrapper> listPanelsTasks;
 
-        Panel currentTask = new Panel();
-        Panel currentPanelQuestion = new Panel();
-        Panel currentPanelAnswer = new Panel();
+        PanelWrapper _currentTask = new PanelWrapper();
+        private PanelWrapper _currentPanelQuestion = new PanelWrapper();
+        private PanelWrapper _currentPanelAnswer = new PanelWrapper();
 
         public Form1()
         {
             InitializeComponent();
 
             panelMiddle.Controls.Add(panelTaskStart);
-            listPanelsTasks = new List<Panel>();
-            listPanelsTasks.Add(panelTaskStart);
+            listPanelsTasks = new List<PanelWrapper>();
+            listPanelsTasks.Add(new PanelWrapper(panelTaskStart,1));
 
             panelTaskStart.Controls.Add(panelQuestion);
             panelTaskStart.Controls.Add(panelAnswer);
@@ -32,9 +28,10 @@ namespace Voenkaff
             panelAnswer.BringToFront();
             //panelTask.Visible = false;
 
-            currentTask = panelTaskStart;
-            currentPanelQuestion = panelQuestion;
-            currentPanelAnswer = panelAnswer;
+            _currentTask.Entity = panelTaskStart;
+            _currentTask.Identifier = 1;
+            _currentPanelQuestion.Entity = panelQuestion;
+            _currentPanelAnswer.Entity = panelAnswer;
 
             panelListOfTasks.Controls.Add(createLinkLabel(0));
             
@@ -43,41 +40,43 @@ namespace Voenkaff
 
         private LinkLabel createLinkLabel(int indexPanel)
         {
-            LinkLabel LL = new LinkLabel();
-            
+            LinkLabel ll = new LinkLabel
+            {
+                AutoSize = true,
+                Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204),
+                LinkColor = Color.Black,
+                Location = new Point(10, 57 + indexPanel * 30),
+                Name = "linkLabel" + indexPanel,
+                Size = new Size(96, 16),
+                TabIndex = 0,
+                TabStop = true,
+                Text = "Задание №" + (indexPanel + 1),
+                VisitedLinkColor = Color.Black
+            };
 
-            LL.AutoSize = true;
-            LL.Font = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            LL.LinkColor = Color.Black;
-            LL.Location = new Point(10, 57 + indexPanel * 30);
-            LL.Name = "linkLabel" + indexPanel;
-            LL.Size = new Size(96, 16);
-            LL.TabIndex = 0;
-            LL.TabStop = true;
-            LL.Text = "Задание №" + (indexPanel + 1);
-            LL.VisitedLinkColor = Color.Black;
-            LL.Click += clickTaskLinkLabel;
-            LL.Tag = indexPanel;
 
-            return LL;
+            ll.Click += clickTaskLinkLabel;
+            ll.Tag = indexPanel;
+
+            return ll;
         }
 
         private void clickTaskLinkLabel(object sender, EventArgs e)
         {
             LinkLabel currentLL = (LinkLabel)sender;
             
-            foreach (Panel index in listPanelsTasks)
+            foreach (PanelWrapper index in listPanelsTasks)
             {
-                index.Visible = false;
+                index.Entity.Visible = false;
             }
             textBox1.Text = currentLL.Text;
-            listPanelsTasks[(int)currentLL.Tag].Visible = true;
+            listPanelsTasks[(int)currentLL.Tag].Entity.Visible = true;
 
-
-            currentTask = listPanelsTasks[(int)currentLL.Tag];
-            currentPanelQuestion = (Panel)currentTask.Controls.Find("panelQuestion", false)[0];
-            currentPanelAnswer = (Panel)currentTask.Controls.Find("panelAnswer", false)[0];
-
+            listPanelsTasks.Find(p => p.Entity.Name == _currentTask.Entity.Name).Identifier = _currentTask.Identifier;
+            _currentTask = listPanelsTasks[(int)currentLL.Tag];
+ 
+            _currentPanelQuestion.Entity = (Panel)_currentTask.Entity.Controls.Find("panelQuestion", false)[0];
+            _currentPanelAnswer.Entity= (Panel)_currentTask.Entity.Controls.Find("panelAnswer", false)[0];
         }
 
 
@@ -87,8 +86,8 @@ namespace Voenkaff
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TextContainer tc = new TextContainer(currentPanelQuestion, currentPanelAnswer, this,_identifier);
-            _identifier++;
+            TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, _currentPanelAnswer.Entity, this, _currentTask.Identifier);
+            _currentTask.Identifier++;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -98,8 +97,8 @@ namespace Voenkaff
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PictureBoxScalable pb = new PictureBoxScalable(_identifier, this, currentPanelQuestion) {Pb = {Parent = currentPanelQuestion, SizeMode = PictureBoxSizeMode.StretchImage}};
-            _identifier++;
+            PictureBoxScalable pb = new PictureBoxScalable(_currentTask.Identifier, this, _currentPanelQuestion.Entity) {Instance = {Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage}};
+            _currentTask.Identifier++;
 
 
             Bitmap image; //Bitmap для открываемого изображения
@@ -114,9 +113,9 @@ namespace Voenkaff
                 {
                     image = new Bitmap(ofd.FileName);
 
-                    pb.Pb.Size = image.Size;
-                    pb.Pb.Image = image;
-                    pb.Pb.Invalidate();
+                    pb.Instance.Size = image.Size;
+                    pb.Instance.Image = image;
+                    pb.Instance.Invalidate();
                 }
                 catch
                 {
@@ -128,37 +127,41 @@ namespace Voenkaff
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Title ttl = new Title(currentPanelQuestion, this,_identifier);
-            _identifier++;
-            ttl.ObjectEntity.BackColor = Color.Cyan;
-            ttl.ObjectEntity.Font = new Font("Times New Roman",14f);
-            ttl.ObjectEntity.Width=500;
+            Title ttl = new Title(_currentPanelQuestion.Entity, this, _currentTask.Identifier);
+            _currentTask.Identifier++;
+            ttl.Instance.BackColor = Color.Cyan;
+            ttl.Instance.Font = new Font("Times New Roman",14f);
+            ttl.Instance.Width=500;
         }
 
         private void buttonTaskCreate_Click(object sender, EventArgs e)
         {
-            listPanelsTasks[listPanelsTasks.Count - 1].Visible = false;
+            listPanelsTasks[listPanelsTasks.Count - 1].Entity.Visible = false;
 
             Panel newPanelTask = new Panel();
 
             panelMiddle.Controls.Add(newPanelTask);
             newPanelTask.BackColor = SystemColors.ControlLight;
 
-            Panel panelQuestion = new Panel();
-            panelQuestion.AutoScroll = true;
-            panelQuestion.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            panelQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
-            panelQuestion.Location = new System.Drawing.Point(5, 5);
-            panelQuestion.Size = new System.Drawing.Size(1132, 632);
-            panelQuestion.Name = "panelQuestion";
+            Panel panelQuestion = new Panel
+            {
+                AutoScroll = true,
+                BackColor = SystemColors.GradientInactiveCaption,
+                Dock = DockStyle.Fill,
+                Location = new Point(5, 5),
+                Size = new Size(1132, 632),
+                Name = "panelQuestion"
+            };
 
-            Panel panelAnswer = new Panel();
-            panelAnswer.AutoScroll = true;
-            panelAnswer.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            panelAnswer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            panelAnswer.Location = new System.Drawing.Point(133, 524);
-            panelAnswer.Size = new System.Drawing.Size(1142, 118);
-            panelAnswer.Name = "panelAnswer";
+            Panel panelAnswer = new Panel
+            {
+                AutoScroll = true,
+                BackColor = Color.LightGoldenrodYellow,
+                Dock = DockStyle.Bottom,
+                Location = new Point(133, 524),
+                Size = new Size(1142, 118),
+                Name = "panelAnswer"
+            };
 
             newPanelTask.Controls.Add(panelQuestion);
             newPanelTask.Controls.Add(panelAnswer);
@@ -169,14 +172,14 @@ namespace Voenkaff
             newPanelTask.Size = new Size(1142, 642);
 
             
-            listPanelsTasks.Add(newPanelTask);
-            
-            listPanelsTasks[listPanelsTasks.Count - 1].Visible = true;
+            listPanelsTasks.Add(new PanelWrapper(newPanelTask,1));
+            newPanelTask.Name = ""+(listPanelsTasks.Count - 1);
+            listPanelsTasks[listPanelsTasks.Count - 1].Entity.Visible = true;
 
 
-            currentTask = listPanelsTasks[listPanelsTasks.Count - 1];
-            currentPanelQuestion = (Panel)currentTask.Controls.Find("panelQuestion", false)[0];
-            currentPanelAnswer = (Panel)currentTask.Controls.Find("panelAnswer", false)[0];
+            _currentTask = listPanelsTasks[listPanelsTasks.Count - 1];
+            _currentPanelQuestion.Entity = (Panel)_currentTask.Entity.Controls.Find("panelQuestion", false)[0];
+            _currentPanelAnswer.Entity = (Panel)_currentTask.Entity.Controls.Find("panelAnswer", false)[0];
 
             panelListOfTasks.Controls.Add(createLinkLabel(listPanelsTasks.Count - 1));
 

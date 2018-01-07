@@ -6,14 +6,13 @@ using System.Windows.Forms;
 
 namespace Voenkaff.Entity
 {
-    class TextContainer
+    class TextContainer:Entity<TextBox>
     {
         private readonly Panel _parent;
         private readonly Panel _answerPanel;
         private readonly int _popravka = 15;
         private readonly Form1 _form;
         private readonly int _index;
-        public TextBox ObjectEntity { get; set; }
         private Label _topTitle;
         private Panel _panel;
 
@@ -23,12 +22,12 @@ namespace Voenkaff.Entity
             _answerPanel = answerPanel;
             _form = form;
             _index = index;
-            ObjectEntity = new TextBox();
-            ObjectEntity.Name = ObjectEntity.ToString() + index;
-            ObjectEntity.Location = new Point(10, 10);
-            _parent.Controls.Add(ObjectEntity);
-            ObjectEntity.MouseMove += IdentifierMove;
-            ObjectEntity.BringToFront();
+            Instance = new TextBox();
+            Instance.Name = Instance.ToString() + index;
+            Instance.Location = new Point(10, 10);
+            _parent.Controls.Add(Instance);
+            Instance.MouseMove += IdentifierMove;
+            Instance.BringToFront();
 
             ContextMenu cmu = new ContextMenu();
             MenuItem menuItemDelete = new MenuItem
@@ -38,9 +37,9 @@ namespace Voenkaff.Entity
                 Shortcut = Shortcut.CtrlDel
             };
             menuItemDelete.Click += RemoveTextBox;
-            menuItemDelete.Name = ObjectEntity.ToString() + index;
+            menuItemDelete.Name = Instance.ToString() + index;
             cmu.MenuItems.Add(menuItemDelete);
-            ObjectEntity.ContextMenu = cmu;
+            Instance.ContextMenu = cmu;
             AddAnswerTitle();
         }
 
@@ -48,13 +47,13 @@ namespace Voenkaff.Entity
         {
             _topTitle = new Label();
             _topTitle.Text = "Текстовое поле: " + _index;
-            _topTitle.Location = new Point(ObjectEntity.Location.X, ObjectEntity.Location.Y - _popravka);
+            _topTitle.Location = new Point(Instance.Location.X, Instance.Location.Y - _popravka);
             _parent.Controls.Add(_topTitle);
 
             _panel = new Panel
             {
                 Dock = DockStyle.Left,
-                Name = ObjectEntity.ToString() + _index
+                Name = Instance.ToString() + _index
             };
             TextBox answer = new TextBox {Dock = DockStyle.Top};
             answer.BringToFront();
@@ -91,7 +90,7 @@ namespace Voenkaff.Entity
 
         private void RemoveTextBox(object sender, EventArgs e)
         {
-            _parent.Controls.Remove(ObjectEntity);
+            _parent.Controls.Remove(Instance);
             _parent.Controls.Remove(_topTitle);
             _answerPanel.Controls.Remove(_panel);
         }

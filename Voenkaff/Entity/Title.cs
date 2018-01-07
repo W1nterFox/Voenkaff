@@ -4,12 +4,11 @@ using System.Windows.Forms;
 
 namespace Voenkaff.Entity
 {
-    class Title
+    class Title:Entity<RichTextBox>
     {
         private readonly Panel _parent;
         private readonly int _index;
         private readonly Form1 _form;
-        public RichTextBox ObjectEntity { get; set; }
 
         public Title(Panel parent, Form1 form, int index)
         {
@@ -17,12 +16,12 @@ namespace Voenkaff.Entity
             _index = index;
             _form = form;
 
-            ObjectEntity = new RichTextBox {Parent = _parent};
-            ObjectEntity.Name = ObjectEntity.ToString() + _index;
-            ObjectEntity.Location = new Point(10, 10);
-            _parent.Controls.Add(ObjectEntity);
-            ObjectEntity.MouseMove += IdentifierMove;
-            ObjectEntity.BringToFront();
+            Instance = new RichTextBox {Parent = _parent};
+            Instance.Name = Instance.ToString() + _index;
+            Instance.Location = new Point(10, 10);
+            _parent.Controls.Add(Instance);
+            Instance.MouseMove += IdentifierMove;
+            Instance.BringToFront();
 
             ContextMenu cmu = new ContextMenu();
             MenuItem menuItemDelete = new MenuItem
@@ -32,9 +31,9 @@ namespace Voenkaff.Entity
                 Shortcut = Shortcut.CtrlDel
             };
             menuItemDelete.Click += RemoveTextBox;
-            menuItemDelete.Name = ObjectEntity.ToString() + _index;
+            menuItemDelete.Name = Instance.ToString() + _index;
             cmu.MenuItems.Add(menuItemDelete);
-            ObjectEntity.ContextMenu = cmu;
+            Instance.ContextMenu = cmu;
         }
 
         private void RemoveTextBox(object sender, EventArgs e)

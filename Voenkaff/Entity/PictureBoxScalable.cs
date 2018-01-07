@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Voenkaff
+namespace Voenkaff.Entity
 {
-    class PictureBoxScalable
+    class PictureBoxScalable:Entity<PictureBox>
     {
 
         Control _draggedPiece;
@@ -12,7 +12,6 @@ namespace Voenkaff
         private Point _startDraggingPoint;
         private Size _startSize;
         Rectangle _rectProposedSize = Rectangle.Empty;
-        public PictureBox Pb { get; set; }
         private readonly Form1 _form;
         private readonly Panel _parent;
 
@@ -22,13 +21,13 @@ namespace Voenkaff
         {
             _form = panel;
             _parent = parent;
-            Pb= new PictureBox();
-            Pb.Name = Pb.ToString() + index;
-            Pb.Location = new Point(10, 10);
-            Pb.MouseMove += MouseMove;
-            Pb.MouseDown += MouseDown;
-            Pb.MouseUp += MouseUp;
-            Pb.BringToFront();
+            Instance= new PictureBox();
+            Instance.Name = Instance.ToString() + index;
+            Instance.Location = new Point(10, 10);
+            Instance.MouseMove += MouseMove;
+            Instance.MouseDown += MouseDown;
+            Instance.MouseUp += MouseUp;
+            Instance.BringToFront();
 
             ContextMenu cmu = new ContextMenu();
             MenuItem menuItemDelete = new MenuItem
@@ -38,9 +37,9 @@ namespace Voenkaff
                 Shortcut = Shortcut.CtrlDel
             };
             menuItemDelete.Click += Remove;
-            menuItemDelete.Name = Pb.ToString() + index;
+            menuItemDelete.Name = Instance.ToString() + index;
             cmu.MenuItems.Add(menuItemDelete);
-            Pb.ContextMenu = cmu;
+            Instance.ContextMenu = cmu;
         }
 
         private void MouseDown(object sender, MouseEventArgs e)
