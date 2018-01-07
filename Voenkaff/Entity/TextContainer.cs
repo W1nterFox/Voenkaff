@@ -71,8 +71,7 @@ namespace Voenkaff.Entity
             if (MouseButtons.Left == e.Button)
             {
                 Point point = _form.PointToClient(Cursor.Position);
-                currentObject.Location = new Point(point.X - currentObject.Size.Width / 2,
-                    point.Y - currentObject.Size.Height / 2);
+                //currentObject.Location = new Point(point.X - currentObject.Size.Width / 2, point.Y - currentObject.Size.Height / 2);
                 foreach (Label title in _parent.Controls.OfType<Label>())
                 {
                     if (Regex.Match(title.Text, "[0-9]+").Value == Regex.Match(currentObject.Name, "[0-9]+").Value)

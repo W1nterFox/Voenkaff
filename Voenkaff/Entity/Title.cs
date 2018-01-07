@@ -45,11 +45,11 @@ namespace Voenkaff.Entity
         private void IdentifierMove(object sender, MouseEventArgs e)
         {
             RichTextBox currentObject = ((RichTextBox)sender);
-            if (MouseButtons.Left == e.Button)
-            {
-                Point point = _form.PointToClient(Cursor.Position);
-                currentObject.Location = new Point(point.X - currentObject.Size.Width / 2, point.Y - currentObject.Size.Height / 2);
-            }
+            //if (MouseButtons.Left == e.Button)
+            //{
+            //    Point point = _form.PointToClient(Cursor.Position);
+            //    currentObject.Location = new Point(point.X - currentObject.Size.Width / 2, point.Y - currentObject.Size.Height / 2);
+            //}
             if (MouseButtons.Right == e.Button)
             {
                 currentObject.ContextMenu.Show(currentObject, new Point(e.X, e.Y));

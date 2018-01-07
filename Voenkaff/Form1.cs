@@ -87,6 +87,7 @@ namespace Voenkaff
         private void button1_Click(object sender, EventArgs e)
         {
             TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, _currentPanelAnswer.Entity, this, _currentTask.Identifier);
+            ControlMover.Add(tc.Instance);
             _currentTask.Identifier++;
         }
 
@@ -98,6 +99,7 @@ namespace Voenkaff
         private void button2_Click(object sender, EventArgs e)
         {
             PictureBoxScalable pb = new PictureBoxScalable(_currentTask.Identifier, this, _currentPanelQuestion.Entity) {Instance = {Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage}};
+            ControlMover.Add(pb.Instance);
             _currentTask.Identifier++;
 
 
@@ -128,6 +130,7 @@ namespace Voenkaff
         private void button3_Click(object sender, EventArgs e)
         {
             Title ttl = new Title(_currentPanelQuestion.Entity, this, _currentTask.Identifier);
+            ControlMover.Add(ttl.Instance);
             _currentTask.Identifier++;
             ttl.Instance.BackColor = Color.Cyan;
             ttl.Instance.Font = new Font("Times New Roman",14f);

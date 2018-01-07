@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\ControlMover.cs" />
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="PanelWrapper.cs" />
     <Compile Include="Entity\TextContainer.cs" />
