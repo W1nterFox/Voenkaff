@@ -17,7 +17,7 @@ namespace Voenkaff
         public Form1()
         {
             InitializeComponent();
-
+            this.MinimumSize = new Size(1080, 750);
             panelMiddle.Controls.Add(panelTaskStart);
             listPanelsTasks = new List<PanelWrapper>();
             listPanelsTasks.Add(new PanelWrapper(panelTaskStart,1));
@@ -177,6 +177,10 @@ namespace Voenkaff
             
             listPanelsTasks.Add(new PanelWrapper(newPanelTask,1));
             newPanelTask.Name = ""+(listPanelsTasks.Count - 1);
+            foreach (PanelWrapper index in listPanelsTasks)
+            {
+                index.Entity.Visible = false;
+            }
             listPanelsTasks[listPanelsTasks.Count - 1].Entity.Visible = true;
 
 
@@ -186,6 +190,48 @@ namespace Voenkaff
 
             panelListOfTasks.Controls.Add(createLinkLabel(listPanelsTasks.Count - 1));
 
+            
+
+        }
+
+        private void файлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void открытьТестToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void новыйТестToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            this.Controls.Clear();
+
+            InitializeComponent();
+            this.MinimumSize = new Size(1080, 750);
+            panelMiddle.Controls.Add(panelTaskStart);
+            listPanelsTasks = new List<PanelWrapper>();
+            listPanelsTasks.Add(new PanelWrapper(panelTaskStart, 1));
+
+            panelTaskStart.Controls.Add(panelQuestion);
+            panelTaskStart.Controls.Add(panelAnswer);
+
+            panelAnswer.BringToFront();
+            //panelTask.Visible = false;
+
+            _currentTask.Entity = panelTaskStart;
+            _currentTask.Identifier = 1;
+            _currentPanelQuestion.Entity = panelQuestion;
+            _currentPanelAnswer.Entity = panelAnswer;
+
+            panelListOfTasks.Controls.Add(createLinkLabel(0));
 
         }
     }
