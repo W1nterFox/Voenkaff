@@ -49,6 +49,7 @@ namespace Voenkaff.Entity
             _topTitle.Text = "Текстовое поле: " + _index;
             _topTitle.Location = new Point(Instance.Location.X, Instance.Location.Y - _popravka);
             _parent.Controls.Add(_topTitle);
+            _topTitle.BringToFront();
 
             _panel = new Panel
             {
@@ -70,7 +71,7 @@ namespace Voenkaff.Entity
             TextBox currentObject = ((TextBox) sender);
             if (MouseButtons.Left == e.Button)
             {
-                Point point = _form.PointToClient(Cursor.Position);
+                _form.PointToClient(Cursor.Position);
                 //currentObject.Location = new Point(point.X - currentObject.Size.Width / 2, point.Y - currentObject.Size.Height / 2);
                 foreach (Label title in _parent.Controls.OfType<Label>())
                 {

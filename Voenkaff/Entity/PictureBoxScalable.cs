@@ -6,9 +6,7 @@ namespace Voenkaff.Entity
 {
     class PictureBoxScalable:Entity<PictureBox>
     {
-
-        
-        Rectangle _rectProposedSize = Rectangle.Empty;
+        private Rectangle _rectProposedSize = Rectangle.Empty;
         private readonly Form1 _form;
         private readonly Panel _parent;
 
@@ -24,7 +22,6 @@ namespace Voenkaff.Entity
             //Instance.MouseMove += MouseMove;
             //Instance.MouseDown += MouseDown;
             //Instance.MouseUp += MouseUp;
-            Instance.BringToFront();
 
             ContextMenu cmu = new ContextMenu();
             MenuItem menuItemDelete = new MenuItem
@@ -38,10 +35,6 @@ namespace Voenkaff.Entity
             cmu.MenuItems.Add(menuItemDelete);
             Instance.ContextMenu = cmu;
         }
-
-
-        
-
 
         private void Remove(object sender, EventArgs e)
         {

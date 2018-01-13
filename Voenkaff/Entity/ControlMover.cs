@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Voenkaff.Entity
@@ -17,11 +13,11 @@ namespace Voenkaff.Entity
         public static int ResizingMargin { get; set; }
         public static int MinSize { get; set; }
 
-        private static Point startMouse;
-        private static Point startLocation;
-        private static Size startSize;
-        private static bool resizing = false;
-        static Cursor oldCursor;
+        private static Point _startMouse;
+        private static Point _startLocation;
+        private static Size _startSize;
+        private static bool _resizing;
+        static Cursor _oldCursor;
 
         static ControlMover()
         {
@@ -44,8 +40,7 @@ namespace Voenkaff.Entity
         {
             if (e.Button != MouseButtons.Left)
                 return;
-            var ctrl = (sender as Control);
-            ctrl.Cursor = oldCursor;
+            if (sender is Control ctrl) ctrl.Cursor = _oldCursor;
         }
 
         public static void Remove(Control ctrl)
@@ -59,9 +54,9 @@ namespace Voenkaff.Entity
         {
             var ctrl = sender as Control;
 
-            if (ChangeCursor)
+            if (ctrl != null && ChangeCursor)
             {
-                if ((e.X >= ctrl.Width - ResizingMargin) && (e.Y >= ctrl.Height - ResizingMargin) && AllowResize)
+                if ( ((e.X >= ctrl.Width - ResizingMargin) && (e.Y >= ctrl.Height - ResizingMargin) && AllowResize))
                     ctrl.Cursor = Cursors.SizeNWSE;
                 else
                 if (AllowMove)
@@ -73,31 +68,34 @@ namespace Voenkaff.Entity
             if (e.Button != MouseButtons.Left)
                 return;
 
-            var l = ctrl.PointToScreen(e.Location);
-            var dx = l.X - startMouse.X;
-            var dy = l.Y - startMouse.Y;
-
-            if (Math.Max(Math.Abs(dx), Math.Abs(dy)) > 1)
+            if (ctrl != null)
             {
-                if (resizing)
+                var l = ctrl.PointToScreen(e.Location);
+                var dx = l.X - _startMouse.X;
+                var dy = l.Y - _startMouse.Y;
+
+                if (Math.Max(Math.Abs(dx), Math.Abs(dy)) > 1)
                 {
-                    if (AllowResize)
+                    if (_resizing)
                     {
-                        ctrl.Size = new Size(Math.Max(MinSize, startSize.Width + dx), Math.Max(MinSize, startSize.Height + dy));
-                        ctrl.Cursor = Cursors.SizeNWSE;
-                        if (BringToFront) ctrl.BringToFront();
+                        if (AllowResize)
+                        {
+                            ctrl.Size = new Size(Math.Max(MinSize, _startSize.Width + dx), Math.Max(MinSize, _startSize.Height + dy));
+                            ctrl.Cursor = Cursors.SizeNWSE;
+                            if (BringToFront && !(sender is PictureBox)) ctrl.BringToFront();
+                        }
                     }
-                }
-                else
-                {
-                    if (AllowMove)
+                    else
                     {
-                        Point newLoc = startLocation + new Size(dx, dy);
-                        if (newLoc.X < 0) newLoc = new Point(0, newLoc.Y);
-                        if (newLoc.Y < 0) newLoc = new Point(newLoc.X, 0);
-                        ctrl.Location = newLoc;
-                        ctrl.Cursor = Cursors.SizeAll;
-                        if (BringToFront) ctrl.BringToFront();
+                        if (AllowMove)
+                        {
+                            Point newLoc = _startLocation + new Size(dx, dy);
+                            if (newLoc.X < 0) newLoc = new Point(0, newLoc.Y);
+                            if (newLoc.Y < 0) newLoc = new Point(newLoc.X, 0);
+                            ctrl.Location = newLoc;
+                            ctrl.Cursor = Cursors.SizeAll;
+                            if (BringToFront && !(sender is PictureBox)) ctrl.BringToFront();
+                        }
                     }
                 }
             }
@@ -108,13 +106,15 @@ namespace Voenkaff.Entity
             if (e.Button != MouseButtons.Left)
                 return;
 
-            var ctrl = sender as Control;
-
-            resizing = (e.X >= ctrl.Width - ResizingMargin) && (e.Y >= ctrl.Height - ResizingMargin) && AllowResize;
-            startSize = ctrl.Size;
-            startMouse = ctrl.PointToScreen(e.Location);
-            startLocation = ctrl.Location;
-            oldCursor = ctrl.Cursor;
+            if (sender is Control ctrl)
+            {
+                _resizing = (e.X >= ctrl.Width - ResizingMargin) && (e.Y >= ctrl.Height - ResizingMargin) &&
+                            AllowResize;
+                _startSize = ctrl.Size;
+                _startMouse = ctrl.PointToScreen(e.Location);
+                _startLocation = ctrl.Location;
+                _oldCursor = ctrl.Cursor;
+            }
         }
     }
 }
