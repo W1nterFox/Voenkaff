@@ -43,15 +43,15 @@ namespace Voenkaff
             LinkLabel ll = new LinkLabel
             {
                 AutoSize = true,
-                Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204),
-                LinkColor = Color.Black,
-                Location = new Point(10, 57 + indexPanel * 30),
+                Font = new System.Drawing.Font("Century Gothic", 11.25F),
+                LinkColor = Color.White,
+                Location = new Point(15, 95 + indexPanel * 30),
                 Name = "linkLabel" + indexPanel,
                 Size = new Size(96, 16),
                 TabIndex = 0,
                 TabStop = true,
                 Text = "Задание №" + (indexPanel + 1),
-                VisitedLinkColor = Color.Black
+                VisitedLinkColor = Color.White
             };
 
 
@@ -69,7 +69,7 @@ namespace Voenkaff
             {
                 index.Entity.Visible = false;
             }
-            textBox1.Text = currentLL.Text;
+            //textBox1.Text = currentLL.Text;
             listPanelsTasks[(int)currentLL.Tag].Entity.Visible = true;
 
             listPanelsTasks.Find(p => p.Entity.Name == _currentTask.Entity.Name).Identifier = _currentTask.Identifier;
