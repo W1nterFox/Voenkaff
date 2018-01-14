@@ -40,7 +40,11 @@ namespace Voenkaff.Entity
         {
             if (e.Button != MouseButtons.Left)
                 return;
-            if (sender is Control ctrl) ctrl.Cursor = _oldCursor;
+            if (sender is Control)
+            {
+                var ctrl = (sender as Control);
+                ctrl.Cursor = _oldCursor;
+            }
         }
 
         public static void Remove(Control ctrl)
