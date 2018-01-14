@@ -106,8 +106,11 @@ namespace Voenkaff.Entity
             if (e.Button != MouseButtons.Left)
                 return;
 
-            if (sender is Control ctrl)
+
+
+            if (sender is Control)
             {
+                var ctrl = (Control) sender;
                 _resizing = (e.X >= ctrl.Width - ResizingMargin) && (e.Y >= ctrl.Height - ResizingMargin) &&
                             AllowResize;
                 _startSize = ctrl.Size;

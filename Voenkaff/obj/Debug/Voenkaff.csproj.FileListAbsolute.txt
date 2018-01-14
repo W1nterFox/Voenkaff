@@ -35,3 +35,13 @@ D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaff3\Voe
 D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaff3\Voenkaff\Voenkaff\obj\Debug\Voenkaff.Form1.resources
 D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaff3\Voenkaff\Voenkaff\obj\Debug\Voenkaff.Properties.Resources.resources
 D:\Мои документы\Documents\Visual Studio 2015\Projects\VoenKaff3\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj.GenerateResource.Cache
+D:\Projects\Voenkaff\Voenkaff\bin\Debug\Voenkaff.exe.config
+D:\Projects\Voenkaff\Voenkaff\bin\Debug\Voenkaff.exe
+D:\Projects\Voenkaff\Voenkaff\bin\Debug\Voenkaff.pdb
+D:\Projects\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csprojResolveAssemblyReference.cache
+D:\Projects\Voenkaff\Voenkaff\obj\Debug\Voenkaff.Form1.resources
+D:\Projects\Voenkaff\Voenkaff\obj\Debug\Voenkaff.Properties.Resources.resources
+D:\Projects\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj.GenerateResource.Cache
+D:\Projects\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj.CoreCompileInputs.cache
+D:\Projects\Voenkaff\Voenkaff\obj\Debug\Voenkaff.exe
+D:\Projects\Voenkaff\Voenkaff\obj\Debug\Voenkaff.pdb
