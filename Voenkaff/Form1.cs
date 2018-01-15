@@ -221,8 +221,7 @@ namespace Voenkaff
             InitializeComponent();
             this.MinimumSize = new Size(1080, 750);
             panelMiddle.Controls.Add(panelTaskStart);
-            _listPanelsTasks = new List<PanelWrapper>();
-            _listPanelsTasks.Add(new PanelWrapper(panelTaskStart, 1));
+            _listPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
 
             panelTaskStart.Controls.Add(panelQuestion);
             panelTaskStart.Controls.Add(panelAnswer);
@@ -268,18 +267,17 @@ namespace Voenkaff
                         Name = taskElement.Name,
                         Type = taskElement.ToString()
                     };
-                    switch (taskElement)
+                    if (taskElement is TextBox)
                     {
-                        case TextBox _:
-                            element.Answer = answers.Controls.Find(taskElement.Name, false)[0].Controls[0].Text;
-                            break;
-                        case PictureBox _:
-                            element.Media = ((PictureBox) taskElement).ImageLocation;
-                            break;
+                        element.Answer = answers.Controls.Find(taskElement.Name, false)[0].Controls[0].Text;
+                    }
+                    if (taskElement is PictureBox)
+                    {
+                        element.Media = ((PictureBox) taskElement).ImageLocation;
                     }
                     taskElements.Add(JsonConvert.SerializeObject(element,Formatting.None).Replace("\\", ""));
                 }
-                tasks.Add(new JsonTaskWrapper { Objects =  taskElements,Name = task.Entity.Name});
+                tasks.Add(new JsonTaskWrapper { TaskElements =  taskElements,Name = task.Entity.Name});
                 test.Tasks.Add(JsonConvert.SerializeObject(tasks, Formatting.None).Replace("\\",""));
             }
 

@@ -9,11 +9,11 @@ namespace Voenkaff.Wrappers
     class JsonTaskWrapper
     {
         public string Name { get; set; }
-        public List<string> TaskElement { get; set; }
+        public List<string> TaskElements { get; set; }
 
         public JsonTaskWrapper()
         {
-            TaskElement = new List<string>();
+            TaskElements = new List<string>();
         }
     }
 }
