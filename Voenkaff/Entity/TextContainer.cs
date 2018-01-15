@@ -27,6 +27,7 @@ namespace Voenkaff.Entity
             Instance.Location = new Point(10, 10);
             _parent.Controls.Add(Instance);
             Instance.MouseMove += IdentifierMove;
+            Instance.TextChanged += IdentifierTextChange;
             Instance.BringToFront();
 
             ContextMenu cmu = new ContextMenu();
@@ -42,6 +43,9 @@ namespace Voenkaff.Entity
             Instance.ContextMenu = cmu;
             AddAnswerTitle();
         }
+
+        
+
 
         private void AddAnswerTitle()
         {
@@ -87,6 +91,23 @@ namespace Voenkaff.Entity
                 currentObject.ContextMenu.Show(currentObject, new Point(e.X, e.Y));
             }
         }
+
+        private void IdentifierTextChange(object sender, EventArgs e)
+        {
+            //Label currentTitle = new Label();
+            //TextBox currentObject = ((TextBox)sender);
+            //foreach (Label title in _parent.Controls.OfType<Label>())
+            //{
+            //    if (Regex.Match(title.Text, "[0-9]+").Value == Regex.Match(currentObject.Name, "[0-9]+").Value)
+            //    {
+            //        currentTitle = title;
+            //    }
+            //}
+            //_panel.Controls.Find(currentTitle.Text, false);
+
+            //ТУТ ДОЛЖЕН БЫТЬ КОД, С ПОМОЩЬЮ КОТОРОГО ТЕКСТ ИЗ ОТВЕТА ИЗ ПАНЕЛИ answers ДОЛЖЕН БЫТЬ РАВЕН ТЕКСТУ ИЗ ПАНЕЛИ question
+        }
+
 
         private void RemoveTextBox(object sender, EventArgs e)
         {

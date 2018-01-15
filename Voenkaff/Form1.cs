@@ -44,14 +44,14 @@ namespace Voenkaff
             {
                 AutoSize = true,
                 Font = new System.Drawing.Font("Century Gothic", 11.25F),
-                LinkColor = Color.White,
+                LinkColor = Color.Black,
                 Location = new Point(15, 95 + indexPanel * 30),
                 Name = "linkLabel" + indexPanel,
                 Size = new Size(96, 16),
                 TabIndex = 0,
                 TabStop = true,
                 Text = "Задание №" + (indexPanel + 1),
-                VisitedLinkColor = Color.White
+                VisitedLinkColor = Color.Black
             };
 
 
@@ -100,7 +100,7 @@ namespace Voenkaff
         {
             PictureBoxScalable pb = new PictureBoxScalable(_currentTask.Identifier, this, _currentPanelQuestion.Entity) {Instance = {Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage}};
             ControlMover.Add(pb.Instance);
-            _currentTask.Identifier++;
+            //_currentTask.Identifier++;
 
 
             Bitmap image; //Bitmap для открываемого изображения
@@ -131,8 +131,8 @@ namespace Voenkaff
         {
             Title ttl = new Title(_currentPanelQuestion.Entity, this, _currentTask.Identifier);
             ControlMover.Add(ttl.Instance);
-            _currentTask.Identifier++;
-            ttl.Instance.BackColor = Color.Cyan;
+            //_currentTask.Identifier++;
+            ttl.Instance.BackColor = Color.White;
             ttl.Instance.Font = new Font("Times New Roman",14f);
             ttl.Instance.Width=500;
         }

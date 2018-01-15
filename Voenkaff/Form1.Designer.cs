@@ -57,7 +57,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(11)))), ((int)(((byte)(83)))));
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -69,11 +69,11 @@
             // 
             // button3
             // 
-            this.button3.FlatAppearance.BorderSize = 3;
+            this.button3.FlatAppearance.BorderSize = 2;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(3, 205);
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Location = new System.Drawing.Point(3, 174);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(115, 75);
             this.button3.TabIndex = 2;
@@ -83,11 +83,11 @@
             // 
             // button2
             // 
-            this.button2.FlatAppearance.BorderSize = 3;
+            this.button2.FlatAppearance.BorderSize = 2;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(3, 124);
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(3, 93);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 75);
             this.button2.TabIndex = 1;
@@ -97,11 +97,11 @@
             // 
             // button1
             // 
-            this.button1.FlatAppearance.BorderSize = 3;
+            this.button1.FlatAppearance.BorderSize = 2;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 43);
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(3, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 75);
             this.button1.TabIndex = 0;
@@ -123,7 +123,7 @@
             // panelAnswer
             // 
             this.panelAnswer.AutoScroll = true;
-            this.panelAnswer.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelAnswer.BackColor = System.Drawing.Color.Linen;
             this.panelAnswer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelAnswer.Location = new System.Drawing.Point(165, 524);
             this.panelAnswer.Name = "panelAnswer";
@@ -133,7 +133,7 @@
             // panelListOfTasks
             // 
             this.panelListOfTasks.AutoScroll = true;
-            this.panelListOfTasks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(11)))), ((int)(((byte)(83)))));
+            this.panelListOfTasks.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelListOfTasks.Controls.Add(this.buttonTaskCreate);
             this.panelListOfTasks.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelListOfTasks.Location = new System.Drawing.Point(0, 24);
@@ -143,11 +143,12 @@
             // 
             // buttonTaskCreate
             // 
-            this.buttonTaskCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(11)))), ((int)(((byte)(83)))));
-            this.buttonTaskCreate.FlatAppearance.BorderSize = 3;
+            this.buttonTaskCreate.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonTaskCreate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonTaskCreate.FlatAppearance.BorderSize = 2;
             this.buttonTaskCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTaskCreate.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonTaskCreate.ForeColor = System.Drawing.Color.White;
+            this.buttonTaskCreate.ForeColor = System.Drawing.Color.Black;
             this.buttonTaskCreate.Location = new System.Drawing.Point(24, 12);
             this.buttonTaskCreate.Name = "buttonTaskCreate";
             this.buttonTaskCreate.Size = new System.Drawing.Size(116, 75);
