@@ -54,3 +54,5 @@ D:\Новая папка (3)\Voenkaf\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj
 D:\Новая папка (3)\Voenkaf\Voenkaff\Voenkaff\obj\Debug\Voenkaff.Form1.resources
 D:\Новая папка (3)\Voenkaf\Voenkaff\Voenkaff\obj\Debug\Voenkaff.Properties.Resources.resources
 D:\Новая папка (3)\Voenkaf\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj.GenerateResource.Cache
+D:\Projects\Voenkaff\Voenkaff\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\Voenkaff\Voenkaff\bin\Debug\Newtonsoft.Json.xml

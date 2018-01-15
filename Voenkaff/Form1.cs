@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using Voenkaff.Entity;
+using Voenkaff.Wrappers;
 
 namespace Voenkaff
 {
     public partial class Form1 : Form
     {
-        List<PanelWrapper> listPanelsTasks;
+        List<PanelWrapper> _listPanelsTasks;
 
         PanelWrapper _currentTask = new PanelWrapper();
-        private PanelWrapper _currentPanelQuestion = new PanelWrapper();
-        private PanelWrapper _currentPanelAnswer = new PanelWrapper();
+        private readonly PanelWrapper _currentPanelQuestion = new PanelWrapper();
+        private readonly PanelWrapper _currentPanelAnswer = new PanelWrapper();
 
         string textForSaveTest;
 
@@ -20,10 +22,9 @@ namespace Voenkaff
         public Form1()
         {
             InitializeComponent();
-            this.MinimumSize = new Size(1080, 750);
+            MinimumSize = new Size(1080, 750);
             panelMiddle.Controls.Add(panelTaskStart);
-            listPanelsTasks = new List<PanelWrapper>();
-            listPanelsTasks.Add(new PanelWrapper(panelTaskStart,1));
+            _listPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
 
             panelTaskStart.Controls.Add(panelQuestion);
             panelTaskStart.Controls.Add(panelAnswer);
@@ -68,15 +69,15 @@ namespace Voenkaff
         {
             LinkLabel currentLL = (LinkLabel)sender;
             
-            foreach (PanelWrapper index in listPanelsTasks)
+            foreach (PanelWrapper index in _listPanelsTasks)
             {
                 index.Entity.Visible = false;
             }
             //textBox1.Text = currentLL.Text;
-            listPanelsTasks[(int)currentLL.Tag].Entity.Visible = true;
+            _listPanelsTasks[(int)currentLL.Tag].Entity.Visible = true;
 
-            listPanelsTasks.Find(p => p.Entity.Name == _currentTask.Entity.Name).Identifier = _currentTask.Identifier;
-            _currentTask = listPanelsTasks[(int)currentLL.Tag];
+            _listPanelsTasks.Find(p => p.Entity.Name == _currentTask.Entity.Name).Identifier = _currentTask.Identifier;
+            _currentTask = _listPanelsTasks[(int)currentLL.Tag];
  
             _currentPanelQuestion.Entity = (Panel)_currentTask.Entity.Controls.Find("panelQuestion", false)[0];
             _currentPanelAnswer.Entity= (Panel)_currentTask.Entity.Controls.Find("panelAnswer", false)[0];
@@ -142,7 +143,7 @@ namespace Voenkaff
 
         private void buttonTaskCreate_Click(object sender, EventArgs e)
         {
-            listPanelsTasks[listPanelsTasks.Count - 1].Entity.Visible = false;
+            _listPanelsTasks[_listPanelsTasks.Count - 1].Entity.Visible = false;
 
             Panel newPanelTask = new Panel();
 
@@ -178,20 +179,20 @@ namespace Voenkaff
             newPanelTask.Size = new Size(1142, 642);
 
             
-            listPanelsTasks.Add(new PanelWrapper(newPanelTask,1));
-            newPanelTask.Name = ""+(listPanelsTasks.Count - 1);
-            foreach (PanelWrapper index in listPanelsTasks)
+            _listPanelsTasks.Add(new PanelWrapper(newPanelTask,1));
+            newPanelTask.Name = ""+(_listPanelsTasks.Count - 1);
+            foreach (PanelWrapper index in _listPanelsTasks)
             {
                 index.Entity.Visible = false;
             }
-            listPanelsTasks[listPanelsTasks.Count - 1].Entity.Visible = true;
+            _listPanelsTasks[_listPanelsTasks.Count - 1].Entity.Visible = true;
 
 
-            _currentTask = listPanelsTasks[listPanelsTasks.Count - 1];
+            _currentTask = _listPanelsTasks[_listPanelsTasks.Count - 1];
             _currentPanelQuestion.Entity = (Panel)_currentTask.Entity.Controls.Find("panelQuestion", false)[0];
             _currentPanelAnswer.Entity = (Panel)_currentTask.Entity.Controls.Find("panelAnswer", false)[0];
 
-            panelListOfTasks.Controls.Add(createLinkLabel(listPanelsTasks.Count - 1));
+            panelListOfTasks.Controls.Add(createLinkLabel(_listPanelsTasks.Count - 1));
 
             
 
@@ -220,8 +221,8 @@ namespace Voenkaff
             InitializeComponent();
             this.MinimumSize = new Size(1080, 750);
             panelMiddle.Controls.Add(panelTaskStart);
-            listPanelsTasks = new List<PanelWrapper>();
-            listPanelsTasks.Add(new PanelWrapper(panelTaskStart, 1));
+            _listPanelsTasks = new List<PanelWrapper>();
+            _listPanelsTasks.Add(new PanelWrapper(panelTaskStart, 1));
 
             panelTaskStart.Controls.Add(panelQuestion);
             panelTaskStart.Controls.Add(panelAnswer);
@@ -247,51 +248,42 @@ namespace Voenkaff
             // получаем выбранный файл
             string filename = saveTest.FileName;
 
+            var test = new JsonTestWrapper {Name = "test name"};
 
-            textForSaveTest = "countTasks=" + listPanelsTasks.Count+ "\r\n";
-            
-            for (int i=0; i < listPanelsTasks.Count; i++)
+            var tasks = new List<JsonTaskWrapper>();
+            foreach (var task in _listPanelsTasks)
             {
-                textForSaveTest += "task" + i + "\r\n";
-                textForSaveTest += "{\r\n";
-
-                //Начинаются вопросы в таске
-                textForSaveTest += "\tquestions\r\n";
-                textForSaveTest += "\t{\r\n";
-
-
-
-
-
-                textForSaveTest += "\t}\r\n";
-                //Заканчиваются вопросы в таске
-
-                //Начинаются ответы на таск
-                textForSaveTest += "\tanswers\r\n";
-                textForSaveTest += "\t{\r\n";
-                //Пробегаем по всем панелям с ответами
-                for (int j = 0; j < panelAnswer.Controls.Count; j++)
+                var questions = task.Entity.Controls.Find("panelQuestion", false)[0];
+                var answers = task.Entity.Controls.Find("panelAnswer", false)[0];
+                var taskElements = new List<string>();
+                foreach (Control taskElement in questions.Controls)
                 {
-                    //Пробегаем по каждой панели и обращаемся к anser и label
-                    for (int k = 0; k < panelAnswer.Controls.[j]; k++)
+                    if (!(taskElement is TextBox) && !(taskElement is PictureBox) &&
+                        !(taskElement is RichTextBox)) continue;
+                    var element = new JsonObjectWrapper
                     {
-                        textForSaveTest += "\t\t" + panelAnswer.Controls[j].Name + "\r\n";
-                        textForSaveTest += "\t\t" + panelAnswer.Controls[j].Text + "\r\n";
-                        textForSaveTest += "\t\t" + panelAnswer.Controls[j].Parent + "\r\n";
+                        Point = taskElement.Location,
+                        Height = taskElement.Height,
+                        Width = taskElement.Width,
+                        Name = taskElement.Name,
+                        Type = taskElement.ToString()
+                    };
+                    switch (taskElement)
+                    {
+                        case TextBox _:
+                            element.Answer = answers.Controls.Find(taskElement.Name, false)[0].Controls[0].Text;
+                            break;
+                        case PictureBox _:
+                            element.Media = ((PictureBox) taskElement).ImageLocation;
+                            break;
                     }
-
-                    //НЕ ДОДЕЛАНО
-
+                    taskElements.Add(JsonConvert.SerializeObject(element,Formatting.None).Replace("\\", ""));
                 }
-                textForSaveTest += "\t}\r\n";
-                //Заканчиваются ответы на таск
-                textForSaveTest += "}\r\n";
+                tasks.Add(new JsonTaskWrapper { Objects =  taskElements,Name = task.Entity.Name});
+                test.Tasks.Add(JsonConvert.SerializeObject(tasks, Formatting.None).Replace("\\",""));
             }
 
-
-            
-
-
+            var textForSaveTest = JsonConvert.SerializeObject(test, Formatting.Indented).Replace("\\", "");
 
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, textForSaveTest);
