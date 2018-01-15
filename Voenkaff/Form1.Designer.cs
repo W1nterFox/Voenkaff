@@ -49,6 +49,7 @@
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отменаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveTest = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.panelListOfTasks.SuspendLayout();
             this.panelTaskStart.SuspendLayout();
@@ -221,6 +222,7 @@
             this.сохранитьТестToolStripMenuItem.Name = "сохранитьТестToolStripMenuItem";
             this.сохранитьТестToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.сохранитьТестToolStripMenuItem.Text = "Сохранить тест...";
+            this.сохранитьТестToolStripMenuItem.Click += new System.EventHandler(this.сохранитьТестToolStripMenuItem_Click);
             // 
             // закрытьToolStripMenuItem
             // 
@@ -310,6 +312,7 @@
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отменаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveTest;
     }
 }
 

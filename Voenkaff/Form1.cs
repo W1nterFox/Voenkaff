@@ -14,6 +14,9 @@ namespace Voenkaff
         private PanelWrapper _currentPanelQuestion = new PanelWrapper();
         private PanelWrapper _currentPanelAnswer = new PanelWrapper();
 
+        string textForSaveTest;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -233,6 +236,66 @@ namespace Voenkaff
 
             panelListOfTasks.Controls.Add(createLinkLabel(0));
 
+        }
+
+        private void сохранитьТестToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveTest.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+
+            if (saveTest.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = saveTest.FileName;
+
+
+            textForSaveTest = "countTasks=" + listPanelsTasks.Count+ "\r\n";
+            
+            for (int i=0; i < listPanelsTasks.Count; i++)
+            {
+                textForSaveTest += "task" + i + "\r\n";
+                textForSaveTest += "{\r\n";
+
+                //Начинаются вопросы в таске
+                textForSaveTest += "\tquestions\r\n";
+                textForSaveTest += "\t{\r\n";
+
+
+
+
+
+                textForSaveTest += "\t}\r\n";
+                //Заканчиваются вопросы в таске
+
+                //Начинаются ответы на таск
+                textForSaveTest += "\tanswers\r\n";
+                textForSaveTest += "\t{\r\n";
+                //Пробегаем по всем панелям с ответами
+                for (int j = 0; j < panelAnswer.Controls.Count; j++)
+                {
+                    //Пробегаем по каждой панели и обращаемся к anser и label
+                    for (int k = 0; k < panelAnswer.Controls.[j]; k++)
+                    {
+                        textForSaveTest += "\t\t" + panelAnswer.Controls[j].Name + "\r\n";
+                        textForSaveTest += "\t\t" + panelAnswer.Controls[j].Text + "\r\n";
+                        textForSaveTest += "\t\t" + panelAnswer.Controls[j].Parent + "\r\n";
+                    }
+
+                    //НЕ ДОДЕЛАНО
+
+                }
+                textForSaveTest += "\t}\r\n";
+                //Заканчиваются ответы на таск
+                textForSaveTest += "}\r\n";
+            }
+
+
+            
+
+
+
+            // сохраняем текст в файл
+            System.IO.File.WriteAllText(filename, textForSaveTest);
+            MessageBox.Show("Файл сохранен");
         }
     }
 }

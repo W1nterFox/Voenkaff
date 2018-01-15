@@ -51,7 +51,7 @@ namespace Voenkaff.Entity
         {
             _topTitle = new Label();
             _topTitle.Text = "Текстовое поле: " + _index;
-            _topTitle.Location = new Point(Instance.Location.X, Instance.Location.Y - _popravka);
+            _topTitle.Location = new Point(Instance.Location.X, Instance.Location.Y + _popravka);
             _parent.Controls.Add(_topTitle);
             _topTitle.BringToFront();
 
