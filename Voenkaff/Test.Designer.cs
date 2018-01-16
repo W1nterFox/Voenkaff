@@ -1,6 +1,6 @@
 ﻿namespace Voenkaff
 {
-    partial class Form1
+    partial class Test
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.новыйТестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.открытьТестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьТестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -195,7 +194,6 @@
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.новыйТестToolStripMenuItem,
-            this.открытьТестToolStripMenuItem,
             this.сохранитьТестToolStripMenuItem,
             this.закрытьToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -206,28 +204,21 @@
             // новыйТестToolStripMenuItem
             // 
             this.новыйТестToolStripMenuItem.Name = "новыйТестToolStripMenuItem";
-            this.новыйТестToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.новыйТестToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.новыйТестToolStripMenuItem.Text = "Новый тест";
             this.новыйТестToolStripMenuItem.Click += new System.EventHandler(this.новыйТестToolStripMenuItem_Click);
-            // 
-            // открытьТестToolStripMenuItem
-            // 
-            this.открытьТестToolStripMenuItem.Name = "открытьТестToolStripMenuItem";
-            this.открытьТестToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.открытьТестToolStripMenuItem.Text = "Открыть тест...";
-            this.открытьТестToolStripMenuItem.Click += new System.EventHandler(this.открытьТестToolStripMenuItem_Click);
             // 
             // сохранитьТестToolStripMenuItem
             // 
             this.сохранитьТестToolStripMenuItem.Name = "сохранитьТестToolStripMenuItem";
-            this.сохранитьТестToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.сохранитьТестToolStripMenuItem.Text = "Сохранить тест...";
+            this.сохранитьТестToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.сохранитьТестToolStripMenuItem.Text = "Сохранить тест";
             this.сохранитьТестToolStripMenuItem.Click += new System.EventHandler(this.сохранитьТестToolStripMenuItem_Click);
             // 
             // закрытьToolStripMenuItem
             // 
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.закрытьToolStripMenuItem.Text = "Закрыть";
             this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
@@ -265,7 +256,7 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // Form1
+            // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -277,8 +268,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Test";
+            this.Text = "currentTest";
             this.panel1.ResumeLayout(false);
             this.panelListOfTasks.ResumeLayout(false);
             this.panelTaskStart.ResumeLayout(false);
@@ -304,7 +295,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem новыйТестToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem открытьТестToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьТестToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;

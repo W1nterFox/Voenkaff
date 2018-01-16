@@ -8,9 +8,9 @@ namespace Voenkaff.Entity
     {
         private readonly Panel _parent;
         private readonly int _index;
-        private readonly Form1 _form;
+        private readonly Test _form;
 
-        public Title(Panel parent, Form1 form, int index)
+        public Title(Panel parent, Test form, int index)
         {
             _parent = parent;
             _index = index;

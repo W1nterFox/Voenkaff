@@ -7,12 +7,12 @@ namespace Voenkaff.Entity
     class PictureBoxScalable:Entity<PictureBox>
     {
         private Rectangle _rectProposedSize = Rectangle.Empty;
-        private readonly Form1 _form;
+        private readonly Test _form;
         private readonly Panel _parent;
 
         
 
-        public PictureBoxScalable(int index,Form1 panel,Panel parent)
+        public PictureBoxScalable(int index,Test panel,Panel parent)
         {
             _form = panel;
             _parent = parent;

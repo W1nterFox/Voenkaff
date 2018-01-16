@@ -4,8 +4,7 @@ namespace Voenkaff
 {
     class PanelWrapper
     {
-        public PanelWrapper
-            (Panel entity,int identifier)
+        public PanelWrapper(Panel entity,int identifier)
         {
             Entity = entity;
             Identifier = identifier;

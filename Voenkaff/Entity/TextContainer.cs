@@ -11,12 +11,12 @@ namespace Voenkaff.Entity
         private readonly Panel _parent;
         private readonly Panel _answerPanel;
         private readonly int _popravka = 15;
-        private readonly Form1 _form;
+        private readonly Test _form;
         private readonly int _index;
         private Label _topTitle;
         private Panel _panel;
 
-        public TextContainer(Panel parent, Panel answerPanel, Form1 form,int index)
+        public TextContainer(Panel parent, Panel answerPanel, Test form,int index)
         {
             _parent = parent;
             _answerPanel = answerPanel;

@@ -8,7 +8,7 @@ using Voenkaff.Wrappers;
 
 namespace Voenkaff
 {
-    public partial class Form1 : Form
+    public partial class Test : Form
     {
         List<PanelWrapper> _listPanelsTasks;
 
@@ -16,12 +16,28 @@ namespace Voenkaff
         private readonly PanelWrapper _currentPanelQuestion = new PanelWrapper();
         private readonly PanelWrapper _currentPanelAnswer = new PanelWrapper();
 
-        string textForSaveTest;
+        //string textForSaveTest;
+        string _testOperationsName;
+        int _indexTest;
 
+        string _testName;
+        int[] _listMarks;
+        List<int> _listVzvoda;
 
-        public Form1()
+        public Test(FormHello formHello, string testName, int[] listMarks/*, List<int> listVzvoda*/)
         {
             InitializeComponent();
+
+            _testOperationsName = formHello.testOperations.Name;
+            _indexTest = formHello._listPanelsTestsOnPanel.Count - 1;
+
+            _testName = testName;
+            _listMarks = listMarks;
+            //_listVzvoda = listVzvoda;
+
+            this.Text = _testName;
+
+
             MinimumSize = new Size(1080, 750);
             panelMiddle.Controls.Add(panelTaskStart);
             _listPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
@@ -38,6 +54,7 @@ namespace Voenkaff
             _currentPanelAnswer.Entity = panelAnswer;
 
             panelListOfTasks.Controls.Add(createLinkLabel(0));
+
             
 
         }
@@ -205,7 +222,10 @@ namespace Voenkaff
 
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            
+            this.Visible = false;
+            Program.formHello.Visible = true;
+            //Application.Exit();
         }
 
         private void открытьТестToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,6 +260,12 @@ namespace Voenkaff
 
         private void сохранитьТестToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            //Control panelMain = Program.formHello.Controls.Find("panelMain", false)[0];
+            //Control currentPanelTest = panelMain.Controls.Find("panelTestInTestsList" + _indexTest, false)[0];
+            //Control currentLabelTest = currentPanelTest.Controls.Find("linkLabelTest" + _indexTest, false)[0];
+            //currentLabelTest.Text = "asdsadsadsad";
+
             saveTest.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
 
             if (saveTest.ShowDialog() == DialogResult.Cancel)
@@ -261,11 +287,11 @@ namespace Voenkaff
                         !(taskElement is RichTextBox)) continue;
                     var element = new JsonObjectWrapper
                     {
-                        Point = taskElement.Location,
-                        Height = taskElement.Height,
-                        Width = taskElement.Width,
                         Name = taskElement.Name,
-                        Type = taskElement.ToString()
+                        Type = taskElement.ToString(),
+                        Width = taskElement.Width,
+                        Height = taskElement.Height,
+                        Point = taskElement.Location,
                     };
                     if (taskElement is TextBox)
                     {
@@ -287,5 +313,16 @@ namespace Voenkaff
             System.IO.File.WriteAllText(filename, textForSaveTest);
             MessageBox.Show("Файл сохранен");
         }
+
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            this.Visible = false;
+            Program.formHello.Visible = true;
+        }
+
+
     }
+
 }
