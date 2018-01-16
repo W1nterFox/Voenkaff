@@ -22,9 +22,9 @@ namespace Voenkaff
 
         string _testName;
         int[] _listMarks;
-        List<int> _listVzvoda;
+        Dictionary<string, List<string>> _vzvodAndLS;
 
-        public Test(FormHello formHello, string testName, int[] listMarks/*, List<int> listVzvoda*/)
+        public Test(FormHello formHello, string testName, int[] listMarks, Dictionary<string, List<string>> vzvodAndLS)
         {
             InitializeComponent();
 
@@ -33,7 +33,7 @@ namespace Voenkaff
 
             _testName = testName;
             _listMarks = listMarks;
-            //_listVzvoda = listVzvoda;
+            _vzvodAndLS = vzvodAndLS;
 
             this.Text = _testName;
 

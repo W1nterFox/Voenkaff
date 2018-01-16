@@ -44,6 +44,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.buttonNext = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.labelLabelErrorMin3 = new System.Windows.Forms.Label();
+            this.labelOnlyDigit = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -57,7 +59,7 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(581, 426);
+            this.panel1.Size = new System.Drawing.Size(581, 402);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -89,6 +91,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelOnlyDigit);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBoxMark4);
@@ -101,12 +104,13 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(124, 128);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(329, 185);
+            this.groupBox1.Size = new System.Drawing.Size(329, 196);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.labelLabelErrorMin3);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.textBoxUserChooseTestName);
             this.groupBox2.Location = new System.Drawing.Point(163, 22);
@@ -190,7 +194,7 @@
             // 
             this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNext.Font = new System.Drawing.Font("Century Gothic", 15.75F);
-            this.buttonNext.Location = new System.Drawing.Point(226, 333);
+            this.buttonNext.Location = new System.Drawing.Point(216, 330);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(140, 45);
             this.buttonNext.TabIndex = 5;
@@ -208,11 +212,35 @@
             this.label8.TabIndex = 14;
             this.label8.Text = ">";
             // 
+            // labelLabelErrorMin3
+            // 
+            this.labelLabelErrorMin3.AutoSize = true;
+            this.labelLabelErrorMin3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelLabelErrorMin3.Font = new System.Drawing.Font("Century Gothic", 9.25F);
+            this.labelLabelErrorMin3.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelLabelErrorMin3.Location = new System.Drawing.Point(50, 74);
+            this.labelLabelErrorMin3.Name = "labelLabelErrorMin3";
+            this.labelLabelErrorMin3.Size = new System.Drawing.Size(160, 17);
+            this.labelLabelErrorMin3.TabIndex = 6;
+            this.labelLabelErrorMin3.Text = "* Минимум 3 символа *";
+            // 
+            // labelOnlyDigit
+            // 
+            this.labelOnlyDigit.AutoSize = true;
+            this.labelOnlyDigit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelOnlyDigit.Font = new System.Drawing.Font("Century Gothic", 9.25F);
+            this.labelOnlyDigit.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelOnlyDigit.Location = new System.Drawing.Point(39, 165);
+            this.labelOnlyDigit.Name = "labelOnlyDigit";
+            this.labelOnlyDigit.Size = new System.Drawing.Size(242, 17);
+            this.labelOnlyDigit.TabIndex = 7;
+            this.labelOnlyDigit.Text = "* Допускаются только числа 0-100 *";
+            // 
             // FormChooseTestName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 451);
+            this.ClientSize = new System.Drawing.Size(606, 427);
             this.Controls.Add(this.panel1);
             this.Name = "FormChooseTestName";
             this.Text = "FormChooseTestName";
@@ -243,5 +271,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelLabelErrorMin3;
+        private System.Windows.Forms.Label labelOnlyDigit;
     }
 }
