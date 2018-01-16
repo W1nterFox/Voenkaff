@@ -314,7 +314,7 @@ namespace Voenkaff
                 test.Tasks.Add(JsonConvert.SerializeObject(tasks, Formatting.None).Replace("\\",""));
             }
 
-            var textForSaveTest = JsonConvert.SerializeObject(test, Formatting.Indented).Replace("\\", "").Replace("\"[", "").Replace("]\"", "").Replace("\"{", "{").Replace("\"}", "}").Replace("\"]", "]");
+            var textForSaveTest = JsonConvert.SerializeObject(test, Formatting.Indented).Replace("\\", "").Replace("\"[", "").Replace("]\"", "").Replace("\"{", "{").Replace("\"}", "}").Replace("\"]", "]").Replace("}\",{", "},{");
 
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, textForSaveTest);
