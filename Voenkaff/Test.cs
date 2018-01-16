@@ -175,7 +175,7 @@ namespace Voenkaff
                 Location = new Point(5, 5),
                 Size = new Size(1132, 632),
                 Name = "panelQuestion",
-                Text = "Задание №"+(_listPanelsTasks.Count.ToString()+1)
+                Text = "Задание №"+(_listPanelsTasks.Count+1)
             };
 
             Panel panelAnswer = new Panel
