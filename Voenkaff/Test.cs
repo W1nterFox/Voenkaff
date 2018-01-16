@@ -41,7 +41,7 @@ namespace Voenkaff
             MinimumSize = new Size(1080, 750);
             panelMiddle.Controls.Add(panelTaskStart);
             _listPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
-
+            panelQuestion.Text = "Задание №1";
             panelTaskStart.Controls.Add(panelQuestion);
             panelTaskStart.Controls.Add(panelAnswer);
             
@@ -174,7 +174,8 @@ namespace Voenkaff
                 Dock = DockStyle.Fill,
                 Location = new Point(5, 5),
                 Size = new Size(1132, 632),
-                Name = "panelQuestion"
+                Name = "panelQuestion",
+                Text = "Задание №"+(_listPanelsTasks.Count.ToString()+1)
             };
 
             Panel panelAnswer = new Panel
@@ -273,11 +274,12 @@ namespace Voenkaff
             // получаем выбранный файл
             string filename = saveTest.FileName;
 
-            var test = new JsonTestWrapper {Name = "test name"};
+            var test = new JsonTestWrapper {Name = _testName};
 
-            var tasks = new List<JsonTaskWrapper>();
+            
             foreach (var task in _listPanelsTasks)
             {
+                var tasks = new List<JsonTaskWrapper>();
                 var questions = task.Entity.Controls.Find("panelQuestion", false)[0];
                 var answers = task.Entity.Controls.Find("panelAnswer", false)[0];
                 var taskElements = new List<string>();
@@ -288,7 +290,7 @@ namespace Voenkaff
                     var element = new JsonObjectWrapper
                     {
                         Name = taskElement.Name,
-                        Type = taskElement.ToString(),
+                        Type = taskElement.GetType().ToString(),
                         Width = taskElement.Width,
                         Height = taskElement.Height,
                         Point = taskElement.Location,
@@ -299,15 +301,20 @@ namespace Voenkaff
                     }
                     if (taskElement is PictureBox)
                     {
-                        element.Media = ((PictureBox) taskElement).ImageLocation;
+                        element.Media = "picture/"+((PictureBox) taskElement).Name;
+                    }
+
+                    if (taskElement is RichTextBox)
+                    {
+                        element.Text = taskElement.Text;
                     }
                     taskElements.Add(JsonConvert.SerializeObject(element,Formatting.None).Replace("\\", ""));
                 }
-                tasks.Add(new JsonTaskWrapper { TaskElements =  taskElements,Name = task.Entity.Name});
+                tasks.Add(new JsonTaskWrapper { TaskElements =  taskElements,Name = questions.Text});
                 test.Tasks.Add(JsonConvert.SerializeObject(tasks, Formatting.None).Replace("\\",""));
             }
 
-            var textForSaveTest = JsonConvert.SerializeObject(test, Formatting.Indented).Replace("\\", "");
+            var textForSaveTest = JsonConvert.SerializeObject(test, Formatting.Indented).Replace("\\", "").Replace("\"[", "").Replace("]\"", "").Replace("\"{", "{").Replace("\"}", "}").Replace("\"]", "]");
 
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, textForSaveTest);

@@ -16,5 +16,6 @@ namespace Voenkaff.Wrappers
         public int Height { get; set; }
         public Point Point { get; set; }
         public string Media { get; set; }
+        public string Text { get; set; }
     }
 }

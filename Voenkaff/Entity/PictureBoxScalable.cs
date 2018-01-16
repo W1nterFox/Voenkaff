@@ -17,7 +17,7 @@ namespace Voenkaff.Entity
             _form = panel;
             _parent = parent;
             Instance= new PictureBox();
-            Instance.Name = Instance.ToString() + index;
+            Instance.Name = new Random().Next(1000000,9999999).ToString();
             Instance.Location = new Point(10, 10);
             //Instance.MouseMove += MouseMove;
             //Instance.MouseDown += MouseDown;
