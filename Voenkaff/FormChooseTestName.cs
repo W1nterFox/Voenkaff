@@ -32,14 +32,56 @@ namespace Voenkaff
 
         private void buttonNext_checkNullMarks(object sender, System.EventArgs e)
         {
-            if (textBoxMark5.Text == null || textBoxMark5.Text == "" ||
-                textBoxMark4.Text == null || textBoxMark4.Text == "" ||
-                textBoxMark3.Text == null || textBoxMark3.Text == "" ||
-                textBoxUserChooseTestName.Text == null || textBoxUserChooseTestName.Text == "" ||
-                textBoxUserChooseTestName.Text.Length<3)
+            int fake;
+            if (textBoxMark5.Text == null || textBoxMark5.Text == "" || textBoxMark4.Text == null || textBoxMark4.Text == "" || textBoxMark3.Text == null || textBoxMark3.Text == "")
+            {
                 buttonNext.Enabled = false;
+                labelOnlyDigit.Visible = true;
+            }
             else
+            {
                 buttonNext.Enabled = true;
+                labelOnlyDigit.Visible = false;
+            }
+
+            if (textBoxUserChooseTestName.Text == null || textBoxUserChooseTestName.Text == "" || textBoxUserChooseTestName.Text.Length < 3)
+            {
+                buttonNext.Enabled = false;
+                labelLabelErrorMin3.Visible = true;
+            }
+            else
+            {
+                buttonNext.Enabled = true;
+                labelLabelErrorMin3.Visible = false;
+            }
+
+            if (!Int32.TryParse(textBoxMark5.Text, out fake) || !Int32.TryParse(textBoxMark4.Text, out fake) || !Int32.TryParse(textBoxMark3.Text, out fake))
+            {
+                buttonNext.Enabled = false;
+                labelOnlyDigit.Visible = true;
+            }
+            else
+            {
+                buttonNext.Enabled = true;
+                labelOnlyDigit.Visible = false;
+            }
+
+            if (Int32.TryParse(textBoxMark5.Text, out fake) && Int32.TryParse(textBoxMark4.Text, out fake) && Int32.TryParse(textBoxMark3.Text, out fake))
+            {
+                if (Int32.Parse(textBoxMark5.Text)<0 || Int32.Parse(textBoxMark5.Text)>100 || Int32.Parse(textBoxMark4.Text) < 0 || Int32.Parse(textBoxMark4.Text) > 100 || Int32.Parse(textBoxMark3.Text) < 0 || Int32.Parse(textBoxMark3.Text) > 100)
+                {
+                    buttonNext.Enabled = false;
+                    labelOnlyDigit.Visible = true;
+                }
+                else
+                {
+                    buttonNext.Enabled = true;
+                    labelOnlyDigit.Visible = false;
+                }
+                    
+            }
+            
+
         }
 
         private void buttonNext_Click(object sender, EventArgs e)

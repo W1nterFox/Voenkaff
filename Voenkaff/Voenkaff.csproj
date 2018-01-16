@@ -57,6 +57,12 @@
     <Compile Include="FormChooseTestName.Designer.cs">
       <DependentUpon>FormChooseTestName.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChooseVzvod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChooseVzvod.Designer.cs">
+      <DependentUpon>FormChooseVzvod.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHello.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormChooseTestName.resx">
       <DependentUpon>FormChooseTestName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChooseVzvod.resx">
+      <DependentUpon>FormChooseVzvod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test.resx">
       <DependentUpon>Test.cs</DependentUpon>

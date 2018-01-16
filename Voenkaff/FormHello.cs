@@ -17,7 +17,7 @@ namespace Voenkaff
         
         public List<int[]> _listmarks;
 
-
+        public Dictionary<string, List<string>> _vzvodAndLS = new Dictionary<string, List<string>> { };
 
         public Panel testOperations;
         Label linkLabelTestNew;
@@ -134,10 +134,10 @@ namespace Voenkaff
             
 
             buttonTestOpenNew.Click += openCurrentTest;
+            buttonTestVzvodaNew.Click += testAddVzvoda;
 
 
 
-            
 
 
         }
@@ -148,12 +148,17 @@ namespace Voenkaff
             string tempString = ((Control)sender).Parent.Name;
             string index = tempString.Substring(tempString.Length - 1);
             string testName = ((Control)sender).Parent.Controls.Find("linkLabelTest" + index, false)[0].Text;
-            Test newTest = new Test(this, testName, _listmarks[Int32.Parse(index)]/*, vzvoda */);
+            Test newTest = new Test(this, testName, _listmarks[Int32.Parse(index)], _vzvodAndLS);
             this.Visible = false;
             newTest.Visible = true;
         }
 
-
+        private void testAddVzvoda(object sender, EventArgs e)
+        {
+            FormChooseVzvod formChooseVzvod = new FormChooseVzvod(this);
+            this.Visible = false;
+            formChooseVzvod.Visible = true;
+        }
 
 
     }
