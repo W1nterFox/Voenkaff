@@ -55,7 +55,7 @@ namespace Voenkaff
 
             panelListOfTasks.Controls.Add(createLinkLabel(0));
 
-            
+            this.FormClosing += Test_Closing;
 
         }
 
@@ -322,9 +322,9 @@ namespace Voenkaff
         }
 
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
+
+        private void Test_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            base.OnFormClosing(e);
             this.Visible = false;
             Program.formHello.Visible = true;
         }

@@ -12,11 +12,10 @@ namespace Voenkaff
 {
     public partial class FormHello : Form
     {
+        public List<Test> _listTests = new List<Test> { };
+
         public List<Panel> _listPanelsTestsOnPanel;
-
-        
         public List<int[]> _listmarks;
-
         public Dictionary<string, List<string>> _vzvodAndLS = new Dictionary<string, List<string>> { };
 
         public Panel testOperations;
@@ -147,15 +146,20 @@ namespace Voenkaff
             
             string tempString = ((Control)sender).Parent.Name;
             string index = tempString.Substring(tempString.Length - 1);
-            string testName = ((Control)sender).Parent.Controls.Find("linkLabelTest" + index, false)[0].Text;
-            Test newTest = new Test(this, testName, _listmarks[Int32.Parse(index)], _vzvodAndLS);
+
+            //string testName = linkLabelTestNew.Text;
+            //_listTests.Add(new Test(this, testName, _listmarks[_listPanelsTestsOnPanel.Count - 1], _vzvodAndLS));
+
+
             this.Visible = false;
-            newTest.Visible = true;
+            _listTests[Int32.Parse(index)].Visible = true;
         }
 
         private void testAddVzvoda(object sender, EventArgs e)
         {
-            FormChooseVzvod formChooseVzvod = new FormChooseVzvod(this);
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            FormChooseVzvod formChooseVzvod = new FormChooseVzvod(this); 
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             this.Visible = false;
             formChooseVzvod.Visible = true;
         }

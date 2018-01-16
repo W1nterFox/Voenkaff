@@ -97,9 +97,14 @@ namespace Voenkaff
 
             _formHello._listmarks.Add(marks);
 
+            Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello._listmarks[_formHello._listPanelsTestsOnPanel.Count - 1], _formHello._vzvodAndLS);
+            
+            _formHello._listTests.Add(peremTest);
 
             //_formHello._listmarks = new List<int[]> { };
 
         }
+
+        
     }
 }
