@@ -13,6 +13,9 @@ namespace Voenkaff
     public partial class FormHello : Form
     {
         public List<Test> _listTests = new List<Test> { };
+        public List<FormChooseVzvod> _listVzvodovAndLS = new List<FormChooseVzvod> { };
+
+
 
         public List<Panel> _listPanelsTestsOnPanel;
         public List<int[]> _listmarks;
@@ -133,7 +136,7 @@ namespace Voenkaff
             
 
             buttonTestOpenNew.Click += openCurrentTest;
-            buttonTestVzvodaNew.Click += testAddVzvoda;
+            buttonTestVzvodaNew.Click += testCurrentVzvoda;
 
 
 
@@ -147,21 +150,22 @@ namespace Voenkaff
             string tempString = ((Control)sender).Parent.Name;
             string index = tempString.Substring(tempString.Length - 1);
 
-            //string testName = linkLabelTestNew.Text;
-            //_listTests.Add(new Test(this, testName, _listmarks[_listPanelsTestsOnPanel.Count - 1], _vzvodAndLS));
+            
 
 
             this.Visible = false;
             _listTests[Int32.Parse(index)].Visible = true;
         }
 
-        private void testAddVzvoda(object sender, EventArgs e)
+        private void testCurrentVzvoda(object sender, EventArgs e)
         {
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            FormChooseVzvod formChooseVzvod = new FormChooseVzvod(this); 
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            string tempString = ((Control)sender).Parent.Name;
+            string index = tempString.Substring(tempString.Length - 1);
+
+            
             this.Visible = false;
-            formChooseVzvod.Visible = true;
+            _listVzvodovAndLS[Int32.Parse(index)].Visible = true;
         }
 
 

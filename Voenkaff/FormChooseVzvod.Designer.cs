@@ -29,13 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBoxVzvoda = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxVzvoda = new System.Windows.Forms.TextBox();
-            this.buttonVzvodAdd = new System.Windows.Forms.Button();
-            this.buttonVzvodDelete = new System.Windows.Forms.Button();
-            this.buttonVzvodClear = new System.Windows.Forms.Button();
-            this.buttonVzvodSort = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonLSAddMany = new System.Windows.Forms.Button();
             this.buttonLSSort = new System.Windows.Forms.Button();
             this.buttonLSClear = new System.Windows.Forms.Button();
             this.buttonLSDelete = new System.Windows.Forms.Button();
@@ -43,8 +38,13 @@
             this.textBoxLicnySostav = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listBoxLS = new System.Windows.Forms.ListBox();
-            this.buttonLSAddMany = new System.Windows.Forms.Button();
-            this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonVzvodSort = new System.Windows.Forms.Button();
+            this.buttonVzvodClear = new System.Windows.Forms.Button();
+            this.buttonVzvodDelete = new System.Windows.Forms.Button();
+            this.buttonVzvodAdd = new System.Windows.Forms.Button();
+            this.textBoxVzvoda = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBoxVzvoda = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,81 +72,28 @@
             this.panel1.Size = new System.Drawing.Size(748, 444);
             this.panel1.TabIndex = 0;
             // 
-            // listBoxVzvoda
+            // buttonClose
             // 
-            this.listBoxVzvoda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxVzvoda.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.listBoxVzvoda.FormattingEnabled = true;
-            this.listBoxVzvoda.ItemHeight = 20;
-            this.listBoxVzvoda.Location = new System.Drawing.Point(134, 71);
-            this.listBoxVzvoda.Name = "listBoxVzvoda";
-            this.listBoxVzvoda.Size = new System.Drawing.Size(227, 302);
-            this.listBoxVzvoda.TabIndex = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.buttonClose.Location = new System.Drawing.Point(297, 379);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(140, 45);
+            this.buttonClose.TabIndex = 15;
+            this.buttonClose.Text = "Далее";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // label1
+            // buttonLSAddMany
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F);
-            this.label1.Location = new System.Drawing.Point(202, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Взвода";
-            // 
-            // textBoxVzvoda
-            // 
-            this.textBoxVzvoda.Location = new System.Drawing.Point(134, 45);
-            this.textBoxVzvoda.Name = "textBoxVzvoda";
-            this.textBoxVzvoda.Size = new System.Drawing.Size(227, 20);
-            this.textBoxVzvoda.TabIndex = 2;
-            // 
-            // buttonVzvodAdd
-            // 
-            this.buttonVzvodAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonVzvodAdd.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonVzvodAdd.Location = new System.Drawing.Point(18, 45);
-            this.buttonVzvodAdd.Name = "buttonVzvodAdd";
-            this.buttonVzvodAdd.Size = new System.Drawing.Size(110, 35);
-            this.buttonVzvodAdd.TabIndex = 3;
-            this.buttonVzvodAdd.Text = "Добавить";
-            this.buttonVzvodAdd.UseVisualStyleBackColor = true;
-            this.buttonVzvodAdd.Click += new System.EventHandler(this.buttonVzvodAdd_Click);
-            // 
-            // buttonVzvodDelete
-            // 
-            this.buttonVzvodDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonVzvodDelete.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonVzvodDelete.Location = new System.Drawing.Point(18, 86);
-            this.buttonVzvodDelete.Name = "buttonVzvodDelete";
-            this.buttonVzvodDelete.Size = new System.Drawing.Size(110, 35);
-            this.buttonVzvodDelete.TabIndex = 4;
-            this.buttonVzvodDelete.Text = "Удалить";
-            this.buttonVzvodDelete.UseVisualStyleBackColor = true;
-            this.buttonVzvodDelete.Click += new System.EventHandler(this.buttonVzvodDelete_Click);
-            // 
-            // buttonVzvodClear
-            // 
-            this.buttonVzvodClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonVzvodClear.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonVzvodClear.Location = new System.Drawing.Point(18, 127);
-            this.buttonVzvodClear.Name = "buttonVzvodClear";
-            this.buttonVzvodClear.Size = new System.Drawing.Size(110, 35);
-            this.buttonVzvodClear.TabIndex = 5;
-            this.buttonVzvodClear.Text = "Очистить";
-            this.buttonVzvodClear.UseVisualStyleBackColor = true;
-            this.buttonVzvodClear.Click += new System.EventHandler(this.buttonVzvodClear_Click);
-            // 
-            // buttonVzvodSort
-            // 
-            this.buttonVzvodSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonVzvodSort.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonVzvodSort.Location = new System.Drawing.Point(18, 168);
-            this.buttonVzvodSort.Name = "buttonVzvodSort";
-            this.buttonVzvodSort.Size = new System.Drawing.Size(110, 35);
-            this.buttonVzvodSort.TabIndex = 6;
-            this.buttonVzvodSort.Text = "Сортировать";
-            this.buttonVzvodSort.UseVisualStyleBackColor = true;
-            this.buttonVzvodSort.Click += new System.EventHandler(this.buttonVzvodSort_Click);
+            this.buttonLSAddMany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLSAddMany.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.buttonLSAddMany.Location = new System.Drawing.Point(600, 315);
+            this.buttonLSAddMany.Name = "buttonLSAddMany";
+            this.buttonLSAddMany.Size = new System.Drawing.Size(110, 58);
+            this.buttonLSAddMany.TabIndex = 14;
+            this.buttonLSAddMany.Text = "Добавить сразу много";
+            this.buttonLSAddMany.UseVisualStyleBackColor = true;
             // 
             // buttonLSSort
             // 
@@ -224,34 +171,88 @@
             this.listBoxLS.Size = new System.Drawing.Size(227, 302);
             this.listBoxLS.TabIndex = 7;
             // 
-            // buttonLSAddMany
+            // buttonVzvodSort
             // 
-            this.buttonLSAddMany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLSAddMany.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonLSAddMany.Location = new System.Drawing.Point(600, 315);
-            this.buttonLSAddMany.Name = "buttonLSAddMany";
-            this.buttonLSAddMany.Size = new System.Drawing.Size(110, 58);
-            this.buttonLSAddMany.TabIndex = 14;
-            this.buttonLSAddMany.Text = "Добавить сразу много";
-            this.buttonLSAddMany.UseVisualStyleBackColor = true;
+            this.buttonVzvodSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonVzvodSort.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.buttonVzvodSort.Location = new System.Drawing.Point(18, 168);
+            this.buttonVzvodSort.Name = "buttonVzvodSort";
+            this.buttonVzvodSort.Size = new System.Drawing.Size(110, 35);
+            this.buttonVzvodSort.TabIndex = 6;
+            this.buttonVzvodSort.Text = "Сортировать";
+            this.buttonVzvodSort.UseVisualStyleBackColor = true;
+            this.buttonVzvodSort.Click += new System.EventHandler(this.buttonVzvodSort_Click);
             // 
-            // buttonClose
+            // buttonVzvodClear
             // 
-            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClose.Font = new System.Drawing.Font("Century Gothic", 15.75F);
-            this.buttonClose.Location = new System.Drawing.Point(297, 379);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(140, 45);
-            this.buttonClose.TabIndex = 15;
-            this.buttonClose.Text = "Далее";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            this.buttonVzvodClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonVzvodClear.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.buttonVzvodClear.Location = new System.Drawing.Point(18, 127);
+            this.buttonVzvodClear.Name = "buttonVzvodClear";
+            this.buttonVzvodClear.Size = new System.Drawing.Size(110, 35);
+            this.buttonVzvodClear.TabIndex = 5;
+            this.buttonVzvodClear.Text = "Очистить";
+            this.buttonVzvodClear.UseVisualStyleBackColor = true;
+            this.buttonVzvodClear.Click += new System.EventHandler(this.buttonVzvodClear_Click);
+            // 
+            // buttonVzvodDelete
+            // 
+            this.buttonVzvodDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonVzvodDelete.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.buttonVzvodDelete.Location = new System.Drawing.Point(18, 86);
+            this.buttonVzvodDelete.Name = "buttonVzvodDelete";
+            this.buttonVzvodDelete.Size = new System.Drawing.Size(110, 35);
+            this.buttonVzvodDelete.TabIndex = 4;
+            this.buttonVzvodDelete.Text = "Удалить";
+            this.buttonVzvodDelete.UseVisualStyleBackColor = true;
+            this.buttonVzvodDelete.Click += new System.EventHandler(this.buttonVzvodDelete_Click);
+            // 
+            // buttonVzvodAdd
+            // 
+            this.buttonVzvodAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonVzvodAdd.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.buttonVzvodAdd.Location = new System.Drawing.Point(18, 45);
+            this.buttonVzvodAdd.Name = "buttonVzvodAdd";
+            this.buttonVzvodAdd.Size = new System.Drawing.Size(110, 35);
+            this.buttonVzvodAdd.TabIndex = 3;
+            this.buttonVzvodAdd.Text = "Добавить";
+            this.buttonVzvodAdd.UseVisualStyleBackColor = true;
+            this.buttonVzvodAdd.Click += new System.EventHandler(this.buttonVzvodAdd_Click);
+            // 
+            // textBoxVzvoda
+            // 
+            this.textBoxVzvoda.Location = new System.Drawing.Point(134, 45);
+            this.textBoxVzvoda.Name = "textBoxVzvoda";
+            this.textBoxVzvoda.Size = new System.Drawing.Size(227, 20);
+            this.textBoxVzvoda.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.label1.Location = new System.Drawing.Point(202, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Взвода";
+            // 
+            // listBoxVzvoda
+            // 
+            this.listBoxVzvoda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxVzvoda.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.listBoxVzvoda.FormattingEnabled = true;
+            this.listBoxVzvoda.ItemHeight = 20;
+            this.listBoxVzvoda.Location = new System.Drawing.Point(134, 71);
+            this.listBoxVzvoda.Name = "listBoxVzvoda";
+            this.listBoxVzvoda.Size = new System.Drawing.Size(227, 302);
+            this.listBoxVzvoda.TabIndex = 0;
             // 
             // FormChooseVzvod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 468);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Name = "FormChooseVzvod";
             this.Text = "FormChooseVzvod";

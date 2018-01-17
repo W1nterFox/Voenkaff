@@ -33,53 +33,58 @@ namespace Voenkaff
         private void buttonNext_checkNullMarks(object sender, System.EventArgs e)
         {
             int fake;
-            if (textBoxMark5.Text == null || textBoxMark5.Text == "" || textBoxMark4.Text == null || textBoxMark4.Text == "" || textBoxMark3.Text == null || textBoxMark3.Text == "")
+            Boolean markIsOk = false;
+            if (textBoxMark5.Text != null && textBoxMark5.Text != "" && textBoxMark4.Text != null && textBoxMark4.Text != "" && textBoxMark3.Text != null && textBoxMark3.Text != "")
+            {
+
+
+                if (Int32.TryParse(textBoxMark5.Text, out fake) && Int32.TryParse(textBoxMark4.Text, out fake) && Int32.TryParse(textBoxMark3.Text, out fake))
+                {
+                    if (Int32.Parse(textBoxMark5.Text) < 0 || Int32.Parse(textBoxMark5.Text) > 100 || Int32.Parse(textBoxMark4.Text) < 0 || Int32.Parse(textBoxMark4.Text) > 100 || Int32.Parse(textBoxMark3.Text) < 0 || Int32.Parse(textBoxMark3.Text) > 100)
+                    {
+                        buttonNext.Enabled = false;
+                        labelOnlyDigit.Visible = true;
+                    }
+                    else
+                    {
+                        markIsOk = true;
+                        buttonNext.Enabled = true;
+                        labelOnlyDigit.Visible = false;
+                    }
+
+                }
+
+                else
+                {
+                    buttonNext.Enabled = false;
+                    labelOnlyDigit.Visible = true;
+                }
+                
+            }
+            else
             {
                 buttonNext.Enabled = false;
                 labelOnlyDigit.Visible = true;
             }
-            else
-            {
-                buttonNext.Enabled = true;
-                labelOnlyDigit.Visible = false;
-            }
+
+
+
 
             if (textBoxUserChooseTestName.Text == null || textBoxUserChooseTestName.Text == "" || textBoxUserChooseTestName.Text.Length < 3)
             {
+
                 buttonNext.Enabled = false;
                 labelLabelErrorMin3.Visible = true;
             }
             else
             {
-                buttonNext.Enabled = true;
+                if (markIsOk) buttonNext.Enabled = true;
                 labelLabelErrorMin3.Visible = false;
             }
 
-            if (!Int32.TryParse(textBoxMark5.Text, out fake) || !Int32.TryParse(textBoxMark4.Text, out fake) || !Int32.TryParse(textBoxMark3.Text, out fake))
-            {
-                buttonNext.Enabled = false;
-                labelOnlyDigit.Visible = true;
-            }
-            else
-            {
-                buttonNext.Enabled = true;
-                labelOnlyDigit.Visible = false;
-            }
+            
 
-            if (Int32.TryParse(textBoxMark5.Text, out fake) && Int32.TryParse(textBoxMark4.Text, out fake) && Int32.TryParse(textBoxMark3.Text, out fake))
-            {
-                if (Int32.Parse(textBoxMark5.Text)<0 || Int32.Parse(textBoxMark5.Text)>100 || Int32.Parse(textBoxMark4.Text) < 0 || Int32.Parse(textBoxMark4.Text) > 100 || Int32.Parse(textBoxMark3.Text) < 0 || Int32.Parse(textBoxMark3.Text) > 100)
-                {
-                    buttonNext.Enabled = false;
-                    labelOnlyDigit.Visible = true;
-                }
-                else
-                {
-                    buttonNext.Enabled = true;
-                    labelOnlyDigit.Visible = false;
-                }
-                    
-            }
+            
             
 
         }
@@ -98,10 +103,12 @@ namespace Voenkaff
             _formHello._listmarks.Add(marks);
 
             Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello._listmarks[_formHello._listPanelsTestsOnPanel.Count - 1], _formHello._vzvodAndLS);
-            
             _formHello._listTests.Add(peremTest);
 
-            //_formHello._listmarks = new List<int[]> { };
+            FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
+            _formHello._listVzvodovAndLS.Add(formChooseVzvod);
+
+            
 
         }
 
