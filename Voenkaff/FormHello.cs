@@ -146,11 +146,35 @@ namespace Voenkaff
             buttonTestVzvodaNew.Click += testCurrentVzvoda;
             buttonTestMarksNew.Click += testCurrentMarks;
 
-
+            buttonTestDownloadNew.Click += testCurrentDownload;
 
 
 
         }
+
+
+        private void testCurrentDownload(object sender, EventArgs e)
+        {
+
+            string tempString = ((Control)sender).Parent.Name;
+            string index = tempString.Substring(tempString.Length - 1);
+
+            saveTests.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+
+            if (saveTests.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = saveTests.FileName;
+
+            string testJson = new JsonCreator().CreateTestJsonMessage(_listTests[Int32.Parse(index)]);
+            // сохраняем текст в файл
+            System.IO.File.WriteAllText(filename, testJson);
+            MessageBox.Show("Файл сохранен");
+
+
+            
+        }
+
 
         private void openCurrentTest(object sender, EventArgs e)
         {
