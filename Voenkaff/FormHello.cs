@@ -184,6 +184,20 @@ namespace Voenkaff
             _listMarksAndName[Int32.Parse(index)].Visible = true;
         }
 
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult rz = new DialogResult();
+            rz = MessageBox.Show("Завершить программу?", "Завершение", MessageBoxButtons.YesNo);
 
+            if (rz == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
+        private void сохранитьТестыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
