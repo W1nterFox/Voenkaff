@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Voenkaff.Wrappers;
 
 namespace Voenkaff
 {
@@ -93,6 +94,7 @@ namespace Voenkaff
             buttonTestDeleteNew.Size = new System.Drawing.Size(80, 40);
             buttonTestDeleteNew.TabIndex = 6;
             buttonTestDeleteNew.Text = "Удалить";
+            //buttonTestDeleteNew.Click=
             buttonTestDeleteNew.UseVisualStyleBackColor = true;
 
             
@@ -197,7 +199,17 @@ namespace Voenkaff
 
         private void сохранитьТестыToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveTests.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
 
+            if (saveTests.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = saveTests.FileName;
+
+            string testJson = new JsonCreator().CreateTestCollection(_listTests);
+            // сохраняем текст в файл
+            System.IO.File.WriteAllText(filename, testJson);
+            MessageBox.Show("Файл сохранен");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Voenkaff.Wrappers
                 json += CreateTestJsonMessage(test) + ",";
             }
 
-            return json.Substring(1, json.Length - 1) + "]";
+            return json.Substring(0, json.Length - 1) + "]";
         }
         public string CreateTestJsonMessage(Test testObj)
         {
