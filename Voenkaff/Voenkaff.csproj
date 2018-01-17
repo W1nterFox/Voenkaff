@@ -84,6 +84,7 @@
     <Compile Include="Entity\PictureBoxScalable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wrappers\JsonCreator.cs" />
     <EmbeddedResource Include="FormChooseTestName.resx">
       <DependentUpon>FormChooseTestName.cs</DependentUpon>
     </EmbeddedResource>

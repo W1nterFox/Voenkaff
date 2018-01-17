@@ -2,7 +2,7 @@
 
 namespace Voenkaff
 {
-    class PanelWrapper
+    public class PanelWrapper
     {
         public PanelWrapper(Panel entity,int identifier)
         {

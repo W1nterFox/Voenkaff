@@ -10,7 +10,7 @@ namespace Voenkaff
 {
     public partial class Test : Form
     {
-        List<PanelWrapper> _listPanelsTasks;
+        public List<PanelWrapper> ListPanelsTasks { get; set; }
 
         PanelWrapper _currentTask = new PanelWrapper();
         private readonly PanelWrapper _currentPanelQuestion = new PanelWrapper();
@@ -20,19 +20,19 @@ namespace Voenkaff
         string _testOperationsName;
         int _indexTest;
 
-        string _testName;
-        List<int> _listMarks;
+        public string TestName { get; set; }
+        public List<int> ListMarks { get; set; }
         Dictionary<string, List<string>> _vzvodAndLS;
 
         public void setTestName(string testName)
         {
-            _testName = testName;
-            this.Text = _testName;
+            TestName = testName;
+            this.Text = TestName;
         }
 
         public void setTesListMarks (List<int> listMarks)
         {
-            _listMarks = listMarks;
+            ListMarks = listMarks;
         }
 
         public Test(FormHello formHello, string testName, List<int> listMarks, Dictionary<string, List<string>> vzvodAndLS)
@@ -42,16 +42,16 @@ namespace Voenkaff
             _testOperationsName = formHello.testOperations.Name;
             _indexTest = formHello._listPanelsTestsOnPanel.Count - 1;
 
-            _testName = testName;
-            _listMarks = listMarks;
+            TestName = testName;
+            ListMarks = listMarks;
             _vzvodAndLS = vzvodAndLS;
 
-            this.Text = _testName;
+            this.Text = TestName;
 
 
             MinimumSize = new Size(1080, 750);
             panelMiddle.Controls.Add(panelTaskStart);
-            _listPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
+            ListPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
             panelQuestion.Text = "Задание №1";
             panelTaskStart.Controls.Add(panelQuestion);
             panelTaskStart.Controls.Add(panelAnswer);
@@ -97,15 +97,15 @@ namespace Voenkaff
         {
             LinkLabel currentLL = (LinkLabel)sender;
             
-            foreach (PanelWrapper index in _listPanelsTasks)
+            foreach (PanelWrapper index in ListPanelsTasks)
             {
                 index.Entity.Visible = false;
             }
             //textBox1.Text = currentLL.Text;
-            _listPanelsTasks[(int)currentLL.Tag].Entity.Visible = true;
+            ListPanelsTasks[(int)currentLL.Tag].Entity.Visible = true;
 
-            _listPanelsTasks.Find(p => p.Entity.Name == _currentTask.Entity.Name).Identifier = _currentTask.Identifier;
-            _currentTask = _listPanelsTasks[(int)currentLL.Tag];
+            ListPanelsTasks.Find(p => p.Entity.Name == _currentTask.Entity.Name).Identifier = _currentTask.Identifier;
+            _currentTask = ListPanelsTasks[(int)currentLL.Tag];
  
             _currentPanelQuestion.Entity = (Panel)_currentTask.Entity.Controls.Find("panelQuestion", false)[0];
             _currentPanelAnswer.Entity= (Panel)_currentTask.Entity.Controls.Find("panelAnswer", false)[0];
@@ -171,7 +171,7 @@ namespace Voenkaff
 
         private void buttonTaskCreate_Click(object sender, EventArgs e)
         {
-            _listPanelsTasks[_listPanelsTasks.Count - 1].Entity.Visible = false;
+            ListPanelsTasks[ListPanelsTasks.Count - 1].Entity.Visible = false;
 
             Panel newPanelTask = new Panel();
 
@@ -186,7 +186,7 @@ namespace Voenkaff
                 Location = new Point(5, 5),
                 Size = new Size(1132, 632),
                 Name = "panelQuestion",
-                Text = "Задание №"+(_listPanelsTasks.Count+1)
+                Text = "Задание №"+(ListPanelsTasks.Count+1)
             };
 
             Panel panelAnswer = new Panel
@@ -208,20 +208,20 @@ namespace Voenkaff
             newPanelTask.Size = new Size(1142, 642);
 
             
-            _listPanelsTasks.Add(new PanelWrapper(newPanelTask,1));
-            newPanelTask.Name = ""+(_listPanelsTasks.Count - 1);
-            foreach (PanelWrapper index in _listPanelsTasks)
+            ListPanelsTasks.Add(new PanelWrapper(newPanelTask,1));
+            newPanelTask.Name = ""+(ListPanelsTasks.Count - 1);
+            foreach (PanelWrapper index in ListPanelsTasks)
             {
                 index.Entity.Visible = false;
             }
-            _listPanelsTasks[_listPanelsTasks.Count - 1].Entity.Visible = true;
+            ListPanelsTasks[ListPanelsTasks.Count - 1].Entity.Visible = true;
 
 
-            _currentTask = _listPanelsTasks[_listPanelsTasks.Count - 1];
+            _currentTask = ListPanelsTasks[ListPanelsTasks.Count - 1];
             _currentPanelQuestion.Entity = (Panel)_currentTask.Entity.Controls.Find("panelQuestion", false)[0];
             _currentPanelAnswer.Entity = (Panel)_currentTask.Entity.Controls.Find("panelAnswer", false)[0];
 
-            panelListOfTasks.Controls.Add(createLinkLabel(_listPanelsTasks.Count - 1));
+            panelListOfTasks.Controls.Add(createLinkLabel(ListPanelsTasks.Count - 1));
 
             
 
@@ -253,7 +253,7 @@ namespace Voenkaff
             InitializeComponent();
             this.MinimumSize = new Size(1080, 750);
             panelMiddle.Controls.Add(panelTaskStart);
-            _listPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
+            ListPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
 
             panelTaskStart.Controls.Add(panelQuestion);
             panelTaskStart.Controls.Add(panelAnswer);
@@ -285,50 +285,9 @@ namespace Voenkaff
             // получаем выбранный файл
             string filename = saveTest.FileName;
 
-            var test = new JsonTestWrapper {Name = _testName};
-
-            
-            foreach (var task in _listPanelsTasks)
-            {
-                var tasks = new List<JsonTaskWrapper>();
-                var questions = task.Entity.Controls.Find("panelQuestion", false)[0];
-                var answers = task.Entity.Controls.Find("panelAnswer", false)[0];
-                var taskElements = new List<string>();
-                foreach (Control taskElement in questions.Controls)
-                {
-                    if (!(taskElement is TextBox) && !(taskElement is PictureBox) &&
-                        !(taskElement is RichTextBox)) continue;
-                    var element = new JsonObjectWrapper
-                    {
-                        Name = taskElement.Name,
-                        Type = taskElement.GetType().ToString(),
-                        Width = taskElement.Width,
-                        Height = taskElement.Height,
-                        Point = taskElement.Location,
-                    };
-                    if (taskElement is TextBox)
-                    {
-                        element.Answer = answers.Controls.Find(taskElement.Name, false)[0].Controls[0].Text;
-                    }
-                    if (taskElement is PictureBox)
-                    {
-                        element.Media = "picture/"+((PictureBox) taskElement).Name;
-                    }
-
-                    if (taskElement is RichTextBox)
-                    {
-                        element.Text = taskElement.Text;
-                    }
-                    taskElements.Add(JsonConvert.SerializeObject(element,Formatting.None).Replace("\\", ""));
-                }
-                tasks.Add(new JsonTaskWrapper { TaskElements =  taskElements,Name = questions.Text});
-                test.Tasks.Add(JsonConvert.SerializeObject(tasks, Formatting.None).Replace("\\",""));
-            }
-
-            var textForSaveTest = JsonConvert.SerializeObject(test, Formatting.Indented).Replace("\\", "").Replace("\"[", "").Replace("]\"", "").Replace("\"{", "{").Replace("\"}", "}").Replace("\"]", "]").Replace("}\",{", "},{");
-
+            string testJson = new JsonCreator().CreateTestJsonMessage(this);
             // сохраняем текст в файл
-            System.IO.File.WriteAllText(filename, textForSaveTest);
+            System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");
         }
 

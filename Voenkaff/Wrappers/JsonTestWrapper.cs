@@ -7,9 +7,11 @@ namespace Voenkaff.Wrappers
         public string Name { get; set; }
         public List<string> Tasks { get; set; }
 
+        public int[] listMarks { get; set; }
         public JsonTestWrapper()
         {
             Tasks = new List<string>();
+            listMarks = new int[3];
         }
     }
 }
