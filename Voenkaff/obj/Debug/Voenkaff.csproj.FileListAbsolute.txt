@@ -96,3 +96,4 @@ D:\Новая папка (3)\VoenKAF 16 01 23 06\Voenkaff\Voenkaff\obj\Debug\Voe
 D:\Новая папка (3)\VoenKAF 16 01 23 06\Voenkaff\Voenkaff\obj\Debug\Voenkaff.FormHello.resources
 D:\Новая папка (3)\VoenKAF 16 01 23 06\Voenkaff\Voenkaff\obj\Debug\Voenkaff.Properties.Resources.resources
 D:\Новая папка (3)\VoenKAF 16 01 23 06\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj.GenerateResource.Cache
+D:\Новая папка (3)\VoenKAF 16 01 23 06\Voenkaff\Voenkaff\obj\Debug\Voenkaff.FormLSInputMany.resources

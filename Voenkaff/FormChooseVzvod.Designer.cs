@@ -86,6 +86,7 @@
             // 
             // buttonLSAddMany
             // 
+            this.buttonLSAddMany.Enabled = false;
             this.buttonLSAddMany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLSAddMany.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSAddMany.Location = new System.Drawing.Point(600, 315);
@@ -94,9 +95,11 @@
             this.buttonLSAddMany.TabIndex = 14;
             this.buttonLSAddMany.Text = "Добавить сразу много";
             this.buttonLSAddMany.UseVisualStyleBackColor = true;
+            this.buttonLSAddMany.Click += new System.EventHandler(this.buttonLSAddMany_Click);
             // 
             // buttonLSSort
             // 
+            this.buttonLSSort.Enabled = false;
             this.buttonLSSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLSSort.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSSort.Location = new System.Drawing.Point(600, 168);
@@ -109,6 +112,7 @@
             // 
             // buttonLSClear
             // 
+            this.buttonLSClear.Enabled = false;
             this.buttonLSClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLSClear.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSClear.Location = new System.Drawing.Point(600, 127);
@@ -121,6 +125,7 @@
             // 
             // buttonLSDelete
             // 
+            this.buttonLSDelete.Enabled = false;
             this.buttonLSDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLSDelete.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSDelete.Location = new System.Drawing.Point(600, 86);
@@ -133,6 +138,7 @@
             // 
             // buttonLSAdd
             // 
+            this.buttonLSAdd.Enabled = false;
             this.buttonLSAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLSAdd.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSAdd.Location = new System.Drawing.Point(600, 45);
@@ -145,10 +151,12 @@
             // 
             // textBoxLicnySostav
             // 
+            this.textBoxLicnySostav.Enabled = false;
             this.textBoxLicnySostav.Location = new System.Drawing.Point(367, 45);
             this.textBoxLicnySostav.Name = "textBoxLicnySostav";
             this.textBoxLicnySostav.Size = new System.Drawing.Size(227, 20);
             this.textBoxLicnySostav.TabIndex = 9;
+            this.textBoxLicnySostav.TextChanged += new System.EventHandler(this.textBoxLicnySostav_TextChanged);
             // 
             // label2
             // 
@@ -163,6 +171,7 @@
             // listBoxLS
             // 
             this.listBoxLS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxLS.Enabled = false;
             this.listBoxLS.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.listBoxLS.FormattingEnabled = true;
             this.listBoxLS.ItemHeight = 20;
@@ -170,6 +179,7 @@
             this.listBoxLS.Name = "listBoxLS";
             this.listBoxLS.Size = new System.Drawing.Size(227, 302);
             this.listBoxLS.TabIndex = 7;
+            this.listBoxLS.SelectedIndexChanged += new System.EventHandler(this.listBoxLS_SelectedIndexChanged);
             // 
             // buttonVzvodSort
             // 
@@ -197,6 +207,7 @@
             // 
             // buttonVzvodDelete
             // 
+            this.buttonVzvodDelete.Enabled = false;
             this.buttonVzvodDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVzvodDelete.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonVzvodDelete.Location = new System.Drawing.Point(18, 86);
@@ -209,6 +220,7 @@
             // 
             // buttonVzvodAdd
             // 
+            this.buttonVzvodAdd.Enabled = false;
             this.buttonVzvodAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVzvodAdd.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonVzvodAdd.Location = new System.Drawing.Point(18, 45);
@@ -225,6 +237,7 @@
             this.textBoxVzvoda.Name = "textBoxVzvoda";
             this.textBoxVzvoda.Size = new System.Drawing.Size(227, 20);
             this.textBoxVzvoda.TabIndex = 2;
+            this.textBoxVzvoda.TextChanged += new System.EventHandler(this.textBoxVzvoda_TextChanged);
             // 
             // label1
             // 

@@ -32,7 +32,11 @@ namespace Voenkaff
             textBoxMark4.TextChanged += buttonNext_checkNullMarks;
             textBoxMark3.TextChanged += buttonNext_checkNullMarks;
             textBoxUserChooseTestName.TextChanged += buttonNext_checkNullMarks;
-            
+
+
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+
         }
 
         private void buttonNext_checkNullMarks(object sender, System.EventArgs e)

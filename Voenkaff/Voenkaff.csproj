@@ -69,6 +69,12 @@
     <Compile Include="FormHello.Designer.cs">
       <DependentUpon>FormHello.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLSInputMany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLSInputMany.Designer.cs">
+      <DependentUpon>FormLSInputMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wrappers\JsonObjectWrapper.cs" />
     <Compile Include="Wrappers\JsonTaskWrapper.cs" />
     <Compile Include="Wrappers\JsonTestWrapper.cs" />
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormChooseVzvod.resx">
       <DependentUpon>FormChooseVzvod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLSInputMany.resx">
+      <DependentUpon>FormLSInputMany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
