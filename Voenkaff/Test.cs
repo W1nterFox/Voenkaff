@@ -21,10 +21,21 @@ namespace Voenkaff
         int _indexTest;
 
         string _testName;
-        int[] _listMarks;
+        List<int> _listMarks;
         Dictionary<string, List<string>> _vzvodAndLS;
 
-        public Test(FormHello formHello, string testName, int[] listMarks, Dictionary<string, List<string>> vzvodAndLS)
+        public void setTestName(string testName)
+        {
+            _testName = testName;
+            this.Text = _testName;
+        }
+
+        public void setTesListMarks (List<int> listMarks)
+        {
+            _listMarks = listMarks;
+        }
+
+        public Test(FormHello formHello, string testName, List<int> listMarks, Dictionary<string, List<string>> vzvodAndLS)
         {
             InitializeComponent();
 

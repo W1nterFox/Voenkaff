@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxIsFirstOpen = new System.Windows.Forms.CheckBox();
             this.buttonNext = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelLabelErrorMin3 = new System.Windows.Forms.Label();
@@ -54,6 +55,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.checkBoxIsFirstOpen);
             this.panel1.Controls.Add(this.buttonNext);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
@@ -61,6 +63,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(581, 402);
             this.panel1.TabIndex = 0;
+            // 
+            // checkBoxIsFirstOpen
+            // 
+            this.checkBoxIsFirstOpen.AutoSize = true;
+            this.checkBoxIsFirstOpen.Checked = true;
+            this.checkBoxIsFirstOpen.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxIsFirstOpen.Location = new System.Drawing.Point(499, 22);
+            this.checkBoxIsFirstOpen.Name = "checkBoxIsFirstOpen";
+            this.checkBoxIsFirstOpen.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxIsFirstOpen.TabIndex = 6;
+            this.checkBoxIsFirstOpen.UseVisualStyleBackColor = true;
+            this.checkBoxIsFirstOpen.Visible = false;
             // 
             // buttonNext
             // 
@@ -70,7 +84,7 @@
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(140, 45);
             this.buttonNext.TabIndex = 5;
-            this.buttonNext.Text = "Далее";
+            this.buttonNext.Text = "Сохранить";
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
@@ -246,6 +260,7 @@
             this.Name = "FormChooseTestName";
             this.Text = "FormChooseTestName";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -274,5 +289,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelLabelErrorMin3;
         private System.Windows.Forms.Label labelOnlyDigit;
+        private System.Windows.Forms.CheckBox checkBoxIsFirstOpen;
     }
 }

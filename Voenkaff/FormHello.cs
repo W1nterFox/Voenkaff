@@ -14,11 +14,14 @@ namespace Voenkaff
     {
         public List<Test> _listTests = new List<Test> { };
         public List<FormChooseVzvod> _listVzvodovAndLS = new List<FormChooseVzvod> { };
-
+        public List<FormChooseTestName> _listMarksAndName = new List<FormChooseTestName> { };
 
 
         public List<Panel> _listPanelsTestsOnPanel;
-        public List<int[]> _listmarks;
+        //public List<int[]> _listmarks;
+        public Dictionary<string, List<int>> _testNameAndMarks = new Dictionary<string, List<int>> { };
+
+
         public Dictionary<string, List<string>> _vzvodAndLS = new Dictionary<string, List<string>> { };
 
         public Panel testOperations;
@@ -34,7 +37,7 @@ namespace Voenkaff
             InitializeComponent();
             _listPanelsTestsOnPanel = new List<Panel> {};
 
-            _listmarks = new List<int[]> {};
+            //_listmarks = new List<int[]> {};
 
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
@@ -72,7 +75,9 @@ namespace Voenkaff
             FormChooseTestName formChooseTestName = new FormChooseTestName(this, _listPanelsTestsOnPanel.Count);
             this.Visible = false;
             formChooseTestName.Visible = true;
-            
+            _listMarksAndName.Add(formChooseTestName);
+
+
             linkLabelTestNew.AutoSize = true;
             linkLabelTestNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             linkLabelTestNew.Location = new System.Drawing.Point(3, 15);
@@ -137,6 +142,7 @@ namespace Voenkaff
 
             buttonTestOpenNew.Click += openCurrentTest;
             buttonTestVzvodaNew.Click += testCurrentVzvoda;
+            buttonTestMarksNew.Click += testCurrentMarks;
 
 
 
@@ -151,8 +157,6 @@ namespace Voenkaff
             string index = tempString.Substring(tempString.Length - 1);
 
             
-
-
             this.Visible = false;
             _listTests[Int32.Parse(index)].Visible = true;
         }
@@ -166,6 +170,18 @@ namespace Voenkaff
             
             this.Visible = false;
             _listVzvodovAndLS[Int32.Parse(index)].Visible = true;
+        }
+
+
+        private void testCurrentMarks(object sender, EventArgs e)
+        {
+            string tempString = ((Control)sender).Parent.Name;
+            string index = tempString.Substring(tempString.Length - 1);
+
+            this.Visible = false;
+            CheckBox fuck = (CheckBox)(_listMarksAndName[Int32.Parse(index)].Controls[0].Controls.Find("checkBoxIsFirstOpen", false)[0]);
+            fuck.Checked = false;
+            _listMarksAndName[Int32.Parse(index)].Visible = true;
         }
 
 

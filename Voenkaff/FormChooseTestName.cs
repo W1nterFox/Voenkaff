@@ -14,20 +14,25 @@ namespace Voenkaff
     {
         FormHello _formHello;
         int _index;
-        public int[] marks;
+        //public int[] marks;
+        public List<int> _marks;
+
+        string tempTestNameForRename;
 
         public FormChooseTestName(FormHello formHello, int index)
         {
             InitializeComponent();
             _formHello = formHello;
             _index = index;
-            marks = new int[3] { 0, 0, 0 };
+            //marks = new int[3] { 0, 0, 0 };
+            _marks = new List<int> { 0, 0, 0 };
             buttonNext.Enabled = false;
 
             textBoxMark5.TextChanged += buttonNext_checkNullMarks;
             textBoxMark4.TextChanged += buttonNext_checkNullMarks;
             textBoxMark3.TextChanged += buttonNext_checkNullMarks;
             textBoxUserChooseTestName.TextChanged += buttonNext_checkNullMarks;
+            
         }
 
         private void buttonNext_checkNullMarks(object sender, System.EventArgs e)
@@ -95,18 +100,32 @@ namespace Voenkaff
             this.Visible = false;
             _formHello.Visible = true;
 
+
+            _marks[0] = Int32.Parse(textBoxMark5.Text);
+            _marks[1] = Int32.Parse(textBoxMark4.Text);
+            _marks[2] = Int32.Parse(textBoxMark3.Text);
+
+
+            if (checkBoxIsFirstOpen.Checked)
+            {
+                _formHello._testNameAndMarks.Add("linkLabelTest" + _index, _marks);
+
+                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello._testNameAndMarks["linkLabelTest" + _index], _formHello._vzvodAndLS);
+                _formHello._listTests.Add(peremTest);
+
+                FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
+                _formHello._listVzvodovAndLS.Add(formChooseVzvod);
+            }
+
+            else
+            {
+                _formHello.Controls.Find("linkLabelTest" + _index, true)[0].Text = textBoxUserChooseTestName.Text;
+                _formHello._testNameAndMarks["linkLabelTest" + _index] = _marks;
+
+                _formHello._listTests[_index].setTestName(textBoxUserChooseTestName.Text);
+                _formHello._listTests[_index].setTesListMarks(_marks);
+            }
             
-            marks[0] = Int32.Parse(textBoxMark5.Text);
-            marks[1] = Int32.Parse(textBoxMark4.Text);
-            marks[2] = Int32.Parse(textBoxMark3.Text);
-
-            _formHello._listmarks.Add(marks);
-
-            Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello._listmarks[_formHello._listPanelsTestsOnPanel.Count - 1], _formHello._vzvodAndLS);
-            _formHello._listTests.Add(peremTest);
-
-            FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
-            _formHello._listVzvodovAndLS.Add(formChooseVzvod);
 
             
 
