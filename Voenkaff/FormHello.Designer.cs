@@ -35,6 +35,7 @@
             this.сохранитьТестыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveTests = new System.Windows.Forms.SaveFileDialog();
+            this.взводаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -46,10 +47,9 @@
             this.panelMain.Controls.Add(this.buttonCreateTest);
             this.panelMain.Controls.Add(this.label1);
             this.panelMain.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panelMain.Location = new System.Drawing.Point(17, 33);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMain.Location = new System.Drawing.Point(13, 27);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1201, 628);
+            this.panelMain.Size = new System.Drawing.Size(901, 510);
             this.panelMain.TabIndex = 0;
             // 
             // buttonCreateTest
@@ -57,10 +57,9 @@
             this.buttonCreateTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreateTest.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonCreateTest.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonCreateTest.Location = new System.Drawing.Point(487, 78);
-            this.buttonCreateTest.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonCreateTest.Location = new System.Drawing.Point(365, 63);
             this.buttonCreateTest.Name = "buttonCreateTest";
-            this.buttonCreateTest.Size = new System.Drawing.Size(199, 55);
+            this.buttonCreateTest.Size = new System.Drawing.Size(149, 45);
             this.buttonCreateTest.TabIndex = 8;
             this.buttonCreateTest.Text = "Добавить тест";
             this.buttonCreateTest.UseVisualStyleBackColor = true;
@@ -71,10 +70,9 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(459, 15);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(344, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(278, 66);
+            this.label1.Size = new System.Drawing.Size(194, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Конструктор тестов\r\nСписок";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -84,36 +82,42 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.сохранитьТестыToolStripMenuItem,
+            this.взводаToolStripMenuItem,
             this.закрытьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1235, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(926, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // сохранитьТестыToolStripMenuItem
             // 
             this.сохранитьТестыToolStripMenuItem.Name = "сохранитьТестыToolStripMenuItem";
-            this.сохранитьТестыToolStripMenuItem.Size = new System.Drawing.Size(137, 24);
+            this.сохранитьТестыToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
             this.сохранитьТестыToolStripMenuItem.Text = "Сохранить тесты";
             this.сохранитьТестыToolStripMenuItem.Click += new System.EventHandler(this.сохранитьТестыToolStripMenuItem_Click);
             // 
             // закрытьToolStripMenuItem
             // 
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.закрытьToolStripMenuItem.Text = "Закрыть";
             this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
+            // взводаToolStripMenuItem
+            // 
+            this.взводаToolStripMenuItem.Name = "взводаToolStripMenuItem";
+            this.взводаToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.взводаToolStripMenuItem.Text = "Взвода";
+            this.взводаToolStripMenuItem.Click += new System.EventHandler(this.взводаToolStripMenuItem_Click);
+            // 
             // FormHello
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1235, 676);
+            this.ClientSize = new System.Drawing.Size(926, 549);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormHello";
             this.Text = "FormHello";
             this.panelMain.ResumeLayout(false);
@@ -134,5 +138,6 @@
         private System.Windows.Forms.ToolStripMenuItem сохранитьТестыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveTests;
+        private System.Windows.Forms.ToolStripMenuItem взводаToolStripMenuItem;
     }
 }

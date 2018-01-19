@@ -9,17 +9,17 @@ namespace Voenkaff
     public partial class FormHello : Form
     {
         public List<Test> _listTests = new List<Test> { };
-        public List<FormChooseVzvod> _listVzvodovAndLS = new List<FormChooseVzvod> { };
         public List<FormChooseTestName> _listMarksAndName = new List<FormChooseTestName> { };
 
 
         public List<Panel> _listPanelsTestsOnPanel;
-
-        //public List<int[]> _listmarks;
+        
         public Dictionary<string, List<int>> _testNameAndMarks = new Dictionary<string, List<int>> { };
 
 
         public Dictionary<string, List<string>> _vzvodAndLS = new Dictionary<string, List<string>> { };
+
+        FormChooseVzvod formChooseVzvod;
 
         public Panel testOperations;
         Label linkLabelTestNew;
@@ -27,12 +27,15 @@ namespace Voenkaff
         Button buttonTestOpenNew;
         Button buttonTestDownloadNew;
         Button buttonTestMarksNew;
-        Button buttonTestVzvodaNew;
+        //Button buttonTestVzvodaNew;
 
         public FormHello()
         {
             InitializeComponent();
             _listPanelsTestsOnPanel = new List<Panel> { };
+
+
+            formChooseVzvod = new FormChooseVzvod(this);
 
             //_listmarks = new List<int[]> {};
 
@@ -48,7 +51,7 @@ namespace Voenkaff
             buttonTestOpenNew = new Button();
             buttonTestDownloadNew = new Button();
             buttonTestMarksNew = new Button();
-            buttonTestVzvodaNew = new Button();
+            //buttonTestVzvodaNew = new Button();
 
             testOperations.BackColor = System.Drawing.SystemColors.ControlLight;
             testOperations.Controls.Add(linkLabelTestNew);
@@ -56,7 +59,7 @@ namespace Voenkaff
             testOperations.Controls.Add(buttonTestOpenNew);
             testOperations.Controls.Add(buttonTestDownloadNew);
             testOperations.Controls.Add(buttonTestMarksNew);
-            testOperations.Controls.Add(buttonTestVzvodaNew);
+            //testOperations.Controls.Add(buttonTestVzvodaNew);
             testOperations.Location = new System.Drawing.Point(28, 78 + 70 * _listPanelsTestsOnPanel.Count);
             testOperations.Name = "panelTestInTestsList" + _listPanelsTestsOnPanel.Count;
             testOperations.Size = new System.Drawing.Size(808, 51);
@@ -106,14 +109,14 @@ namespace Voenkaff
             buttonTestDownloadNew.Text = "Скачать";
             buttonTestDownloadNew.UseVisualStyleBackColor = true;
 
-            buttonTestVzvodaNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonTestVzvodaNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            buttonTestVzvodaNew.Location = new System.Drawing.Point(528, 5);
-            buttonTestVzvodaNew.Name = "buttonTestVzvoda" + _listPanelsTestsOnPanel.Count;
-            buttonTestVzvodaNew.Size = new System.Drawing.Size(100, 40);
-            buttonTestVzvodaNew.TabIndex = 3;
-            buttonTestVzvodaNew.Text = "Взвода";
-            buttonTestVzvodaNew.UseVisualStyleBackColor = true;
+            //buttonTestVzvodaNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            //buttonTestVzvodaNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            //buttonTestVzvodaNew.Location = new System.Drawing.Point(528, 5);
+            //buttonTestVzvodaNew.Name = "buttonTestVzvoda" + _listPanelsTestsOnPanel.Count;
+            //buttonTestVzvodaNew.Size = new System.Drawing.Size(100, 40);
+            //buttonTestVzvodaNew.TabIndex = 3;
+            //buttonTestVzvodaNew.Text = "Взвода";
+            //buttonTestVzvodaNew.UseVisualStyleBackColor = true;
 
             buttonTestMarksNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             buttonTestMarksNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
@@ -131,7 +134,7 @@ namespace Voenkaff
 
 
             buttonTestOpenNew.Click += openCurrentTest;
-            buttonTestVzvodaNew.Click += testCurrentVzvoda;
+            //buttonTestVzvodaNew.Click += testCurrentVzvoda;
             buttonTestMarksNew.Click += testCurrentMarks;
 
             buttonTestDownloadNew.Click += testCurrentDownload;
@@ -167,15 +170,15 @@ namespace Voenkaff
             _listTests[Int32.Parse(index)].Visible = true;
         }
 
-        private void testCurrentVzvoda(object sender, EventArgs e)
-        {
-            string tempString = ((Control) sender).Parent.Name;
-            string index = tempString.Substring(tempString.Length - 1);
+        //private void testCurrentVzvoda(object sender, EventArgs e)
+        //{
+        //    string tempString = ((Control) sender).Parent.Name;
+        //    string index = tempString.Substring(tempString.Length - 1);
 
 
-            this.Visible = false;
-            _listVzvodovAndLS[Int32.Parse(index)].Visible = true;
-        }
+        //    this.Visible = false;
+        //    //_listVzvodovAndLS[Int32.Parse(index)].Visible = true;
+        //}
 
 
         private void testCurrentMarks(object sender, EventArgs e)
@@ -214,6 +217,12 @@ namespace Voenkaff
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");
+        }
+
+        private void взводаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            formChooseVzvod.Visible = true;
         }
     }
 }

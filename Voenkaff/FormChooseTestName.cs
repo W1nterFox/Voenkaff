@@ -117,8 +117,8 @@ namespace Voenkaff
                 Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello._testNameAndMarks["linkLabelTest" + _index], _formHello._vzvodAndLS);
                 _formHello._listTests.Add(peremTest);
 
-                FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
-                _formHello._listVzvodovAndLS.Add(formChooseVzvod);
+                //FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
+                //_formHello._listVzvodovAndLS.Add(formChooseVzvod);
             }
 
             else

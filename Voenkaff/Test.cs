@@ -16,14 +16,12 @@ namespace Voenkaff
         PanelWrapper _currentTask = new PanelWrapper();
         private readonly PanelWrapper _currentPanelQuestion = new PanelWrapper();
         private readonly PanelWrapper _currentPanelAnswer = new PanelWrapper();
-
-        //string textForSaveTest;
+        
         string _testOperationsName;
         int _indexTest;
 
         public string TestName { get; set; }
         public List<int> ListMarks { get; set; }
-        Dictionary<string, List<string>> _vzvodAndLS;
 
         public void setTestName(string testName)
         {
@@ -46,7 +44,6 @@ namespace Voenkaff
 
             TestName = testName;
             ListMarks = listMarks;
-            _vzvodAndLS = vzvodAndLS;
 
             this.Text = TestName;
 
