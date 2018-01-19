@@ -31,12 +31,13 @@ namespace Voenkaff
             this.Text = TestName;
         }
 
-        public void setTesListMarks (List<int> listMarks)
+        public void setTesListMarks(List<int> listMarks)
         {
             ListMarks = listMarks;
         }
 
-        public Test(FormHello formHello, string testName, List<int> listMarks, Dictionary<string, List<string>> vzvodAndLS)
+        public Test(FormHello formHello, string testName, List<int> listMarks,
+            Dictionary<string, List<string>> vzvodAndLS)
         {
             InitializeComponent();
 
@@ -56,7 +57,7 @@ namespace Voenkaff
             panelQuestion.Text = "Задание №1";
             panelTaskStart.Controls.Add(panelQuestion);
             panelTaskStart.Controls.Add(panelAnswer);
-            
+
             panelAnswer.BringToFront();
             //panelTask.Visible = false;
 
@@ -68,7 +69,6 @@ namespace Voenkaff
             panelListOfTasks.Controls.Add(createLinkLabel(0));
 
             this.FormClosing += Test_Closing;
-
         }
 
         private LinkLabel createLinkLabel(int indexPanel)
@@ -96,66 +96,67 @@ namespace Voenkaff
 
         private void clickTaskLinkLabel(object sender, EventArgs e)
         {
-            LinkLabel currentLL = (LinkLabel)sender;
-            
+            LinkLabel currentLL = (LinkLabel) sender;
+
             foreach (PanelWrapper index in ListPanelsTasks)
             {
                 index.Entity.Visible = false;
             }
+
             //textBox1.Text = currentLL.Text;
-            ListPanelsTasks[(int)currentLL.Tag].Entity.Visible = true;
+            ListPanelsTasks[(int) currentLL.Tag].Entity.Visible = true;
 
             ListPanelsTasks.Find(p => p.Entity.Name == _currentTask.Entity.Name).Identifier = _currentTask.Identifier;
-            _currentTask = ListPanelsTasks[(int)currentLL.Tag];
- 
-            _currentPanelQuestion.Entity = (Panel)_currentTask.Entity.Controls.Find("panelQuestion", false)[0];
-            _currentPanelAnswer.Entity= (Panel)_currentTask.Entity.Controls.Find("panelAnswer", false)[0];
+            _currentTask = ListPanelsTasks[(int) currentLL.Tag];
+
+            _currentPanelQuestion.Entity = (Panel) _currentTask.Entity.Controls.Find("panelQuestion", false)[0];
+            _currentPanelAnswer.Entity = (Panel) _currentTask.Entity.Controls.Find("panelAnswer", false)[0];
         }
 
 
         private void panel2_Paint(object sender, PaintEventArgs e)
-        {      
+        {
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, _currentPanelAnswer.Entity, this, _currentTask.Identifier);
+            TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, _currentPanelAnswer.Entity, this,
+                _currentTask.Identifier);
             ControlMover.Add(tc.Instance);
             _currentTask.Identifier++;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PictureBoxScalable pb = new PictureBoxScalable(_currentTask.Identifier, this, _currentPanelQuestion.Entity) {Instance = {Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage}};
-            ControlMover.Add(pb.Instance);
+            var pictureBoxScalable =
+                new PictureBoxScalable(_currentTask.Identifier, this, _currentPanelQuestion.Entity)
+                {
+                    Instance = {Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage}
+                };
+            ControlMover.Add(pictureBoxScalable.Instance);
             //_currentTask.Identifier++;
 
 
-            Bitmap image; //Bitmap для открываемого изображения
-            OpenFileDialog ofd = new OpenFileDialog
+            using (var openFileDialog = new OpenFileDialog {Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*"})
             {
-                Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*"
-            };
-            //формат загружаемого файла
-            if (ofd.ShowDialog() == DialogResult.OK) //если в окне была нажата кнопка "ОК"
-            {
+                if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+
                 try
                 {
-                    image = new Bitmap(ofd.FileName);
+                    var image = new Bitmap(openFileDialog.FileName); //Bitmap для открываемого изображения
 
-                    pb.Instance.Size = image.Size;
-                    pb.Instance.Image = image;
-                    pb.Instance.Invalidate();
+                    pictureBoxScalable.Instance.Size = image.Size;
+                    pictureBoxScalable.Instance.Image = image;
+                    pictureBoxScalable.Instance.Invalidate();
                 }
                 catch
                 {
-                    DialogResult result = MessageBox.Show("Невозможно открыть выбранный файл",
-                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    var result = MessageBox.Show("Невозможно открыть выбранный файл",
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -166,8 +167,8 @@ namespace Voenkaff
             ControlMover.Add(ttl.Instance);
             //_currentTask.Identifier++;
             ttl.Instance.BackColor = Color.White;
-            ttl.Instance.Font = new Font("Times New Roman",14f);
-            ttl.Instance.Width=500;
+            ttl.Instance.Font = new Font("Times New Roman", 14f);
+            ttl.Instance.Width = 500;
         }
 
         private void buttonTaskCreate_Click(object sender, EventArgs e)
@@ -187,7 +188,7 @@ namespace Voenkaff
                 Location = new Point(5, 5),
                 Size = new Size(1132, 632),
                 Name = "panelQuestion",
-                Text = "Задание №"+(ListPanelsTasks.Count+1)
+                Text = "Задание №" + (ListPanelsTasks.Count + 1)
             };
 
             Panel panelAnswer = new Panel
@@ -208,34 +209,30 @@ namespace Voenkaff
             newPanelTask.Padding = new Padding(5);
             newPanelTask.Size = new Size(1142, 642);
 
-            
-            ListPanelsTasks.Add(new PanelWrapper(newPanelTask,1));
-            newPanelTask.Name = ""+(ListPanelsTasks.Count - 1);
+
+            ListPanelsTasks.Add(new PanelWrapper(newPanelTask, 1));
+            newPanelTask.Name = "" + (ListPanelsTasks.Count - 1);
             foreach (PanelWrapper index in ListPanelsTasks)
             {
                 index.Entity.Visible = false;
             }
+
             ListPanelsTasks[ListPanelsTasks.Count - 1].Entity.Visible = true;
 
 
             _currentTask = ListPanelsTasks[ListPanelsTasks.Count - 1];
-            _currentPanelQuestion.Entity = (Panel)_currentTask.Entity.Controls.Find("panelQuestion", false)[0];
-            _currentPanelAnswer.Entity = (Panel)_currentTask.Entity.Controls.Find("panelAnswer", false)[0];
+            _currentPanelQuestion.Entity = (Panel) _currentTask.Entity.Controls.Find("panelQuestion", false)[0];
+            _currentPanelAnswer.Entity = (Panel) _currentTask.Entity.Controls.Find("panelAnswer", false)[0];
 
             panelListOfTasks.Controls.Add(createLinkLabel(ListPanelsTasks.Count - 1));
-
-            
-
         }
 
         private void файлToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
             this.Visible = false;
             Program.FormHello.Visible = true;
             //Application.Exit();
@@ -243,12 +240,10 @@ namespace Voenkaff
 
         private void открытьТестToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void новыйТестToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
             this.Controls.Clear();
 
             InitializeComponent();
@@ -268,12 +263,10 @@ namespace Voenkaff
             _currentPanelAnswer.Entity = panelAnswer;
 
             panelListOfTasks.Controls.Add(createLinkLabel(0));
-
         }
 
         private void сохранитьТестToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             saveTest.Filter = Resources.SaveTestFilter;
             saveTest.FileName = TestName;
 
@@ -282,12 +275,11 @@ namespace Voenkaff
             // получаем выбранный файл
             string filename = saveTest.FileName;
 
-            string testJson = new JsonCreator().CreateTestCollection(new List<Test>{this});
+            string testJson = new JsonCreator().CreateTestCollection(new List<Test> {this});
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");
         }
-
 
 
         private void Test_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -295,8 +287,5 @@ namespace Voenkaff
             this.Visible = false;
             Program.FormHello.Visible = true;
         }
-
-
     }
-
 }

@@ -61,7 +61,7 @@ namespace Voenkaff.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Text files(*.txt)|*.txt|All files(*.*)|*.*.
+        ///   Ищет локализованную строку, похожую на Тестовый файл(*.test)|*.test|All files(*.*)|*.*.
         /// </summary>
         internal static string SaveTestFilter {
             get {
