@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Voenkaff.Entity;
+using Voenkaff.Properties;
 using Voenkaff.Wrappers;
 
 namespace Voenkaff
@@ -236,7 +237,7 @@ namespace Voenkaff
         {
             
             this.Visible = false;
-            Program.formHello.Visible = true;
+            Program.FormHello.Visible = true;
             //Application.Exit();
         }
 
@@ -273,19 +274,15 @@ namespace Voenkaff
         private void сохранитьТестToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            //Control panelMain = Program.formHello.Controls.Find("panelMain", false)[0];
-            //Control currentPanelTest = panelMain.Controls.Find("panelTestInTestsList" + _indexTest, false)[0];
-            //Control currentLabelTest = currentPanelTest.Controls.Find("linkLabelTest" + _indexTest, false)[0];
-            //currentLabelTest.Text = "asdsadsadsad";
-
-            saveTest.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            saveTest.Filter = Resources.SaveTestFilter;
+            saveTest.FileName = TestName;
 
             if (saveTest.ShowDialog() == DialogResult.Cancel)
                 return;
             // получаем выбранный файл
             string filename = saveTest.FileName;
 
-            string testJson = new JsonCreator().CreateTestJsonMessage(this);
+            string testJson = new JsonCreator().CreateTestCollection(new List<Test>{this});
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");
@@ -296,7 +293,7 @@ namespace Voenkaff
         private void Test_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             this.Visible = false;
-            Program.formHello.Visible = true;
+            Program.FormHello.Visible = true;
         }
 
 

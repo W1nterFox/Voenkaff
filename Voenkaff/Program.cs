@@ -8,7 +8,7 @@ namespace Voenkaff
 {
     static class Program
     {
-        public static FormHello formHello;
+        public static FormHello FormHello;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -17,8 +17,8 @@ namespace Voenkaff
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            formHello = new FormHello();
-            Application.Run(formHello);
+            FormHello = new FormHello();
+            Application.Run(FormHello);
         }
     }
 }

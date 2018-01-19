@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Voenkaff
+namespace Voenkaff.Wrappers
 {
     public class PanelWrapper
     {

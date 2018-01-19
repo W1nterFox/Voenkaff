@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Voenkaff.Wrappers
 {
-    class JsonObjectWrapper
+    public class TaskElement
     {
         public string Name { get; set; }
         public string Type { get; set; }

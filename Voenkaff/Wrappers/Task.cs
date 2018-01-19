@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace Voenkaff.Wrappers
 {
-    class JsonTaskWrapper
+    public class Task
     {
         public string Name { get; set; }
-        public List<string> TaskElements { get; set; }
-
-        public JsonTaskWrapper()
-        {
-            TaskElements = new List<string>();
-        }
+        public List<TaskElement> TaskElements { get; set; } = new List<TaskElement>();
     }
 }

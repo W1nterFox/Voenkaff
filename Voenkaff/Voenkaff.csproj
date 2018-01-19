@@ -75,9 +75,10 @@
     <Compile Include="FormLSInputMany.Designer.cs">
       <DependentUpon>FormLSInputMany.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wrappers\JsonObjectWrapper.cs" />
-    <Compile Include="Wrappers\JsonTaskWrapper.cs" />
-    <Compile Include="Wrappers\JsonTestWrapper.cs" />
+    <Compile Include="Wrappers\TaskElement.cs" />
+    <Compile Include="Wrappers\Task.cs" />
+    <Compile Include="Wrappers\Test.cs" />
+    <Compile Include="Wrappers\Marks.cs" />
     <Compile Include="Wrappers\PanelWrapper.cs" />
     <Compile Include="Entity\TextContainer.cs" />
     <Compile Include="Entity\Title.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

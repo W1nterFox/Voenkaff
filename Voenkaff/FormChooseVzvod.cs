@@ -199,7 +199,7 @@ namespace Voenkaff
         {
             base.OnFormClosing(e);
             this.Visible = false;
-            Program.formHello.Visible = true;
+            Program.FormHello.Visible = true;
 
         }
 

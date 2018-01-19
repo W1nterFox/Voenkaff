@@ -17,11 +17,9 @@ namespace Voenkaff.Entity
             _form = panel;
             _parent = parent;
             Instance= new PictureBox();
-            Instance.Name = new Random().Next(1000000,9999999).ToString();
+            var randomValue = new Random().Next(1000000, 9999999).ToString();
+            Instance.Name = randomValue;
             Instance.Location = new Point(10, 10);
-            //Instance.MouseMove += MouseMove;
-            //Instance.MouseDown += MouseDown;
-            //Instance.MouseUp += MouseUp;
 
             ContextMenu cmu = new ContextMenu();
             MenuItem menuItemDelete = new MenuItem
@@ -31,7 +29,7 @@ namespace Voenkaff.Entity
                 Shortcut = Shortcut.CtrlDel
             };
             menuItemDelete.Click += Remove;
-            menuItemDelete.Name = Instance.ToString() + index;
+            menuItemDelete.Name = randomValue;
             cmu.MenuItems.Add(menuItemDelete);
             Instance.ContextMenu = cmu;
         }
