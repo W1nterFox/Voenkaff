@@ -17,9 +17,6 @@ namespace Voenkaff
         
         public Dictionary<string, List<int>> TestNameAndMarks { get; set; } = new Dictionary<string, List<int>> { };
 
-
-        public Dictionary<string, List<string>> VzvodAndLs { get; set; } = new Dictionary<string, List<string>> { };
-
         private readonly FormChooseVzvod _formChooseVzvod;
 
         public Panel TestOperations { get; set; }

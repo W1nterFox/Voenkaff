@@ -16,7 +16,6 @@ namespace Voenkaff
         public List<string> _LSInVzvoda;
 
 
-        public Dictionary<string, List<string>> VzvodAndLs = new Dictionary<string, List<string>> { };
 
 
 
@@ -37,7 +36,7 @@ namespace Voenkaff
             if (listBoxVzvoda.SelectedItem != null)
             {
                 string selectedVzvod = listBoxVzvoda.SelectedItem.ToString();
-                _LSInVzvoda = VzvodAndLs[selectedVzvod];
+                _LSInVzvoda = VzvodAndLs.Get()[selectedVzvod];
                 listBoxLS.Items.AddRange(_LSInVzvoda.ToArray());
 
                 buttonLSAddMany.Enabled = true;
@@ -117,9 +116,9 @@ namespace Voenkaff
             List <string> fake;
             if (textBoxVzvoda.Text != "")
             {
-                if (!VzvodAndLs.TryGetValue(textBoxVzvoda.Text, out fake))
+                if (!VzvodAndLs.Get().TryGetValue(textBoxVzvoda.Text, out fake))
                 {
-                    VzvodAndLs.Add(textBoxVzvoda.Text, new List<string> { });
+                    VzvodAndLs.Get().Add(textBoxVzvoda.Text, new List<string> { });
 
 
                     listBoxVzvoda.Items.Add(textBoxVzvoda.Text);
@@ -137,7 +136,7 @@ namespace Voenkaff
         {
             if (listBoxVzvoda.SelectedItem != null)
             {
-                VzvodAndLs.Remove(listBoxVzvoda.SelectedItem.ToString());
+                VzvodAndLs.Get().Remove(listBoxVzvoda.SelectedItem.ToString());
                 listBoxVzvoda.Items.Remove(listBoxVzvoda.SelectedItem);
             }
             
@@ -146,7 +145,7 @@ namespace Voenkaff
         private void buttonVzvodClear_Click(object sender, EventArgs e)
         {
             listBoxVzvoda.Items.Clear();
-            VzvodAndLs.Clear();
+            VzvodAndLs.Get().Clear();
 
             listBoxLS.Items.Clear();
         }
@@ -164,7 +163,7 @@ namespace Voenkaff
         {
             if (textBoxLicnySostav.Text != "" && listBoxVzvoda.SelectedItem != null)
             {
-                VzvodAndLs[listBoxVzvoda.SelectedItem.ToString()].Add(textBoxLicnySostav.Text);
+                VzvodAndLs.Get()[listBoxVzvoda.SelectedItem.ToString()].Add(textBoxLicnySostav.Text);
 
                 listBoxLS.Items.Add(textBoxLicnySostav.Text);
                 textBoxLicnySostav.Text = "";
@@ -176,7 +175,7 @@ namespace Voenkaff
         {
             if (listBoxVzvoda.SelectedItem != null && listBoxLS.SelectedItem != null)
             {
-                VzvodAndLs[listBoxVzvoda.SelectedItem.ToString()].Remove(listBoxLS.SelectedItem.ToString());
+                VzvodAndLs.Get()[listBoxVzvoda.SelectedItem.ToString()].Remove(listBoxLS.SelectedItem.ToString());
                 listBoxLS.Items.Remove(listBoxLS.SelectedItem);
             }
             
@@ -185,7 +184,7 @@ namespace Voenkaff
         private void buttonLSClear_Click(object sender, EventArgs e)
         {
             listBoxLS.Items.Clear();
-            VzvodAndLs[listBoxVzvoda.SelectedItem.ToString()].Clear();
+            VzvodAndLs.Get()[listBoxVzvoda.SelectedItem.ToString()].Clear();
         }
 
         private void buttonLSSort_Click(object sender, EventArgs e)
@@ -207,7 +206,6 @@ namespace Voenkaff
         {
             this.Visible = false;
             _formHello.Visible = true;
-            _formHello.VzvodAndLs = VzvodAndLs;
         }
 
         private void buttonLSAddMany_Click(object sender, EventArgs e)

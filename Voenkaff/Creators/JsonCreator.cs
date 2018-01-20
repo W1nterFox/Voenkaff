@@ -7,18 +7,20 @@ namespace Voenkaff.Creators
 {
     public class JsonCreator
     {
+
         public string CreateTestCollection(List<Test> tests)
         {
-            var json = "[";
+            var jsonTests = new List<Wrappers.Test>();
             foreach (var test in tests)
             {
-                json += CreateTestJsonMessage(test) + ",";
+                jsonTests.Add(CreateTestJsonMessage(test));
             }
 
-            return json.Substring(0, json.Length - 1) + "]";
+            return JsonConvert.SerializeObject(new Tests{PlatoonList = VzvodAndLs.Get(),TestList = jsonTests},Formatting.Indented);
         }
+        
 
-        public string CreateTestJsonMessage(Test testObj)
+        private Wrappers.Test CreateTestJsonMessage(Test testObj)
         {
             var test = new Wrappers.Test
             {
@@ -70,7 +72,8 @@ namespace Voenkaff.Creators
                 test.Tasks.Add(tasks);
             }
 
-            return JsonConvert.SerializeObject(test, Formatting.Indented);
+            
+            return test;
         }
     }
 }
