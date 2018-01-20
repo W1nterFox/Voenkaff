@@ -81,7 +81,6 @@
     </Compile>
     <Compile Include="Creators\PictureCreator.cs" />
     <Compile Include="VzvodAndLs.cs" />
-    <Compile Include="Wrappers\SerializablePicture.cs" />
     <Compile Include="Wrappers\TaskElement.cs" />
     <Compile Include="Wrappers\Task.cs" />
     <Compile Include="Wrappers\Test.cs" />
