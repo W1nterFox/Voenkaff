@@ -272,13 +272,9 @@ namespace Voenkaff
 
         private void сохранитьТестToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveTest.Filter = Resources.SaveTestFilter;
-            saveTest.FileName = TestName;
-
-            if (saveTest.ShowDialog() == DialogResult.Cancel)
-                return;
+            
             // получаем выбранный файл
-            string filename = saveTest.FileName;
+            string filename = new DynamicParams().Get().TestPath + "\\" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".test";
 
             string testJson = new JsonCreator().CreateTestCollection(new List<Test> {this});
             new PictureCreator().CreatePictures(this,filename.Substring(0,filename.LastIndexOf("\\", StringComparison.Ordinal)));

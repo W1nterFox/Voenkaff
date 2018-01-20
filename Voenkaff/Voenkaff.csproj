@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicParams.cs" />
     <Compile Include="Entity\ControlMover.cs" />
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="FormChooseTestName.cs">
@@ -80,6 +81,14 @@
       <DependentUpon>FormLSInputMany.cs</DependentUpon>
     </Compile>
     <Compile Include="Creators\PictureCreator.cs" />
+    <Compile Include="Initialization\TestInizializator.cs" />
+    <Compile Include="Initialization\TestLoader.cs" />
+    <Compile Include="FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="VzvodAndLs.cs" />
     <Compile Include="Wrappers\TaskElement.cs" />
     <Compile Include="Wrappers\Task.cs" />
@@ -107,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLSInputMany.resx">
       <DependentUpon>FormLSInputMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test.resx">
       <DependentUpon>Test.cs</DependentUpon>

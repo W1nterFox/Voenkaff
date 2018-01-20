@@ -8,7 +8,7 @@ namespace Voenkaff.Wrappers
 {
     public class Tests
     {
-        public ICollection<Test> TestList { get; set; }
-        public Dictionary<string, List<string>> PlatoonList { get; set; }
+        public List<Test> TestList { get; set; }=new List<Test>();
+        public Dictionary<string, List<string>> PlatoonList { get; set; }=new Dictionary<string, List<string>>();
     }
 }

@@ -12,17 +12,18 @@ namespace Voenkaff
 {
     public partial class FormChooseVzvod : Form
     {
-        FormHello _formHello;
+        private FormHello _formHello;
         public List<string> _LSInVzvoda;
-
-
-
-
 
         public FormChooseVzvod(FormHello formHello)
         {
             InitializeComponent();
             _formHello = formHello;
+
+            foreach (var vzvod in VzvodAndLs.Get())
+            {
+                listBoxVzvoda.Items.Add(vzvod.Key);
+            }
 
             listBoxVzvoda.SelectedIndexChanged += listBoxVzvoda_SelectedIndexChanged;
 
