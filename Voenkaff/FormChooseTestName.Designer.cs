@@ -69,6 +69,7 @@
             this.checkBoxIsFirstOpen.AutoSize = true;
             this.checkBoxIsFirstOpen.Checked = true;
             this.checkBoxIsFirstOpen.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxIsFirstOpen.Enabled = false;
             this.checkBoxIsFirstOpen.Location = new System.Drawing.Point(499, 22);
             this.checkBoxIsFirstOpen.Name = "checkBoxIsFirstOpen";
             this.checkBoxIsFirstOpen.Size = new System.Drawing.Size(15, 14);
@@ -184,21 +185,21 @@
             this.textBoxMark4.Location = new System.Drawing.Point(270, 98);
             this.textBoxMark4.Name = "textBoxMark4";
             this.textBoxMark4.Size = new System.Drawing.Size(48, 20);
-            this.textBoxMark4.TabIndex = 10;
+            this.textBoxMark4.TabIndex = 3;
             // 
             // textBoxMark3
             // 
             this.textBoxMark3.Location = new System.Drawing.Point(270, 130);
             this.textBoxMark3.Name = "textBoxMark3";
             this.textBoxMark3.Size = new System.Drawing.Size(48, 20);
-            this.textBoxMark3.TabIndex = 9;
+            this.textBoxMark3.TabIndex = 4;
             // 
             // textBoxMark5
             // 
             this.textBoxMark5.Location = new System.Drawing.Point(270, 65);
             this.textBoxMark5.Name = "textBoxMark5";
             this.textBoxMark5.Size = new System.Drawing.Size(48, 20);
-            this.textBoxMark5.TabIndex = 7;
+            this.textBoxMark5.TabIndex = 2;
             // 
             // label6
             // 

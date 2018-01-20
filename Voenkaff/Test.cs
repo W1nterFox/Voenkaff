@@ -47,8 +47,9 @@ namespace Voenkaff
 
             this.Text = TestName;
 
-
-            MinimumSize = new Size(1080, 750);
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+            
             panelMiddle.Controls.Add(panelTaskStart);
             ListPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
             panelQuestion.Text = "Задание №1";
@@ -66,6 +67,8 @@ namespace Voenkaff
             panelListOfTasks.Controls.Add(createLinkLabel(0));
 
             this.FormClosing += Test_Closing;
+
+            panelAnswer.Parent = panelTaskStart;
         }
 
         private LinkLabel createLinkLabel(int indexPanel)
@@ -176,28 +179,32 @@ namespace Voenkaff
             Panel newPanelTask = new Panel();
 
             panelMiddle.Controls.Add(newPanelTask);
-            newPanelTask.BackColor = SystemColors.ControlLight;
+            newPanelTask.BackColor = SystemColors.ControlDark;
 
             Panel panelQuestion = new Panel
             {
                 AutoScroll = true,
                 BackColor = SystemColors.GradientInactiveCaption,
-                Dock = DockStyle.Fill,
                 Location = new Point(5, 5),
-                Size = new Size(1132, 632),
+                Size = new Size(1100, 489),
                 Name = "panelQuestion",
                 Text = "Задание №" + (ListPanelsTasks.Count + 1)
-            };
+                
+        };
 
             Panel panelAnswer = new Panel
             {
                 AutoScroll = true,
-                BackColor = Color.LightGoldenrodYellow,
-                Dock = DockStyle.Bottom,
-                Location = new Point(133, 524),
-                Size = new Size(1142, 118),
-                Name = "panelAnswer"
-            };
+                BackColor = Color.Linen,
+                Location = new Point(5, 500),
+                Size = new Size(1100, 118),
+                Name = "panelAnswer",
+                TabIndex = 2
+
+            
+
+
+        };
 
             newPanelTask.Controls.Add(panelQuestion);
             newPanelTask.Controls.Add(panelAnswer);
