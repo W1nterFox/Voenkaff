@@ -15,7 +15,7 @@ namespace Voenkaff
 
         public static Dictionary<string, List<string>> Get()
         {
-            if (_instance is null)
+            if (_instance == null)
             {
                 _instance = new Dictionary<string, List<string>> { };
             }
