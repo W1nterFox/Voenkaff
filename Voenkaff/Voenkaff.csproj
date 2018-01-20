@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,6 +76,8 @@
     <Compile Include="FormLSInputMany.Designer.cs">
       <DependentUpon>FormLSInputMany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Creators\PictureCreator.cs" />
+    <Compile Include="Wrappers\SerializablePicture.cs" />
     <Compile Include="Wrappers\TaskElement.cs" />
     <Compile Include="Wrappers\Task.cs" />
     <Compile Include="Wrappers\Test.cs" />
@@ -91,7 +94,7 @@
     <Compile Include="Entity\PictureBoxScalable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Wrappers\JsonCreator.cs" />
+    <Compile Include="Creators\JsonCreator.cs" />
     <EmbeddedResource Include="FormChooseTestName.resx">
       <DependentUpon>FormChooseTestName.cs</DependentUpon>
     </EmbeddedResource>

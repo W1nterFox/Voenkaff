@@ -16,10 +16,11 @@ namespace Voenkaff.Entity
         {
             _form = panel;
             _parent = parent;
-            Instance= new PictureBox();
-            var randomValue = new Random().Next(1000000, 9999999).ToString();
-            Instance.Name = randomValue;
-            Instance.Location = new Point(10, 10);
+            Instance = new PictureBox
+            {
+                Name = panel.TestName + "_" + parent.Text + "_" + index,
+                Location = new Point(10, 10)
+            };
 
             ContextMenu cmu = new ContextMenu();
             MenuItem menuItemDelete = new MenuItem
@@ -29,7 +30,7 @@ namespace Voenkaff.Entity
                 Shortcut = Shortcut.CtrlDel
             };
             menuItemDelete.Click += Remove;
-            menuItemDelete.Name = randomValue;
+            menuItemDelete.Name = Instance.Name;
             cmu.MenuItems.Add(menuItemDelete);
             Instance.ContextMenu = cmu;
         }

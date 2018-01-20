@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Voenkaff.Wrappers;
 
-namespace Voenkaff.Wrappers
+namespace Voenkaff.Creators
 {
-    class JsonCreator
+    public class JsonCreator
     {
-        public string CreateTestCollection(List<Voenkaff.Test> tests)
+        public string CreateTestCollection(List<Test> tests)
         {
             var json = "[";
             foreach (var test in tests)
@@ -17,9 +18,9 @@ namespace Voenkaff.Wrappers
             return json.Substring(0, json.Length - 1) + "]";
         }
 
-        public string CreateTestJsonMessage(Voenkaff.Test testObj)
+        public string CreateTestJsonMessage(Test testObj)
         {
-            var test = new Test
+            var test = new Wrappers.Test
             {
                 Name = testObj.TestName,
                 Marks = new Marks
@@ -54,7 +55,7 @@ namespace Voenkaff.Wrappers
 
                     if (taskElement is PictureBox)
                     {
-                        element.Media = "picture/" + ((PictureBox) taskElement).Name;
+                        element.Media = "picture\\" + ((PictureBox) taskElement).Name+".bin";
                     }
 
                     if (taskElement is RichTextBox)
