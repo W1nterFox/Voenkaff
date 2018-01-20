@@ -152,6 +152,7 @@ namespace Voenkaff
             string filename = saveTests.FileName;
 
             string testJson = new JsonCreator().CreateTestCollection(new List<Test> {ListTests[Int32.Parse(index)]});
+            new PictureCreator().CreatePictures(ListTests[Int32.Parse(index)], filename.Substring(0, filename.LastIndexOf("\\", StringComparison.Ordinal)));
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");
@@ -211,6 +212,12 @@ namespace Voenkaff
             string filename = saveTests.FileName;
 
             string testJson = new JsonCreator().CreateTestCollection(ListTests);
+
+            var picureCreator = new PictureCreator();
+            foreach (var test in ListTests)
+            {
+                picureCreator.CreatePictures(test, filename.Substring(0, filename.LastIndexOf("\\", StringComparison.Ordinal)));
+            }
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");
