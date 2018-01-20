@@ -44,8 +44,8 @@ namespace Voenkaff.Entity
             AddAnswerTitle();
         }
 
-        
 
+        
 
         private void AddAnswerTitle()
         {
@@ -57,11 +57,23 @@ namespace Voenkaff.Entity
             _parent.Controls.Add(_topTitle);
             _topTitle.BringToFront();
 
-            _panel = new Panel
+            if (_answerPanel.Controls.Count>0)
             {
-                Dock = DockStyle.Left,
-                Name = Instance.ToString() + _index
-            };
+                _panel = new Panel
+                {
+                    Location = new Point(_answerPanel.Controls[_answerPanel.Controls.Count - 1].Width * _answerPanel.Controls.Count, 10),
+                    Name = Instance.ToString() + _index
+                };
+            }
+            else
+            {
+                _panel = new Panel
+                {
+                    Location = new Point(0, 10),
+                    Name = Instance.ToString() + _index
+                };
+            }
+            
             TextBox answer = new TextBox {Dock = DockStyle.Top};
             answer.BringToFront();
             Label label = new Label {Dock = DockStyle.Top};
@@ -70,6 +82,7 @@ namespace Voenkaff.Entity
             _panel.Controls.Add(answer);
             _panel.Controls.Add(label);
             _answerPanel.Controls.Add(_panel);
+            
         }
 
         private void IdentifierMove(object sender, MouseEventArgs e)

@@ -248,6 +248,7 @@
             // 
             // panelAnswer
             // 
+            this.panelAnswer.AutoScroll = true;
             this.panelAnswer.BackColor = System.Drawing.Color.Linen;
             this.panelAnswer.Location = new System.Drawing.Point(5, 500);
             this.panelAnswer.Name = "panelAnswer";
