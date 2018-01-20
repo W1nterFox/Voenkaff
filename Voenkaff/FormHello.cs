@@ -92,14 +92,14 @@ namespace Voenkaff
             _buttonTestDeleteNew.UseVisualStyleBackColor = true;
 
 
-            buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            buttonTestOpenNew.Location = new System.Drawing.Point(260, 5);
-            buttonTestOpenNew.Name = "buttonTestOpen" + _listPanelsTestsOnPanel.Count;
-            buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
-            buttonTestOpenNew.TabIndex = 2;
-            buttonTestOpenNew.Text = "Просмотр/редактирование";
-            buttonTestOpenNew.UseVisualStyleBackColor = true;
+            _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            _buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            _buttonTestOpenNew.Location = new System.Drawing.Point(260, 5);
+            _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
+            _buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
+            _buttonTestOpenNew.TabIndex = 2;
+            _buttonTestOpenNew.Text = "Просмотр/редактирование";
+            _buttonTestOpenNew.UseVisualStyleBackColor = true;
 
             _buttonTestDownloadNew.FlatStyle = FlatStyle.Flat;
             _buttonTestDownloadNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
@@ -119,14 +119,14 @@ namespace Voenkaff
             //buttonTestVzvodaNew.Text = "Взвода";
             //buttonTestVzvodaNew.UseVisualStyleBackColor = true;
 
-            buttonTestMarksNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonTestMarksNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            buttonTestMarksNew.Location = new System.Drawing.Point(480, 5);
-            buttonTestMarksNew.Name = "buttonTestMarks" + _listPanelsTestsOnPanel.Count;
-            buttonTestMarksNew.Size = new System.Drawing.Size(146, 40);
-            buttonTestMarksNew.TabIndex = 4;
-            buttonTestMarksNew.Text = "Критерии оценки";
-            buttonTestMarksNew.UseVisualStyleBackColor = true;
+            _buttonTestMarksNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            _buttonTestMarksNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            _buttonTestMarksNew.Location = new System.Drawing.Point(480, 5);
+            _buttonTestMarksNew.Name = "buttonTestMarks" + ListPanelsTestsOnPanel.Count;
+            _buttonTestMarksNew.Size = new System.Drawing.Size(146, 40);
+            _buttonTestMarksNew.TabIndex = 4;
+            _buttonTestMarksNew.Text = "Критерии оценки";
+            _buttonTestMarksNew.UseVisualStyleBackColor = true;
 
             ListPanelsTestsOnPanel.Add(TestOperations);
             panelMain.Controls.Add(TestOperations);

@@ -16,9 +16,7 @@ namespace Voenkaff
         int _index;
         //public int[] marks;
         public List<int> _marks;
-
-        string tempTestNameForRename;
-
+        
         public FormChooseTestName(FormHello formHello, int index)
         {
             InitializeComponent();
