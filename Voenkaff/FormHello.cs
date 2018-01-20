@@ -93,7 +93,7 @@ namespace Voenkaff
 
             buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            buttonTestOpenNew.Location = new System.Drawing.Point(155, 5);
+            buttonTestOpenNew.Location = new System.Drawing.Point(260, 5);
             buttonTestOpenNew.Name = "buttonTestOpen" + _listPanelsTestsOnPanel.Count;
             buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
             buttonTestOpenNew.TabIndex = 2;
@@ -120,7 +120,7 @@ namespace Voenkaff
 
             buttonTestMarksNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             buttonTestMarksNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            buttonTestMarksNew.Location = new System.Drawing.Point(376, 5);
+            buttonTestMarksNew.Location = new System.Drawing.Point(480, 5);
             buttonTestMarksNew.Name = "buttonTestMarks" + _listPanelsTestsOnPanel.Count;
             buttonTestMarksNew.Size = new System.Drawing.Size(146, 40);
             buttonTestMarksNew.TabIndex = 4;

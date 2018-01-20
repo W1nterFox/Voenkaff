@@ -33,7 +33,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelQuestion = new System.Windows.Forms.Panel();
-            this.panelAnswer = new System.Windows.Forms.Panel();
             this.panelListOfTasks = new System.Windows.Forms.Panel();
             this.buttonTaskCreate = new System.Windows.Forms.Button();
             this.panelTaskStart = new System.Windows.Forms.Panel();
@@ -49,6 +48,7 @@
             this.отменаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveTest = new System.Windows.Forms.SaveFileDialog();
+            this.panelAnswer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panelListOfTasks.SuspendLayout();
             this.panelTaskStart.SuspendLayout();
@@ -113,22 +113,11 @@
             // 
             this.panelQuestion.AutoScroll = true;
             this.panelQuestion.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panelQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelQuestion.Location = new System.Drawing.Point(5, 5);
             this.panelQuestion.Name = "panelQuestion";
-            this.panelQuestion.Size = new System.Drawing.Size(1100, 608);
+            this.panelQuestion.Size = new System.Drawing.Size(1100, 489);
             this.panelQuestion.TabIndex = 1;
             this.panelQuestion.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // panelAnswer
-            // 
-            this.panelAnswer.AutoScroll = true;
-            this.panelAnswer.BackColor = System.Drawing.Color.Linen;
-            this.panelAnswer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelAnswer.Location = new System.Drawing.Point(165, 524);
-            this.panelAnswer.Name = "panelAnswer";
-            this.panelAnswer.Size = new System.Drawing.Size(1110, 118);
-            this.panelAnswer.TabIndex = 3;
             // 
             // panelListOfTasks
             // 
@@ -159,7 +148,8 @@
             // 
             // panelTaskStart
             // 
-            this.panelTaskStart.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelTaskStart.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelTaskStart.Controls.Add(this.panelAnswer);
             this.panelTaskStart.Controls.Add(this.panelQuestion);
             this.panelTaskStart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTaskStart.Location = new System.Drawing.Point(165, 24);
@@ -256,13 +246,20 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // panelAnswer
+            // 
+            this.panelAnswer.BackColor = System.Drawing.Color.Linen;
+            this.panelAnswer.Location = new System.Drawing.Point(5, 500);
+            this.panelAnswer.Name = "panelAnswer";
+            this.panelAnswer.Size = new System.Drawing.Size(1100, 118);
+            this.panelAnswer.TabIndex = 2;
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1397, 642);
             this.ControlBox = false;
-            this.Controls.Add(this.panelAnswer);
             this.Controls.Add(this.panelTaskStart);
             this.Controls.Add(this.panelMiddle);
             this.Controls.Add(this.panelListOfTasks);
@@ -288,7 +285,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelQuestion;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel panelAnswer;
         private System.Windows.Forms.Panel panelListOfTasks;
         private System.Windows.Forms.Panel panelTaskStart;
         private System.Windows.Forms.Button buttonTaskCreate;
@@ -304,6 +300,7 @@
         private System.Windows.Forms.ToolStripMenuItem отменаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveTest;
+        private System.Windows.Forms.Panel panelAnswer;
     }
 }
 
