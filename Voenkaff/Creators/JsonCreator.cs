@@ -1,25 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Voenkaff.Wrappers;
 
-namespace Voenkaff.Wrappers
+namespace Voenkaff.Creators
 {
-    class JsonCreator
+    public class JsonCreator
     {
-        public string CreateTestCollection(List<Voenkaff.Test> tests)
+
+        public string CreateTestCollection(List<Test> tests)
         {
-            var json = "[";
+            var jsonTests = new List<Wrappers.Test>();
             foreach (var test in tests)
             {
-                json += CreateTestJsonMessage(test) + ",";
+                jsonTests.Add(CreateTestJsonMessage(test));
             }
 
-            return json.Substring(0, json.Length - 1) + "]";
+            return JsonConvert.SerializeObject(new Tests{PlatoonList = VzvodAndLs.Get(),TestList = jsonTests},Formatting.Indented);
         }
+        
 
-        public string CreateTestJsonMessage(Voenkaff.Test testObj)
+        private Wrappers.Test CreateTestJsonMessage(Test testObj)
         {
-            var test = new Test
+            var test = new Wrappers.Test
             {
                 Name = testObj.TestName,
                 Marks = new Marks
@@ -54,7 +57,7 @@ namespace Voenkaff.Wrappers
 
                     if (taskElement is PictureBox)
                     {
-                        element.Media = "picture/" + ((PictureBox) taskElement).Name;
+                        element.Media = "picture\\" + ((PictureBox) taskElement).Name+".bin";
                     }
 
                     if (taskElement is RichTextBox)
@@ -69,7 +72,8 @@ namespace Voenkaff.Wrappers
                 test.Tasks.Add(tasks);
             }
 
-            return JsonConvert.SerializeObject(test, Formatting.Indented);
+            
+            return test;
         }
     }
 }

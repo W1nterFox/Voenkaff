@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Newtonsoft.Json;
+using Voenkaff.Creators;
 using Voenkaff.Entity;
 using Voenkaff.Properties;
 using Voenkaff.Wrappers;
@@ -39,8 +39,8 @@ namespace Voenkaff
         {
             InitializeComponent();
 
-            _testOperationsName = formHello.testOperations.Name;
-            _indexTest = formHello._listPanelsTestsOnPanel.Count - 1;
+            _testOperationsName = formHello.TestOperations.Name;
+            _indexTest = formHello.ListPanelsTestsOnPanel.Count - 1;
 
             TestName = testName;
             ListMarks = listMarks;
@@ -132,13 +132,14 @@ namespace Voenkaff
 
         private void button2_Click(object sender, EventArgs e)
         {
+            _currentTask.PictureIndex++;
             var pictureBoxScalable =
-                new PictureBoxScalable(_currentTask.Identifier, this, _currentPanelQuestion.Entity)
+                new PictureBoxScalable(_currentTask.PictureIndex, this, _currentPanelQuestion.Entity)
                 {
                     Instance = {Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage}
                 };
             ControlMover.Add(pictureBoxScalable.Instance);
-            //_currentTask.Identifier++;
+            
 
 
             using (var openFileDialog = new OpenFileDialog {Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*"})
@@ -280,6 +281,7 @@ namespace Voenkaff
             string filename = saveTest.FileName;
 
             string testJson = new JsonCreator().CreateTestCollection(new List<Test> {this});
+            new PictureCreator().CreatePictures(this,filename.Substring(0,filename.LastIndexOf("\\", StringComparison.Ordinal)));
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");

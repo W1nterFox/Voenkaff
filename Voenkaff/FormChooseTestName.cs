@@ -16,9 +16,7 @@ namespace Voenkaff
         int _index;
         //public int[] marks;
         public List<int> _marks;
-
-        string tempTestNameForRename;
-
+        
         public FormChooseTestName(FormHello formHello, int index)
         {
             InitializeComponent();
@@ -112,10 +110,10 @@ namespace Voenkaff
 
             if (checkBoxIsFirstOpen.Checked)
             {
-                _formHello._testNameAndMarks.Add("linkLabelTest" + _index, _marks);
+                _formHello.TestNameAndMarks.Add("linkLabelTest" + _index, _marks);
 
-                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello._testNameAndMarks["linkLabelTest" + _index], _formHello._vzvodAndLS);
-                _formHello._listTests.Add(peremTest);
+                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks["linkLabelTest" + _index], VzvodAndLs.Get());
+                _formHello.ListTests.Add(peremTest);
 
                 //FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
                 //_formHello._listVzvodovAndLS.Add(formChooseVzvod);
@@ -124,10 +122,10 @@ namespace Voenkaff
             else
             {
                 _formHello.Controls.Find("linkLabelTest" + _index, true)[0].Text = textBoxUserChooseTestName.Text;
-                _formHello._testNameAndMarks["linkLabelTest" + _index] = _marks;
+                _formHello.TestNameAndMarks["linkLabelTest" + _index] = _marks;
 
-                _formHello._listTests[_index].setTestName(textBoxUserChooseTestName.Text);
-                _formHello._listTests[_index].setTesListMarks(_marks);
+                _formHello.ListTests[_index].setTestName(textBoxUserChooseTestName.Text);
+                _formHello.ListTests[_index].setTesListMarks(_marks);
             }
             
 

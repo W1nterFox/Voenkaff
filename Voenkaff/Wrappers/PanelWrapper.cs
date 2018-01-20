@@ -8,6 +8,7 @@ namespace Voenkaff.Wrappers
         {
             Entity = entity;
             Identifier = identifier;
+            PictureIndex = 0;
         }
 
         public PanelWrapper()
@@ -16,6 +17,7 @@ namespace Voenkaff.Wrappers
         }
 
         public int Identifier { get; set; }
+        public int PictureIndex { get; set; }
         public Panel Entity { get; set; }
     }
 }

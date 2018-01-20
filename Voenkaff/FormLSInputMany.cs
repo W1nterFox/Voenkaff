@@ -41,7 +41,7 @@ namespace Voenkaff
                     {
                         _linesRTB.Add(line);
                         ((ListBox)(_formChooseVzvod.Controls.Find("listBoxLS", true)[0])).Items.Add(line);
-                        _formChooseVzvod._vzvodAndLS[((ListBox)(_formChooseVzvod.Controls.Find("listBoxVzvoda",true)[0])).SelectedItem.ToString()].Add(line);
+                        VzvodAndLs.Get()[((ListBox)(_formChooseVzvod.Controls.Find("listBoxVzvoda",true)[0])).SelectedItem.ToString()].Add(line);
                     }
                 }
 

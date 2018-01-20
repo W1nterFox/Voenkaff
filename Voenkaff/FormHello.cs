@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Voenkaff.Creators;
 using Voenkaff.Properties;
 using Voenkaff.Wrappers;
 
@@ -8,106 +9,103 @@ namespace Voenkaff
 {
     public partial class FormHello : Form
     {
-        public List<Test> _listTests = new List<Test> { };
-        public List<FormChooseTestName> _listMarksAndName = new List<FormChooseTestName> { };
+        public List<Test> ListTests { get; set; } = new List<Test> { };
+        public List<FormChooseTestName> ListMarksAndName { get; set; } = new List<FormChooseTestName> { };
 
 
-        public List<Panel> _listPanelsTestsOnPanel;
+        public List<Panel> ListPanelsTestsOnPanel { get; set; }
         
-        public Dictionary<string, List<int>> _testNameAndMarks = new Dictionary<string, List<int>> { };
+        public Dictionary<string, List<int>> TestNameAndMarks { get; set; } = new Dictionary<string, List<int>> { };
 
+        private readonly FormChooseVzvod _formChooseVzvod;
 
-        public Dictionary<string, List<string>> _vzvodAndLS = new Dictionary<string, List<string>> { };
-
-        FormChooseVzvod formChooseVzvod;
-
-        public Panel testOperations;
-        Label linkLabelTestNew;
-        Button buttonTestDeleteNew;
-        Button buttonTestOpenNew;
-        Button buttonTestDownloadNew;
-        Button buttonTestMarksNew;
+        public Panel TestOperations { get; set; }
+        Label _linkLabelTestNew;
+        Button _buttonTestDeleteNew;
+        Button _buttonTestOpenNew;
+        Button _buttonTestDownloadNew;
+        Button _buttonTestMarksNew;
         //Button buttonTestVzvodaNew;
 
         public FormHello()
         {
             InitializeComponent();
-            _listPanelsTestsOnPanel = new List<Panel> { };
+            ListPanelsTestsOnPanel = new List<Panel> { };
 
 
-            formChooseVzvod = new FormChooseVzvod(this);
+            _formChooseVzvod = new FormChooseVzvod(this);
 
             //_listmarks = new List<int[]> {};
 
-            this.MinimumSize = this.Size;
-            this.MaximumSize = this.Size;
+            MinimumSize = Size;
+            MaximumSize = Size;
         }
 
         private void buttonCreateTest_Click(object sender, EventArgs e)
         {
-            testOperations = new Panel();
-            linkLabelTestNew = new Label();
-            buttonTestDeleteNew = new Button();
-            buttonTestOpenNew = new Button();
-            buttonTestDownloadNew = new Button();
-            buttonTestMarksNew = new Button();
+            TestOperations = new Panel();
+            _linkLabelTestNew = new Label();
+            _buttonTestDeleteNew = new Button();
+            _buttonTestOpenNew = new Button();
+            _buttonTestDownloadNew = new Button();
+            _buttonTestMarksNew = new Button();
             //buttonTestVzvodaNew = new Button();
 
-            testOperations.BackColor = System.Drawing.SystemColors.ControlLight;
-            testOperations.Controls.Add(linkLabelTestNew);
-            testOperations.Controls.Add(buttonTestDeleteNew);
-            testOperations.Controls.Add(buttonTestOpenNew);
-            testOperations.Controls.Add(buttonTestDownloadNew);
-            testOperations.Controls.Add(buttonTestMarksNew);
+            TestOperations.BackColor = System.Drawing.SystemColors.ControlLight;
+            TestOperations.Controls.Add(_linkLabelTestNew);
+            TestOperations.Controls.Add(_buttonTestDeleteNew);
+            TestOperations.Controls.Add(_buttonTestOpenNew);
+            TestOperations.Controls.Add(_buttonTestDownloadNew);
+            TestOperations.Controls.Add(_buttonTestMarksNew);
             //testOperations.Controls.Add(buttonTestVzvodaNew);
-            testOperations.Location = new System.Drawing.Point(28, 78 + 70 * _listPanelsTestsOnPanel.Count);
-            testOperations.Name = "panelTestInTestsList" + _listPanelsTestsOnPanel.Count;
-            testOperations.Size = new System.Drawing.Size(808, 51);
-            testOperations.TabIndex = 7;
+            TestOperations.Location = new System.Drawing.Point(28, 78 + 70 * ListPanelsTestsOnPanel.Count);
+            TestOperations.Name = "panelTestInTestsList" + ListPanelsTestsOnPanel.Count;
+            TestOperations.Size = new System.Drawing.Size(808, 51);
+            TestOperations.TabIndex = 7;
 
 
-            FormChooseTestName formChooseTestName = new FormChooseTestName(this, _listPanelsTestsOnPanel.Count);
-            this.Visible = false;
+            FormChooseTestName formChooseTestName = new FormChooseTestName(this, ListPanelsTestsOnPanel.Count);
+            Visible = false;
             formChooseTestName.Visible = true;
-            _listMarksAndName.Add(formChooseTestName);
+            ListMarksAndName.Add(formChooseTestName);
 
 
-            linkLabelTestNew.AutoSize = true;
-            linkLabelTestNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            linkLabelTestNew.Location = new System.Drawing.Point(3, 15);
-            linkLabelTestNew.Name = "linkLabelTest" + _listPanelsTestsOnPanel.Count;
-            linkLabelTestNew.Size = new System.Drawing.Size(146, 20);
-            linkLabelTestNew.TabIndex = 1;
-            linkLabelTestNew.TabStop = true;
+            _linkLabelTestNew.AutoSize = true;
+            _linkLabelTestNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            _linkLabelTestNew.Location = new System.Drawing.Point(3, 15);
+            _linkLabelTestNew.Name = "linkLabelTest" + ListPanelsTestsOnPanel.Count;
+            _linkLabelTestNew.Size = new System.Drawing.Size(146, 20);
+            _linkLabelTestNew.TabIndex = 1;
+            _linkLabelTestNew.TabStop = true;
 
-            buttonTestDeleteNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonTestDeleteNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            buttonTestDeleteNew.Location = new System.Drawing.Point(720, 5);
-            buttonTestDeleteNew.Name = "buttonTestDelete" + _listPanelsTestsOnPanel.Count;
-            buttonTestDeleteNew.Size = new System.Drawing.Size(80, 40);
-            buttonTestDeleteNew.TabIndex = 6;
-            buttonTestDeleteNew.Text = "Удалить";
+            _buttonTestDeleteNew.FlatStyle = FlatStyle.Flat;
+            _buttonTestDeleteNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            _buttonTestDeleteNew.Location = new System.Drawing.Point(720, 5);
+            _buttonTestDeleteNew.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
+            _buttonTestDeleteNew.Size = new System.Drawing.Size(80, 40);
+            _buttonTestDeleteNew.TabIndex = 6;
+            _buttonTestDeleteNew.Text = "Удалить";
             //buttonTestDeleteNew.Click=
-            buttonTestDeleteNew.UseVisualStyleBackColor = true;
+            _buttonTestDeleteNew.UseVisualStyleBackColor = true;
 
 
-            buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            buttonTestOpenNew.Location = new System.Drawing.Point(260, 5);
-            buttonTestOpenNew.Name = "buttonTestOpen" + _listPanelsTestsOnPanel.Count;
-            buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
-            buttonTestOpenNew.TabIndex = 2;
-            buttonTestOpenNew.Text = "Просмотр/редактирование";
-            buttonTestOpenNew.UseVisualStyleBackColor = true;
+            _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            _buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            _buttonTestOpenNew.Location = new System.Drawing.Point(260, 5);
+            _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
+            _buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
+            _buttonTestOpenNew.TabIndex = 2;
+            _buttonTestOpenNew.Text = "Просмотр/редактирование";
+            _buttonTestOpenNew.UseVisualStyleBackColor = true;
 
-            buttonTestDownloadNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonTestDownloadNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            buttonTestDownloadNew.Location = new System.Drawing.Point(634, 5);
-            buttonTestDownloadNew.Name = "buttonTestDownload" + _listPanelsTestsOnPanel.Count;
-            buttonTestDownloadNew.Size = new System.Drawing.Size(80, 40);
-            buttonTestDownloadNew.TabIndex = 5;
-            buttonTestDownloadNew.Text = "Скачать";
-            buttonTestDownloadNew.UseVisualStyleBackColor = true;
+            _buttonTestDownloadNew.FlatStyle = FlatStyle.Flat;
+            _buttonTestDownloadNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            _buttonTestDownloadNew.Location = new System.Drawing.Point(634, 5);
+            _buttonTestDownloadNew.Name = "buttonTestDownload" + ListPanelsTestsOnPanel.Count;
+            _buttonTestDownloadNew.Size = new System.Drawing.Size(80, 40);
+            _buttonTestDownloadNew.TabIndex = 5;
+            _buttonTestDownloadNew.Text = "Скачать";
+            _buttonTestDownloadNew.UseVisualStyleBackColor = true;
 
             //buttonTestVzvodaNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             //buttonTestVzvodaNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
@@ -118,26 +116,26 @@ namespace Voenkaff
             //buttonTestVzvodaNew.Text = "Взвода";
             //buttonTestVzvodaNew.UseVisualStyleBackColor = true;
 
-            buttonTestMarksNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonTestMarksNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            buttonTestMarksNew.Location = new System.Drawing.Point(480, 5);
-            buttonTestMarksNew.Name = "buttonTestMarks" + _listPanelsTestsOnPanel.Count;
-            buttonTestMarksNew.Size = new System.Drawing.Size(146, 40);
-            buttonTestMarksNew.TabIndex = 4;
-            buttonTestMarksNew.Text = "Критерии оценки";
-            buttonTestMarksNew.UseVisualStyleBackColor = true;
+            _buttonTestMarksNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            _buttonTestMarksNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            _buttonTestMarksNew.Location = new System.Drawing.Point(480, 5);
+            _buttonTestMarksNew.Name = "buttonTestMarks" + ListPanelsTestsOnPanel.Count;
+            _buttonTestMarksNew.Size = new System.Drawing.Size(146, 40);
+            _buttonTestMarksNew.TabIndex = 4;
+            _buttonTestMarksNew.Text = "Критерии оценки";
+            _buttonTestMarksNew.UseVisualStyleBackColor = true;
 
-            _listPanelsTestsOnPanel.Add(testOperations);
-            panelMain.Controls.Add(testOperations);
+            ListPanelsTestsOnPanel.Add(TestOperations);
+            panelMain.Controls.Add(TestOperations);
 
-            buttonCreateTest.Location = new System.Drawing.Point(365, 81 + 70 * _listPanelsTestsOnPanel.Count);
+            buttonCreateTest.Location = new System.Drawing.Point(365, 81 + 70 * ListPanelsTestsOnPanel.Count);
 
 
-            buttonTestOpenNew.Click += openCurrentTest;
+            _buttonTestOpenNew.Click += openCurrentTest;
             //buttonTestVzvodaNew.Click += testCurrentVzvoda;
-            buttonTestMarksNew.Click += testCurrentMarks;
+            _buttonTestMarksNew.Click += testCurrentMarks;
 
-            buttonTestDownloadNew.Click += testCurrentDownload;
+            _buttonTestDownloadNew.Click += testCurrentDownload;
         }
 
 
@@ -147,13 +145,13 @@ namespace Voenkaff
             string index = tempString.Substring(tempString.Length - 1);
             
             saveTests.Filter = Resources.SaveTestFilter;
-            saveTests.FileName = _listTests[Int32.Parse(index)].TestName;
+            saveTests.FileName = ListTests[Int32.Parse(index)].TestName;
             if (saveTests.ShowDialog() == DialogResult.Cancel)
                 return;
             // получаем выбранный файл
             string filename = saveTests.FileName;
 
-            string testJson = new JsonCreator().CreateTestCollection(new List<Test> {_listTests[Int32.Parse(index)]});
+            string testJson = new JsonCreator().CreateTestCollection(new List<Test> {ListTests[Int32.Parse(index)]});
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");
@@ -167,7 +165,7 @@ namespace Voenkaff
 
 
             this.Visible = false;
-            _listTests[Int32.Parse(index)].Visible = true;
+            ListTests[Int32.Parse(index)].Visible = true;
         }
 
         //private void testCurrentVzvoda(object sender, EventArgs e)
@@ -186,17 +184,16 @@ namespace Voenkaff
             string tempString = ((Control) sender).Parent.Name;
             string index = tempString.Substring(tempString.Length - 1);
 
-            this.Visible = false;
-            CheckBox fuck = (CheckBox) (_listMarksAndName[Int32.Parse(index)].Controls[0].Controls
+            Visible = false;
+            CheckBox fuck = (CheckBox) (ListMarksAndName[Int32.Parse(index)].Controls[0].Controls
                 .Find("checkBoxIsFirstOpen", false)[0]);
             fuck.Checked = false;
-            _listMarksAndName[Int32.Parse(index)].Visible = true;
+            ListMarksAndName[Int32.Parse(index)].Visible = true;
         }
 
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult rz = new DialogResult();
-            rz = MessageBox.Show("Завершить программу?", "Завершение", MessageBoxButtons.YesNo);
+            var rz = MessageBox.Show("Завершить программу?", "Завершение", MessageBoxButtons.YesNo);
 
             if (rz == DialogResult.Yes)
             {
@@ -213,7 +210,7 @@ namespace Voenkaff
             // получаем выбранный файл
             string filename = saveTests.FileName;
 
-            string testJson = new JsonCreator().CreateTestCollection(_listTests);
+            string testJson = new JsonCreator().CreateTestCollection(ListTests);
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");
@@ -221,8 +218,8 @@ namespace Voenkaff
 
         private void взводаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            formChooseVzvod.Visible = true;
+            Visible = false;
+            _formChooseVzvod.Visible = true;
         }
     }
 }
