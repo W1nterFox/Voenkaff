@@ -41,6 +41,7 @@ namespace Voenkaff
         {
             int fake;
             Boolean markIsOk = false;
+            Boolean markIsGrow = false;
             if (textBoxMark5.Text != null && textBoxMark5.Text != "" && textBoxMark4.Text != null && textBoxMark4.Text != "" && textBoxMark3.Text != null && textBoxMark3.Text != "")
             {
 
@@ -57,6 +58,17 @@ namespace Voenkaff
                         markIsOk = true;
                         buttonNext.Enabled = true;
                         labelOnlyDigit.Visible = false;
+                    }
+
+                    if (Int32.Parse(textBoxMark5.Text) > Int32.Parse(textBoxMark4.Text) && Int32.Parse(textBoxMark4.Text) > Int32.Parse(textBoxMark3.Text) )
+                    {
+                        markIsGrow = true;
+                        labelMarksAreGrow.Visible = false;
+                    }
+                    else
+                    {
+                        buttonNext.Enabled = false;
+                        labelMarksAreGrow.Visible = true;
                     }
 
                 }
@@ -85,7 +97,7 @@ namespace Voenkaff
             }
             else
             {
-                if (markIsOk) buttonNext.Enabled = true;
+                if (markIsOk && markIsGrow) buttonNext.Enabled = true;
                 labelLabelErrorMin3.Visible = false;
             }
 

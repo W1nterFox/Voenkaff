@@ -87,6 +87,7 @@ namespace Voenkaff
             _buttonTestDeleteNew.Text = "Удалить";
             //buttonTestDeleteNew.Click=
             _buttonTestDeleteNew.UseVisualStyleBackColor = true;
+            _buttonTestDeleteNew.Enabled = false;
 
 
             _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -134,10 +135,26 @@ namespace Voenkaff
             _buttonTestOpenNew.Click += openCurrentTest;
             //buttonTestVzvodaNew.Click += testCurrentVzvoda;
             _buttonTestMarksNew.Click += testCurrentMarks;
-
+            _buttonTestDeleteNew.Click += testCurrentDelete;
             _buttonTestDownloadNew.Click += testCurrentDownload;
         }
 
+        private void testCurrentDelete(object sender, EventArgs e)
+        {
+            //string tempString = ((Control)sender).Parent.Name;
+            //string index = tempString.Substring(tempString.Length - 1);
+            //ListPanelsTestsOnPanel[Int32.Parse(index)].Dispose();
+            ////ListPanelsTestsOnPanel.Remove(ListPanelsTestsOnPanel[Int32.Parse(index)]);
+            ////panelMain.Controls[Int32.Parse(index)].Dispose();
+            ////panelMain.Controls.Remove(panelMain.Controls[Int32.Parse(index)]);
+            ////ListTests.Remove(ListTests[Int32.Parse(index)]);
+
+            //foreach (Panel pnl in ListPanelsTestsOnPanel)
+            //{
+            //    pnl.Location = new System.Drawing.Point(28, 78 + 70 * ListPanelsTestsOnPanel.Count);
+            //}
+            //buttonCreateTest.Location = new System.Drawing.Point(365, 81 + 70 * ListPanelsTestsOnPanel.Count);
+        }
 
         private void testCurrentDownload(object sender, EventArgs e)
         {

@@ -47,6 +47,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.labelMarksAreGrow = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -81,7 +82,7 @@
             // 
             this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNext.Font = new System.Drawing.Font("Century Gothic", 15.75F);
-            this.buttonNext.Location = new System.Drawing.Point(216, 330);
+            this.buttonNext.Location = new System.Drawing.Point(216, 344);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(140, 45);
             this.buttonNext.TabIndex = 5;
@@ -131,6 +132,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelMarksAreGrow);
             this.groupBox1.Controls.Add(this.labelOnlyDigit);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -144,7 +146,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(124, 128);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(329, 196);
+            this.groupBox1.Size = new System.Drawing.Size(329, 210);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -251,6 +253,18 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Введите критерии оценки";
             // 
+            // labelMarksAreGrow
+            // 
+            this.labelMarksAreGrow.AutoSize = true;
+            this.labelMarksAreGrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelMarksAreGrow.Font = new System.Drawing.Font("Century Gothic", 9.25F);
+            this.labelMarksAreGrow.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelMarksAreGrow.Location = new System.Drawing.Point(14, 182);
+            this.labelMarksAreGrow.Name = "labelMarksAreGrow";
+            this.labelMarksAreGrow.Size = new System.Drawing.Size(300, 17);
+            this.labelMarksAreGrow.TabIndex = 15;
+            this.labelMarksAreGrow.Text = "* Отлично > Хорошо > Удовлетворительно *";
+            // 
             // FormChooseTestName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,5 +305,6 @@
         private System.Windows.Forms.Label labelLabelErrorMin3;
         private System.Windows.Forms.Label labelOnlyDigit;
         private System.Windows.Forms.CheckBox checkBoxIsFirstOpen;
+        private System.Windows.Forms.Label labelMarksAreGrow;
     }
 }
