@@ -11,6 +11,7 @@ namespace Voenkaff.Creators
     {
         public void CreatePictures(Test test,string path)
         {
+            Directory.CreateDirectory(path + "\\picture\\");
             foreach (var control in test.ListPanelsTasks)
             {
                 foreach (var testElement in control.Entity.Controls.Find("panelQuestion", false)[0].Controls)
@@ -20,7 +21,6 @@ namespace Voenkaff.Creators
                         PictureBox picture = (testElement as PictureBox);
                         var serializationFile = path + "\\picture\\" + picture.Name + ".bin";
                         var serializationPicture = new SerializablePicture {Picture = picture.Image as Bitmap};
-                        Directory.CreateDirectory(path + "\\picture\\");
                         using (var stream = File.Open(serializationFile, FileMode.Create))
                         {
                             var binaryFormatter = new BinaryFormatter();

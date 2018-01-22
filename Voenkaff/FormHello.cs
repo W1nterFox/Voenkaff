@@ -18,6 +18,7 @@ namespace Voenkaff
         public Dictionary<string, List<int>> TestNameAndMarks { get; set; } = new Dictionary<string, List<int>> { };
 
         private readonly FormChooseVzvod _formChooseVzvod;
+        private FormSettings _formSettings;
 
         public Panel TestOperations { get; set; }
         Label _linkLabelTestNew;
@@ -30,10 +31,12 @@ namespace Voenkaff
         public FormHello()
         {
             InitializeComponent();
+            new TestInizializator().Initialize(this);
             ListPanelsTestsOnPanel = new List<Panel> { };
 
 
             _formChooseVzvod = new FormChooseVzvod(this);
+            _formSettings = new FormSettings();
 
             //_listmarks = new List<int[]> {};
 
@@ -221,12 +224,7 @@ namespace Voenkaff
 
         private void сохранитьТестыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveTests.Filter = Resources.SaveTestFilter;
-
-            if (saveTests.ShowDialog() == DialogResult.Cancel)
-                return;
-            // получаем выбранный файл
-            string filename = saveTests.FileName;
+            string filename = new DynamicParams().Get().TestPath+"\\"+DateTime.Now.ToString("yyyyMMddHHmmss") +".test";
 
             string testJson = new JsonCreator().CreateTestCollection(ListTests);
 
@@ -244,6 +242,15 @@ namespace Voenkaff
         {
             Visible = false;
             _formChooseVzvod.Visible = true;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (_formSettings.IsDisposed)
+            {
+                _formSettings=new FormSettings();
+            }
+            _formSettings.Visible = true;
         }
     }
 }
