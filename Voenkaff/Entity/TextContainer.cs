@@ -28,7 +28,7 @@ namespace Voenkaff.Entity
             Instance.MouseMove += IdentifierMove;
             Instance.TextChanged += IdentifierTextChange;
             Instance.BringToFront();
-
+            Instance.Width = 150;
             ContextMenu cmu = new ContextMenu();
             MenuItem menuItemDelete = new MenuItem
             {
