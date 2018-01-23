@@ -26,6 +26,7 @@ namespace Voenkaff
         Button _buttonTestOpenNew;
         Button _buttonTestDownloadNew;
         Button _buttonTestMarksNew;
+        Button _buttonTestDownloadDoc;
         //Button buttonTestVzvodaNew;
 
         public FormHello()
@@ -52,14 +53,16 @@ namespace Voenkaff
             _buttonTestOpenNew = new Button();
             _buttonTestDownloadNew = new Button();
             _buttonTestMarksNew = new Button();
+            _buttonTestDownloadDoc = new Button();
             //buttonTestVzvodaNew = new Button();
 
             TestOperations.BackColor = System.Drawing.SystemColors.ControlLight;
             TestOperations.Controls.Add(_linkLabelTestNew);
-            TestOperations.Controls.Add(_buttonTestDeleteNew);
+            //TestOperations.Controls.Add(_buttonTestDeleteNew);
             TestOperations.Controls.Add(_buttonTestOpenNew);
             TestOperations.Controls.Add(_buttonTestDownloadNew);
             TestOperations.Controls.Add(_buttonTestMarksNew);
+            TestOperations.Controls.Add(_buttonTestDownloadDoc);
             //testOperations.Controls.Add(buttonTestVzvodaNew);
             TestOperations.Location = new System.Drawing.Point(28, 78 + 70 * ListPanelsTestsOnPanel.Count);
             TestOperations.Name = "panelTestInTestsList" + ListPanelsTestsOnPanel.Count;
@@ -81,16 +84,27 @@ namespace Voenkaff
             _linkLabelTestNew.TabIndex = 1;
             _linkLabelTestNew.TabStop = true;
 
-            _buttonTestDeleteNew.FlatStyle = FlatStyle.Flat;
-            _buttonTestDeleteNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            _buttonTestDeleteNew.Location = new System.Drawing.Point(720, 5);
-            _buttonTestDeleteNew.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
-            _buttonTestDeleteNew.Size = new System.Drawing.Size(80, 40);
-            _buttonTestDeleteNew.TabIndex = 6;
-            _buttonTestDeleteNew.Text = "Удалить";
-            //buttonTestDeleteNew.Click=
-            _buttonTestDeleteNew.UseVisualStyleBackColor = true;
-            _buttonTestDeleteNew.Enabled = false;
+            //_buttonTestDeleteNew.FlatStyle = FlatStyle.Flat;
+            //_buttonTestDeleteNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            //_buttonTestDeleteNew.Location = new System.Drawing.Point(720, 5);
+            //_buttonTestDeleteNew.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
+            //_buttonTestDeleteNew.Size = new System.Drawing.Size(80, 40);
+            //_buttonTestDeleteNew.TabIndex = 6;
+            //_buttonTestDeleteNew.Text = "Удалить";
+            ////buttonTestDeleteNew.Click=
+            //_buttonTestDeleteNew.UseVisualStyleBackColor = true;
+            //_buttonTestDeleteNew.Enabled = false;
+
+            _buttonTestDownloadDoc.FlatStyle = FlatStyle.Flat;
+            _buttonTestDownloadDoc.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            _buttonTestDownloadDoc.Location = new System.Drawing.Point(720, 5);
+            _buttonTestDownloadDoc.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
+            _buttonTestDownloadDoc.Size = new System.Drawing.Size(80, 40);
+            _buttonTestDownloadDoc.TabIndex = 6;
+            _buttonTestDownloadDoc.Text = "Скачать в Word";
+            _buttonTestDownloadDoc.UseVisualStyleBackColor = true;
+            _buttonTestDownloadDoc.Enabled = true;
+
 
 
             _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -140,6 +154,15 @@ namespace Voenkaff
             _buttonTestMarksNew.Click += testCurrentMarks;
             _buttonTestDeleteNew.Click += testCurrentDelete;
             _buttonTestDownloadNew.Click += testCurrentDownload;
+            _buttonTestDownloadDoc.Click += testCurrentDownloadDoc;
+        }
+
+        private void testCurrentDownloadDoc(object sender, EventArgs e)
+        {
+            string tempString = ((Control)sender).Parent.Name;
+            string index = tempString.Substring(tempString.Length - 1);
+
+            WordSaver.createDoc(ListTests[Int32.Parse(index)]);
         }
 
         private void testCurrentDelete(object sender, EventArgs e)

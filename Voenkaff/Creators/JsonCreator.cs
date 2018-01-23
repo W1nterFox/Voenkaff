@@ -36,7 +36,7 @@ namespace Voenkaff.Creators
             foreach (var task in testObj.ListPanelsTasks)
             {
                 var questions = task.Entity.Controls.Find("panelQuestion", false)[0];
-                var answers = task.Entity.Controls.Find("panelAnswer", false)[0];
+                //var answers = task.Entity.Controls.Find("panelAnswer", false)[0];
                 var taskElements = new List<TaskElement>();
                 foreach (Control taskElement in questions.Controls)
                 {
@@ -52,7 +52,7 @@ namespace Voenkaff.Creators
                     };
                     if (taskElement is TextBox)
                     {
-                        element.Answer = answers.Controls.Find(taskElement.Name, false)[0].Controls[0].Text;
+                        element.Answer = taskElement.Text;
                     }
 
                     if (taskElement is PictureBox)

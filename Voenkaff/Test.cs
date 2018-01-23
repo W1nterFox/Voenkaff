@@ -15,7 +15,7 @@ namespace Voenkaff
 
         PanelWrapper _currentTask = new PanelWrapper();
         private readonly PanelWrapper _currentPanelQuestion = new PanelWrapper();
-        private readonly PanelWrapper _currentPanelAnswer = new PanelWrapper();
+        //private readonly PanelWrapper _currentPanelAnswer = new PanelWrapper();
         
         string _testOperationsName;
         int _indexTest;
@@ -54,21 +54,21 @@ namespace Voenkaff
             ListPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
             panelQuestion.Text = "Задание №1";
             panelTaskStart.Controls.Add(panelQuestion);
-            panelTaskStart.Controls.Add(panelAnswer);
+            //panelTaskStart.Controls.Add(panelAnswer);
 
-            panelAnswer.BringToFront();
+            //panelAnswer.BringToFront();
             //panelTask.Visible = false;
 
             _currentTask.Entity = panelTaskStart;
             _currentTask.Identifier = 1;
             _currentPanelQuestion.Entity = panelQuestion;
-            _currentPanelAnswer.Entity = panelAnswer;
+            //_currentPanelAnswer.Entity = panelAnswer;
 
             panelListOfTasks.Controls.Add(createLinkLabel(0));
 
             this.FormClosing += Test_Closing;
 
-            panelAnswer.Parent = panelTaskStart;
+            //panelAnswer.Parent = panelTaskStart;
         }
 
         private LinkLabel createLinkLabel(int indexPanel)
@@ -110,7 +110,7 @@ namespace Voenkaff
             _currentTask = ListPanelsTasks[(int) currentLL.Tag];
 
             _currentPanelQuestion.Entity = (Panel) _currentTask.Entity.Controls.Find("panelQuestion", false)[0];
-            _currentPanelAnswer.Entity = (Panel) _currentTask.Entity.Controls.Find("panelAnswer", false)[0];
+            //_currentPanelAnswer.Entity = (Panel) _currentTask.Entity.Controls.Find("panelAnswer", false)[0];
         }
 
 
@@ -120,7 +120,7 @@ namespace Voenkaff
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, _currentPanelAnswer.Entity, this,
+            TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, /*_currentPanelAnswer.Entity,*/ this,
                 _currentTask.Identifier);
             ControlMover.Add(tc.Instance);
             _currentTask.Identifier++;
@@ -186,28 +186,28 @@ namespace Voenkaff
                 AutoScroll = true,
                 BackColor = SystemColors.GradientInactiveCaption,
                 Location = new Point(5, 5),
-                Size = new Size(1100, 489),
+                Size = new Size(1100, 610),
                 Name = "panelQuestion",
                 Text = "Задание №" + (ListPanelsTasks.Count + 1)
                 
         };
 
-            Panel panelAnswer = new Panel
-            {
-                AutoScroll = true,
-                BackColor = Color.Linen,
-                Location = new Point(5, 500),
-                Size = new Size(1100, 118),
-                Name = "panelAnswer",
-                TabIndex = 2
+            //Panel panelAnswer = new Panel
+            //{
+            //    AutoScroll = true,
+            //    BackColor = Color.Linen,
+            //    Location = new Point(5, 500),
+            //    Size = new Size(1100, 118),
+            //    Name = "panelAnswer",
+            //    TabIndex = 2
 
             
 
 
-        };
+            //};
 
             newPanelTask.Controls.Add(panelQuestion);
-            newPanelTask.Controls.Add(panelAnswer);
+            //newPanelTask.Controls.Add(panelAnswer);
             newPanelTask.Dock = DockStyle.Fill;
             newPanelTask.Location = new Point(133, 0);
             newPanelTask.Margin = new Padding(10);
@@ -227,7 +227,7 @@ namespace Voenkaff
 
             _currentTask = ListPanelsTasks[ListPanelsTasks.Count - 1];
             _currentPanelQuestion.Entity = (Panel) _currentTask.Entity.Controls.Find("panelQuestion", false)[0];
-            _currentPanelAnswer.Entity = (Panel) _currentTask.Entity.Controls.Find("panelAnswer", false)[0];
+            //_currentPanelAnswer.Entity = (Panel) _currentTask.Entity.Controls.Find("panelAnswer", false)[0];
 
             panelListOfTasks.Controls.Add(createLinkLabel(ListPanelsTasks.Count - 1));
         }
@@ -257,15 +257,15 @@ namespace Voenkaff
             ListPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
 
             panelTaskStart.Controls.Add(panelQuestion);
-            panelTaskStart.Controls.Add(panelAnswer);
+            //panelTaskStart.Controls.Add(panelAnswer);
 
-            panelAnswer.BringToFront();
+            //panelAnswer.BringToFront();
             //panelTask.Visible = false;
 
             _currentTask.Entity = panelTaskStart;
             _currentTask.Identifier = 1;
             _currentPanelQuestion.Entity = panelQuestion;
-            _currentPanelAnswer.Entity = panelAnswer;
+            //_currentPanelAnswer.Entity = panelAnswer;
 
             panelListOfTasks.Controls.Add(createLinkLabel(0));
         }
