@@ -66,9 +66,9 @@ namespace Voenkaff
             //testOperations.Controls.Add(buttonTestVzvodaNew);
             TestOperations.Location = new System.Drawing.Point(28, 78 + 70 * ListPanelsTestsOnPanel.Count);
             TestOperations.Name = "panelTestInTestsList" + ListPanelsTestsOnPanel.Count;
-            TestOperations.Size = new System.Drawing.Size(808, 51);
+            TestOperations.Size = new System.Drawing.Size(1200, 51);
             TestOperations.TabIndex = 7;
-
+            //TestOperations.BackColor = System.Drawing.Color.Green;
 
             FormChooseTestName formChooseTestName = new FormChooseTestName(this, ListPanelsTestsOnPanel.Count);
             Visible = false;
@@ -97,9 +97,9 @@ namespace Voenkaff
 
             _buttonTestDownloadDoc.FlatStyle = FlatStyle.Flat;
             _buttonTestDownloadDoc.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            _buttonTestDownloadDoc.Location = new System.Drawing.Point(720, 5);
+            _buttonTestDownloadDoc.Location = new System.Drawing.Point(1000, 5);
             _buttonTestDownloadDoc.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
-            _buttonTestDownloadDoc.Size = new System.Drawing.Size(80, 40);
+            _buttonTestDownloadDoc.Size = new System.Drawing.Size(150, 40);
             _buttonTestDownloadDoc.TabIndex = 6;
             _buttonTestDownloadDoc.Text = "Скачать в Word";
             _buttonTestDownloadDoc.UseVisualStyleBackColor = true;
@@ -109,7 +109,7 @@ namespace Voenkaff
 
             _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             _buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            _buttonTestOpenNew.Location = new System.Drawing.Point(260, 5);
+            _buttonTestOpenNew.Location = new System.Drawing.Point(540, 5);
             _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
             _buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
             _buttonTestOpenNew.TabIndex = 2;
@@ -118,7 +118,7 @@ namespace Voenkaff
 
             _buttonTestDownloadNew.FlatStyle = FlatStyle.Flat;
             _buttonTestDownloadNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            _buttonTestDownloadNew.Location = new System.Drawing.Point(634, 5);
+            _buttonTestDownloadNew.Location = new System.Drawing.Point(915, 5);
             _buttonTestDownloadNew.Name = "buttonTestDownload" + ListPanelsTestsOnPanel.Count;
             _buttonTestDownloadNew.Size = new System.Drawing.Size(80, 40);
             _buttonTestDownloadNew.TabIndex = 5;
@@ -136,7 +136,7 @@ namespace Voenkaff
 
             _buttonTestMarksNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             _buttonTestMarksNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            _buttonTestMarksNew.Location = new System.Drawing.Point(480, 5);
+            _buttonTestMarksNew.Location = new System.Drawing.Point(760, 5);
             _buttonTestMarksNew.Name = "buttonTestMarks" + ListPanelsTestsOnPanel.Count;
             _buttonTestMarksNew.Size = new System.Drawing.Size(146, 40);
             _buttonTestMarksNew.TabIndex = 4;
@@ -146,7 +146,7 @@ namespace Voenkaff
             ListPanelsTestsOnPanel.Add(TestOperations);
             panelMain.Controls.Add(TestOperations);
 
-            buttonCreateTest.Location = new System.Drawing.Point(365, 81 + 70 * ListPanelsTestsOnPanel.Count);
+            buttonCreateTest.Location = new System.Drawing.Point(580, 81 + 70 * ListPanelsTestsOnPanel.Count);
 
 
             _buttonTestOpenNew.Click += openCurrentTest;

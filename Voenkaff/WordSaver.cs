@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,8 @@ namespace Voenkaff
                 // Создаём объект приложения
                 Word.Application app = new Word.Application();
                 // Путь до шаблона документа
-                string source = @"D:\\Новая папка (3)\Тест9.docx";
+                File.Copy(Environment.CurrentDirectory + @"\Word\WordTest.docx", Environment.CurrentDirectory + @"\Word\" + test.TestName + ".docx");
+                string source = Environment.CurrentDirectory + @"\Word\" + test.TestName + ".docx";
                 // Открываем
                 doc = app.Documents.Open(source);
                 doc.Activate();
@@ -68,11 +70,8 @@ namespace Voenkaff
                             {
                                 if (panelWrapperTask.Entity.Controls[0].Controls[i] is RichTextBox)
                                 {
-                                    //string asdasd = panelWrapperTask.Entity.Controls[0].Controls[i].Name.Substring(0, 32);
-                                    //if (asdasd == "System.Windows.Forms.RichTextBox")
-                                    {
-                                        taskUslovie = panelWrapperTask.Entity.Controls[0].Controls[i].Text;
-                                    }
+                                    taskUslovie = panelWrapperTask.Entity.Controls[0].Controls[i].Text;
+                                
                                 }
                                 
                             }
@@ -85,12 +84,9 @@ namespace Voenkaff
                             {
                                 if (panelWrapperTask.Entity.Controls[0].Controls[i] is PictureBox)
                                 {
-                                    //string asdasd = panelWrapperTask.Entity.Controls[0].Controls[i].Name.Substring(0, 31);
-                                    //if (asdasd == "System.Windows.Forms.PictureBox")
-                                    {
-                                        Clipboard.SetImage(((PictureBox)(panelWrapperTask.Entity.Controls[0].Controls[i])).Image);
-                                        mark.Range.Paste();
-                                    }
+                                    Clipboard.SetImage(((PictureBox)(panelWrapperTask.Entity.Controls[0].Controls[i])).Image);
+                                    mark.Range.Paste();
+                                 
                                 }
 
                             }
@@ -101,11 +97,8 @@ namespace Voenkaff
                                 
                                 if (panelWrapperTask.Entity.Controls[0].Controls[i - 1] is TextBox)
                                 {
-                                    //string asdasd = panelWrapperTask.Entity.Controls[0].Controls[i - 1].Name.Substring(0, 28);
-                                    //if (asdasd == "System.Windows.Forms.TextBox")
-                                    {
-                                        bufListTB.Add((TextBox)panelWrapperTask.Entity.Controls[0].Controls[i - 1]);
-                                    }
+                                    bufListTB.Add((TextBox)panelWrapperTask.Entity.Controls[0].Controls[i - 1]);
+                                
                                 }
                                 
                             }
@@ -126,15 +119,7 @@ namespace Voenkaff
                 doc.Close();
                 doc = null;
             }
-            //catch (Exception ex)
-            //{
-            //    // Если произошла ошибка, то
-            //    // закрываем документ и выводим информацию
-            //    doc.Close();
-            //    doc = null;
-            //    Console.WriteLine("Во время выполнения произошла ошибка!");
-            //    Console.ReadLine();
-            //}
+            
         }
     }
 }
