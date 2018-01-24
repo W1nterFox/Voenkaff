@@ -41,9 +41,9 @@ namespace Voenkaff
         public List<FormChooseTestName> ListMarksAndName { get; set; } = new List<FormChooseTestName> { };
 
 
-        
-
-
+        public List<TextBox> TBList { get; set; } = new List<TextBox> { };
+        public List<Label> LabelList { get; set; } = new List<Label> { };
+        public Dictionary<TextBox, Label> TBAndLabel { get; set; } = new Dictionary<TextBox, Label> { };
 
 
 
@@ -56,7 +56,7 @@ namespace Voenkaff
 
             //Подгрузка тестов
             var testLoader = new TestLoader();
-            listOfLoadTests = testLoader.LoadTestsFromFolder(@"D:\\"/*new DynamicParams().Get().TestPath*/);
+            listOfLoadTests = testLoader.LoadTestsFromFolder(@"D:\\temp"/*new DynamicParams().Get().TestPath*/);
 
 
             foreach (Wrappers.Test test in listOfLoadTests.TestList)
@@ -424,7 +424,7 @@ namespace Voenkaff
 
                     if (taskElem.Type.Equals("System.Windows.Forms.PictureBox"))
                     {
-                        using (var stream = File.Open(@"D:\\" + @"\" + taskElem.Media, FileMode.Open))
+                        using (var stream = File.Open(@"D:\\temp" + @"\" + taskElem.Media, FileMode.Open))
                         {
                             var binaryFormatter = new BinaryFormatter();
                             var image = ((SerializablePicture)binaryFormatter.Deserialize(stream)).Picture;
@@ -509,13 +509,21 @@ namespace Voenkaff
                     panelQestionFoo.Controls.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)]);
                     _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].BringToFront();
                     ControlMover.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)]);
-                    _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Move += moveTBWithLB;
+                    //_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Move += moveTBWithLB;
                     indexLabel++;
+
+                    TBList.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)]);
+
                 }
                 foreach (Label label in _listTBLabels[task])
                 {
-
                     panelQestionFoo.Controls.Add(label);
+                    LabelList.Add(label);
+                }
+
+                for (int i = 0; i < _TBInTask[task].Count; i++)
+                {
+                    TBAndLabel.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)], _listTBLabels[task][i]);
                 }
 
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);
@@ -542,14 +550,20 @@ namespace Voenkaff
             {
                 toTest.Controls.Find("panelListOfTasks",true)[0].Controls.Add(toTest.createLinkLabel(i));
             }
-            
+
+            foreach (TextBox tb in TBList)
+            {
+                tb.Move += moveTBWithLB;
+            }
 
         }
+
+        
 
         private void moveTBWithLB(object sender, EventArgs e)
         {
             TextBox currentTB = (TextBox)sender;
-            //Label label = currentTB.Parent
+            TBAndLabel[currentTB].Location = new Point(currentTB.Location.X, currentTB.Location.Y - 20);
         }
 
     }
