@@ -50,10 +50,10 @@
             this.panelMain.Controls.Add(this.buttonCreateTest);
             this.panelMain.Controls.Add(this.label1);
             this.panelMain.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panelMain.Location = new System.Drawing.Point(17, 33);
+            this.panelMain.Location = new System.Drawing.Point(18, 33);
             this.panelMain.Margin = new System.Windows.Forms.Padding(4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1671, 773);
+            this.panelMain.Size = new System.Drawing.Size(1468, 773);
             this.panelMain.TabIndex = 0;
             // 
             // buttonCreateTest
@@ -61,7 +61,7 @@
             this.buttonCreateTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreateTest.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonCreateTest.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonCreateTest.Location = new System.Drawing.Point(756, 78);
+            this.buttonCreateTest.Location = new System.Drawing.Point(585, 85);
             this.buttonCreateTest.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCreateTest.Name = "buttonCreateTest";
             this.buttonCreateTest.Size = new System.Drawing.Size(199, 55);
@@ -75,7 +75,7 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(728, 15);
+            this.label1.Location = new System.Drawing.Point(543, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(278, 66);
@@ -96,7 +96,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1924, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1499, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -144,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 821);
+            this.ClientSize = new System.Drawing.Size(1499, 821);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStrip1);
             this.Margin = new System.Windows.Forms.Padding(4);

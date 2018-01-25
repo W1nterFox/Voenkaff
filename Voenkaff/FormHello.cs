@@ -175,8 +175,6 @@ namespace Voenkaff
                     _buttonTestDownloadDoc.Click += testCurrentDownloadDoc;
                     _buttonTestDeleteNew.Click += testCurrentDelete;
 
-                    Redistribution();
-
                     if (ListPanelsTestsOnPanel.Count > 0)
                     {
                         ListTests[ListPanelsTestsOnPanel.Count - 1].Controls.Find("panelMiddle", true)[0].Controls
@@ -189,6 +187,7 @@ namespace Voenkaff
                         ListTests[ListPanelsTestsOnPanel.Count - 1]);
 
                 }
+                Redistribution();
             }
             catch (Exception e)
             {
@@ -298,7 +297,7 @@ namespace Voenkaff
             ListPanelsTestsOnPanel.Add(TestOperations);
             panelMain.Controls.Add(TestOperations);
 
-            buttonCreateTest.Location = new System.Drawing.Point(580, 81 + 70 * ListPanelsTestsOnPanel.Count);
+            buttonCreateTest.Location = new System.Drawing.Point(662, 81 + 70 * ListPanelsTestsOnPanel.Count);
 
 
             _buttonTestOpenNew.Click += openCurrentTest;
@@ -316,13 +315,13 @@ namespace Voenkaff
             WordSaver.createDoc(ListTests[index]);
         }
 
-        private void Redistribution()
+        public void Redistribution()
         {
             for (int i = 0; i < ListPanelsTestsOnPanel.Count; i++)
             {
-                ListPanelsTestsOnPanel[i].Location = new System.Drawing.Point(28, 78 + 70 * i);
+                ListPanelsTestsOnPanel[i].Location = new System.Drawing.Point(28, 78 + 70 * i+panelMain.AutoScrollPosition.Y);
             }
-            buttonCreateTest.Location = new System.Drawing.Point(580, 81 + 70 * ListPanelsTestsOnPanel.Count);
+            buttonCreateTest.Location = new System.Drawing.Point(662, 81 + 70 * ListPanelsTestsOnPanel.Count + panelMain.AutoScrollPosition.Y);
         }
 
         private void testCurrentDelete(object sender, EventArgs e)
@@ -430,15 +429,6 @@ namespace Voenkaff
             }
             _formSettings.Visible = true;
         }
-
-
-
-
-
-
-
-
-
 
 
         private void initTest(Wrappers.Test fromLoadTest, Test toTest)

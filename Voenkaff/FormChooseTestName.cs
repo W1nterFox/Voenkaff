@@ -135,17 +135,12 @@ namespace Voenkaff
             else
             {
                 _formHello.Controls.Find("linkLabelTest" + _index, true)[0].Text = textBoxUserChooseTestName.Text;
-                _formHello.TestNameAndMarks["linkLabelTest" + _index] = _marks;
+                _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text] = _marks;
 
                 _formHello.ListTests[_index].setTestName(textBoxUserChooseTestName.Text);
                 _formHello.ListTests[_index].setTesListMarks(_marks);
             }
-            
-
-            
-
-        }
-
-        
+            _formHello.Redistribution();
+        } 
     }
 }
