@@ -91,6 +91,12 @@
     <Compile Include="FormChooseVzvod.Designer.cs">
       <DependentUpon>FormChooseVzvod.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCourse.Designer.cs">
+      <DependentUpon>FormCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHello.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormChooseVzvod.resx">
       <DependentUpon>FormChooseVzvod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCourse.resx">
+      <DependentUpon>FormCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLSInputMany.resx">
       <DependentUpon>FormLSInputMany.cs</DependentUpon>

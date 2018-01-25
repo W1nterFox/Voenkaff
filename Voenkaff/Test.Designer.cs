@@ -60,10 +60,10 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(1700, 28);
+            this.panel1.Location = new System.Drawing.Point(1670, 28);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(163, 762);
+            this.panel1.Size = new System.Drawing.Size(193, 762);
             this.panel1.TabIndex = 0;
             // 
             // button3
@@ -72,7 +72,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(4, 15);
+            this.button3.Location = new System.Drawing.Point(27, 15);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(153, 92);
@@ -87,7 +87,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(3, 114);
+            this.button2.Location = new System.Drawing.Point(26, 114);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(155, 92);
@@ -102,7 +102,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(4, 214);
+            this.button1.Location = new System.Drawing.Point(27, 214);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(155, 92);
@@ -118,7 +118,7 @@
             this.panelQuestion.Location = new System.Drawing.Point(7, 6);
             this.panelQuestion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelQuestion.Name = "panelQuestion";
-            this.panelQuestion.Size = new System.Drawing.Size(1467, 751);
+            this.panelQuestion.Size = new System.Drawing.Size(1435, 751);
             this.panelQuestion.TabIndex = 1;
             this.panelQuestion.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -160,7 +160,7 @@
             this.panelTaskStart.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.panelTaskStart.Name = "panelTaskStart";
             this.panelTaskStart.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.panelTaskStart.Size = new System.Drawing.Size(1480, 762);
+            this.panelTaskStart.Size = new System.Drawing.Size(1450, 762);
             this.panelTaskStart.TabIndex = 5;
             // 
             // panelMiddle
@@ -170,7 +170,7 @@
             this.panelMiddle.Location = new System.Drawing.Point(220, 28);
             this.panelMiddle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMiddle.Name = "panelMiddle";
-            this.panelMiddle.Size = new System.Drawing.Size(1480, 762);
+            this.panelMiddle.Size = new System.Drawing.Size(1450, 762);
             this.panelMiddle.TabIndex = 6;
             // 
             // menuStrip1

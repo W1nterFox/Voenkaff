@@ -31,6 +31,7 @@ namespace Voenkaff
             textBoxMark3.TextChanged += buttonNext_checkNullMarks;
             textBoxUserChooseTestName.TextChanged += buttonNext_checkNullMarks;
 
+            comboBoxCourse.Items.AddRange(formHello.listOfCourses.ToArray());
 
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;

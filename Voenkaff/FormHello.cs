@@ -45,15 +45,17 @@ namespace Voenkaff
         public List<Label> LabelList { get; set; } = new List<Label> { };
         public Dictionary<TextBox, Label> TBAndLabel { get; set; } = new Dictionary<TextBox, Label> { };
 
+        public List<string> listOfCourses = new List<string>(){};
 
-
+        public FormCourse formCourse;
 
         public FormHello()
         {
             InitializeComponent();
             
             new TestInizializator().Initialize(this);
-            
+
+            formCourse = new FormCourse(this);
 
             ListPanelsTestsOnPanel = new List<Panel> { };
 
@@ -533,6 +535,7 @@ namespace Voenkaff
                 }
                 foreach (RichTextBox rtb in _RTBInTask[task])
                 {
+                    
                     panelQestionFoo.Controls.Add(rtb);
                     ControlMover.Add(rtb);
                     rtb.BringToFront();
@@ -584,5 +587,11 @@ namespace Voenkaff
             TBAndLabel[currentTB].Location = new Point(currentTB.Location.X, currentTB.Location.Y - 20);
         }
 
+        private void предметыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            formCourse.Visible = true;
+
+        }
     }
 }
