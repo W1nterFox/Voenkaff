@@ -141,8 +141,8 @@ namespace Voenkaff
             {
                 _formHello.TestNameAndMarks.Add(textBoxUserChooseTestName.Text, _marks);
 
-                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text], VzvodAndLs.Get());
-                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks["linkLabelTest" + _index], comboBoxCourse.SelectedItem.ToString());
+                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text], comboBoxCourse.SelectedItem.ToString());
+                //Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks["linkLabelTest" + _index], comboBoxCourse.SelectedItem.ToString());
                 _formHello.ListTests.Add(peremTest);
 
                 //FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
@@ -172,7 +172,7 @@ namespace Voenkaff
                 koef++;
             }
             _formHello.Redistribution();
-        } 
+         
             _formHello.Controls.Find("panelMain", true)[0].Controls.Find("buttonCreateTest", true)[0].Location = new Point(580, 81 + 70 * koef);
             //
 

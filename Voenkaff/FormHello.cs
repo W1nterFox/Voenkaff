@@ -167,9 +167,8 @@ namespace Voenkaff
                     TestNameAndMarks.Add(test.Name,
                         new List<int> {test.Marks.Excellent, test.Marks.Good, test.Marks.Satisfactory});
 
-                    Test peremTest = new Test(this, test.Name,
-                        TestNameAndMarks[test.Name], VzvodAndLs.Get());
-                    Test peremTest = new Test(this, test.Name, TestNameAndMarks["linkLabelTest" + ListPanelsTestsOnPanel.Count], test.Course);
+                    Test peremTest = new Test(this, test.Name, TestNameAndMarks[test.Name], test.Course);
+                    //Test peremTest = new Test(this, test.Name, TestNameAndMarks["linkLabelTest" + ListPanelsTestsOnPanel.Count], test.Course);
                     ListTests.Add(peremTest);
 
 
