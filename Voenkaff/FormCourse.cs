@@ -12,13 +12,18 @@ namespace Voenkaff
 {
     public partial class FormCourse : Form
     {
-        private FormHello _formHello;
+        
         public List<string> listOfCourses = new List<string>(){};
+        FormHello _formHello;
+
         public FormCourse(FormHello formHello)
         {
             InitializeComponent();
-            _formHello = formHello;
 
+            listOfCourses.AddRange(Courses.Get().ToArray());
+            listBoxCourse.Items.AddRange(Courses.Get().ToArray());
+
+            _formHello = formHello;
 
         }
 
@@ -55,15 +60,36 @@ namespace Voenkaff
                 listOfCourses.Add(textBoxCourse.Text);
                 listBoxCourse.Items.Add(textBoxCourse.Text);
                 textBoxCourse.Text = "";
+                labelCoursesAreSaved.Visible = false;
             }
             
         }
 
         private void buttonCourseSave_Click(object sender, EventArgs e)
         {
-            _formHello.listOfCourses = listOfCourses;
-            this.Visible = false;
-            _formHello.Visible = true;
+            Courses.Set(listOfCourses);
+            labelCoursesAreSaved.Visible = true;
+            ((ComboBox)(_formHello.Controls.Find("comboBoxCourseFilter", true)[0])).Items.Clear();
+            ((ComboBox)(_formHello.Controls.Find("comboBoxCourseFilter", true)[0])).Items.AddRange(Courses.Get().ToArray());
+            //_formHello.listOfCourses = listOfCourses;
+            //this.Visible = false;
+            //_formHello.Visible = true;
+
+            foreach (FormChooseTestName formCTN in _formHello.ListMarksAndName)
+            {
+                ComboBox currentCB = (ComboBox)formCTN.Controls.Find("comboBoxCourse", true)[0];
+                if (currentCB.SelectedItem != null)
+                {
+                    string bufItem = currentCB.SelectedItem.ToString();
+                    currentCB.Items.Clear();
+                    currentCB.Items.AddRange(Courses.Get().ToArray());
+                    currentCB.SelectedItem = Courses.Get().Find(x => (x == bufItem));
+                }
+                
+            }
+            
+
+
 
         }
 
@@ -87,8 +113,16 @@ namespace Voenkaff
         {
             if (listBoxCourse.SelectedItem != null)
             {
-                listOfCourses.Remove(listBoxCourse.SelectedItem.ToString());
-                listBoxCourse.Items.Remove(listBoxCourse.SelectedItem);
+                if (listBoxCourse.SelectedItem.ToString() == "<Без предмета>")
+                {
+                    MessageBox.Show("Нельзя удалить стандартный элемент списка", "Ошибка", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    listOfCourses.Remove(listBoxCourse.SelectedItem.ToString());
+                    listBoxCourse.Items.Remove(listBoxCourse.SelectedItem);
+                }
+                
             }
         }
 

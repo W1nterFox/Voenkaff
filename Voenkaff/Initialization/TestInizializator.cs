@@ -21,6 +21,7 @@ namespace Voenkaff
                 var loader = new TestLoader();
                 var tests = loader.LoadTestsFromFolder(new DynamicParams().GetPath());
                 VzvodAndLs.Set(tests.PlatoonList);
+                Courses.Set(tests.CourseList);
             }
             catch (Exception) { }
         }

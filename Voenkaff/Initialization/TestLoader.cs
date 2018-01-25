@@ -36,6 +36,17 @@ namespace Voenkaff
                     }
                 }
                 result.TestList.AddRange(test.TestList);
+
+                foreach (var testCourse in test.CourseList)
+                {
+                    
+                    if (result.CourseList.Find(x => x == testCourse) == null)
+                    {
+                        result.CourseList.Add(testCourse);
+                    }
+                    
+                }
+                //result.CourseList.AddRange(test.CourseList);
             }
 
             return result;

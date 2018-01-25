@@ -16,7 +16,7 @@ namespace Voenkaff.Creators
                 jsonTests.Add(CreateTestJsonMessage(test));
             }
 
-            return JsonConvert.SerializeObject(new Tests{PlatoonList = VzvodAndLs.Get(),TestList = jsonTests},Formatting.Indented);
+            return JsonConvert.SerializeObject(new Tests{PlatoonList = VzvodAndLs.Get(),TestList = jsonTests, CourseList = Courses.Get()},Formatting.Indented);
         }
         
 
@@ -25,6 +25,7 @@ namespace Voenkaff.Creators
             var test = new Wrappers.Test
             {
                 Name = testObj.TestName,
+                Course = testObj.Course,
                 Marks = new Marks
                 {
                     Excellent = testObj.ListMarks[0],

@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Courses.cs" />
     <Compile Include="DynamicParams.cs" />
     <Compile Include="Entity\ControlMover.cs" />
     <Compile Include="Entity\Entity.cs" />

@@ -22,7 +22,7 @@ namespace Voenkaff
 
         public string TestName { get; set; }
         public List<int> ListMarks { get; set; }
-
+        public string Course { get; set; }
         public void setTestName(string testName)
         {
             TestName = testName;
@@ -34,8 +34,7 @@ namespace Voenkaff
             ListMarks = listMarks;
         }
 
-        public Test(FormHello formHello, string testName, List<int> listMarks,
-            Dictionary<string, List<string>> vzvodAndLS)
+        public Test(FormHello formHello, string testName, List<int> listMarks, string course)
         {
             InitializeComponent();
 
@@ -44,6 +43,7 @@ namespace Voenkaff
 
             TestName = testName;
             ListMarks = listMarks;
+            Course = course;
 
             this.Text = TestName;
 

@@ -30,8 +30,14 @@ namespace Voenkaff
             textBoxMark4.TextChanged += buttonNext_checkNullMarks;
             textBoxMark3.TextChanged += buttonNext_checkNullMarks;
             textBoxUserChooseTestName.TextChanged += buttonNext_checkNullMarks;
+            comboBoxCourse.SelectedIndexChanged += buttonNext_checkNullMarks;
 
-            comboBoxCourse.Items.AddRange(formHello.listOfCourses.ToArray());
+            comboBoxCourse.Items.AddRange(Courses.Get().ToArray());
+
+
+            
+
+
 
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
@@ -43,6 +49,7 @@ namespace Voenkaff
             int fake;
             Boolean markIsOk = false;
             Boolean markIsGrow = false;
+            Boolean courseIsOk = false;
             if (textBoxMark5.Text != null && textBoxMark5.Text != "" && textBoxMark4.Text != null && textBoxMark4.Text != "" && textBoxMark3.Text != null && textBoxMark3.Text != "")
             {
 
@@ -87,7 +94,17 @@ namespace Voenkaff
                 labelOnlyDigit.Visible = true;
             }
 
-
+            
+            if (comboBoxCourse.SelectedItem == null)
+            {
+                buttonNext.Enabled = false;
+                labelChooseCourse.Visible = true;
+            }
+            else
+            {
+                courseIsOk = true;
+                labelChooseCourse.Visible = false;
+            }
 
 
             if (textBoxUserChooseTestName.Text == null || textBoxUserChooseTestName.Text == "" || textBoxUserChooseTestName.Text.Length < 3)
@@ -98,7 +115,7 @@ namespace Voenkaff
             }
             else
             {
-                if (markIsOk && markIsGrow) buttonNext.Enabled = true;
+                if (markIsOk && markIsGrow && courseIsOk) buttonNext.Enabled = true;
                 labelLabelErrorMin3.Visible = false;
             }
 
@@ -112,8 +129,7 @@ namespace Voenkaff
         private void buttonNext_Click(object sender, EventArgs e)
         {
             _formHello.Controls.Find("linkLabelTest" + _index, true)[0].Text = textBoxUserChooseTestName.Text;
-            this.Visible = false;
-            _formHello.Visible = true;
+            
 
 
             _marks[0] = Int32.Parse(textBoxMark5.Text);
@@ -125,7 +141,7 @@ namespace Voenkaff
             {
                 _formHello.TestNameAndMarks.Add("linkLabelTest" + _index, _marks);
 
-                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks["linkLabelTest" + _index], VzvodAndLs.Get());
+                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks["linkLabelTest" + _index], comboBoxCourse.SelectedItem.ToString());
                 _formHello.ListTests.Add(peremTest);
 
                 //FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
@@ -139,10 +155,28 @@ namespace Voenkaff
 
                 _formHello.ListTests[_index].setTestName(textBoxUserChooseTestName.Text);
                 _formHello.ListTests[_index].setTesListMarks(_marks);
+                _formHello.ListTests[_index].Course = comboBoxCourse.SelectedItem.ToString();
             }
-            
 
-            
+            this.Visible = false;
+            _formHello.Visible = true;
+
+            //не момогло
+            int koef = 0;
+            foreach (Panel pnl in _formHello.ListPanelsTestsOnPanel)
+            {
+                pnl.Visible = true;
+                pnl.Location = new Point(28, 78 + 70 * koef);
+                pnl.Visible = true;
+                koef++;
+            }
+            _formHello.Controls.Find("panelMain", true)[0].Controls.Find("buttonCreateTest", true)[0].Location = new Point(580, 81 + 70 * koef);
+            //
+
+            _formHello.buttonFilterOff_Click(this, e);
+
+
+
 
         }
 
