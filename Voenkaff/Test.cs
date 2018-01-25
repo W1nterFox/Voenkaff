@@ -252,7 +252,7 @@ namespace Voenkaff
         {
             
             // получаем выбранный файл
-            string filename = new DynamicParams().Get().TestPath + "\\" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".test";
+            string filename = new DynamicParams().GetPath() + "\\" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".test";
 
             string testJson = new JsonCreator().CreateTestCollection(new List<Test> {this});
             new PictureCreator().CreatePictures(this,filename.Substring(0,filename.LastIndexOf("\\", StringComparison.Ordinal)));

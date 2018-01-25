@@ -12,9 +12,12 @@ namespace Voenkaff
     {
         string Path="settings.ini"; //Имя файла.
 
+        private Settings settings;
+
         // С помощью конструктора записываем пусть до файла и его имя.
         public DynamicParams()
         {
+            settings = new Settings();
             if (!File.Exists(Path))
             {
                 File.Create(Path);
@@ -23,41 +26,51 @@ namespace Voenkaff
 
         public class Settings
         {
-            public string TestPath { get; set; } = "";
+            public string TestPath { get; set; } = "C:\\";
         }
 
 
         //Читаем ini-файл и возвращаем значение указного ключа из заданной секции.
-        public Settings Get()
+        public string GetPath()
         {
-            return ReadFile();
+            ReadFile();
+            return settings.TestPath;
         }
 
-        private Settings ReadFile()
+        private void ReadFile()
         {
             try
             {
                 using (var stream = new FileStream(Path, FileMode.Open))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Settings));
-                    var iniSet = (Settings) serializer.Deserialize(stream);
-                    return iniSet;
+                    var fileSettings = (Settings) serializer.Deserialize(stream);
+                    if (fileSettings.TestPath != "")
+                    {
+                        settings = fileSettings;
+                    }
                 }
             }
             catch (Exception)
             {
-                return new Settings();
+                settings= new Settings(){TestPath = "C:\\"};
             }
         }
         //Записываем в ini-файл. Запись происходит в выбранную секцию в выбранный ключ.
         public void SetTestPath(string value)
         {
-            var iniFile = ReadFile();
-            iniFile.TestPath = value;
-            using (var stream = new FileStream(Path, FileMode.Create))
+            try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Settings));
-                serializer.Serialize(stream,iniFile);
+                settings.TestPath = value;
+                using (var stream = new FileStream(Path, FileMode.Create))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(Settings));
+                    serializer.Serialize(stream, settings);
+                }
+            }
+            catch (Exception)
+            {
+                //Ignored
             }
         }
 

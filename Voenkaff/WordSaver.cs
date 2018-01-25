@@ -12,114 +12,139 @@ namespace Voenkaff
 {
     class WordSaver
     {
-        public static void createDoc (Test test)
+        public static void createDoc(Test test)
         {
-            Word.Document doc = null;
-            //try
+            WordSaver ws = new WordSaver();
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Word Documents (*.docx)|*.docx";
+            sfd.FileName = "Тест " + test.TestName + ".docx";
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
-                // Создаём объект приложения
-                Word.Application app = new Word.Application();
-                // Путь до шаблона документа
-                File.Copy(Environment.CurrentDirectory + @"\Word\WordTest.docx", Environment.CurrentDirectory + @"\Word\" + test.TestName + ".docx");
-                string source = Environment.CurrentDirectory + @"\Word\" + test.TestName + ".docx";
-                // Открываем
-                doc = app.Documents.Open(source);
-                doc.Activate();
 
-                // Добавляем информацию
-                // wBookmarks содержит все закладки
-                Word.Bookmarks wBookmarks = doc.Bookmarks;
-                
-                //string[] data = new string[3] { "27", "Alex", "Gulynin" };
 
-                
-
-                foreach (Word.Bookmark mark in wBookmarks)
+                Word.Document doc = null;
+                try
                 {
-                    if (mark.Name == "testName")
-                    {
-                        mark.Range.Text = test.TestName;
-                    }
+                    // Создаём объект приложения
+                    Word.Application app = new Word.Application();
+                    // Путь до шаблона документа
+                    File.Delete(Environment.CurrentDirectory + @"\Word\" + test.TestName + ".docx");
+                    File.Copy(Environment.CurrentDirectory + @"\Word\WordTest.docx",
+                        Environment.CurrentDirectory + @"\Word\" + test.TestName + ".docx");
+                    string source = Environment.CurrentDirectory + @"\Word\" + test.TestName + ".docx";
+                    // Открываем
+                    doc = app.Documents.Open(source);
+                    doc.Activate();
 
-                    if (mark.Name == "markExcellent")
+                    // Добавляем информацию
+                    // wBookmarks содержит все закладки
+                    Word.Bookmarks wBookmarks = doc.Bookmarks;
+
+                    //string[] data = new string[3] { "27", "Alex", "Gulynin" };
+
+
+
+                    foreach (Word.Bookmark mark in wBookmarks)
                     {
-                        mark.Range.Text = test.ListMarks[0].ToString();
-                    }
-                    if (mark.Name == "markGood")
-                    {
-                        mark.Range.Text = test.ListMarks[1].ToString();
-                    }
-                    if (mark.Name == "markSatisfactory")
-                    {
-                        mark.Range.Text = test.ListMarks[2].ToString();
-                    }
-                    if (mark.Name == "tasksStartHere")
-                    {
-                        
-                        
-                        string textForInsert = "";
-                        int count = 0;
-                        foreach (PanelWrapper panelWrapperTask in test.ListPanelsTasks)
+                        if (mark.Name == "testName")
                         {
-                            
-                            string taskUslovie = "";
-                            List<TextBox> bufListTB = new List<TextBox> { };
-                            //List<PictureBox> listPB = new List<PictureBox> { };
-                            textForInsert += "\n\n\n\nЗадание №" + (count + 1) + "\n";
-                            for (int i = 0; i < panelWrapperTask.Entity.Controls[0].Controls.Count; i++)
-                            {
-                                if (panelWrapperTask.Entity.Controls[0].Controls[i] is RichTextBox)
-                                {
-                                    taskUslovie = panelWrapperTask.Entity.Controls[0].Controls[i].Text;
-                                
-                                }
-                                
-                            }
-                            textForInsert += "Условие: " + taskUslovie + "\n";
-
-                            
-                            
-
-                            for (int i = 0; i < panelWrapperTask.Entity.Controls[0].Controls.Count; i++)
-                            {
-                                if (panelWrapperTask.Entity.Controls[0].Controls[i] is PictureBox)
-                                {
-                                    Clipboard.SetImage(((PictureBox)(panelWrapperTask.Entity.Controls[0].Controls[i])).Image);
-                                    mark.Range.Paste();
-                                 
-                                }
-
-                            }
-
-
-                            for (int i = panelWrapperTask.Entity.Controls[0].Controls.Count; i > 0; i--)
-                            {
-                                
-                                if (panelWrapperTask.Entity.Controls[0].Controls[i - 1] is TextBox)
-                                {
-                                    bufListTB.Add((TextBox)panelWrapperTask.Entity.Controls[0].Controls[i - 1]);
-                                
-                                }
-                                
-                            }
-
-                            for (int i = 0; i < bufListTB.Count; i++)
-                            {
-                                textForInsert += "Ответ №" + (i + 1) + ": ";
-                                textForInsert += bufListTB[i].Text + "\n";
-                            }
-                            count++;
+                            mark.Range.Text = test.TestName;
                         }
 
-                        mark.Range.Text = textForInsert;
+                        if (mark.Name == "markExcellent")
+                        {
+                            mark.Range.Text = test.ListMarks[0].ToString();
+                        }
+
+                        if (mark.Name == "markGood")
+                        {
+                            mark.Range.Text = test.ListMarks[1].ToString();
+                        }
+
+                        if (mark.Name == "markSatisfactory")
+                        {
+                            mark.Range.Text = test.ListMarks[2].ToString();
+                        }
+
+                        if (mark.Name == "tasksStartHere")
+                        {
+
+
+                            string textForInsert = "";
+                            int count = 0;
+                            foreach (PanelWrapper panelWrapperTask in test.ListPanelsTasks)
+                            {
+
+                                string taskUslovie = "";
+                                List<TextBox> bufListTB = new List<TextBox> { };
+                                //List<PictureBox> listPB = new List<PictureBox> { };
+                                textForInsert += "\n\n\n\nЗадание №" + (count + 1) + "\n";
+                                for (int i = 0; i < panelWrapperTask.Entity.Controls[0].Controls.Count; i++)
+                                {
+                                    if (panelWrapperTask.Entity.Controls[0].Controls[i] is RichTextBox)
+                                    {
+                                        taskUslovie = panelWrapperTask.Entity.Controls[0].Controls[i].Text;
+
+                                    }
+
+                                }
+
+                                textForInsert += "Условие: " + taskUslovie + "\n";
+
+
+
+
+                                for (int i = 0; i < panelWrapperTask.Entity.Controls[0].Controls.Count; i++)
+                                {
+                                    if (panelWrapperTask.Entity.Controls[0].Controls[i] is PictureBox)
+                                    {
+                                        Clipboard.SetImage(
+                                            ((PictureBox) (panelWrapperTask.Entity.Controls[0].Controls[i]))
+                                            .Image);
+                                        mark.Range.Paste();
+
+                                    }
+
+                                }
+
+
+                                for (int i = panelWrapperTask.Entity.Controls[0].Controls.Count; i > 0; i--)
+                                {
+
+                                    if (panelWrapperTask.Entity.Controls[0].Controls[i - 1] is TextBox)
+                                    {
+                                        bufListTB.Add((TextBox) panelWrapperTask.Entity.Controls[0].Controls[i - 1]);
+
+                                    }
+
+                                }
+
+                                for (int i = 0; i < bufListTB.Count; i++)
+                                {
+                                    textForInsert += "Ответ №" + (i + 1) + ": ";
+                                    textForInsert += bufListTB[i].Text + "\n";
+                                }
+
+                                count++;
+                            }
+
+                            mark.Range.Text = textForInsert;
+                        }
                     }
+
+                    doc.SaveAs2(sfd.FileName);
+                    File.Delete(source);
+                    // Закрываем документ
+                    doc.Close();
                 }
 
-                // Закрываем документ
-                doc.Close();
-                doc = null;
+                catch (IOException e)
+                {
+                    MessageBox.Show("Не удалось сохранить файл, возможно он уже существует "+e.Message,
+                        "Не удалось сохранить файл",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            
         }
     }
 }

@@ -51,133 +51,145 @@ namespace Voenkaff
         public FormHello()
         {
             InitializeComponent();
+            
             new TestInizializator().Initialize(this);
+            
+
             ListPanelsTestsOnPanel = new List<Panel> { };
 
-            //Подгрузка тестов
-            var testLoader = new TestLoader();
-            listOfLoadTests = testLoader.LoadTestsFromFolder(@"D:\\temp"/*new DynamicParams().Get().TestPath*/);
-
-
-            foreach (Wrappers.Test test in listOfLoadTests.TestList)
+            try
             {
-                ListTestsRef.Add(test);
+                //Подгрузка тестов
+                var testLoader = new TestLoader();
 
-                TestOperations = new Panel();
+                listOfLoadTests = testLoader.LoadTestsFromFolder(new DynamicParams().GetPath());
 
-                _linkLabelTestNew = new Label();
-                _buttonTestDeleteNew = new Button();
-                _buttonTestOpenNew = new Button();
-                _buttonTestDownloadNew = new Button();
-                _buttonTestMarksNew = new Button();
-                _buttonTestDownloadDoc = new Button();
-
-                TestOperations.BackColor = System.Drawing.SystemColors.ControlLight;
-                TestOperations.Controls.Add(_linkLabelTestNew);
-                TestOperations.Controls.Add(_buttonTestOpenNew);
-                TestOperations.Controls.Add(_buttonTestDownloadNew);
-                TestOperations.Controls.Add(_buttonTestMarksNew);
-                TestOperations.Controls.Add(_buttonTestDownloadDoc);
-                TestOperations.Location = new System.Drawing.Point(28, 78 + 70 * (ListPanelsTestsOnPanel.Count));
-                TestOperations.Name = "panelTestInTestsList" + ListTestsRef.Count;
-                TestOperations.Size = new System.Drawing.Size(1200, 51);
-                TestOperations.Tag = ListPanelsTestsOnPanel.Count;
-
-                FormChooseTestName formChooseTestName = new FormChooseTestName(this, ListPanelsTestsOnPanel.Count);
-                formChooseTestName.Controls.Find("textBoxUserChooseTestName", true)[0].Text = test.Name;
-                formChooseTestName.Controls.Find("textBoxMark5", true)[0].Text = test.Marks.Excellent.ToString();
-                formChooseTestName.Controls.Find("textBoxMark4", true)[0].Text = test.Marks.Good.ToString();
-                formChooseTestName.Controls.Find("textBoxMark3", true)[0].Text = test.Marks.Satisfactory.ToString();
-                formChooseTestName.Tag = ListPanelsTestsOnPanel.Count;
-                ListMarksAndName.Add(formChooseTestName);
-
-                _linkLabelTestNew.AutoSize = true;
-                _linkLabelTestNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-                _linkLabelTestNew.Location = new System.Drawing.Point(3, 15);
-                _linkLabelTestNew.Name = "linkLabelTest" + ListPanelsTestsOnPanel.Count;
-                _linkLabelTestNew.Size = new System.Drawing.Size(146, 20);
-                _linkLabelTestNew.Text = test.Name;
-                _linkLabelTestNew.TabStop = true;
-                _linkLabelTestNew.Tag = ListPanelsTestsOnPanel.Count;
-
-                _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                _buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-                _buttonTestOpenNew.Location = new System.Drawing.Point(540, 5);
-                _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
-                _buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
-                _buttonTestOpenNew.Text = "Просмотр/редактирование";
-                _buttonTestOpenNew.UseVisualStyleBackColor = true;
-                _buttonTestOpenNew.Tag = ListPanelsTestsOnPanel.Count;
-
-                _buttonTestMarksNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                _buttonTestMarksNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-                _buttonTestMarksNew.Location = new System.Drawing.Point(760, 5);
-                _buttonTestMarksNew.Name = "buttonTestMarks" + ListPanelsTestsOnPanel.Count;
-                _buttonTestMarksNew.Size = new System.Drawing.Size(146, 40);
-                _buttonTestMarksNew.Text = "Критерии оценки";
-                _buttonTestMarksNew.UseVisualStyleBackColor = true;
-                _buttonTestMarksNew.Tag = ListPanelsTestsOnPanel.Count;
-
-                _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                _buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-                _buttonTestOpenNew.Location = new System.Drawing.Point(540, 5);
-                _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
-                _buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
-                _buttonTestOpenNew.Text = "Просмотр/редактирование";
-                _buttonTestOpenNew.UseVisualStyleBackColor = true;
-                _buttonTestOpenNew.Tag = ListPanelsTestsOnPanel.Count;
-
-                _buttonTestDownloadNew.FlatStyle = FlatStyle.Flat;
-                _buttonTestDownloadNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-                _buttonTestDownloadNew.Location = new System.Drawing.Point(915, 5);
-                _buttonTestDownloadNew.Name = "buttonTestDownload" + ListPanelsTestsOnPanel.Count;
-                _buttonTestDownloadNew.Size = new System.Drawing.Size(80, 40);
-                _buttonTestDownloadNew.Text = "Скачать";
-                _buttonTestDownloadNew.UseVisualStyleBackColor = true;
-                _buttonTestDownloadNew.Tag = ListPanelsTestsOnPanel.Count;
-
-                _buttonTestDownloadDoc.FlatStyle = FlatStyle.Flat;
-                _buttonTestDownloadDoc.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-                _buttonTestDownloadDoc.Location = new System.Drawing.Point(1000, 5);
-                _buttonTestDownloadDoc.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
-                _buttonTestDownloadDoc.Size = new System.Drawing.Size(150, 40);
-                _buttonTestDownloadDoc.Text = "Скачать в Word";
-                _buttonTestDownloadDoc.UseVisualStyleBackColor = true;
-                _buttonTestDownloadDoc.Enabled = true;
-                _buttonTestDownloadDoc.Tag = ListPanelsTestsOnPanel.Count;
-
-
-
-                TestNameAndMarks.Add("linkLabelTest" + ListPanelsTestsOnPanel.Count, new List<int> { test.Marks.Excellent, test.Marks.Good, test.Marks.Satisfactory });
-
-                Test peremTest = new Test(this, test.Name, TestNameAndMarks["linkLabelTest" + ListPanelsTestsOnPanel.Count], VzvodAndLs.Get());
-                ListTests.Add(peremTest);
-
-
-
-                ListPanelsTestsOnPanel.Add(TestOperations);
-                panelMain.Controls.Add(TestOperations);
-
-                buttonCreateTest.Location = new System.Drawing.Point(580, 81 + 70 * ListPanelsTestsOnPanel.Count);
-
-
-                _buttonTestOpenNew.Click += openCurrentTest;
-                _buttonTestMarksNew.Click += testCurrentMarks;
-                _buttonTestDownloadNew.Click += testCurrentDownload;
-                _buttonTestDownloadDoc.Click += testCurrentDownloadDoc;
-
-                if (ListPanelsTestsOnPanel.Count>0)
+                foreach (Wrappers.Test test in listOfLoadTests.TestList)
                 {
-                    ListTests[ListPanelsTestsOnPanel.Count - 1].Controls.Find("panelMiddle", true)[0].Controls.Remove(ListTests[ListPanelsTestsOnPanel.Count - 1].Controls.Find("panelTaskStart",true)[0]);
+                    ListTestsRef.Add(test);
+
+                    TestOperations = new Panel();
+
+                    _linkLabelTestNew = new Label();
+                    _buttonTestDeleteNew = new Button();
+                    _buttonTestOpenNew = new Button();
+                    _buttonTestDownloadNew = new Button();
+                    _buttonTestMarksNew = new Button();
+                    _buttonTestDownloadDoc = new Button();
+
+                    TestOperations.BackColor = System.Drawing.SystemColors.ControlLight;
+                    TestOperations.Controls.Add(_linkLabelTestNew);
+                    TestOperations.Controls.Add(_buttonTestOpenNew);
+                    TestOperations.Controls.Add(_buttonTestDownloadNew);
+                    TestOperations.Controls.Add(_buttonTestMarksNew);
+                    TestOperations.Controls.Add(_buttonTestDownloadDoc);
+                    TestOperations.Location = new System.Drawing.Point(28, 78 + 70 * (ListPanelsTestsOnPanel.Count));
+                    TestOperations.Name = "panelTestInTestsList" + ListTestsRef.Count;
+                    TestOperations.Size = new System.Drawing.Size(1200, 51);
+                    TestOperations.Tag = ListPanelsTestsOnPanel.Count;
+
+                    FormChooseTestName formChooseTestName = new FormChooseTestName(this, ListPanelsTestsOnPanel.Count);
+                    formChooseTestName.Controls.Find("textBoxUserChooseTestName", true)[0].Text = test.Name;
+                    formChooseTestName.Controls.Find("textBoxMark5", true)[0].Text = test.Marks.Excellent.ToString();
+                    formChooseTestName.Controls.Find("textBoxMark4", true)[0].Text = test.Marks.Good.ToString();
+                    formChooseTestName.Controls.Find("textBoxMark3", true)[0].Text = test.Marks.Satisfactory.ToString();
+                    formChooseTestName.Tag = ListPanelsTestsOnPanel.Count;
+                    ListMarksAndName.Add(formChooseTestName);
+
+                    _linkLabelTestNew.AutoSize = true;
+                    _linkLabelTestNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+                    _linkLabelTestNew.Location = new System.Drawing.Point(3, 15);
+                    _linkLabelTestNew.Name = "linkLabelTest" + ListPanelsTestsOnPanel.Count;
+                    _linkLabelTestNew.Size = new System.Drawing.Size(146, 20);
+                    _linkLabelTestNew.Text = test.Name;
+                    _linkLabelTestNew.TabStop = true;
+                    _linkLabelTestNew.Tag = ListPanelsTestsOnPanel.Count;
+
+                    _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                    _buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+                    _buttonTestOpenNew.Location = new System.Drawing.Point(540, 5);
+                    _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
+                    _buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
+                    _buttonTestOpenNew.Text = "Просмотр/редактирование";
+                    _buttonTestOpenNew.UseVisualStyleBackColor = true;
+                    _buttonTestOpenNew.Tag = ListPanelsTestsOnPanel.Count;
+
+                    _buttonTestMarksNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                    _buttonTestMarksNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+                    _buttonTestMarksNew.Location = new System.Drawing.Point(760, 5);
+                    _buttonTestMarksNew.Name = "buttonTestMarks" + ListPanelsTestsOnPanel.Count;
+                    _buttonTestMarksNew.Size = new System.Drawing.Size(146, 40);
+                    _buttonTestMarksNew.Text = "Критерии оценки";
+                    _buttonTestMarksNew.UseVisualStyleBackColor = true;
+                    _buttonTestMarksNew.Tag = ListPanelsTestsOnPanel.Count;
+
+                    _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                    _buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+                    _buttonTestOpenNew.Location = new System.Drawing.Point(540, 5);
+                    _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
+                    _buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
+                    _buttonTestOpenNew.Text = "Просмотр/редактирование";
+                    _buttonTestOpenNew.UseVisualStyleBackColor = true;
+                    _buttonTestOpenNew.Tag = ListPanelsTestsOnPanel.Count;
+
+                    _buttonTestDownloadNew.FlatStyle = FlatStyle.Flat;
+                    _buttonTestDownloadNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+                    _buttonTestDownloadNew.Location = new System.Drawing.Point(915, 5);
+                    _buttonTestDownloadNew.Name = "buttonTestDownload" + ListPanelsTestsOnPanel.Count;
+                    _buttonTestDownloadNew.Size = new System.Drawing.Size(80, 40);
+                    _buttonTestDownloadNew.Text = "Скачать";
+                    _buttonTestDownloadNew.UseVisualStyleBackColor = true;
+                    _buttonTestDownloadNew.Tag = ListPanelsTestsOnPanel.Count;
+
+                    _buttonTestDownloadDoc.FlatStyle = FlatStyle.Flat;
+                    _buttonTestDownloadDoc.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+                    _buttonTestDownloadDoc.Location = new System.Drawing.Point(1000, 5);
+                    _buttonTestDownloadDoc.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
+                    _buttonTestDownloadDoc.Size = new System.Drawing.Size(150, 40);
+                    _buttonTestDownloadDoc.Text = "Скачать в Word";
+                    _buttonTestDownloadDoc.UseVisualStyleBackColor = true;
+                    _buttonTestDownloadDoc.Enabled = true;
+                    _buttonTestDownloadDoc.Tag = ListPanelsTestsOnPanel.Count;
+
+
+
+                    TestNameAndMarks.Add("linkLabelTest" + ListPanelsTestsOnPanel.Count,
+                        new List<int> {test.Marks.Excellent, test.Marks.Good, test.Marks.Satisfactory});
+
+                    Test peremTest = new Test(this, test.Name,
+                        TestNameAndMarks["linkLabelTest" + ListPanelsTestsOnPanel.Count], VzvodAndLs.Get());
+                    ListTests.Add(peremTest);
+
+
+
+                    ListPanelsTestsOnPanel.Add(TestOperations);
+                    panelMain.Controls.Add(TestOperations);
+
+                    buttonCreateTest.Location = new System.Drawing.Point(580, 81 + 70 * ListPanelsTestsOnPanel.Count);
+
+
+                    _buttonTestOpenNew.Click += openCurrentTest;
+                    _buttonTestMarksNew.Click += testCurrentMarks;
+                    _buttonTestDownloadNew.Click += testCurrentDownload;
+                    _buttonTestDownloadDoc.Click += testCurrentDownloadDoc;
+
+                    if (ListPanelsTestsOnPanel.Count > 0)
+                    {
+                        ListTests[ListPanelsTestsOnPanel.Count - 1].Controls.Find("panelMiddle", true)[0].Controls
+                            .Remove(
+                                ListTests[ListPanelsTestsOnPanel.Count - 1].Controls.Find("panelTaskStart", true)[0]);
+                    }
+
+                    //Добавление элементов в тест
+                    initTest(ListTestsRef[ListPanelsTestsOnPanel.Count - 1],
+                        ListTests[ListPanelsTestsOnPanel.Count - 1]);
+
                 }
-                //Добавление элементов в тест
-                initTest(ListTestsRef[ListPanelsTestsOnPanel.Count - 1], ListTests[ListPanelsTestsOnPanel.Count - 1]);
-                
             }
-
-
-
-
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
 
 
@@ -241,9 +253,9 @@ namespace Voenkaff
 
             _buttonTestOpenNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             _buttonTestOpenNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            _buttonTestOpenNew.Location = new System.Drawing.Point(540, 5);
+            _buttonTestOpenNew.Location = new System.Drawing.Point(500, 5);
             _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
-            _buttonTestOpenNew.Size = new System.Drawing.Size(215, 40);
+            _buttonTestOpenNew.Size = new System.Drawing.Size(255, 40);
             _buttonTestOpenNew.TabIndex = 2;
             _buttonTestOpenNew.Text = "Просмотр/редактирование";
             _buttonTestOpenNew.UseVisualStyleBackColor = true;
@@ -348,17 +360,21 @@ namespace Voenkaff
 
         private void сохранитьТестыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string filename = new DynamicParams().Get().TestPath+"\\"+DateTime.Now.ToString("yyyyMMddHHmmss") +".test";
 
-            string testJson = new JsonCreator().CreateTestCollection(ListTests);
+            foreach (var test in ListTests)
+            {
+                string filename = new DynamicParams().GetPath() + "\\"+test.TestName+".test";
+                string testJson = new JsonCreator().CreateTestCollection(new List<Test>{test});
+                // сохраняем текст в файл
+                File.WriteAllText(filename, testJson);
+            }
 
             var picureCreator = new PictureCreator();
             foreach (var test in ListTests)
             {
-                picureCreator.CreatePictures(test, filename.Substring(0, filename.LastIndexOf("\\", StringComparison.Ordinal)));
+                picureCreator.CreatePictures(test, new DynamicParams().GetPath());
             }
-            // сохраняем текст в файл
-            System.IO.File.WriteAllText(filename, testJson);
+            
             MessageBox.Show("Файл сохранен");
         }
 
@@ -424,7 +440,7 @@ namespace Voenkaff
 
                     if (taskElem.Type.Equals("System.Windows.Forms.PictureBox"))
                     {
-                        using (var stream = File.Open(@"D:\\temp" + @"\" + taskElem.Media, FileMode.Open))
+                        using (var stream = File.Open(new  DynamicParams().GetPath()+"/" + taskElem.Media, FileMode.Open))
                         {
                             var binaryFormatter = new BinaryFormatter();
                             var image = ((SerializablePicture)binaryFormatter.Deserialize(stream)).Picture;
@@ -488,42 +504,44 @@ namespace Voenkaff
                 panelQestionFoo.AutoScroll = true;
 
 
-
-
-
-
                 foreach (PictureBox pb in _PBInTask[task])
                 {
                     panelQestionFoo.Controls.Add(pb);
                     ControlMover.Add(pb);
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
-                foreach (RichTextBox rtb in _RTBInTask[task])
-                {
-                    panelQestionFoo.Controls.Add(rtb);
-                    rtb.BringToFront();
-                    ControlMover.Add(rtb);
-                }
-                for (int i = 0; i < _TBInTask[task].Count; i++)
-                {
-                    panelQestionFoo.Controls.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)]);
-                    _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].BringToFront();
-                    ControlMover.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)]);
-                    //_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Move += moveTBWithLB;
-                    indexLabel++;
-
-                    TBList.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)]);
-
-                }
+                
+                
                 foreach (Label label in _listTBLabels[task])
                 {
                     panelQestionFoo.Controls.Add(label);
+                    label.BringToFront();
                     LabelList.Add(label);
-                }
 
+                    label.Location = new Point();
+                }
                 for (int i = 0; i < _TBInTask[task].Count; i++)
                 {
-                    TBAndLabel.Add(_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)], _listTBLabels[task][i]);
+                    var taskObj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)];
+                    panelQestionFoo.Controls.Add(taskObj);
+                    taskObj.BringToFront();
+                    ControlMover.Add(taskObj);
+                    //_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Move += moveTBWithLB;
+                    indexLabel++;
+
+                    TBList.Add(taskObj);
+                }
+                foreach (RichTextBox rtb in _RTBInTask[task])
+                {
+                    panelQestionFoo.Controls.Add(rtb);
+                    ControlMover.Add(rtb);
+                    rtb.BringToFront();
+                }
+                for (int i = 0; i < _TBInTask[task].Count; i++)
+                {
+                    var obj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)];
+                    TBAndLabel.Add(obj, _listTBLabels[task][i]);
+                    TBAndLabel[obj].Location = new Point(obj.Location.X, obj.Location.Y - 20);
                 }
 
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);

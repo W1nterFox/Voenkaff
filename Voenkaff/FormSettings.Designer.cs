@@ -35,31 +35,30 @@
             // 
             // directory
             // 
-            this.directory.Location = new System.Drawing.Point(160, 54);
-            this.directory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.directory.Location = new System.Drawing.Point(213, 66);
+            this.directory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.directory.Name = "directory";
-            this.directory.Size = new System.Drawing.Size(210, 20);
+            this.directory.Size = new System.Drawing.Size(279, 22);
             this.directory.TabIndex = 0;
             this.directory.Text = "D:\\\\";
-            this.directory.TextChanged += new System.EventHandler(this.directory_TextChanged);
+            this.directory.Leave += new System.EventHandler(this.directory_Leave);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(9, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(12, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 15);
+            this.label1.Size = new System.Drawing.Size(169, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Директория с тестами:";
             // 
             // Закрыть
             // 
-            this.Закрыть.Location = new System.Drawing.Point(191, 219);
-            this.Закрыть.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Закрыть.Location = new System.Drawing.Point(255, 270);
+            this.Закрыть.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Закрыть.Name = "Закрыть";
-            this.Закрыть.Size = new System.Drawing.Size(113, 30);
+            this.Закрыть.Size = new System.Drawing.Size(151, 37);
             this.Закрыть.TabIndex = 2;
             this.Закрыть.Text = "Закрыть";
             this.Закрыть.UseVisualStyleBackColor = true;
@@ -67,13 +66,13 @@
             // 
             // FormSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 277);
+            this.ClientSize = new System.Drawing.Size(659, 341);
             this.Controls.Add(this.Закрыть);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.directory);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormSettings";
             this.Text = "SettingsForm";
             this.ResumeLayout(false);
