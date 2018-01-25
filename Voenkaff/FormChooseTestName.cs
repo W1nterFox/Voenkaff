@@ -123,9 +123,9 @@ namespace Voenkaff
 
             if (checkBoxIsFirstOpen.Checked)
             {
-                _formHello.TestNameAndMarks.Add("linkLabelTest" + _index, _marks);
+                _formHello.TestNameAndMarks.Add(textBoxUserChooseTestName.Text, _marks);
 
-                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks["linkLabelTest" + _index], VzvodAndLs.Get());
+                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text], VzvodAndLs.Get());
                 _formHello.ListTests.Add(peremTest);
 
                 //FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
