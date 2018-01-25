@@ -337,7 +337,6 @@ namespace Voenkaff
                         ListPanelsTestsOnPanel.Remove(panel);
                         ListTests.Remove(ListTests.Find(p=>p.TestName== panel.Controls[0].Text));
                         Redistribution();
-                        var test = new DynamicParams().GetPath() + "\\" + panel.Controls[0].Text;
                         File.Delete(new DynamicParams().GetPath()+"\\"+ panel.Controls[0].Text+".test");
                         return;
                     }

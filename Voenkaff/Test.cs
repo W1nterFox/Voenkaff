@@ -143,7 +143,10 @@ namespace Voenkaff
                     var image = new Bitmap(openFileDialog.FileName); //Bitmap для открываемого изображения
 
                     pictureBoxScalable.Instance.Size = image.Size;
+                    pictureBoxScalable.Instance.Size = new Size(pictureBoxScalable.Instance.Size.Width > 600 ? 600 : pictureBoxScalable.Instance.Size.Width,
+                        pictureBoxScalable.Instance.Size.Height > 400 ? 400 : pictureBoxScalable.Instance.Size.Height);
                     pictureBoxScalable.Instance.Image = image;
+                    pictureBoxScalable.Instance.Location= new Point(new Size(-80,-80));
                     pictureBoxScalable.Instance.Invalidate();
                 }
                 catch
