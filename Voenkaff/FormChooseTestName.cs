@@ -139,10 +139,10 @@ namespace Voenkaff
 
             if (checkBoxIsFirstOpen.Checked)
             {
-                //List<int> fake;
+                List<int> fake;
                 
-                //if (!_formHello.TestNameAndMarks.TryGetValue(textBoxUserChooseTestName.Text, out fake))
-                //{
+                if (!_formHello.TestNameAndMarks.TryGetValue(textBoxUserChooseTestName.Text, out fake))
+                {
 
                     _formHello.TestNameAndMarks.Add(textBoxUserChooseTestName.Text, _marks);
 
@@ -152,12 +152,15 @@ namespace Voenkaff
 
                     //FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
                     //_formHello._listVzvodovAndLS.Add(formChooseVzvod);
-                //}
-                //else
-                //{
+
+                    this.Visible = false;
+                    _formHello.Visible = true;
+                }
+                else
+                {
                 //    //_formHello.ListTests.Remove(_formHello.ListTests[_formHello.ListTests.Count-1]);
-                //    MessageBox.Show("Такой тест уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //}
+                    MessageBox.Show("Такой тест уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
             }
 
@@ -172,6 +175,9 @@ namespace Voenkaff
                     _formHello.ListTests[_index].setTestName(textBoxUserChooseTestName.Text);
                     _formHello.ListTests[_index].setTesListMarks(_marks);
                     _formHello.ListTests[_index].Course = comboBoxCourse.SelectedItem.ToString();
+
+                this.Visible = false;
+                _formHello.Visible = true;
                 //}
                 //else
                 //{
@@ -180,8 +186,6 @@ namespace Voenkaff
 
             }
 
-            this.Visible = false;
-            _formHello.Visible = true;
 
             //не момогло
             int koef = 0;
