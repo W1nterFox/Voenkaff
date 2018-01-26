@@ -560,6 +560,18 @@ namespace Voenkaff
                     label.BringToFront();
                     LabelList.Add(label);
 
+                    ContextMenu cmu = new ContextMenu();
+                    MenuItem menuItemDelete = new MenuItem
+                    {
+                        Index = 0,
+                        Text = "Удалить",
+                        Shortcut = Shortcut.CtrlDel
+                    };
+                    menuItemDelete.Click += RemoveObject;
+                    menuItemDelete.Name = label.Name;
+                    cmu.MenuItems.Add(menuItemDelete);
+                    label.ContextMenu = cmu;
+
                     label.Location = new Point();
                 }
                 for (int i = 0; i < _TBInTask[task].Count; i++)
@@ -571,6 +583,18 @@ namespace Voenkaff
                     //_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Move += moveTBWithLB;
                     indexLabel++;
 
+                    ContextMenu cmu = new ContextMenu();
+                    MenuItem menuItemDelete = new MenuItem
+                    {
+                        Index = 0,
+                        Text = "Удалить",
+                        Shortcut = Shortcut.CtrlDel
+                    };
+                    menuItemDelete.Click += RemoveObject;
+                    menuItemDelete.Name = taskObj.Name;
+                    cmu.MenuItems.Add(menuItemDelete);
+                    taskObj.ContextMenu = cmu;
+
                     TBList.Add(taskObj);
                 }
                 foreach (RichTextBox rtb in _RTBInTask[task])
@@ -578,6 +602,17 @@ namespace Voenkaff
                     
                     panelQestionFoo.Controls.Add(rtb);
                     ControlMover.Add(rtb);
+                    ContextMenu cmu = new ContextMenu();
+                    MenuItem menuItemDelete = new MenuItem
+                    {
+                        Index = 0,
+                        Text = "Удалить",
+                        Shortcut = Shortcut.CtrlDel
+                    };
+                    menuItemDelete.Click += RemoveObject;
+                    menuItemDelete.Name = rtb.Name;
+                    cmu.MenuItems.Add(menuItemDelete);
+                    rtb.ContextMenu = cmu;
                     rtb.BringToFront();
                 }
                 for (int i = 0; i < _TBInTask[task].Count; i++)
@@ -585,6 +620,7 @@ namespace Voenkaff
                     var obj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)];
                     TBAndLabel.Add(obj, _listTBLabels[task][i]);
                     TBAndLabel[obj].Location = new Point(obj.Location.X, obj.Location.Y - 30);
+                    
                 }
 
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);
@@ -683,6 +719,12 @@ namespace Voenkaff
                 koef++;
             }
             panelMain.Controls.Find("buttonCreateTest", true)[0].Location = new Point(580, 81 + 70 * ListPanelsTestsOnPanel.Count);
+        }
+
+        private void RemoveObject(object sender, EventArgs e)
+        {
+           // Control currentObject = _parent.Controls.Find(((MenuItem)sender).Name, false)[0];
+           // _parent.Controls.Remove(currentObject);
         }
     }
 }
