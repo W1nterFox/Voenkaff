@@ -139,27 +139,52 @@ namespace Voenkaff
 
             if (checkBoxIsFirstOpen.Checked)
             {
-                _formHello.TestNameAndMarks.Add(textBoxUserChooseTestName.Text, _marks);
+                List<int> fake;
+                
+                if (!_formHello.TestNameAndMarks.TryGetValue(textBoxUserChooseTestName.Text, out fake))
+                {
+
+                    _formHello.TestNameAndMarks.Add(textBoxUserChooseTestName.Text, _marks);
 
                 Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text], comboBoxCourse.SelectedItem.ToString());
                 _formHello.ListTests.Add(peremTest);
 
-                //FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
-                //_formHello._listVzvodovAndLS.Add(formChooseVzvod);
+                    //FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
+                    //_formHello._listVzvodovAndLS.Add(formChooseVzvod);
+
+                    this.Visible = false;
+                    _formHello.Visible = true;
+                }
+                else
+                {
+                //    //_formHello.ListTests.Remove(_formHello.ListTests[_formHello.ListTests.Count-1]);
+                    MessageBox.Show("Такой тест уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
             }
 
             else
             {
-                _formHello.Controls.Find("linkLabelTest" + _index, true)[0].Text = textBoxUserChooseTestName.Text;
-                _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text] = _marks;
+                //List<int> fake;
+                //if (!_formHello.TestNameAndMarks.TryGetValue(textBoxUserChooseTestName.Text, out fake))
+                //{
+                    _formHello.Controls.Find("linkLabelTest" + _index, true)[0].Text = textBoxUserChooseTestName.Text;
+                    _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text] = _marks;
 
-                _formHello.ListTests[_index].setTestName(textBoxUserChooseTestName.Text);
-                _formHello.ListTests[_index].setTesListMarks(_marks);
-                _formHello.ListTests[_index].Course = comboBoxCourse.SelectedItem.ToString();
+                    _formHello.ListTests[_index].setTestName(textBoxUserChooseTestName.Text);
+                    _formHello.ListTests[_index].setTesListMarks(_marks);
+                    _formHello.ListTests[_index].Course = comboBoxCourse.SelectedItem.ToString();
+
+                this.Visible = false;
+                _formHello.Visible = true;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Такой тест уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //}
+
             }
 
-            this.Visible = false;
-            _formHello.Visible = true;
 
             //не момогло
             int koef = 0;

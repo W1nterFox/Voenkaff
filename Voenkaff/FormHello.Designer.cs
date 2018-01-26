@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panelMain = new System.Windows.Forms.Panel();
+            this.buttonFilterOff = new System.Windows.Forms.Button();
+            this.comboBoxCourseFilter = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.buttonCreateTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -39,9 +42,6 @@
             this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveTests = new System.Windows.Forms.SaveFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxCourseFilter = new System.Windows.Forms.ComboBox();
-            this.buttonFilterOff = new System.Windows.Forms.Button();
             this.panelMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,8 +59,42 @@
             this.panelMain.Location = new System.Drawing.Point(18, 33);
             this.panelMain.Margin = new System.Windows.Forms.Padding(4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1468, 773);
+            this.panelMain.Size = new System.Drawing.Size(1314, 773);
             this.panelMain.TabIndex = 0;
+            // 
+            // buttonFilterOff
+            // 
+            this.buttonFilterOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFilterOff.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.buttonFilterOff.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonFilterOff.Location = new System.Drawing.Point(443, 18);
+            this.buttonFilterOff.Name = "buttonFilterOff";
+            this.buttonFilterOff.Size = new System.Drawing.Size(67, 36);
+            this.buttonFilterOff.TabIndex = 11;
+            this.buttonFilterOff.Text = "Сброс";
+            this.buttonFilterOff.UseVisualStyleBackColor = true;
+            this.buttonFilterOff.Click += new System.EventHandler(this.buttonFilterOff_Click);
+            // 
+            // comboBoxCourseFilter
+            // 
+            this.comboBoxCourseFilter.FormattingEnabled = true;
+            this.comboBoxCourseFilter.Location = new System.Drawing.Point(203, 26);
+            this.comboBoxCourseFilter.Name = "comboBoxCourseFilter";
+            this.comboBoxCourseFilter.Size = new System.Drawing.Size(234, 21);
+            this.comboBoxCourseFilter.TabIndex = 10;
+            this.comboBoxCourseFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxCourseFilter_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label2.Location = new System.Drawing.Point(31, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(165, 20);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Фильтр по предметам";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonCreateTest
             // 
@@ -81,7 +115,7 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(543, 15);
+            this.label1.Location = new System.Drawing.Point(564, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(194, 48);
@@ -102,7 +136,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1499, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1347, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -123,7 +157,7 @@
             // предметыToolStripMenuItem
             // 
             this.предметыToolStripMenuItem.Name = "предметыToolStripMenuItem";
-            this.предметыToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
+            this.предметыToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.предметыToolStripMenuItem.Text = "Предметы";
             this.предметыToolStripMenuItem.Click += new System.EventHandler(this.предметыToolStripMenuItem_Click);
             // 
@@ -146,45 +180,11 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(12, 20);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(31, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(165, 20);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Фильтр по предметам";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboBoxCourseFilter
-            // 
-            this.comboBoxCourseFilter.FormattingEnabled = true;
-            this.comboBoxCourseFilter.Location = new System.Drawing.Point(203, 26);
-            this.comboBoxCourseFilter.Name = "comboBoxCourseFilter";
-            this.comboBoxCourseFilter.Size = new System.Drawing.Size(234, 21);
-            this.comboBoxCourseFilter.TabIndex = 10;
-            this.comboBoxCourseFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxCourseFilter_SelectedIndexChanged);
-            // 
-            // buttonFilterOff
-            // 
-            this.buttonFilterOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFilterOff.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonFilterOff.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonFilterOff.Location = new System.Drawing.Point(443, 18);
-            this.buttonFilterOff.Name = "buttonFilterOff";
-            this.buttonFilterOff.Size = new System.Drawing.Size(67, 36);
-            this.buttonFilterOff.TabIndex = 11;
-            this.buttonFilterOff.Text = "Сброс";
-            this.buttonFilterOff.UseVisualStyleBackColor = true;
-            this.buttonFilterOff.Click += new System.EventHandler(this.buttonFilterOff_Click);
-            // 
             // FormHello
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1499, 821);
+            this.ClientSize = new System.Drawing.Size(1347, 821);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FormHello";
