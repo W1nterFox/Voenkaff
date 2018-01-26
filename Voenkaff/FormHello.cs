@@ -448,18 +448,18 @@ namespace Voenkaff
         private void initTest(Wrappers.Test fromLoadTest, Test toTest)
         {
              List<Task> _listTasksInTest = new List<Task> { };
-             Dictionary<Task, List<RichTextBox>> _RTBInTask = new Dictionary<Task, List<RichTextBox>> { };
+             Dictionary<Task, List<Title>> _RTBInTask = new Dictionary<Task, List<Title>> { };
              Dictionary<Task, List<PictureBox>> _PBInTask = new Dictionary<Task, List<PictureBox>> { };
-             Dictionary<Task, Dictionary<string, TextBox>> _TBInTask = new Dictionary<Task, Dictionary<string, TextBox>> { };
+             Dictionary<Task, Dictionary<string, TextContainer>> _TBInTask = new Dictionary<Task, Dictionary<string, TextContainer>> { };
              List<Panel> _listPanelTasks = new List<Panel> { };
              Dictionary<Task, List<Label>> _listTBLabels = new Dictionary<Task, List<Label>> { };
 
             foreach (Task paneltask in fromLoadTest.Tasks)
             {
                 int textBoxNumber = 1;
-                _RTBInTask.Add(paneltask, new List<RichTextBox> { });
+                _RTBInTask.Add(paneltask, new List<Title> { });
                 _PBInTask.Add(paneltask, new List<PictureBox> { });
-                _TBInTask.Add(paneltask, new Dictionary<string, TextBox> { });
+                _TBInTask.Add(paneltask, new Dictionary<string, TextContainer> { });
                 _listTBLabels.Add(paneltask, new List<Label> { });
 
                 _listTasksInTest.Add(paneltask);
@@ -468,7 +468,8 @@ namespace Voenkaff
                 {
                     if (taskElem.Type.Equals("System.Windows.Forms.RichTextBox"))
                     {
-                        _RTBInTask[paneltask].Add(new RichTextBox
+                        Title bufTitle = new Title();
+                        _RTBInTask[paneltask].Add(new Title
                         {
                             Height = taskElem.Height,
                             Width = taskElem.Width,
@@ -501,15 +502,18 @@ namespace Voenkaff
 
                     if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
                     {
-                        _TBInTask[paneltask][taskElem.Name] = (new TextBox
-                        {
-                            Height = taskElem.Height,
-                            Width = taskElem.Width,
-                            Name = taskElem.Name,
-                            Location = taskElem.Point,
-                            Text = taskElem.Answer,
-
-                        });
+                        TextContainer bufTC =
+                            new TextContainer(null, taskElem.Name)
+                            {
+                                Instance =
+                                {
+                                    Height = taskElem.Height,
+                                    Width = taskElem.Width,
+                                    Location = taskElem.Point,
+                                    Text = taskElem.Answer
+                                }
+                            };
+                        _TBInTask[paneltask][taskElem.Name] = bufTC;
                         _listTBLabels[paneltask].Add(new Label
                         {
                             Location = new Point(taskElem.Point.X, taskElem.Point.Y - 30),
@@ -526,22 +530,24 @@ namespace Voenkaff
 
             foreach (Task task in _listTasksInTest)
             {
-                int indexLabel = 1;
-                Panel buf1 = new Panel();
-                buf1.BackColor = System.Drawing.SystemColors.ControlDark;
-                buf1.Location = new System.Drawing.Point(0, 0);
-                buf1.Name = task.Name;
-                buf1.Size = new System.Drawing.Size(1110, 618);
-                buf1.TabIndex = 0;
+                var indexLabel = 1;
+                var buf1 = new Panel
+                {
+                    BackColor = System.Drawing.SystemColors.ControlDark,
+                    Location = new System.Drawing.Point(0, 0),
+                    Name = task.Name,
+                    Size = new System.Drawing.Size(1110, 618),
+                    TabIndex = 0
+                };
                 _listPanelTasks.Add(buf1);
 
                 //Добавление панели с заданием
 
-                Panel panelQestionFoo = new Panel();
+                var panelQestionFoo = new Panel();
                 panelQestionFoo.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
                 panelQestionFoo.Location = new System.Drawing.Point(5, 5);
                 panelQestionFoo.Name = "panelQuestion";
-                panelQestionFoo.Size = new System.Drawing.Size(1100, 610);
+                panelQestionFoo.Size = new System.Drawing.Size(765, 605);
                 panelQestionFoo.TabIndex = 0;
                 panelQestionFoo.AutoScroll = true;
 
@@ -549,6 +555,19 @@ namespace Voenkaff
                 foreach (PictureBox pb in _PBInTask[task])
                 {
                     panelQestionFoo.Controls.Add(pb);
+
+                    //ContextMenu cmu = new ContextMenu();
+                    //MenuItem menuItemDelete = new MenuItem
+                    //{
+                    //    Index = 0,
+                    //    Text = "Удалить",
+                    //    Shortcut = Shortcut.CtrlDel
+                    //};
+                    //menuItemDelete.Click += RemoveObject;
+                    //menuItemDelete.Name = pb.Name;
+                    //cmu.MenuItems.Add(menuItemDelete);
+                    //pb.ContextMenu = cmu;
+
                     ControlMover.Add(pb);
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
@@ -559,41 +578,19 @@ namespace Voenkaff
                     panelQestionFoo.Controls.Add(label);
                     label.BringToFront();
                     LabelList.Add(label);
-
-                    ContextMenu cmu = new ContextMenu();
-                    MenuItem menuItemDelete = new MenuItem
-                    {
-                        Index = 0,
-                        Text = "Удалить",
-                        Shortcut = Shortcut.CtrlDel
-                    };
-                    menuItemDelete.Click += RemoveObject;
-                    menuItemDelete.Name = label.Name;
-                    cmu.MenuItems.Add(menuItemDelete);
-                    label.ContextMenu = cmu;
-
+                    
                     label.Location = new Point();
                 }
                 for (int i = 0; i < _TBInTask[task].Count; i++)
                 {
-                    var taskObj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)];
+                    var taskObj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Instance;
+                    _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].setParent(panelQestionFoo);
                     panelQestionFoo.Controls.Add(taskObj);
                     taskObj.BringToFront();
                     ControlMover.Add(taskObj);
                     //_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Move += moveTBWithLB;
                     indexLabel++;
-
-                    ContextMenu cmu = new ContextMenu();
-                    MenuItem menuItemDelete = new MenuItem
-                    {
-                        Index = 0,
-                        Text = "Удалить",
-                        Shortcut = Shortcut.CtrlDel
-                    };
-                    menuItemDelete.Click += RemoveObject;
-                    menuItemDelete.Name = taskObj.Name;
-                    cmu.MenuItems.Add(menuItemDelete);
-                    taskObj.ContextMenu = cmu;
+                    
 
                     TBList.Add(taskObj);
                 }
@@ -602,22 +599,22 @@ namespace Voenkaff
                     
                     panelQestionFoo.Controls.Add(rtb);
                     ControlMover.Add(rtb);
-                    ContextMenu cmu = new ContextMenu();
-                    MenuItem menuItemDelete = new MenuItem
-                    {
-                        Index = 0,
-                        Text = "Удалить",
-                        Shortcut = Shortcut.CtrlDel
-                    };
-                    menuItemDelete.Click += RemoveObject;
-                    menuItemDelete.Name = rtb.Name;
-                    cmu.MenuItems.Add(menuItemDelete);
-                    rtb.ContextMenu = cmu;
-                    rtb.BringToFront();
+                    //ContextMenu cmu = new ContextMenu();
+                    //MenuItem menuItemDelete = new MenuItem
+                    //{
+                    //    Index = 0,
+                    //    Text = "Удалить",
+                    //    Shortcut = Shortcut.CtrlDel
+                    //};
+                    //menuItemDelete.Click += RemoveObject;
+                    //menuItemDelete.Name = rtb.Name;
+                    //cmu.MenuItems.Add(menuItemDelete);
+                    //rtb.ContextMenu = cmu;
+                    //rtb.BringToFront();
                 }
                 for (int i = 0; i < _TBInTask[task].Count; i++)
                 {
-                    var obj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)];
+                    var obj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Instance;
                     TBAndLabel.Add(obj, _listTBLabels[task][i]);
                     TBAndLabel[obj].Location = new Point(obj.Location.X, obj.Location.Y - 30);
                     
@@ -719,12 +716,16 @@ namespace Voenkaff
                 koef++;
             }
             panelMain.Controls.Find("buttonCreateTest", true)[0].Location = new Point(580, 81 + 70 * ListPanelsTestsOnPanel.Count);
+            Redistribution();
         }
 
         private void RemoveObject(object sender, EventArgs e)
         {
-           // Control currentObject = _parent.Controls.Find(((MenuItem)sender).Name, false)[0];
-           // _parent.Controls.Remove(currentObject);
+            MenuItem curObject = (MenuItem) sender;
+            var asdsa = curObject.Parent;
+            //curObject.Parent.Controls.Remove(curObject.Parent.Controls.Find(curObject.Name, true)[0]); ;
+            //Control currentObject = _parent.Controls.Find(((MenuItem)sender).Name, false)[0];
+            // _parent.Controls.Remove(currentObject);
         }
     }
 }

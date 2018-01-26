@@ -8,13 +8,17 @@ namespace Voenkaff.Entity
 {
     class TextContainer:Entity<TextBox>
     {
-        private readonly Panel _parent;
+        private Panel _parent;
         //private readonly Panel _answerPanel;
         private readonly int _popravka = 15;
         private readonly Test _form;
         private readonly int _index;
         private Label _topTitle;
 
+        public void setParent(Panel parent)
+        {
+            _parent = parent;
+        }
         public TextContainer(Panel parent, /*Panel answerPanel,*/ Test form,int index)
         {
             _parent = parent;
@@ -43,8 +47,33 @@ namespace Voenkaff.Entity
             AddAnswerTitle();
         }
 
+        public TextContainer(Panel parent, string name)
+        {
+            _parent = parent;
+            Instance = new TextBox();
+            Instance.Name = name;
+            Instance.Location = new Point(10, 40);
+            Instance.MouseMove += IdentifierMove;
+            Instance.TextChanged += IdentifierTextChange;
+            Instance.BringToFront();
+            Instance.Width = 150;
 
-        
+            ContextMenu cmu = new ContextMenu();
+            MenuItem menuItemDelete = new MenuItem
+            {
+                Index = 0,
+                Text = "Удалить",
+                Shortcut = Shortcut.CtrlDel
+            };
+            menuItemDelete.Click += RemoveTextBox;
+            menuItemDelete.Name = name;
+            cmu.MenuItems.Add(menuItemDelete);
+            Instance.ContextMenu = cmu;
+
+
+        }
+
+
 
         private void AddAnswerTitle()
         {
