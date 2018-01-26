@@ -60,10 +60,9 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(1253, 28);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(939, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(193, 762);
+            this.panel1.Size = new System.Drawing.Size(145, 618);
             this.panel1.TabIndex = 0;
             // 
             // button3
@@ -72,10 +71,9 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(27, 15);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(20, 12);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(153, 92);
+            this.button3.Size = new System.Drawing.Size(115, 75);
             this.button3.TabIndex = 2;
             this.button3.Text = "Вставить текст задания";
             this.button3.UseVisualStyleBackColor = true;
@@ -87,10 +85,9 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(26, 114);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(20, 93);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 92);
+            this.button2.Size = new System.Drawing.Size(116, 75);
             this.button2.TabIndex = 1;
             this.button2.Text = "Добавить изображение";
             this.button2.UseVisualStyleBackColor = true;
@@ -102,10 +99,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(27, 214);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(20, 174);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 92);
+            this.button1.Size = new System.Drawing.Size(116, 75);
             this.button1.TabIndex = 0;
             this.button1.Text = "Вставить поле для ответа";
             this.button1.UseVisualStyleBackColor = true;
@@ -115,10 +111,9 @@
             // 
             this.panelQuestion.AutoScroll = true;
             this.panelQuestion.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panelQuestion.Location = new System.Drawing.Point(7, 6);
-            this.panelQuestion.Margin = new System.Windows.Forms.Padding(4);
+            this.panelQuestion.Location = new System.Drawing.Point(5, 5);
             this.panelQuestion.Name = "panelQuestion";
-            this.panelQuestion.Size = new System.Drawing.Size(1015, 751);
+            this.panelQuestion.Size = new System.Drawing.Size(761, 610);
             this.panelQuestion.TabIndex = 1;
             this.panelQuestion.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -128,10 +123,9 @@
             this.panelListOfTasks.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelListOfTasks.Controls.Add(this.buttonTaskCreate);
             this.panelListOfTasks.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelListOfTasks.Location = new System.Drawing.Point(0, 28);
-            this.panelListOfTasks.Margin = new System.Windows.Forms.Padding(4);
+            this.panelListOfTasks.Location = new System.Drawing.Point(0, 24);
             this.panelListOfTasks.Name = "panelListOfTasks";
-            this.panelListOfTasks.Size = new System.Drawing.Size(220, 762);
+            this.panelListOfTasks.Size = new System.Drawing.Size(165, 618);
             this.panelListOfTasks.TabIndex = 4;
             // 
             // buttonTaskCreate
@@ -142,10 +136,9 @@
             this.buttonTaskCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTaskCreate.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonTaskCreate.ForeColor = System.Drawing.Color.Black;
-            this.buttonTaskCreate.Location = new System.Drawing.Point(32, 15);
-            this.buttonTaskCreate.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonTaskCreate.Location = new System.Drawing.Point(24, 12);
             this.buttonTaskCreate.Name = "buttonTaskCreate";
-            this.buttonTaskCreate.Size = new System.Drawing.Size(155, 92);
+            this.buttonTaskCreate.Size = new System.Drawing.Size(116, 75);
             this.buttonTaskCreate.TabIndex = 1;
             this.buttonTaskCreate.Text = "Новое задание";
             this.buttonTaskCreate.UseVisualStyleBackColor = false;
@@ -156,21 +149,20 @@
             this.panelTaskStart.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelTaskStart.Controls.Add(this.panelQuestion);
             this.panelTaskStart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTaskStart.Location = new System.Drawing.Point(220, 28);
-            this.panelTaskStart.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.panelTaskStart.Location = new System.Drawing.Point(165, 24);
+            this.panelTaskStart.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
             this.panelTaskStart.Name = "panelTaskStart";
-            this.panelTaskStart.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.panelTaskStart.Size = new System.Drawing.Size(1033, 762);
+            this.panelTaskStart.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panelTaskStart.Size = new System.Drawing.Size(774, 618);
             this.panelTaskStart.TabIndex = 5;
             // 
             // panelMiddle
             // 
             this.panelMiddle.BackColor = System.Drawing.Color.White;
             this.panelMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMiddle.Location = new System.Drawing.Point(220, 28);
-            this.panelMiddle.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMiddle.Location = new System.Drawing.Point(165, 24);
             this.panelMiddle.Name = "panelMiddle";
-            this.panelMiddle.Size = new System.Drawing.Size(1033, 762);
+            this.panelMiddle.Size = new System.Drawing.Size(774, 618);
             this.panelMiddle.TabIndex = 6;
             // 
             // menuStrip1
@@ -182,8 +174,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1446, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1084, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -193,21 +184,21 @@
             this.новыйТестToolStripMenuItem,
             this.закрытьToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.файлToolStripMenuItem.Text = "Меню";
             this.файлToolStripMenuItem.Click += new System.EventHandler(this.файлToolStripMenuItem_Click);
             // 
             // новыйТестToolStripMenuItem
             // 
             this.новыйТестToolStripMenuItem.Name = "новыйТестToolStripMenuItem";
-            this.новыйТестToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.новыйТестToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.новыйТестToolStripMenuItem.Text = "Новый тест";
             this.новыйТестToolStripMenuItem.Click += new System.EventHandler(this.новыйТестToolStripMenuItem_Click);
             // 
             // закрытьToolStripMenuItem
             // 
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.закрытьToolStripMenuItem.Text = "Закрыть";
             this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
@@ -218,38 +209,38 @@
             this.вставитьToolStripMenuItem,
             this.отменаToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.справкаToolStripMenuItem.Text = "Правка";
             // 
             // копироватьToolStripMenuItem
             // 
             this.копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
-            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.копироватьToolStripMenuItem.Text = "Копировать";
             // 
             // вставитьToolStripMenuItem
             // 
             this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.вставитьToolStripMenuItem.Text = "Вставить";
             // 
             // отменаToolStripMenuItem
             // 
             this.отменаToolStripMenuItem.Name = "отменаToolStripMenuItem";
-            this.отменаToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.отменаToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.отменаToolStripMenuItem.Text = "Отмена";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // Test
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1446, 790);
+            this.ClientSize = new System.Drawing.Size(1084, 642);
             this.ControlBox = false;
             this.Controls.Add(this.panelTaskStart);
             this.Controls.Add(this.panelMiddle);
@@ -257,7 +248,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Test";
             this.Text = "currentTest";
             this.panel1.ResumeLayout(false);

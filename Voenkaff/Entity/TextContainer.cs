@@ -10,14 +10,22 @@ namespace Voenkaff.Entity
     {
         private Panel _parent;
         //private readonly Panel _answerPanel;
-        private readonly int _popravka = 15;
-        private readonly Test _form;
+        private readonly int _popravka = 30;
+        private Test _form;
         private readonly int _index;
         private Label _topTitle;
 
         public void setParent(Panel parent)
         {
             _parent = parent;
+        }
+        public void setTopTitle(Label topTitle)
+        {
+            _topTitle = topTitle;
+        }
+        public void setForm(Test form)
+        {
+            _form = form;
         }
         public TextContainer(Panel parent, /*Panel answerPanel,*/ Test form,int index)
         {
@@ -47,9 +55,10 @@ namespace Voenkaff.Entity
             AddAnswerTitle();
         }
 
-        public TextContainer(Panel parent, string name)
+        public TextContainer(string name)
         {
-            _parent = parent;
+            //_parent = parent;
+            //_topTitle = topTitle;
             Instance = new TextBox();
             Instance.Name = name;
             Instance.Location = new Point(10, 40);
@@ -95,7 +104,7 @@ namespace Voenkaff.Entity
             TextBox currentObject = ((TextBox) sender);
             if (MouseButtons.Left == e.Button)
             {
-                _form.PointToClient(Cursor.Position);
+                //_form.PointToClient(Cursor.Position);
                 //currentObject.Location = new Point(point.X - currentObject.Size.Width / 2, point.Y - currentObject.Size.Height / 2);
                 foreach (Label title in _parent.Controls.OfType<Label>())
                 {

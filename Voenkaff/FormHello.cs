@@ -56,7 +56,10 @@ namespace Voenkaff
             
             new TestInizializator().Initialize(this);
 
-            //Courses.Get().Add("<Без предмета>");
+            if (!Courses.Get().Contains("<Без предмета>"))
+            {
+                Courses.Get().Add("<Без предмета>");
+            }
 
             comboBoxCourseFilter.Items.AddRange(Courses.Get().ToArray());
 
@@ -449,7 +452,7 @@ namespace Voenkaff
         {
              List<Task> _listTasksInTest = new List<Task> { };
              Dictionary<Task, List<Title>> _RTBInTask = new Dictionary<Task, List<Title>> { };
-             Dictionary<Task, List<PictureBox>> _PBInTask = new Dictionary<Task, List<PictureBox>> { };
+             Dictionary<Task, List<PictureBoxScalable>> _PBInTask = new Dictionary<Task, List<PictureBoxScalable>> { };
              Dictionary<Task, Dictionary<string, TextContainer>> _TBInTask = new Dictionary<Task, Dictionary<string, TextContainer>> { };
              List<Panel> _listPanelTasks = new List<Panel> { };
              Dictionary<Task, List<Label>> _listTBLabels = new Dictionary<Task, List<Label>> { };
@@ -458,7 +461,7 @@ namespace Voenkaff
             {
                 int textBoxNumber = 1;
                 _RTBInTask.Add(paneltask, new List<Title> { });
-                _PBInTask.Add(paneltask, new List<PictureBox> { });
+                _PBInTask.Add(paneltask, new List<PictureBoxScalable> { });
                 _TBInTask.Add(paneltask, new Dictionary<string, TextContainer> { });
                 _listTBLabels.Add(paneltask, new List<Label> { });
 
@@ -468,17 +471,19 @@ namespace Voenkaff
                 {
                     if (taskElem.Type.Equals("System.Windows.Forms.RichTextBox"))
                     {
-                        Title bufTitle = new Title();
-                        _RTBInTask[paneltask].Add(new Title
+                        
+                        Title bufTitle = new Title (taskElem.Name)
                         {
-                            Height = taskElem.Height,
-                            Width = taskElem.Width,
-                            Name = taskElem.Name,
-                            Location = taskElem.Point,
-                            Text = taskElem.Text,
-                            Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
-
-                        });
+                            Instance =
+                            {
+                                Height = taskElem.Height,
+                                Width = taskElem.Width,
+                                Location = taskElem.Point,
+                                Text = taskElem.Text,
+                                Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
+                            }
+                        };
+                        _RTBInTask[paneltask].Add(bufTitle);
                     }
 
                     if (taskElem.Type.Equals("System.Windows.Forms.PictureBox"))
@@ -487,39 +492,41 @@ namespace Voenkaff
                         {
                             var binaryFormatter = new BinaryFormatter();
                             var image = ((SerializablePicture)binaryFormatter.Deserialize(stream)).Picture;
-                            _PBInTask[paneltask].Add(new PictureBox
+                            PictureBoxScalable bufPBS = new PictureBoxScalable(taskElem.Name)
                             {
-                                Size = image.Size,
-                                Image = image,
-                                //Height = taskElem.Height,
-                                //Width = taskElem.Width,
-                                Name = taskElem.Name,
-                                Location = taskElem.Point
-                            });
+                                Instance =
+                                {
+                                    Size = image.Size,
+                                    Image = image,
+                                    Location = taskElem.Point
+                                }
+                            };
+                            _PBInTask[paneltask].Add(bufPBS);
                         }
 
                     }
 
                     if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
                     {
-                        TextContainer bufTC =
-                            new TextContainer(null, taskElem.Name)
-                            {
-                                Instance =
-                                {
-                                    Height = taskElem.Height,
-                                    Width = taskElem.Width,
-                                    Location = taskElem.Point,
-                                    Text = taskElem.Answer
-                                }
-                            };
-                        _TBInTask[paneltask][taskElem.Name] = bufTC;
-                        _listTBLabels[paneltask].Add(new Label
+                        TextContainer bufTC = new TextContainer(taskElem.Name)
                         {
-                            Location = new Point(taskElem.Point.X, taskElem.Point.Y - 30),
-                            Text = "Поле для ввода ответа №" + textBoxNumber,
-                            Width = 150
-                        });
+                            Instance =
+                            {
+                                Height = taskElem.Height,
+                                Width = taskElem.Width,
+                                Location = taskElem.Point,
+                                Text = taskElem.Answer
+                            }
+                        };
+                        _TBInTask[paneltask][taskElem.Name] = bufTC;
+                        Label bufLabel = new Label();
+
+                        bufLabel.Location = new Point(taskElem.Point.X, taskElem.Point.Y - 30);
+                        bufLabel.Text = "Поле для ввода ответа №" + textBoxNumber;
+                        bufLabel.Width = 150;
+
+                        _listTBLabels[paneltask].Add(bufLabel);
+                        bufTC.setTopTitle(bufLabel);
 
                         textBoxNumber++;
 
@@ -552,24 +559,12 @@ namespace Voenkaff
                 panelQestionFoo.AutoScroll = true;
 
 
-                foreach (PictureBox pb in _PBInTask[task])
+                foreach (PictureBoxScalable pb in _PBInTask[task])
                 {
-                    panelQestionFoo.Controls.Add(pb);
-
-                    //ContextMenu cmu = new ContextMenu();
-                    //MenuItem menuItemDelete = new MenuItem
-                    //{
-                    //    Index = 0,
-                    //    Text = "Удалить",
-                    //    Shortcut = Shortcut.CtrlDel
-                    //};
-                    //menuItemDelete.Click += RemoveObject;
-                    //menuItemDelete.Name = pb.Name;
-                    //cmu.MenuItems.Add(menuItemDelete);
-                    //pb.ContextMenu = cmu;
-
-                    ControlMover.Add(pb);
-                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pb.setParent(panelQestionFoo);
+                    panelQestionFoo.Controls.Add(pb.Instance);
+                    ControlMover.Add(pb.Instance);
+                    pb.Instance.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
                 
                 
@@ -583,34 +578,23 @@ namespace Voenkaff
                 }
                 for (int i = 0; i < _TBInTask[task].Count; i++)
                 {
-                    var taskObj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Instance;
-                    _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].setParent(panelQestionFoo);
-                    panelQestionFoo.Controls.Add(taskObj);
-                    taskObj.BringToFront();
-                    ControlMover.Add(taskObj);
-                    //_TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Move += moveTBWithLB;
+                    var taskObj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)];
+                    taskObj.setParent(panelQestionFoo);
+                    panelQestionFoo.Controls.Add(taskObj.Instance);
+                    taskObj.Instance.BringToFront();
+                    ControlMover.Add(taskObj.Instance);
+
                     indexLabel++;
                     
 
-                    TBList.Add(taskObj);
+                    TBList.Add(taskObj.Instance);
                 }
-                foreach (RichTextBox rtb in _RTBInTask[task])
+                foreach (Title rtb in _RTBInTask[task])
                 {
+                    rtb.setParent(panelQestionFoo);
+                    panelQestionFoo.Controls.Add(rtb.Instance);
+                    ControlMover.Add(rtb.Instance);
                     
-                    panelQestionFoo.Controls.Add(rtb);
-                    ControlMover.Add(rtb);
-                    //ContextMenu cmu = new ContextMenu();
-                    //MenuItem menuItemDelete = new MenuItem
-                    //{
-                    //    Index = 0,
-                    //    Text = "Удалить",
-                    //    Shortcut = Shortcut.CtrlDel
-                    //};
-                    //menuItemDelete.Click += RemoveObject;
-                    //menuItemDelete.Name = rtb.Name;
-                    //cmu.MenuItems.Add(menuItemDelete);
-                    //rtb.ContextMenu = cmu;
-                    //rtb.BringToFront();
                 }
                 for (int i = 0; i < _TBInTask[task].Count; i++)
                 {
@@ -719,13 +703,6 @@ namespace Voenkaff
             Redistribution();
         }
 
-        private void RemoveObject(object sender, EventArgs e)
-        {
-            MenuItem curObject = (MenuItem) sender;
-            var asdsa = curObject.Parent;
-            //curObject.Parent.Controls.Remove(curObject.Parent.Controls.Find(curObject.Name, true)[0]); ;
-            //Control currentObject = _parent.Controls.Find(((MenuItem)sender).Name, false)[0];
-            // _parent.Controls.Remove(currentObject);
-        }
+        
     }
 }
