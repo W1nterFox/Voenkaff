@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using Microsoft.Office.Core;
 using Voenkaff.Creators;
 using Voenkaff.Entity;
 using Voenkaff.Properties;
@@ -492,11 +493,12 @@ namespace Voenkaff
                         {
                             var binaryFormatter = new BinaryFormatter();
                             var image = ((SerializablePicture)binaryFormatter.Deserialize(stream)).Picture;
+
                             PictureBoxScalable bufPBS = new PictureBoxScalable(taskElem.Name)
                             {
                                 Instance =
                                 {
-                                    Size = image.Size,
+                                    Size = new Size(taskElem.Width,taskElem.Height),
                                     Image = image,
                                     Location = taskElem.Point
                                 }
