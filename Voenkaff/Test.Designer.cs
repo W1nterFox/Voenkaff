@@ -39,7 +39,6 @@
             this.panelMiddle = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.новыйТестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -150,9 +149,9 @@
             this.panelTaskStart.Controls.Add(this.panelQuestion);
             this.panelTaskStart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTaskStart.Location = new System.Drawing.Point(165, 24);
-            this.panelTaskStart.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.panelTaskStart.Margin = new System.Windows.Forms.Padding(10);
             this.panelTaskStart.Name = "panelTaskStart";
-            this.panelTaskStart.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panelTaskStart.Padding = new System.Windows.Forms.Padding(5);
             this.panelTaskStart.Size = new System.Drawing.Size(774, 618);
             this.panelTaskStart.TabIndex = 5;
             // 
@@ -181,24 +180,16 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.новыйТестToolStripMenuItem,
             this.закрытьToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.файлToolStripMenuItem.Text = "Меню";
             this.файлToolStripMenuItem.Click += new System.EventHandler(this.файлToolStripMenuItem_Click);
             // 
-            // новыйТестToolStripMenuItem
-            // 
-            this.новыйТестToolStripMenuItem.Name = "новыйТестToolStripMenuItem";
-            this.новыйТестToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.новыйТестToolStripMenuItem.Text = "Новый тест";
-            this.новыйТестToolStripMenuItem.Click += new System.EventHandler(this.новыйТестToolStripMenuItem_Click);
-            // 
             // закрытьToolStripMenuItem
             // 
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.закрытьToolStripMenuItem.Text = "Закрыть";
             this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
@@ -273,7 +264,6 @@
         private System.Windows.Forms.Panel panelMiddle;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem новыйТестToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItem;

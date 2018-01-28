@@ -556,7 +556,7 @@ namespace Voenkaff
                 panelQestionFoo.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
                 panelQestionFoo.Location = new System.Drawing.Point(5, 5);
                 panelQestionFoo.Name = "panelQuestion";
-                panelQestionFoo.Size = new System.Drawing.Size(765, 605);
+                panelQestionFoo.Size = new System.Drawing.Size(761, 610 );
                 panelQestionFoo.TabIndex = 0;
                 panelQestionFoo.AutoScroll = true;
 
