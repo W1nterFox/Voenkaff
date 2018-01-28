@@ -313,7 +313,7 @@ namespace Voenkaff
             ListPanelsTestsOnPanel.Add(TestOperations);
             panelMain.Controls.Add(TestOperations);
 
-            buttonCreateTest.Location = new System.Drawing.Point(662, 81 + 70 * ListPanelsTestsOnPanel.Count);
+            buttonCreateTest.Location = new System.Drawing.Point(585, 81 + 70 * ListPanelsTestsOnPanel.Count);
 
 
             _buttonTestOpenNew.Click += openCurrentTest;
@@ -337,7 +337,7 @@ namespace Voenkaff
             {
                 ListPanelsTestsOnPanel[i].Location = new System.Drawing.Point(28, 78 + 70 * i+panelMain.AutoScrollPosition.Y);
             }
-            buttonCreateTest.Location = new System.Drawing.Point(662, 81 + 70 * ListPanelsTestsOnPanel.Count + panelMain.AutoScrollPosition.Y);
+            buttonCreateTest.Location = new System.Drawing.Point(585, 81 + 70 * ListPanelsTestsOnPanel.Count + panelMain.AutoScrollPosition.Y);
         }
 
         private void testCurrentDelete(object sender, EventArgs e)
@@ -685,7 +685,7 @@ namespace Voenkaff
                     koef++;
                 }
 
-                panelMain.Controls.Find("buttonCreateTest", true)[0].Location = new Point(580, 81 + 70 * listPanelWithFilter.Count);
+                panelMain.Controls.Find("buttonCreateTest", true)[0].Location = new Point(585, 81 + 70 * listPanelWithFilter.Count);
             }
             
         }
@@ -701,7 +701,7 @@ namespace Voenkaff
                 pnl.Visible = true;
                 koef++;
             }
-            panelMain.Controls.Find("buttonCreateTest", true)[0].Location = new Point(580, 81 + 70 * ListPanelsTestsOnPanel.Count);
+            panelMain.Controls.Find("buttonCreateTest", true)[0].Location = new Point(585, 81 + 70 * ListPanelsTestsOnPanel.Count);
             Redistribution();
         }
 

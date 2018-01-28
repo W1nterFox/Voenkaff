@@ -268,7 +268,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Name = "FormChooseVzvod";
-            this.Text = "FormChooseVzvod";
+            this.Text = "Взвода";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

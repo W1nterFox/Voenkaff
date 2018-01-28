@@ -321,7 +321,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Name = "FormChooseTestName";
-            this.Text = "FormChooseTestName";
+            this.Text = "Добавление теста";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);

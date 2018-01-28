@@ -69,7 +69,7 @@
             this.buttonFilterOff.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonFilterOff.Location = new System.Drawing.Point(443, 18);
             this.buttonFilterOff.Name = "buttonFilterOff";
-            this.buttonFilterOff.Size = new System.Drawing.Size(67, 36);
+            this.buttonFilterOff.Size = new System.Drawing.Size(94, 36);
             this.buttonFilterOff.TabIndex = 11;
             this.buttonFilterOff.Text = "Сброс";
             this.buttonFilterOff.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FormHello";
-            this.Text = "FormHello";
+            this.Text = "Конструктор тестов";
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
