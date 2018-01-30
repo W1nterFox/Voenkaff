@@ -16,10 +16,15 @@ namespace Voenkaff
         int _index;
         //public int[] marks;
         public List<int> _marks;
-        
+
+        public string startName = "";
+        public Panel parentPanel;
         public FormChooseTestName(FormHello formHello, int index)
         {
             InitializeComponent();
+
+            
+
             _formHello = formHello;
             _index = index;
             //marks = new int[3] { 0, 0, 0 };
@@ -128,6 +133,9 @@ namespace Voenkaff
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
+
+            
+
             _formHello.Controls.Find("linkLabelTest" + _index, true)[0].Text = textBoxUserChooseTestName.Text;
             
 
@@ -137,27 +145,35 @@ namespace Voenkaff
             _marks[2] = Int32.Parse(textBoxMark3.Text);
 
 
+            bool testNameAlreadyExist = false;
+            foreach (KeyValuePair<Panel, Test> keyValue in _formHello.ListTests)
+            {
+                if (keyValue.Value.TestName == textBoxUserChooseTestName.Text)
+                {
+                    testNameAlreadyExist = true;
+                }
+
+            }
             if (checkBoxIsFirstOpen.Checked)
             {
-                List<int> fake;
                 
-                if (!_formHello.TestNameAndMarks.TryGetValue(textBoxUserChooseTestName.Text, out fake))
+                
+                if (!testNameAlreadyExist)
                 {
 
                     _formHello.TestNameAndMarks.Add(textBoxUserChooseTestName.Text, _marks);
 
-                Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text], comboBoxCourse.SelectedItem.ToString());
-                _formHello.ListTests.Add(peremTest);
+                    Test peremTest = new Test(_formHello, textBoxUserChooseTestName.Text, _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text], comboBoxCourse.SelectedItem.ToString());
+                    _formHello.ListTests[parentPanel] = peremTest;
 
                     //FormChooseVzvod formChooseVzvod = new FormChooseVzvod(_formHello);
                     //_formHello._listVzvodovAndLS.Add(formChooseVzvod);
-
+                    startName = textBoxUserChooseTestName.Text;
                     this.Visible = false;
                     _formHello.Visible = true;
                 }
                 else
                 {
-                //    //_formHello.ListTests.Remove(_formHello.ListTests[_formHello.ListTests.Count-1]);
                     MessageBox.Show("Такой тест уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
@@ -165,23 +181,30 @@ namespace Voenkaff
 
             else
             {
-                //List<int> fake;
-                //if (!_formHello.TestNameAndMarks.TryGetValue(textBoxUserChooseTestName.Text, out fake))
-                //{
+                
+                if (!testNameAlreadyExist || startName == textBoxUserChooseTestName.Text)
+                {
+
+                    
                     _formHello.Controls.Find("linkLabelTest" + _index, true)[0].Text = textBoxUserChooseTestName.Text;
-                    _formHello.TestNameAndMarks[textBoxUserChooseTestName.Text] = _marks;
+                    _formHello.TestNameAndMarks[startName] = _marks;
+                    
 
-                    _formHello.ListTests[_index].setTestName(textBoxUserChooseTestName.Text);
-                    _formHello.ListTests[_index].setTesListMarks(_marks);
-                    _formHello.ListTests[_index].Course = comboBoxCourse.SelectedItem.ToString();
+                    
 
-                this.Visible = false;
-                _formHello.Visible = true;
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Такой тест уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //}
+                    _formHello.ListTests[parentPanel].setTestName(textBoxUserChooseTestName.Text);
+                    _formHello.ListTests[parentPanel].setTesListMarks(_marks);
+                    _formHello.ListTests[parentPanel].Course = comboBoxCourse.SelectedItem.ToString();
+
+                    startName = textBoxUserChooseTestName.Text;
+
+                    this.Visible = false;
+                    _formHello.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Такой тест уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
             }
 

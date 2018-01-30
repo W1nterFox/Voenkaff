@@ -16,8 +16,7 @@ namespace Voenkaff
 {
     public partial class FormHello : Form
     {
-        public List<Test> ListTests { get; set; } = new List<Test> { };
-        //public List<FormChooseTestName> ListMarksAndName { get; set; } = new List<FormChooseTestName> { };
+        public Dictionary<Panel, Test> ListTests { get; set; } = new Dictionary<Panel, Test> { };
 
 
         public List<Panel> ListPanelsTestsOnPanel { get; set; }
@@ -40,7 +39,7 @@ namespace Voenkaff
         Tests listOfLoadTests;
         public List<Wrappers.Test> ListTestsRef { get; set; } = new List<Wrappers.Test> { };
         public Panel TestOperations { get; set; }
-        public List<FormChooseTestName> ListMarksAndName { get; set; } = new List<FormChooseTestName> { };
+        public Dictionary<Panel, FormChooseTestName> ListMarksAndName { get; set; } = new Dictionary<Panel, FormChooseTestName> { };
 
 
         public List<TextBox> TBList { get; set; } = new List<TextBox> { };
@@ -98,13 +97,14 @@ namespace Voenkaff
                     TestOperations.Tag = "panelTestInTests";
 
                     FormChooseTestName formChooseTestName = new FormChooseTestName(this, ListPanelsTestsOnPanel.Count);
+                    formChooseTestName.startName = test.Name;
                     formChooseTestName.Controls.Find("textBoxUserChooseTestName", true)[0].Text = test.Name;
                     formChooseTestName.Controls.Find("comboBoxCourse", true)[0].Text = test.Course;
                     formChooseTestName.Controls.Find("textBoxMark5", true)[0].Text = test.Marks.Excellent.ToString();
                     formChooseTestName.Controls.Find("textBoxMark4", true)[0].Text = test.Marks.Good.ToString();
                     formChooseTestName.Controls.Find("textBoxMark3", true)[0].Text = test.Marks.Satisfactory.ToString();
                     formChooseTestName.Tag = ListPanelsTestsOnPanel.Count;
-                    ListMarksAndName.Add(formChooseTestName);
+                    ListMarksAndName[TestOperations] = formChooseTestName;
 
                     _linkLabelTestNew.AutoSize = true;
                     _linkLabelTestNew.Font = new System.Drawing.Font("Century Gothic", 11.25F);
@@ -173,7 +173,7 @@ namespace Voenkaff
 
                     Test peremTest = new Test(this, test.Name, TestNameAndMarks[test.Name], test.Course);
                     //Test peremTest = new Test(this, test.Name, TestNameAndMarks["linkLabelTest" + ListPanelsTestsOnPanel.Count], test.Course);
-                    ListTests.Add(peremTest);
+                    ListTests[TestOperations] = peremTest;
 
 
 
@@ -189,14 +189,15 @@ namespace Voenkaff
 
                     if (ListPanelsTestsOnPanel.Count > 0)
                     {
-                        ListTests[ListPanelsTestsOnPanel.Count - 1].Controls.Find("panelMiddle", true)[0].Controls
+                        ListTests[TestOperations].Controls.Find("panelMiddle", true)[0].Controls
                             .Remove(
-                                ListTests[ListPanelsTestsOnPanel.Count - 1].Controls.Find("panelTaskStart", true)[0]);
+                                ListTests[TestOperations].Controls.Find("panelTaskStart", true)[0]);
                     }
 
                     //Добавление элементов в тест
                     initTest(ListTestsRef[ListPanelsTestsOnPanel.Count - 1],
-                        ListTests[ListPanelsTestsOnPanel.Count - 1]);
+                        ListTests[TestOperations]);
+
 
                 }
                 Redistribution();
@@ -220,6 +221,9 @@ namespace Voenkaff
 
         private void buttonCreateTest_Click(object sender, EventArgs e)
         {
+
+
+
             TestOperations = new Panel();
             _linkLabelTestNew = new Label();
             _buttonTestDeleteNew = new Button();
@@ -240,9 +244,11 @@ namespace Voenkaff
             TestOperations.Tag = "panelTestInTests";
 
             FormChooseTestName formChooseTestName = new FormChooseTestName(this, ListPanelsTestsOnPanel.Count);
+            formChooseTestName.startName = "";
             Visible = false;
             formChooseTestName.Visible = true;
-            ListMarksAndName.Add(formChooseTestName);
+            ListMarksAndName[TestOperations] = formChooseTestName;
+            ListMarksAndName[TestOperations].parentPanel = TestOperations;
             formChooseTestName.Tag = ListPanelsTestsOnPanel.Count;
 
             _linkLabelTestNew.AutoSize = true;
@@ -326,9 +332,9 @@ namespace Voenkaff
 
         private void testCurrentDownloadDoc(object sender, EventArgs e)
         {
-            int index = Int32.Parse(((Control)sender).Tag.ToString());
+            Panel parentPanel = (Panel)((Button)sender).Parent;
 
-            WordSaver.createDoc(ListTests[index]);
+            WordSaver.createDoc(ListTests[parentPanel]);
         }
 
         public void Redistribution()
@@ -342,6 +348,7 @@ namespace Voenkaff
 
         private void testCurrentDelete(object sender, EventArgs e)
         {
+            Panel parentPanel = (Panel)((Button)sender).Parent;
             foreach (var panel in ListPanelsTestsOnPanel)
             {
                 foreach (Control control in panel.Controls)
@@ -350,7 +357,11 @@ namespace Voenkaff
                     {
                         panelMain.Controls.Remove(panel);
                         ListPanelsTestsOnPanel.Remove(panel);
-                        ListTests.Remove(ListTests.Find(p=>p.TestName== panel.Controls[0].Text));
+                        ListTests.Remove(parentPanel);
+
+
+                        //ListTests.Remove(ListTests.Find(p=>p.TestName== panel.Controls[0].Text));
+                        //TestNameAndMarks.Remove(panel.Controls[0].Text);
                         Redistribution();
                         File.Delete(new DynamicParams().GetPath()+"\\"+ panel.Controls[0].Text+".test");
                         return;
@@ -361,17 +372,17 @@ namespace Voenkaff
 
         private void testCurrentDownload(object sender, EventArgs e)
         {
-            int index = Int32.Parse(((Control)sender).Tag.ToString());
+            Panel parentPanel = (Panel)((Button)sender).Parent;
 
             saveTests.Filter = Resources.SaveTestFilter;
-            saveTests.FileName = ListTests[index].TestName;
+            saveTests.FileName = ListTests[parentPanel].TestName;
             if (saveTests.ShowDialog() == DialogResult.Cancel)
                 return;
             // получаем выбранный файл
             string filename = saveTests.FileName;
 
-            string testJson = new JsonCreator().CreateTestCollection(new List<Test> {ListTests[index]});
-            new PictureCreator().CreatePictures(ListTests[index], filename.Substring(0, filename.LastIndexOf("\\", StringComparison.Ordinal)));
+            string testJson = new JsonCreator().CreateTestCollection(new List<Test> {ListTests[parentPanel] });
+            new PictureCreator().CreatePictures(ListTests[parentPanel], filename.Substring(0, filename.LastIndexOf("\\", StringComparison.Ordinal)));
             // сохраняем текст в файл
             System.IO.File.WriteAllText(filename, testJson);
             MessageBox.Show("Файл сохранен");
@@ -380,27 +391,27 @@ namespace Voenkaff
 
         private void openCurrentTest(object sender, EventArgs e)
         {
-            int index = Int32.Parse(((Control)sender).Tag.ToString());
+            Panel parentPanel = (Panel)((Button)sender).Parent;
 
 
             this.Visible = false;
-            ListTests[index].Visible = true;
-            ListTests[index].Controls.Find("panelMiddle",false)[0].Controls[0].Visible = true;
+            ListTests[parentPanel].Visible = true;
+            ListTests[parentPanel].Controls.Find("panelMiddle",false)[0].Controls[0].Visible = true;
         }
 
        
 
         private void testCurrentMarks(object sender, EventArgs e)
         {
+            Panel parentPanel = (Panel)((Button)sender).Parent;
+
             
-            
-            int index = Int32.Parse(((Control)sender).Tag.ToString());
 
             Visible = false;
-            CheckBox fuck = (CheckBox) (ListMarksAndName[index].Controls[0].Controls
-                .Find("checkBoxIsFirstOpen", false)[0]);
+            CheckBox fuck = (CheckBox) (ListMarksAndName[parentPanel].Controls[0].Controls.Find("checkBoxIsFirstOpen", false)[0]);
             fuck.Checked = false;
-            ListMarksAndName[index].Visible = true;
+            ListMarksAndName[parentPanel].parentPanel = parentPanel;
+            ListMarksAndName[parentPanel].Visible = true;
         }
 
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -416,18 +427,18 @@ namespace Voenkaff
         private void сохранитьТестыToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            foreach (var test in ListTests)
+            foreach (KeyValuePair<Panel, Test> keyValue in ListTests)
             {
-                string filename = new DynamicParams().GetPath() + "\\"+test.TestName+".test";
-                string testJson = new JsonCreator().CreateTestCollection(new List<Test>{test});
+                string filename = new DynamicParams().GetPath() + "\\"+keyValue.Value.TestName+".test";
+                string testJson = new JsonCreator().CreateTestCollection(new List<Test>{ keyValue.Value });
                 // сохраняем текст в файл
                 File.WriteAllText(filename, testJson);
             }
 
             var picureCreator = new PictureCreator();
-            foreach (var test in ListTests)
+            foreach (KeyValuePair<Panel, Test> keyValue in ListTests)
             {
-                picureCreator.CreatePictures(test, new DynamicParams().GetPath());
+                picureCreator.CreatePictures(keyValue.Value, new DynamicParams().GetPath());
             }
             
             MessageBox.Show("Файл сохранен");
@@ -454,19 +465,30 @@ namespace Voenkaff
              List<Task> _listTasksInTest = new List<Task> { };
              Dictionary<Task, List<Title>> _RTBInTask = new Dictionary<Task, List<Title>> { };
              Dictionary<Task, List<PictureBoxScalable>> _PBInTask = new Dictionary<Task, List<PictureBoxScalable>> { };
-             Dictionary<Task, Dictionary<string, TextContainer>> _TBInTask = new Dictionary<Task, Dictionary<string, TextContainer>> { };
+             Dictionary<Task, List<TextContainer>> _TBInTask = new Dictionary<Task, List<TextContainer>> { };
              List<Panel> _listPanelTasks = new List<Panel> { };
              Dictionary<Task, List<Label>> _listTBLabels = new Dictionary<Task, List<Label>> { };
 
             foreach (Task paneltask in fromLoadTest.Tasks)
             {
-                int textBoxNumber = 1;
+                int textBoxNumber = 0;
                 _RTBInTask.Add(paneltask, new List<Title> { });
                 _PBInTask.Add(paneltask, new List<PictureBoxScalable> { });
-                _TBInTask.Add(paneltask, new Dictionary<string, TextContainer> { });
+                _TBInTask.Add(paneltask, new List<TextContainer> { });
                 _listTBLabels.Add(paneltask, new List<Label> { });
 
                 _listTasksInTest.Add(paneltask);
+
+
+                foreach (TaskElement taskElem in paneltask.TaskElements)
+                {
+                    if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
+                    {
+                        
+                        textBoxNumber++;
+
+                    }
+                }
 
                 foreach (TaskElement taskElem in paneltask.TaskElements)
                 {
@@ -520,17 +542,17 @@ namespace Voenkaff
                                 Text = taskElem.Answer
                             }
                         };
-                        _TBInTask[paneltask][taskElem.Name] = bufTC;
+                        _TBInTask[paneltask].Add(bufTC);
                         Label bufLabel = new Label();
 
                         bufLabel.Location = new Point(taskElem.Point.X, taskElem.Point.Y - 30);
                         bufLabel.Text = "Поле для ввода ответа №" + textBoxNumber;
                         bufLabel.Width = 150;
 
-                        _listTBLabels[paneltask].Add(bufLabel);
+                        _listTBLabels[paneltask].Insert(0,bufLabel);
                         bufTC.setTopTitle(bufLabel);
 
-                        textBoxNumber++;
+                        textBoxNumber--;
 
                     }
 
@@ -578,19 +600,28 @@ namespace Voenkaff
                     
                     label.Location = new Point();
                 }
-                for (int i = 0; i < _TBInTask[task].Count; i++)
+
+
+
+
+
+                int j = _TBInTask[task].Count;
+                foreach (TextContainer tb in _TBInTask[task])
                 {
-                    var taskObj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)];
-                    taskObj.setParent(panelQestionFoo);
-                    panelQestionFoo.Controls.Add(taskObj.Instance);
-                    taskObj.Instance.BringToFront();
-                    ControlMover.Add(taskObj.Instance);
+                    tb.Instance.Name = "System.Windows.Forms.TextBox, Text: " + j;
+                    tb.setParent(panelQestionFoo);
+                    tb.setParent(panelQestionFoo);
+                    panelQestionFoo.Controls.Add(tb.Instance);
+                    tb.Instance.BringToFront();
+                    ControlMover.Add(tb.Instance);
 
                     indexLabel++;
-                    
 
-                    TBList.Add(taskObj.Instance);
+
+                    TBList.Add(tb.Instance);
+                    j--;
                 }
+
                 foreach (Title rtb in _RTBInTask[task])
                 {
                     rtb.setParent(panelQestionFoo);
@@ -598,13 +629,15 @@ namespace Voenkaff
                     ControlMover.Add(rtb.Instance);
                     
                 }
-                for (int i = 0; i < _TBInTask[task].Count; i++)
+
+                int i = _listTBLabels[task].Count-1;
+                foreach (TextContainer tb in _TBInTask[task])
                 {
-                    var obj = _TBInTask[task]["System.Windows.Forms.TextBox, Text: " + (i + 1)].Instance;
-                    TBAndLabel.Add(obj, _listTBLabels[task][i]);
-                    TBAndLabel[obj].Location = new Point(obj.Location.X, obj.Location.Y - 30);
-                    
+                    TBAndLabel.Add(tb.Instance, _listTBLabels[task][i]);
+                    TBAndLabel[tb.Instance].Location = new Point(tb.Instance.Location.X, tb.Instance.Location.Y - 30);
+                    i--;
                 }
+                
 
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);
                 toTest.Controls.Find("panelMiddle", true)[0].Controls.Add(_listPanelTasks[_listPanelTasks.Count - 1]);
@@ -667,14 +700,18 @@ namespace Voenkaff
             if (comboBox.SelectedItem != null)
             {
                 string selectedCourse = comboBox.SelectedItem.ToString();
-                for (int i = 0; i < ListPanelsTestsOnPanel.Count; i++)
+
+                foreach (KeyValuePair<Panel, Test> keyValue in ListTests)
                 {
-                    if (ListTests[i].Course == selectedCourse)
+                    if (keyValue.Value.Course == selectedCourse)
                     {
-                        listPanelWithFilter.Add(ListPanelsTestsOnPanel[i]);
+                        listPanelWithFilter.Add(keyValue.Key);
                     }
-                    ListPanelsTestsOnPanel[i].Visible = false;
+                    keyValue.Key.Visible = false;
                 }
+
+
+                
 
                 int koef = 0;
                 foreach (Panel pnl in listPanelWithFilter)

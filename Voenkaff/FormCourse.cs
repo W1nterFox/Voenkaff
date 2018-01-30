@@ -74,10 +74,10 @@ namespace Voenkaff
             //_formHello.listOfCourses = listOfCourses;
             //this.Visible = false;
             //_formHello.Visible = true;
-
-            foreach (FormChooseTestName formCTN in _formHello.ListMarksAndName)
+            //KeyValuePair<Panel, Test> keyValue in ListTests
+            foreach (KeyValuePair<Panel, FormChooseTestName> formCTN in _formHello.ListMarksAndName)
             {
-                ComboBox currentCB = (ComboBox)formCTN.Controls.Find("comboBoxCourse", true)[0];
+                ComboBox currentCB = (ComboBox)formCTN.Value.Controls.Find("comboBoxCourse", true)[0];
                 if (currentCB.SelectedItem != null)
                 {
                     string bufItem = currentCB.SelectedItem.ToString();
