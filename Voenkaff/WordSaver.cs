@@ -14,6 +14,7 @@ namespace Voenkaff
     {
         public static void createDoc(Test test)
         {
+            object missing = System.Reflection.Missing.Value;
             WordSaver ws = new WordSaver();
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Word Documents (*.docx)|*.docx";
@@ -135,7 +136,7 @@ namespace Voenkaff
                     doc.SaveAs2(sfd.FileName);
                     File.Delete(source);
                     // Закрываем документ
-                    doc.Close();
+                    doc.Close(ref missing, ref missing, ref missing);
                 }
 
                 catch (IOException e)
