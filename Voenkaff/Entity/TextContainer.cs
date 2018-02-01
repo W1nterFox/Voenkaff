@@ -27,13 +27,14 @@ namespace Voenkaff.Entity
         {
             _form = form;
         }
-        public TextContainer(Panel parent, /*Panel answerPanel,*/ Test form,int index)
+        public TextContainer(Panel parent, Test form,int index)
         {
             _parent = parent;
-            //_answerPanel = answerPanel;
             _form = form;
             _index = index;
+
             Instance = new TextBox();
+            Instance.Parent = _parent;
             Instance.Name = Instance.ToString() + index;
             Instance.Location = new Point(10, 40);
             _parent.Controls.Add(Instance);

@@ -191,7 +191,7 @@ namespace Voenkaff
                     {
                         ListTests[TestOperations].Controls.Find("panelMiddle", true)[0].Controls
                             .Remove(
-                                ListTests[TestOperations].Controls.Find("panelTaskStart", true)[0]);
+                                ListTests[TestOperations].Controls.Find("Задание №1", true)[0]);
                     }
 
                     //Добавление элементов в тест
@@ -646,7 +646,14 @@ namespace Voenkaff
                 bufPW.Entity = _listPanelTasks[_listPanelTasks.Count - 1];
                 bufPW.Identifier = indexLabel;
                 indexLabel++;
-                toTest.ListPanelsTasks.Add(bufPW);
+
+                LinkLabel bufLL = toTest.createLinkLabel(_listPanelTasks.Count - 1);
+
+                bufPW.Entity.Name = bufLL.Text;
+
+                toTest.ListPanelsTasks.Add(bufLL, bufPW);
+                toTest.LinkLabelButtonDel.Add(bufLL, toTest.createButtonDelTask(_listPanelTasks.Count - 1));
+
 
                 PanelWrapper bufPW2 = new PanelWrapper();
                 bufPW2.Entity = panelQestionFoo;
@@ -654,15 +661,23 @@ namespace Voenkaff
 
             }
 
-            toTest.ListPanelsTasks.RemoveAt(0);
             
-            toTest._currentTask = toTest.ListPanelsTasks[0];
+            Control currentPanelListOfTasks = toTest.Controls.Find("panelListOfTasks", true)[0];
+
+
+            toTest.ListPanelsTasks.Remove((LinkLabel)currentPanelListOfTasks.Controls[1]);
+            toTest.LinkLabelButtonDel.Remove((LinkLabel)currentPanelListOfTasks.Controls[1]);
+
+            currentPanelListOfTasks.Controls.Remove(currentPanelListOfTasks.Controls[1]);
+            currentPanelListOfTasks.Controls.Remove(currentPanelListOfTasks.Controls[1]);
+
+            //toTest.ListPanelsTasks.Remove((LinkLabel)currentPanelListOfTasks.Controls[1]);
+
+
+            toTest._currentTask = toTest.ListPanelsTasks[(LinkLabel)(toTest.Controls.Find("panelListOfTasks", true)[0].Controls[1])];
             toTest._currentPanelQuestion.Entity = (Panel)toTest._currentTask.Entity.Controls.Find("panelQuestion", true)[0];
 
-            for (int i = 1; i < toTest.ListPanelsTasks.Count; i++)
-            {
-                toTest.Controls.Find("panelListOfTasks",true)[0].Controls.Add(toTest.createLinkLabel(i));
-            }
+            
 
             foreach (TextBox tb in TBList)
             {

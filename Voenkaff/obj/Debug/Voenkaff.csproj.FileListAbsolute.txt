@@ -5,6 +5,7 @@ D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\b
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\bin\Debug\Newtonsoft.Json.dll
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\bin\Debug\SerializablePicutre.dll
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\bin\Debug\Newtonsoft.Json.xml
+D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csprojResolveAssemblyReference.cache
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Debug\Voenkaff.FormChooseTestName.resources
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Debug\Voenkaff.FormChooseVzvod.resources
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Debug\Voenkaff.FormCourse.resources
@@ -16,4 +17,3 @@ D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\o
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csproj.GenerateResource.Cache
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Debug\Voenkaff.exe
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Debug\Voenkaff.pdb
-D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Debug\Voenkaff.csprojResolveAssemblyReference.cache

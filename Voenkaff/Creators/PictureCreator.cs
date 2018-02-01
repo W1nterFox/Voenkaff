@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using SerializablePicutre;
 using Voenkaff.Wrappers;
+using System.Collections.Generic;
 
 namespace Voenkaff.Creators
 {
@@ -12,9 +13,9 @@ namespace Voenkaff.Creators
         public void CreatePictures(Test test,string path)
         {
             Directory.CreateDirectory(path + "\\picture\\");
-            foreach (var control in test.ListPanelsTasks)
+            foreach (KeyValuePair<LinkLabel, PanelWrapper> keyValue in test.ListPanelsTasks)
             {
-                foreach (var testElement in control.Entity.Controls.Find("panelQuestion", false)[0].Controls)
+                foreach (var testElement in keyValue.Value.Entity.Controls.Find("panelQuestion", false)[0].Controls)
                 {
                     if (testElement is PictureBox && (testElement as PictureBox).Name.Contains(test.TestName))
                     {

@@ -33,10 +33,10 @@ namespace Voenkaff.Creators
                     Satisfactory = testObj.ListMarks[2]
                 }
             };
-
-            foreach (var task in testObj.ListPanelsTasks)
+            
+            foreach (KeyValuePair<LinkLabel, PanelWrapper> keyValue in testObj.ListPanelsTasks)
             {
-                var questions = task.Entity.Controls.Find("panelQuestion", false)[0];
+                var questions = keyValue.Value.Entity.Controls.Find("panelQuestion", false)[0];
                 //var answers = task.Entity.Controls.Find("panelAnswer", false)[0];
                 var taskElements = new List<TaskElement>();
                 foreach (Control taskElement in questions.Controls)

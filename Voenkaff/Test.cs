@@ -11,7 +11,9 @@ namespace Voenkaff
 {
     public partial class Test : Form
     {
-        public List<PanelWrapper> ListPanelsTasks { get; set; }
+        //public List<PanelWrapper> ListPanelsTasks { get; set; }
+        public Dictionary<LinkLabel, PanelWrapper> ListPanelsTasks;
+        public Dictionary<LinkLabel, Button> LinkLabelButtonDel;
 
         public PanelWrapper _currentTask = new PanelWrapper();
         public PanelWrapper _currentPanelQuestion = new PanelWrapper();
@@ -51,16 +53,74 @@ namespace Voenkaff
             this.MaximumSize = this.Size;
             
             panelMiddle.Controls.Add(panelTaskStart);
-            ListPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
+            LinkLabel firstLL = createLinkLabel(0);
+
+            ListPanelsTasks = new Dictionary<LinkLabel, PanelWrapper> { { firstLL , new PanelWrapper(panelTaskStart, 1) } };
+            LinkLabelButtonDel = new Dictionary<LinkLabel, Button> { { firstLL, createButtonDelTask(0)} };
+
+            ListPanelsTasks[firstLL].Entity.Name = firstLL.Text;
             panelQuestion.Text = "Задание №1";
             panelTaskStart.Controls.Add(panelQuestion);
             _currentTask.Entity = panelTaskStart;
             _currentTask.Identifier = 1;
             _currentPanelQuestion.Entity = panelQuestion;
 
-            panelListOfTasks.Controls.Add(createLinkLabel(0));
+            
 
             this.FormClosing += Test_Closing;
+        }
+
+        public Button createButtonDelTask(int indexPanel)
+        {
+            Button buttonDelTask = new Button
+            {
+                BackgroundImage = Resources.x_button_256_tCwoi,
+                BackgroundImageLayout = ImageLayout.Stretch,
+                Location = new Point(127, 95 + indexPanel * 30),
+                Name = "buttonDelTask" + indexPanel,
+                Size = new Size(0, 0),
+                TabIndex = 3,
+            };
+
+            buttonDelTask.Click += clickButtonDelTask;
+
+            panelListOfTasks.Controls.Add(buttonDelTask);
+            return buttonDelTask;
+        }
+
+        private void clickButtonDelTask(object sender, EventArgs e)
+        {
+            Button curButton = (Button)sender;
+            foreach (KeyValuePair<LinkLabel, Button> keyValue in LinkLabelButtonDel)
+            {
+                if (keyValue.Value.Name == curButton.Name)
+                {
+                    if (LinkLabelButtonDel.Count > 1)
+                    {
+                        panelListOfTasks.Controls.Remove(panelListOfTasks.Controls.Find(keyValue.Key.Name, true)[0]);
+                        panelListOfTasks.Controls.Remove(panelListOfTasks.Controls.Find(keyValue.Value.Name, true)[0]);
+                        LinkLabelButtonDel.Remove(keyValue.Key);
+                        ListPanelsTasks.Remove(keyValue.Key);
+                        int koef = 0;
+                        foreach (KeyValuePair<LinkLabel, Button> keyValue2nd in LinkLabelButtonDel)
+                        {
+                            keyValue2nd.Key.Text = "Задание №" + (koef + 1);
+                            keyValue2nd.Key.Location = new Point(15, 95 + koef * 30);
+                            keyValue2nd.Value.Location = new Point(127, 95 + koef * 30);
+                            koef++;
+                        }
+
+                        break;
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Нельзя удалить все задания!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                    
+                }
+            }
         }
 
         public LinkLabel createLinkLabel(int indexPanel)
@@ -80,10 +140,14 @@ namespace Voenkaff
                 Tag = indexPanel
             };
 
-            
-            ll.Click += clickTaskLinkLabel;
+
             
 
+
+
+            ll.Click += clickTaskLinkLabel;
+
+            panelListOfTasks.Controls.Add(ll);
             return ll;
         }
 
@@ -91,17 +155,13 @@ namespace Voenkaff
         {
             LinkLabel currentLL = (LinkLabel) sender;
 
-            foreach (PanelWrapper index in ListPanelsTasks)
+            foreach (KeyValuePair<LinkLabel, PanelWrapper> keyValue in ListPanelsTasks)
             {
-                index.Entity.Visible = false;
+                keyValue.Value.Entity.Visible = false;
             }
-
-            //textBox1.Text = currentLL.Text;
-            ListPanelsTasks[(int) currentLL.Tag].Entity.Visible = true;
-
-            ListPanelsTasks.Find(p => p.Entity.Name == _currentTask.Entity.Name).Identifier = _currentTask.Identifier;
-            _currentTask = ListPanelsTasks[(int) currentLL.Tag];
-
+            
+            _currentTask = ListPanelsTasks[currentLL];
+            _currentTask.Entity.Visible = true;
             _currentPanelQuestion.Entity =  (Panel)_currentTask.Entity.Controls.Find("panelQuestion", true)[0];
         }
 
@@ -112,8 +172,7 @@ namespace Voenkaff
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, /*_currentPanelAnswer.Entity,*/ this,
-                _currentTask.Identifier);
+            TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, this, _currentTask.Identifier);
             ControlMover.Add(tc.Instance);
             _currentTask.Identifier++;
         }
@@ -169,7 +228,11 @@ namespace Voenkaff
 
         private void buttonTaskCreate_Click(object sender, EventArgs e)
         {
-            ListPanelsTasks[ListPanelsTasks.Count - 1].Entity.Visible = false;
+            foreach (KeyValuePair<LinkLabel, PanelWrapper> keyValue in ListPanelsTasks)
+            {
+                keyValue.Value.Entity.Visible = false;
+            }
+            
 
             Panel newPanelTask = new Panel();
 
@@ -196,21 +259,20 @@ namespace Voenkaff
             newPanelTask.Padding = new Padding(5);
             newPanelTask.Size = new Size(1142, 642);
 
+            LinkLabel bufLL = createLinkLabel(ListPanelsTasks.Count);
+            ListPanelsTasks.Add(bufLL, new PanelWrapper(newPanelTask, 1));
+            LinkLabelButtonDel.Add(bufLL, createButtonDelTask(ListPanelsTasks.Count - 1));
 
-            ListPanelsTasks.Add(new PanelWrapper(newPanelTask, 1));
             newPanelTask.Name = "" + (ListPanelsTasks.Count - 1);
-            foreach (PanelWrapper index in ListPanelsTasks)
-            {
-                index.Entity.Visible = false;
-            }
+            
+            ListPanelsTasks[bufLL].Entity.Name = bufLL.Text;
+            
+            _currentTask = ListPanelsTasks[bufLL];
+            _currentTask.Entity.Visible = true;
 
-            ListPanelsTasks[ListPanelsTasks.Count - 1].Entity.Visible = true;
-
-
-            _currentTask = ListPanelsTasks[ListPanelsTasks.Count - 1];
             _currentPanelQuestion.Entity = (Panel) _currentTask.Entity.Controls.Find("panelQuestion", false)[0];
 
-            panelListOfTasks.Controls.Add(createLinkLabel(ListPanelsTasks.Count - 1));
+            //panelListOfTasks.Controls.Add(createLinkLabel(ListPanelsTasks.Count));
         }
 
         private void файлToolStripMenuItem_Click(object sender, EventArgs e)
@@ -235,7 +297,10 @@ namespace Voenkaff
             InitializeComponent();
             this.MinimumSize = new Size(1080, 750);
             panelMiddle.Controls.Add(panelTaskStart);
-            ListPanelsTasks = new List<PanelWrapper> {new PanelWrapper(panelTaskStart, 1)};
+
+            LinkLabel firstLL = createLinkLabel(0);
+            ListPanelsTasks = new Dictionary<LinkLabel, PanelWrapper> { { firstLL, new PanelWrapper(panelTaskStart, 1) } };
+            //LinkLabelButtonDel = new Dictionary<LinkLabel, Button> { { firstLL, createButtonDelTask(0) } };
 
             panelTaskStart.Controls.Add(panelQuestion);
             //panelTaskStart.Controls.Add(panelAnswer);
@@ -247,8 +312,7 @@ namespace Voenkaff
             _currentTask.Identifier = 1;
             _currentPanelQuestion.Entity = panelQuestion;
             //_currentPanelAnswer.Entity = panelAnswer;
-
-            panelListOfTasks.Controls.Add(createLinkLabel(0));
+            
         }
 
         private void сохранитьТестToolStripMenuItem_Click(object sender, EventArgs e)

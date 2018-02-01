@@ -21,7 +21,7 @@ namespace Voenkaff.Entity
             _parent = parent;
             Instance = new PictureBox
             {
-                Name = panel.TestName + "_" + parent.Text + "_" + index,
+                Name = panel.TestName + "_" + parent.Parent.Name + "_" + index,
                 Location = new Point(10, 10)
             };
 

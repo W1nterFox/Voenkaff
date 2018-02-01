@@ -73,18 +73,18 @@ namespace Voenkaff
 
                             string textForInsert = "";
                             int count = 0;
-                            foreach (PanelWrapper panelWrapperTask in test.ListPanelsTasks)
+                            foreach (KeyValuePair<LinkLabel, PanelWrapper> keyValue in test.ListPanelsTasks)
                             {
 
                                 string taskUslovie = "";
                                 List<TextBox> bufListTB = new List<TextBox> { };
                                 //List<PictureBox> listPB = new List<PictureBox> { };
                                 textForInsert += "\n\n\n\nЗадание №" + (count + 1) + "\n";
-                                for (int i = 0; i < panelWrapperTask.Entity.Controls[0].Controls.Count; i++)
+                                for (int i = 0; i < keyValue.Value.Entity.Controls[0].Controls.Count; i++)
                                 {
-                                    if (panelWrapperTask.Entity.Controls[0].Controls[i] is RichTextBox)
+                                    if (keyValue.Value.Entity.Controls[0].Controls[i] is RichTextBox)
                                     {
-                                        taskUslovie = panelWrapperTask.Entity.Controls[0].Controls[i].Text;
+                                        taskUslovie = keyValue.Value.Entity.Controls[0].Controls[i].Text;
 
                                     }
 
@@ -95,12 +95,12 @@ namespace Voenkaff
 
 
 
-                                for (int i = 0; i < panelWrapperTask.Entity.Controls[0].Controls.Count; i++)
+                                for (int i = 0; i < keyValue.Value.Entity.Controls[0].Controls.Count; i++)
                                 {
-                                    if (panelWrapperTask.Entity.Controls[0].Controls[i] is PictureBox)
+                                    if (keyValue.Value.Entity.Controls[0].Controls[i] is PictureBox)
                                     {
                                         Clipboard.SetImage(
-                                            ((PictureBox) (panelWrapperTask.Entity.Controls[0].Controls[i]))
+                                            ((PictureBox) (keyValue.Value.Entity.Controls[0].Controls[i]))
                                             .Image);
                                         mark.Range.Paste();
 
@@ -109,12 +109,12 @@ namespace Voenkaff
                                 }
 
 
-                                for (int i = panelWrapperTask.Entity.Controls[0].Controls.Count; i > 0; i--)
+                                for (int i = keyValue.Value.Entity.Controls[0].Controls.Count; i > 0; i--)
                                 {
 
-                                    if (panelWrapperTask.Entity.Controls[0].Controls[i - 1] is TextBox)
+                                    if (keyValue.Value.Entity.Controls[0].Controls[i - 1] is TextBox)
                                     {
-                                        bufListTB.Add((TextBox) panelWrapperTask.Entity.Controls[0].Controls[i - 1]);
+                                        bufListTB.Add((TextBox)keyValue.Value.Entity.Controls[0].Controls[i - 1]);
 
                                     }
 
