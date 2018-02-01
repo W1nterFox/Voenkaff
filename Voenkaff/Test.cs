@@ -80,6 +80,7 @@ namespace Voenkaff
                 Name = "buttonDelTask" + indexPanel,
                 Size = new Size(0, 0),
                 TabIndex = 3,
+                Enabled = false
             };
 
             buttonDelTask.Click += clickButtonDelTask;
