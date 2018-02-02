@@ -575,6 +575,11 @@ namespace Voenkaff
                 panelQestionFoo.TabIndex = 0;
                 panelQestionFoo.AutoScroll = true;
 
+                panelQestionFoo.AllowDrop = true;
+                panelQestionFoo.DragEnter += new DragEventHandler(toTest.panelQuestion_DragEnter);
+                panelQestionFoo.DragDrop += new DragEventHandler(toTest.panelQuestion_DragDrop);
+
+                toTest.createPasteFunc(panelQestionFoo);
 
                 foreach (PictureBoxScalable pb in _PBInTask[task])
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using Voenkaff.Creators;
 using Voenkaff.Entity;
@@ -65,9 +66,93 @@ namespace Voenkaff
             _currentTask.Identifier = 1;
             _currentPanelQuestion.Entity = panelQuestion;
 
-            
+            panelQuestion.AllowDrop = true;
+            panelQuestion.DragEnter += new DragEventHandler(panelQuestion_DragEnter);
+            panelQuestion.DragDrop += new DragEventHandler(panelQuestion_DragDrop);
+
+            createPasteFunc(panelQuestion);
+
+
+
 
             this.FormClosing += Test_Closing;
+        }
+
+        public void createPasteFunc(Panel panel)
+        {
+            ContextMenu cmu = new ContextMenu();
+            MenuItem menuItemPaste = new MenuItem
+            {
+                Index = 0,
+                Text = "Вставить изображение",
+                Shortcut = Shortcut.CtrlDel
+            };
+            menuItemPaste.Click += pastePic;
+            menuItemPaste.Name = "menuItemPaste_" + panel.Name;
+            cmu.MenuItems.Add(menuItemPaste);
+            panel.ContextMenu = cmu;
+        }
+
+        public void pastePic(object sender, EventArgs e)
+        {
+            if (!Clipboard.ContainsImage()) return;
+
+            var pictureBoxScalable = new PictureBoxScalable(_currentTask.PictureIndex, this, _currentPanelQuestion.Entity)
+            {
+                Instance = { Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage }
+            };
+            ControlMover.Add(pictureBoxScalable.Instance);
+
+            Image clipboard_image = Clipboard.GetImage();
+
+            var image = new Bitmap(clipboard_image); //Bitmap для открываемого изображения
+
+            pictureBoxScalable.Instance.Size = image.Size;
+            pictureBoxScalable.Instance.Size = new Size(pictureBoxScalable.Instance.Size.Width > 600 ? 600 : pictureBoxScalable.Instance.Size.Width,
+                pictureBoxScalable.Instance.Size.Height > 400 ? 400 : pictureBoxScalable.Instance.Size.Height);
+            pictureBoxScalable.Instance.Image = image;
+            pictureBoxScalable.Instance.Location = new Point(new Size(-80, -80));
+            pictureBoxScalable.Instance.Invalidate();
+
+        }
+
+        public void panelQuestion_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
+            {
+                e.Effect = DragDropEffects.All;
+            }
+        }
+
+        public void panelQuestion_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            foreach (string file in files)
+            {
+                _currentTask.PictureIndex++;
+                var pictureBoxScalable = new PictureBoxScalable(_currentTask.PictureIndex, this, _currentPanelQuestion.Entity)
+                {
+                    Instance = { Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage }
+                };
+                ControlMover.Add(pictureBoxScalable.Instance);
+
+                try
+                {
+                    var image = new Bitmap(file); //Bitmap для открываемого изображения
+
+                    pictureBoxScalable.Instance.Size = image.Size;
+                    pictureBoxScalable.Instance.Size = new Size(pictureBoxScalable.Instance.Size.Width > 600 ? 600 : pictureBoxScalable.Instance.Size.Width,
+                        pictureBoxScalable.Instance.Size.Height > 400 ? 400 : pictureBoxScalable.Instance.Size.Height);
+                    pictureBoxScalable.Instance.Image = image;
+                    pictureBoxScalable.Instance.Location = new Point(new Size(-80, -80));
+                    pictureBoxScalable.Instance.Invalidate();
+                }
+                catch
+                {
+                    var result = MessageBox.Show("Невозможно добавить файл" + file, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         public Button createButtonDelTask(int indexPanel)
@@ -250,8 +335,12 @@ namespace Voenkaff
                 Text = "Задание №" + (ListPanelsTasks.Count + 1)
                 
             };
-
             
+            panelQuestion.AllowDrop = true;
+            panelQuestion.DragEnter += new DragEventHandler(panelQuestion_DragEnter);
+            panelQuestion.DragDrop += new DragEventHandler(panelQuestion_DragDrop);
+
+            createPasteFunc(panelQuestion);
 
             newPanelTask.Controls.Add(panelQuestion);
             newPanelTask.Dock = DockStyle.Fill;
