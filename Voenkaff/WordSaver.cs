@@ -133,10 +133,10 @@ namespace Voenkaff
                         }
                     }
 
-                    doc.SaveAs2(sfd.FileName);
+                    doc.SaveAs2000(sfd.FileName);
                     File.Delete(source);
                     // Закрываем документ
-                    doc.Close(ref missing, ref missing, ref missing);
+                    doc.Close(/*ref missing, ref missing, ref missing*/);
                 }
 
                 catch (IOException e)

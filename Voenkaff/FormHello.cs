@@ -542,7 +542,7 @@ namespace Voenkaff
                                 Text = taskElem.Answer
                             }
                         };
-                        _TBInTask[paneltask].Add(bufTC);
+                        _TBInTask[paneltask].Insert(0, bufTC);
                         Label bufLabel = new Label();
 
                         bufLabel.Location = new Point(taskElem.Point.X, taskElem.Point.Y - 30);

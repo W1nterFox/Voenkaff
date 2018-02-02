@@ -17,3 +17,4 @@ D:\Projects\VoenKaff\Voenkaff\obj\x86\Debug\Voenkaff.csproj.CoreCompileInputs.ca
 D:\Projects\VoenKaff\Voenkaff\obj\x86\Debug\Voenkaff.exe
 D:\Projects\VoenKaff\Voenkaff\obj\x86\Debug\Voenkaff.pdb
 D:\Projects\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.FormCourse.resources
+D:\Projects\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.csprojResolveAssemblyReference.cache
