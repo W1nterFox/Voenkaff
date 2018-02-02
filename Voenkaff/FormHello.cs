@@ -357,11 +357,10 @@ namespace Voenkaff
                     {
                         panelMain.Controls.Remove(panel);
                         ListPanelsTestsOnPanel.Remove(panel);
+                        TestNameAndMarks.Remove(ListTests[parentPanel].Text);
                         ListTests.Remove(parentPanel);
 
-
-                        //ListTests.Remove(ListTests.Find(p=>p.TestName== panel.Controls[0].Text));
-                        //TestNameAndMarks.Remove(panel.Controls[0].Text);
+                        
                         Redistribution();
                         File.Delete(new DynamicParams().GetPath()+"\\"+ panel.Controls[0].Text+".test");
                         return;
