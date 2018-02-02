@@ -173,9 +173,9 @@ namespace Voenkaff
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, this, _currentTask.Identifier);
+            TextContainer tc = new TextContainer(_currentPanelQuestion.Entity, this);
             ControlMover.Add(tc.Instance);
-            _currentTask.Identifier++;
+           // _currentTask.Identifier++;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

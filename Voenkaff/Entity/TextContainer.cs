@@ -10,10 +10,12 @@ namespace Voenkaff.Entity
     {
         private Panel _parent;
         //private readonly Panel _answerPanel;
-        private readonly int _popravka = 30;
+        private readonly int _popravka = 25;
         private Test _form;
-        private readonly int _index;
+        private int _index;
         private Label _topTitle;
+
+        public int indexLastTb = 1;
 
         public void setParent(Panel parent)
         {
@@ -27,21 +29,34 @@ namespace Voenkaff.Entity
         {
             _form = form;
         }
-        public TextContainer(Panel parent, Test form,int index)
+        public TextContainer(Panel parent, Test form)
         {
             _parent = parent;
             _form = form;
-            _index = index;
+            
+
+            foreach (Control ctrl in _parent.Controls)
+            {
+                if (ctrl is TextBox)
+                {
+                    indexLastTb++;
+                }
+            }
+            _index = indexLastTb;
+
+
 
             Instance = new TextBox();
             Instance.Parent = _parent;
-            Instance.Name = Instance.ToString() + index;
+            Instance.Name = "textBox" + _index;
             Instance.Location = new Point(10, 40);
             _parent.Controls.Add(Instance);
             Instance.MouseMove += IdentifierMove;
             Instance.TextChanged += IdentifierTextChange;
             Instance.BringToFront();
             Instance.Width = 150;
+            
+
             ContextMenu cmu = new ContextMenu();
             MenuItem menuItemDelete = new MenuItem
             {
@@ -50,23 +65,28 @@ namespace Voenkaff.Entity
                 Shortcut = Shortcut.CtrlDel
             };
             menuItemDelete.Click += RemoveTextBox;
-            menuItemDelete.Name = Instance.ToString() + index;
+            menuItemDelete.Name = Instance.ToString() + _index;
             cmu.MenuItems.Add(menuItemDelete);
             Instance.ContextMenu = cmu;
             AddAnswerTitle();
+
+            Instance.TabIndex = _index;
         }
 
         public TextContainer(string name)
         {
-            //_parent = parent;
-            //_topTitle = topTitle;
+            
+            _index = indexLastTb;
+            //indexLastTb++;
+
             Instance = new TextBox();
-            Instance.Name = name;
+            Instance.Name = "textBox" + _index;
             Instance.Location = new Point(10, 40);
             Instance.MouseMove += IdentifierMove;
             Instance.TextChanged += IdentifierTextChange;
             Instance.BringToFront();
             Instance.Width = 150;
+            Instance.TabIndex = _index;
 
             ContextMenu cmu = new ContextMenu();
             MenuItem menuItemDelete = new MenuItem
@@ -76,22 +96,27 @@ namespace Voenkaff.Entity
                 Shortcut = Shortcut.CtrlDel
             };
             menuItemDelete.Click += RemoveTextBox;
-            menuItemDelete.Name = name;
+            menuItemDelete.Name = Instance.ToString() + name;
             cmu.MenuItems.Add(menuItemDelete);
             Instance.ContextMenu = cmu;
 
-
+            
         }
 
 
 
-        private void AddAnswerTitle()
+        public void AddAnswerTitle(int index)
         {
+            _index = index;
+            //indexLastTb++;
+
             _topTitle = new Label
             {
-                Text = "Поле для ввода ответа № " + _index,
+                Text = "Ответ № " + _index,
                 Location = new Point(Instance.Location.X, Instance.Location.Y - _popravka),
-                Width = 150
+                Width = 100,
+                Name = "textBoxLabel" + _index,
+                BackColor = System.Drawing.Color.Transparent
             };
             _parent.Controls.Add(_topTitle);
             _topTitle.BringToFront();
@@ -99,21 +124,30 @@ namespace Voenkaff.Entity
             
             
         }
+        public void AddAnswerTitle()
+        {
+            _topTitle = new Label
+            {
+                Text = "Ответ № " + _index,
+                Location = new Point(Instance.Location.X, Instance.Location.Y - _popravka),
+                Width = 100,
+                Name = "textBoxLabel" + _index,
+                TabIndex = _index
+            };
+            _parent.Controls.Add(_topTitle);
+            _topTitle.BringToFront();
+
+
+
+        }
 
         private void IdentifierMove(object sender, MouseEventArgs e)
         {
             TextBox currentObject = ((TextBox) sender);
             if (MouseButtons.Left == e.Button)
             {
-                //_form.PointToClient(Cursor.Position);
-                //currentObject.Location = new Point(point.X - currentObject.Size.Width / 2, point.Y - currentObject.Size.Height / 2);
-                foreach (Label title in _parent.Controls.OfType<Label>())
-                {
-                    if (Regex.Match(title.Text, "[0-9]+").Value == Regex.Match(currentObject.Name, "[0-9]+").Value)
-                    {
-                        title.Location = new Point(currentObject.Location.X, currentObject.Location.Y - _popravka);
-                    }
-                }
+                _parent.Controls.Find("textBoxLabel" + currentObject.TabIndex, true)[0].Location = new Point(currentObject.Location.X, currentObject.Location.Y - _popravka);
+                
             }
 
             if (MouseButtons.Right == e.Button)
@@ -130,8 +164,36 @@ namespace Voenkaff.Entity
 
         private void RemoveTextBox(object sender, EventArgs e)
         {
+
+            foreach (Control ctrl in _parent.Controls)
+            {
+
+                if (ctrl.TabIndex > Instance.TabIndex)
+                {
+                    if (ctrl is TextBox)
+                    {
+                        ctrl.TabIndex--;
+                    }
+                    if (ctrl is Label)
+                    {
+                        ctrl.TabIndex--;
+                        ctrl.Name = "textBoxLabel" + ctrl.TabIndex;
+                        ctrl.Text = "Ответ № " + ctrl.TabIndex;
+                    }
+                }
+
+
+
+            }
+
             _parent.Controls.Remove(Instance);
             _parent.Controls.Remove(_topTitle);
+
+            //indexLastTb--;
+            
+            
+            
+
         }
     }
 }

@@ -54,6 +54,7 @@ namespace Voenkaff.Creators
                     if (taskElement is TextBox)
                     {
                         element.Answer = taskElement.Text;
+                        element.Index = taskElement.TabIndex;
                     }
 
                     if (taskElement is PictureBox)

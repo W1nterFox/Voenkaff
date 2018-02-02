@@ -466,7 +466,7 @@ namespace Voenkaff
              Dictionary<Task, List<PictureBoxScalable>> _PBInTask = new Dictionary<Task, List<PictureBoxScalable>> { };
              Dictionary<Task, List<TextContainer>> _TBInTask = new Dictionary<Task, List<TextContainer>> { };
              List<Panel> _listPanelTasks = new List<Panel> { };
-             Dictionary<Task, List<Label>> _listTBLabels = new Dictionary<Task, List<Label>> { };
+             //Dictionary<Task, List<Label>> _listTBLabels = new Dictionary<Task, List<Label>> { };
 
             foreach (Task paneltask in fromLoadTest.Tasks)
             {
@@ -474,7 +474,7 @@ namespace Voenkaff
                 _RTBInTask.Add(paneltask, new List<Title> { });
                 _PBInTask.Add(paneltask, new List<PictureBoxScalable> { });
                 _TBInTask.Add(paneltask, new List<TextContainer> { });
-                _listTBLabels.Add(paneltask, new List<Label> { });
+                //_listTBLabels.Add(paneltask, new List<Label> { });
 
                 _listTasksInTest.Add(paneltask);
 
@@ -538,18 +538,12 @@ namespace Voenkaff
                                 Height = taskElem.Height,
                                 Width = taskElem.Width,
                                 Location = taskElem.Point,
-                                Text = taskElem.Answer
+                                Text = taskElem.Answer,
+                                TabIndex = taskElem.Index
                             }
                         };
                         _TBInTask[paneltask].Insert(0, bufTC);
-                        Label bufLabel = new Label();
-
-                        bufLabel.Location = new Point(taskElem.Point.X, taskElem.Point.Y - 30);
-                        bufLabel.Text = "Поле для ввода ответа №" + textBoxNumber;
-                        bufLabel.Width = 150;
-
-                        _listTBLabels[paneltask].Insert(0,bufLabel);
-                        bufTC.setTopTitle(bufLabel);
+                       
 
                         textBoxNumber--;
 
@@ -591,25 +585,13 @@ namespace Voenkaff
                 }
                 
                 
-                foreach (Label label in _listTBLabels[task])
-                {
-                    panelQestionFoo.Controls.Add(label);
-                    label.BringToFront();
-                    LabelList.Add(label);
-                    
-                    label.Location = new Point();
-                }
-
-
-
-
 
                 int j = _TBInTask[task].Count;
                 foreach (TextContainer tb in _TBInTask[task])
                 {
                     tb.Instance.Name = "System.Windows.Forms.TextBox, Text: " + j;
                     tb.setParent(panelQestionFoo);
-                    tb.setParent(panelQestionFoo);
+                    tb.AddAnswerTitle(tb.Instance.TabIndex);
                     panelQestionFoo.Controls.Add(tb.Instance);
                     tb.Instance.BringToFront();
                     ControlMover.Add(tb.Instance);
@@ -626,16 +608,10 @@ namespace Voenkaff
                     rtb.setParent(panelQestionFoo);
                     panelQestionFoo.Controls.Add(rtb.Instance);
                     ControlMover.Add(rtb.Instance);
-                    
+                    rtb.Instance.BringToFront();
                 }
 
-                int i = _listTBLabels[task].Count-1;
-                foreach (TextContainer tb in _TBInTask[task])
-                {
-                    TBAndLabel.Add(tb.Instance, _listTBLabels[task][i]);
-                    TBAndLabel[tb.Instance].Location = new Point(tb.Instance.Location.X, tb.Instance.Location.Y - 30);
-                    i--;
-                }
+                
                 
 
                 _listPanelTasks[_listPanelTasks.Count - 1].Controls.Add(panelQestionFoo);
@@ -678,20 +654,20 @@ namespace Voenkaff
 
             
 
-            foreach (TextBox tb in TBList)
-            {
-                tb.Move += moveTBWithLB;
-            }
+            //foreach (TextBox tb in TBList)
+            //{
+            //    tb.Move += moveTBWithLB;
+            //}
 
         }
 
         
 
-        private void moveTBWithLB(object sender, EventArgs e)
-        {
-            TextBox currentTB = (TextBox)sender;
-            TBAndLabel[currentTB].Location = new Point(currentTB.Location.X, currentTB.Location.Y - 30);
-        }
+        //private void moveTBWithLB(object sender, EventArgs e)
+        //{
+        //    TextBox currentTB = (TextBox)sender;
+        //    TBAndLabel[currentTB].Location = new Point(currentTB.Location.X, currentTB.Location.Y - 30);
+        //}
 
         private void предметыToolStripMenuItem_Click(object sender, EventArgs e)
         {

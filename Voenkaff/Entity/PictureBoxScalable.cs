@@ -9,6 +9,7 @@ namespace Voenkaff.Entity
         private Rectangle _rectProposedSize = Rectangle.Empty;
         private readonly Test _form;
         private Panel _parent;
+        
 
         public void setParent(Panel parent)
         {
@@ -17,6 +18,7 @@ namespace Voenkaff.Entity
 
         public PictureBoxScalable(int index,Test panel,Panel parent)
         {
+            
             _form = panel;
             _parent = parent;
             Instance = new PictureBox
@@ -40,6 +42,9 @@ namespace Voenkaff.Entity
 
         public PictureBoxScalable(string name)
         {
+            
+
+
             Instance = new PictureBox
             {
                 Name = name,
