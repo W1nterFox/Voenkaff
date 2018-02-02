@@ -150,7 +150,7 @@ namespace Voenkaff
                 }
                 catch
                 {
-                    var result = MessageBox.Show("Невозможно добавить файл" + file, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    var result = MessageBox.Show("Невозможно добавить файл " + file, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -249,6 +249,22 @@ namespace Voenkaff
             _currentTask = ListPanelsTasks[currentLL];
             _currentTask.Entity.Visible = true;
             _currentPanelQuestion.Entity =  (Panel)_currentTask.Entity.Controls.Find("panelQuestion", true)[0];
+
+            foreach (Control ctrl in _currentPanelQuestion.Entity.Controls)
+            {
+                if (ctrl is Label && ctrl.Visible == false)
+                {
+                    panel1.Controls.Find("buttonShowTBLabels", true)[0].Text = "Сделать видимыми";
+                    panel1.Controls.Find("buttonShowTBLabels", true)[0].BackColor = Color.LightGreen; 
+                }
+                if (ctrl is Label && ctrl.Visible == true)
+                {
+                    panel1.Controls.Find("buttonShowTBLabels", true)[0].Text = "Сделать невидимыми";
+                    panel1.Controls.Find("buttonShowTBLabels", true)[0].BackColor = Color.LightBlue;
+                }
+            }
+
+
         }
 
 
@@ -365,6 +381,37 @@ namespace Voenkaff
             //panelListOfTasks.Controls.Add(createLinkLabel(ListPanelsTasks.Count));
         }
 
+        private void buttonShowTBLabels_Click(object sender, EventArgs e)
+        {
+            Boolean ctrlsAreVis;
+            if (buttonShowTBLabels.Text == "Сделать невидимыми") ctrlsAreVis = true; else ctrlsAreVis = false;
+            if (ctrlsAreVis)
+            {
+                foreach (Control ctrl in _currentPanelQuestion.Entity.Controls)
+                {
+                    if (ctrl is Label)
+                    {
+                        ctrl.Visible = false;
+                    }
+                }
+                buttonShowTBLabels.Text = "Сделать видимыми";
+                buttonShowTBLabels.BackColor = Color.LightGreen; 
+            }
+            else
+            {
+                foreach (Control ctrl in _currentPanelQuestion.Entity.Controls)
+                {
+                    if (ctrl is Label)
+                    {
+                        ctrl.Visible = true;
+                    }
+                }
+                buttonShowTBLabels.Text = "Сделать невидимыми";
+                buttonShowTBLabels.BackColor = Color.LightBlue;
+            }
+            
+        }
+
         private void файлToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
@@ -424,5 +471,7 @@ namespace Voenkaff
             this.Visible = false;
             Program.FormHello.Visible = true;
         }
+
+        
     }
 }

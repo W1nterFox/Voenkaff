@@ -47,15 +47,20 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveTest = new System.Windows.Forms.SaveFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.groupBoxShowTBLabels = new System.Windows.Forms.GroupBox();
+            this.buttonShowTBLabels = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelListOfTasks.SuspendLayout();
             this.panelTaskStart.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBoxShowTBLabels.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.groupBoxShowTBLabels);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -228,6 +233,39 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // groupBoxShowTBLabels
+            // 
+            this.groupBoxShowTBLabels.Controls.Add(this.label1);
+            this.groupBoxShowTBLabels.Controls.Add(this.buttonShowTBLabels);
+            this.groupBoxShowTBLabels.Location = new System.Drawing.Point(6, 255);
+            this.groupBoxShowTBLabels.Name = "groupBoxShowTBLabels";
+            this.groupBoxShowTBLabels.Size = new System.Drawing.Size(136, 112);
+            this.groupBoxShowTBLabels.TabIndex = 3;
+            this.groupBoxShowTBLabels.TabStop = false;
+            // 
+            // buttonShowTBLabels
+            // 
+            this.buttonShowTBLabels.BackColor = System.Drawing.Color.LightBlue;
+            this.buttonShowTBLabels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonShowTBLabels.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.buttonShowTBLabels.Location = new System.Drawing.Point(7, 40);
+            this.buttonShowTBLabels.Name = "buttonShowTBLabels";
+            this.buttonShowTBLabels.Size = new System.Drawing.Size(120, 64);
+            this.buttonShowTBLabels.TabIndex = 0;
+            this.buttonShowTBLabels.Text = "Сделать невидимыми";
+            this.buttonShowTBLabels.UseVisualStyleBackColor = false;
+            this.buttonShowTBLabels.Click += new System.EventHandler(this.buttonShowTBLabels_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Номера ответов";
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +285,8 @@
             this.panelTaskStart.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBoxShowTBLabels.ResumeLayout(false);
+            this.groupBoxShowTBLabels.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,6 +313,9 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveTest;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.GroupBox groupBoxShowTBLabels;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonShowTBLabels;
     }
 }
 
