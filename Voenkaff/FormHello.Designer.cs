@@ -67,9 +67,9 @@
             this.buttonFilterOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFilterOff.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonFilterOff.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonFilterOff.Location = new System.Drawing.Point(443, 18);
+            this.buttonFilterOff.Location = new System.Drawing.Point(427, 18);
             this.buttonFilterOff.Name = "buttonFilterOff";
-            this.buttonFilterOff.Size = new System.Drawing.Size(94, 36);
+            this.buttonFilterOff.Size = new System.Drawing.Size(130, 36);
             this.buttonFilterOff.TabIndex = 11;
             this.buttonFilterOff.Text = "Сброс";
             this.buttonFilterOff.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             // comboBoxCourseFilter
             // 
             this.comboBoxCourseFilter.FormattingEnabled = true;
-            this.comboBoxCourseFilter.Location = new System.Drawing.Point(203, 26);
+            this.comboBoxCourseFilter.Location = new System.Drawing.Point(187, 26);
             this.comboBoxCourseFilter.Name = "comboBoxCourseFilter";
             this.comboBoxCourseFilter.Size = new System.Drawing.Size(234, 21);
             this.comboBoxCourseFilter.TabIndex = 10;
@@ -89,7 +89,7 @@
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(31, 28);
+            this.label2.Location = new System.Drawing.Point(16, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(165, 20);
             this.label2.TabIndex = 9;

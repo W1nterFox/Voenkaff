@@ -91,7 +91,7 @@
             this.buttonLSAddMany.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSAddMany.Location = new System.Drawing.Point(600, 315);
             this.buttonLSAddMany.Name = "buttonLSAddMany";
-            this.buttonLSAddMany.Size = new System.Drawing.Size(110, 58);
+            this.buttonLSAddMany.Size = new System.Drawing.Size(145, 58);
             this.buttonLSAddMany.TabIndex = 14;
             this.buttonLSAddMany.Text = "Добавить сразу много";
             this.buttonLSAddMany.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@
             this.buttonLSSort.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSSort.Location = new System.Drawing.Point(600, 168);
             this.buttonLSSort.Name = "buttonLSSort";
-            this.buttonLSSort.Size = new System.Drawing.Size(110, 35);
+            this.buttonLSSort.Size = new System.Drawing.Size(132, 35);
             this.buttonLSSort.TabIndex = 13;
             this.buttonLSSort.Text = "Сортировать";
             this.buttonLSSort.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             this.buttonLSClear.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSClear.Location = new System.Drawing.Point(600, 127);
             this.buttonLSClear.Name = "buttonLSClear";
-            this.buttonLSClear.Size = new System.Drawing.Size(110, 35);
+            this.buttonLSClear.Size = new System.Drawing.Size(132, 35);
             this.buttonLSClear.TabIndex = 12;
             this.buttonLSClear.Text = "Очистить";
             this.buttonLSClear.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             this.buttonLSDelete.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSDelete.Location = new System.Drawing.Point(600, 86);
             this.buttonLSDelete.Name = "buttonLSDelete";
-            this.buttonLSDelete.Size = new System.Drawing.Size(110, 35);
+            this.buttonLSDelete.Size = new System.Drawing.Size(132, 35);
             this.buttonLSDelete.TabIndex = 11;
             this.buttonLSDelete.Text = "Удалить";
             this.buttonLSDelete.UseVisualStyleBackColor = true;
@@ -143,7 +143,7 @@
             this.buttonLSAdd.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.buttonLSAdd.Location = new System.Drawing.Point(600, 45);
             this.buttonLSAdd.Name = "buttonLSAdd";
-            this.buttonLSAdd.Size = new System.Drawing.Size(110, 35);
+            this.buttonLSAdd.Size = new System.Drawing.Size(132, 35);
             this.buttonLSAdd.TabIndex = 10;
             this.buttonLSAdd.Text = "Добавить";
             this.buttonLSAdd.UseVisualStyleBackColor = true;
@@ -174,6 +174,7 @@
             this.listBoxLS.Enabled = false;
             this.listBoxLS.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.listBoxLS.FormattingEnabled = true;
+            this.listBoxLS.HorizontalScrollbar = true;
             this.listBoxLS.ItemHeight = 20;
             this.listBoxLS.Location = new System.Drawing.Point(367, 71);
             this.listBoxLS.Name = "listBoxLS";
@@ -185,9 +186,9 @@
             // 
             this.buttonVzvodSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVzvodSort.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonVzvodSort.Location = new System.Drawing.Point(18, 168);
+            this.buttonVzvodSort.Location = new System.Drawing.Point(3, 168);
             this.buttonVzvodSort.Name = "buttonVzvodSort";
-            this.buttonVzvodSort.Size = new System.Drawing.Size(110, 35);
+            this.buttonVzvodSort.Size = new System.Drawing.Size(125, 35);
             this.buttonVzvodSort.TabIndex = 6;
             this.buttonVzvodSort.Text = "Сортировать";
             this.buttonVzvodSort.UseVisualStyleBackColor = true;
@@ -197,9 +198,9 @@
             // 
             this.buttonVzvodClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVzvodClear.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonVzvodClear.Location = new System.Drawing.Point(18, 127);
+            this.buttonVzvodClear.Location = new System.Drawing.Point(3, 127);
             this.buttonVzvodClear.Name = "buttonVzvodClear";
-            this.buttonVzvodClear.Size = new System.Drawing.Size(110, 35);
+            this.buttonVzvodClear.Size = new System.Drawing.Size(125, 35);
             this.buttonVzvodClear.TabIndex = 5;
             this.buttonVzvodClear.Text = "Очистить";
             this.buttonVzvodClear.UseVisualStyleBackColor = true;
@@ -210,9 +211,9 @@
             this.buttonVzvodDelete.Enabled = false;
             this.buttonVzvodDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVzvodDelete.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonVzvodDelete.Location = new System.Drawing.Point(18, 86);
+            this.buttonVzvodDelete.Location = new System.Drawing.Point(3, 86);
             this.buttonVzvodDelete.Name = "buttonVzvodDelete";
-            this.buttonVzvodDelete.Size = new System.Drawing.Size(110, 35);
+            this.buttonVzvodDelete.Size = new System.Drawing.Size(125, 35);
             this.buttonVzvodDelete.TabIndex = 4;
             this.buttonVzvodDelete.Text = "Удалить";
             this.buttonVzvodDelete.UseVisualStyleBackColor = true;
@@ -223,9 +224,9 @@
             this.buttonVzvodAdd.Enabled = false;
             this.buttonVzvodAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVzvodAdd.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonVzvodAdd.Location = new System.Drawing.Point(18, 45);
+            this.buttonVzvodAdd.Location = new System.Drawing.Point(3, 45);
             this.buttonVzvodAdd.Name = "buttonVzvodAdd";
-            this.buttonVzvodAdd.Size = new System.Drawing.Size(110, 35);
+            this.buttonVzvodAdd.Size = new System.Drawing.Size(125, 35);
             this.buttonVzvodAdd.TabIndex = 3;
             this.buttonVzvodAdd.Text = "Добавить";
             this.buttonVzvodAdd.UseVisualStyleBackColor = true;

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelCoursesAreSaved = new System.Windows.Forms.Label();
             this.buttonCourseSave = new System.Windows.Forms.Button();
             this.buttonCourseSort = new System.Windows.Forms.Button();
             this.buttonCourseClear = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.textBoxCourse = new System.Windows.Forms.TextBox();
             this.listBoxCourse = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.labelCoursesAreSaved = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,16 +54,28 @@
             this.panel1.Controls.Add(this.listBoxCourse);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(10, 11);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(487, 497);
             this.panel1.TabIndex = 0;
+            // 
+            // labelCoursesAreSaved
+            // 
+            this.labelCoursesAreSaved.AutoSize = true;
+            this.labelCoursesAreSaved.Font = new System.Drawing.Font("Century Gothic", 12.75F);
+            this.labelCoursesAreSaved.ForeColor = System.Drawing.Color.Green;
+            this.labelCoursesAreSaved.Location = new System.Drawing.Point(191, 465);
+            this.labelCoursesAreSaved.Name = "labelCoursesAreSaved";
+            this.labelCoursesAreSaved.Size = new System.Drawing.Size(100, 21);
+            this.labelCoursesAreSaved.TabIndex = 18;
+            this.labelCoursesAreSaved.Text = "Сохранено";
+            this.labelCoursesAreSaved.Visible = false;
             // 
             // buttonCourseSave
             // 
             this.buttonCourseSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCourseSave.Font = new System.Drawing.Font("Century Gothic", 15.75F);
-            this.buttonCourseSave.Location = new System.Drawing.Point(154, 392);
+            this.buttonCourseSave.Location = new System.Drawing.Point(154, 417);
             this.buttonCourseSave.Name = "buttonCourseSave";
             this.buttonCourseSave.Size = new System.Drawing.Size(176, 45);
             this.buttonCourseSave.TabIndex = 16;
@@ -75,9 +87,9 @@
             // 
             this.buttonCourseSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCourseSort.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonCourseSort.Location = new System.Drawing.Point(37, 185);
+            this.buttonCourseSort.Location = new System.Drawing.Point(3, 185);
             this.buttonCourseSort.Name = "buttonCourseSort";
-            this.buttonCourseSort.Size = new System.Drawing.Size(140, 35);
+            this.buttonCourseSort.Size = new System.Drawing.Size(174, 35);
             this.buttonCourseSort.TabIndex = 12;
             this.buttonCourseSort.Text = "Сортировать";
             this.buttonCourseSort.UseVisualStyleBackColor = true;
@@ -87,9 +99,9 @@
             // 
             this.buttonCourseClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCourseClear.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonCourseClear.Location = new System.Drawing.Point(37, 144);
+            this.buttonCourseClear.Location = new System.Drawing.Point(3, 144);
             this.buttonCourseClear.Name = "buttonCourseClear";
-            this.buttonCourseClear.Size = new System.Drawing.Size(140, 35);
+            this.buttonCourseClear.Size = new System.Drawing.Size(174, 35);
             this.buttonCourseClear.TabIndex = 11;
             this.buttonCourseClear.Text = "Очистить";
             this.buttonCourseClear.UseVisualStyleBackColor = true;
@@ -100,9 +112,9 @@
             this.buttonCourseDelete.Enabled = false;
             this.buttonCourseDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCourseDelete.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonCourseDelete.Location = new System.Drawing.Point(37, 103);
+            this.buttonCourseDelete.Location = new System.Drawing.Point(3, 103);
             this.buttonCourseDelete.Name = "buttonCourseDelete";
-            this.buttonCourseDelete.Size = new System.Drawing.Size(140, 35);
+            this.buttonCourseDelete.Size = new System.Drawing.Size(174, 35);
             this.buttonCourseDelete.TabIndex = 10;
             this.buttonCourseDelete.Text = "Удалить";
             this.buttonCourseDelete.UseVisualStyleBackColor = true;
@@ -113,9 +125,9 @@
             this.buttonCourseAdd.Enabled = false;
             this.buttonCourseAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCourseAdd.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonCourseAdd.Location = new System.Drawing.Point(37, 62);
+            this.buttonCourseAdd.Location = new System.Drawing.Point(3, 62);
             this.buttonCourseAdd.Name = "buttonCourseAdd";
-            this.buttonCourseAdd.Size = new System.Drawing.Size(140, 35);
+            this.buttonCourseAdd.Size = new System.Drawing.Size(174, 35);
             this.buttonCourseAdd.TabIndex = 9;
             this.buttonCourseAdd.Text = "Добавить";
             this.buttonCourseAdd.UseVisualStyleBackColor = true;
@@ -125,7 +137,7 @@
             // 
             this.textBoxCourse.Location = new System.Drawing.Point(184, 62);
             this.textBoxCourse.Name = "textBoxCourse";
-            this.textBoxCourse.Size = new System.Drawing.Size(227, 20);
+            this.textBoxCourse.Size = new System.Drawing.Size(300, 20);
             this.textBoxCourse.TabIndex = 8;
             this.textBoxCourse.TextChanged += new System.EventHandler(this.textBoxCourse_TextChanged);
             // 
@@ -134,10 +146,11 @@
             this.listBoxCourse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listBoxCourse.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.listBoxCourse.FormattingEnabled = true;
+            this.listBoxCourse.HorizontalScrollbar = true;
             this.listBoxCourse.ItemHeight = 20;
             this.listBoxCourse.Location = new System.Drawing.Point(183, 88);
             this.listBoxCourse.Name = "listBoxCourse";
-            this.listBoxCourse.Size = new System.Drawing.Size(227, 282);
+            this.listBoxCourse.Size = new System.Drawing.Size(301, 302);
             this.listBoxCourse.TabIndex = 7;
             this.listBoxCourse.SelectedIndexChanged += new System.EventHandler(this.listBoxCourse_SelectedIndexChanged);
             // 
@@ -151,25 +164,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Предметы";
             // 
-            // labelCoursesAreSaved
-            // 
-            this.labelCoursesAreSaved.AutoSize = true;
-            this.labelCoursesAreSaved.Font = new System.Drawing.Font("Century Gothic", 12.75F);
-            this.labelCoursesAreSaved.ForeColor = System.Drawing.Color.Green;
-            this.labelCoursesAreSaved.Location = new System.Drawing.Point(191, 440);
-            this.labelCoursesAreSaved.Name = "labelCoursesAreSaved";
-            this.labelCoursesAreSaved.Size = new System.Drawing.Size(100, 21);
-            this.labelCoursesAreSaved.TabIndex = 18;
-            this.labelCoursesAreSaved.Text = "Сохранено";
-            this.labelCoursesAreSaved.Visible = false;
-            // 
             // FormCourse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 519);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormCourse";
             this.Text = "Предметы";
             this.panel1.ResumeLayout(false);

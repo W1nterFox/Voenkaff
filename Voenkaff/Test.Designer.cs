@@ -70,9 +70,9 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(20, 12);
+            this.button3.Location = new System.Drawing.Point(3, 12);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 75);
+            this.button3.Size = new System.Drawing.Size(139, 75);
             this.button3.TabIndex = 2;
             this.button3.Text = "Вставить текст задания";
             this.button3.UseVisualStyleBackColor = true;
@@ -84,9 +84,9 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(20, 93);
+            this.button2.Location = new System.Drawing.Point(3, 93);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 75);
+            this.button2.Size = new System.Drawing.Size(139, 75);
             this.button2.TabIndex = 1;
             this.button2.Text = "Добавить изображение";
             this.button2.UseVisualStyleBackColor = true;
@@ -98,9 +98,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(20, 174);
+            this.button1.Location = new System.Drawing.Point(3, 174);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 75);
+            this.button1.Size = new System.Drawing.Size(139, 75);
             this.button1.TabIndex = 0;
             this.button1.Text = "Вставить поле для ответа";
             this.button1.UseVisualStyleBackColor = true;
