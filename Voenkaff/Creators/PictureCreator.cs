@@ -27,6 +27,7 @@ namespace Voenkaff.Creators
                             var binaryFormatter = new BinaryFormatter();
                             binaryFormatter.Serialize(stream, serializationPicture);
                         }
+                        
                     }
                 }
             }

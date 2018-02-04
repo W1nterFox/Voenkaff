@@ -97,6 +97,7 @@ namespace Voenkaff
         {
             if (!Clipboard.ContainsImage()) return;
 
+            _currentTask.PictureIndex++;
             var pictureBoxScalable = new PictureBoxScalable(_currentTask.PictureIndex, this, _currentPanelQuestion.Entity)
             {
                 Instance = { Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage }

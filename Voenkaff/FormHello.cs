@@ -515,6 +515,7 @@ namespace Voenkaff
                             var binaryFormatter = new BinaryFormatter();
                             var image = ((SerializablePicture)binaryFormatter.Deserialize(stream)).Picture;
 
+                            
                             PictureBoxScalable bufPBS = new PictureBoxScalable(taskElem.Name)
                             {
                                 Instance =
@@ -625,6 +626,7 @@ namespace Voenkaff
                 PanelWrapper bufPW = new PanelWrapper();
                 bufPW.Entity = _listPanelTasks[_listPanelTasks.Count - 1];
                 bufPW.Identifier = indexLabel;
+                bufPW.PictureIndex = _PBInTask[task].Count;
                 indexLabel++;
 
                 LinkLabel bufLL = toTest.createLinkLabel(_listPanelTasks.Count - 1);
