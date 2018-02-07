@@ -195,6 +195,14 @@ namespace Voenkaff
                     _formHello.ListTests[parentPanel].setTestName(textBoxUserChooseTestName.Text);
                     _formHello.ListTests[parentPanel].setTesListMarks(_marks);
                     _formHello.ListTests[parentPanel].Course = comboBoxCourse.SelectedItem.ToString();
+                    var ctrlsInPQ = _formHello.ListTests[parentPanel].Controls.Find("panelQuestion", true)[0].Controls;
+                    foreach (Control ctrl in ctrlsInPQ)
+                    {
+                        if (ctrl is PictureBox)
+                        {
+                            ctrl.Name = ctrl.Name.Replace(startName, textBoxUserChooseTestName.Text);
+                        }
+                    }
 
                     startName = textBoxUserChooseTestName.Text;
 

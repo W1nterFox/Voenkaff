@@ -447,6 +447,21 @@ namespace Voenkaff
 
         private void сохранитьТестыToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Directory.Delete(new DynamicParams().GetPath(), true);
+
+            DirectoryInfo dirTests = new DirectoryInfo(new DynamicParams().GetPath());
+            DirectoryInfo dirPics = new DirectoryInfo(new DynamicParams().GetPath() + "\\" + "picture");
+
+            foreach (FileInfo file in dirTests.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (FileInfo file in dirPics.GetFiles())
+            {
+                file.Delete();
+            }
+            //string sadasd = new DynamicParams().GetPath() + "\\" + "picture";
+            //dirTests.CreateSubdirectory(sadasd);
 
             foreach (KeyValuePair<Panel, Test> keyValue in ListTests)
             {
@@ -464,6 +479,8 @@ namespace Voenkaff
             
             MessageBox.Show("Файл сохранен");
         }
+        
+
 
         private void взводаToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -37,6 +37,8 @@ namespace Voenkaff
             ListMarks = listMarks;
         }
 
+        
+
         public Test(FormHello formHello, string testName, List<int> listMarks, string course)
         {
             InitializeComponent();
