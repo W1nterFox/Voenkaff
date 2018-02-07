@@ -210,20 +210,20 @@ namespace Voenkaff
 
 
             //не момогло
-            int koef = 0;
-            foreach (Panel pnl in _formHello.ListPanelsTestsOnPanel)
-            {
-                pnl.Visible = true;
-                pnl.Location = new Point(28, 78 + 70 * koef);
-                pnl.Visible = true;
-                koef++;
-            }
-            _formHello.Redistribution();
+            //int koef = 0;
+            //foreach (Panel pnl in _formHello.ListPanelsTestsOnPanel)
+            //{
+            //    pnl.Visible = true;
+            //    pnl.Location = new Point(28, 78 + 70 * koef);
+            //    pnl.Visible = true;
+            //    koef++;
+            //}
+            //_formHello.Redistribution(_formHello.ListPanelsTestsOnPanel);
          
-            _formHello.Controls.Find("panelMain", true)[0].Controls.Find("buttonCreateTest", true)[0].Location = new Point(580, 81 + 70 * koef);
-            //
+            //_formHello.Controls.Find("panelMain", true)[0].Controls.Find("buttonCreateTest", true)[0].Location = new Point(580, 81 + 70 * koef);
+            ////
 
-            _formHello.buttonFilterOff_Click(this, e);
+            //_formHello.buttonFilterOff_Click(this, e);
 
 
 

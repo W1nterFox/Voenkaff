@@ -145,10 +145,16 @@ namespace Voenkaff
 
         private void buttonVzvodClear_Click(object sender, EventArgs e)
         {
-            listBoxVzvoda.Items.Clear();
-            VzvodAndLs.Get().Clear();
+            var rz = MessageBox.Show("Вы уверены, что хотите удалить весь список взводов?", "Очистка", MessageBoxButtons.YesNo);
 
-            listBoxLS.Items.Clear();
+            if (rz == DialogResult.Yes)
+            {
+                listBoxVzvoda.Items.Clear();
+                VzvodAndLs.Get().Clear();
+
+                listBoxLS.Items.Clear();
+            }
+                
         }
 
         private void buttonVzvodSort_Click(object sender, EventArgs e)
@@ -184,8 +190,14 @@ namespace Voenkaff
 
         private void buttonLSClear_Click(object sender, EventArgs e)
         {
-            listBoxLS.Items.Clear();
-            VzvodAndLs.Get()[listBoxVzvoda.SelectedItem.ToString()].Clear();
+            var rz = MessageBox.Show("Вы уверены, что хотите удалить весь личный состав взвода?", "Очистка", MessageBoxButtons.YesNo);
+
+            if (rz == DialogResult.Yes)
+            {
+                listBoxLS.Items.Clear();
+                VzvodAndLs.Get()[listBoxVzvoda.SelectedItem.ToString()].Clear();
+            }
+                
         }
 
         private void buttonLSSort_Click(object sender, EventArgs e)

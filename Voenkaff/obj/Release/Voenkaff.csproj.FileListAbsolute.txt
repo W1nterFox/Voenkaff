@@ -17,3 +17,7 @@ D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\o
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Release\Voenkaff.csproj.GenerateResource.Cache
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Release\Voenkaff.exe
 D:\Новая папка (3)\27 01 01\Конструктор\Voenkaff\Voenkaff\obj\Release\Voenkaff.pdb
+D:\Новая папка (3)\02 02\конструктор\Voenkaff\Voenkaff\bin\Release\Voenkaff.exe.config
+D:\Новая папка (3)\02 02\конструктор\Voenkaff\Voenkaff\obj\Release\Voenkaff.csproj.ResolveComReference.cache
+D:\Новая папка (3)\02 02\конструктор\Voenkaff\Voenkaff\obj\Release\Voenkaff.exe
+D:\Новая папка (3)\02 02\конструктор\Voenkaff\Voenkaff\obj\Release\Voenkaff.pdb

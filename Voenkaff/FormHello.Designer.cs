@@ -59,7 +59,7 @@
             this.panelMain.Location = new System.Drawing.Point(18, 33);
             this.panelMain.Margin = new System.Windows.Forms.Padding(4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1314, 773);
+            this.panelMain.Size = new System.Drawing.Size(1156, 773);
             this.panelMain.TabIndex = 0;
             // 
             // buttonFilterOff
@@ -136,7 +136,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1347, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1187, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -184,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1347, 821);
+            this.ClientSize = new System.Drawing.Size(1187, 821);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FormHello";
