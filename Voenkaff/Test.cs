@@ -114,7 +114,7 @@ namespace Voenkaff
             pictureBoxScalable.Instance.Size = new Size(pictureBoxScalable.Instance.Size.Width > 600 ? 600 : pictureBoxScalable.Instance.Size.Width,
                 pictureBoxScalable.Instance.Size.Height > 400 ? 400 : pictureBoxScalable.Instance.Size.Height);
             pictureBoxScalable.Instance.Image = image;
-            pictureBoxScalable.Instance.Location = new Point(new Size(-80, -80));
+            pictureBoxScalable.Instance.Location = new Point(new Size(80, 80));
             pictureBoxScalable.Instance.Invalidate();
 
         }
@@ -148,7 +148,7 @@ namespace Voenkaff
                     pictureBoxScalable.Instance.Size = new Size(pictureBoxScalable.Instance.Size.Width > 600 ? 600 : pictureBoxScalable.Instance.Size.Width,
                         pictureBoxScalable.Instance.Size.Height > 400 ? 400 : pictureBoxScalable.Instance.Size.Height);
                     pictureBoxScalable.Instance.Image = image;
-                    pictureBoxScalable.Instance.Location = new Point(new Size(-80, -80));
+                    pictureBoxScalable.Instance.Location = new Point(new Size(80, 80));
                     pictureBoxScalable.Instance.Invalidate();
                 }
                 catch
@@ -310,7 +310,7 @@ namespace Voenkaff
                     pictureBoxScalable.Instance.Size = new Size(pictureBoxScalable.Instance.Size.Width > 600 ? 600 : pictureBoxScalable.Instance.Size.Width,
                         pictureBoxScalable.Instance.Size.Height > 400 ? 400 : pictureBoxScalable.Instance.Size.Height);
                     pictureBoxScalable.Instance.Image = image;
-                    pictureBoxScalable.Instance.Location= new Point(new Size(-80,-80));
+                    pictureBoxScalable.Instance.Location= new Point(new Size(80,80));
                     pictureBoxScalable.Instance.Invalidate();
                 }
                 catch
