@@ -39,7 +39,10 @@ namespace Voenkaff.Entity
             menuItemDelete.Click += RemoveObject;
             menuItemDelete.Name = Instance.ToString() + _index;
             cmu.MenuItems.Add(menuItemDelete);
+            Instance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+
             Instance.ContextMenu = cmu;
+            Instance.TextChanged += new System.EventHandler(title_textChanged);
         }
 
         public Title(string name)
@@ -61,8 +64,20 @@ namespace Voenkaff.Entity
             menuItemDelete.Click += RemoveObject;
             menuItemDelete.Name = Instance.ToString() + _index;
             cmu.MenuItems.Add(menuItemDelete);
+            Instance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+
             Instance.ContextMenu = cmu;
+            Instance.TextChanged += new System.EventHandler(title_textChanged);
         }
+
+        private void title_textChanged(object sender, EventArgs e)
+        {
+            RichTextBox Rtb = (RichTextBox)sender;
+            Rtb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            Rtb.Modified = false;
+        }
+
+        
 
         private void RemoveObject(object sender, EventArgs e)
         {

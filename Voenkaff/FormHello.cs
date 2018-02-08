@@ -95,8 +95,9 @@ namespace Voenkaff
                     TestOperations.Controls.Add(_buttonTestDownloadDoc);
                     TestOperations.Controls.Add(_buttonTestDeleteNew);
                     TestOperations.Name = "panelTestInTestsList" + ListTestsRef.Count;
-                    TestOperations.Size = new System.Drawing.Size(1255, 51);
+                    TestOperations.Size = new System.Drawing.Size(1100, 51);
                     TestOperations.Tag = "panelTestInTests";
+
 
                     FormChooseTestName formChooseTestName = new FormChooseTestName(this, ListPanelsTestsOnPanel.Count);
                     formChooseTestName.startName = test.Name;
@@ -242,7 +243,7 @@ namespace Voenkaff
             TestOperations.Controls.Add(_buttonTestDownloadDoc);
             TestOperations.Controls.Add(_buttonTestDeleteNew);
             TestOperations.Name = "panelTestInTestsList" + ListPanelsTestsOnPanel.Count;
-            TestOperations.Size = new System.Drawing.Size(1255, 51);
+            TestOperations.Size = new System.Drawing.Size(1100, 51);
             TestOperations.Tag = "panelTestInTests";
 
             FormChooseTestName formChooseTestName = new FormChooseTestName(this, ListPanelsTestsOnPanel.Count);
@@ -509,7 +510,7 @@ namespace Voenkaff
 
             foreach (Task paneltask in fromLoadTest.Tasks)
             {
-                int textBoxNumber = 0;
+                //int textBoxNumber = 0;
                 _RTBInTask.Add(paneltask, new List<Title> { });
                 _PBInTask.Add(paneltask, new List<PictureBoxScalable> { });
                 _TBInTask.Add(paneltask, new List<TextContainer> { });
@@ -518,15 +519,15 @@ namespace Voenkaff
                 _listTasksInTest.Add(paneltask);
 
 
-                foreach (TaskElement taskElem in paneltask.TaskElements)
-                {
-                    if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
-                    {
+                //foreach (TaskElement taskElem in paneltask.TaskElements)
+                //{
+                //    if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))
+                //    {
                         
-                        textBoxNumber++;
+                //        textBoxNumber++;
 
-                    }
-                }
+                //    }
+                //}
 
                 foreach (TaskElement taskElem in paneltask.TaskElements)
                 {
@@ -585,7 +586,7 @@ namespace Voenkaff
                         _TBInTask[paneltask].Insert(0, bufTC);
                        
 
-                        textBoxNumber--;
+                        //textBoxNumber--;
 
                     }
 

@@ -288,19 +288,21 @@ namespace Voenkaff
 
         private void button2_Click(object sender, EventArgs e)
         {
-            _currentTask.PictureIndex++;
-            var pictureBoxScalable =
-                new PictureBoxScalable(_currentTask.PictureIndex, this, _currentPanelQuestion.Entity)
-                {
-                    Instance = {Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage}
-                };
-            ControlMover.Add(pictureBoxScalable.Instance);
+            
             
 
 
             using (var openFileDialog = new OpenFileDialog {Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*"})
             {
                 if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+
+                _currentTask.PictureIndex++;
+                var pictureBoxScalable =
+                    new PictureBoxScalable(_currentTask.PictureIndex, this, _currentPanelQuestion.Entity)
+                    {
+                        Instance = { Parent = _currentPanelQuestion.Entity, SizeMode = PictureBoxSizeMode.StretchImage }
+                    };
+                ControlMover.Add(pictureBoxScalable.Instance);
 
                 try
                 {
