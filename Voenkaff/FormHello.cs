@@ -179,7 +179,6 @@ namespace Voenkaff
                     ListTests[TestOperations] = peremTest;
 
 
-
                     ListPanelsTestsOnPanel.Add(TestOperations);
                     panelMain.Controls.Add(TestOperations);
 
@@ -196,12 +195,9 @@ namespace Voenkaff
                             .Remove(
                                 ListTests[TestOperations].Controls.Find("Задание №1", true)[0]);
                     }
-
                     //Добавление элементов в тест
                     initTest(ListTestsRef[ListPanelsTestsOnPanel.Count - 1],
                         ListTests[TestOperations]);
-
-
                 }
                 Redistribution(ListPanelsTestsOnPanel);
             }
@@ -209,9 +205,6 @@ namespace Voenkaff
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
-
 
             _formChooseVzvod = new FormChooseVzvod(this);
             _formSettings = new FormSettings();
@@ -224,9 +217,6 @@ namespace Voenkaff
 
         private void buttonCreateTest_Click(object sender, EventArgs e)
         {
-
-
-
             TestOperations = new Panel();
             _linkLabelTestNew = new Label();
             _buttonTestDeleteNew = new Button();
@@ -386,10 +376,6 @@ namespace Voenkaff
 
                 }
             }
-
-            
-            
-
         }
 
         private void testCurrentDownload(object sender, EventArgs e)
@@ -427,8 +413,6 @@ namespace Voenkaff
         {
             Panel parentPanel = (Panel)((Button)sender).Parent;
 
-            
-
             Visible = false;
             CheckBox fuck = (CheckBox) (ListMarksAndName[parentPanel].Controls[0].Controls.Find("checkBoxIsFirstOpen", false)[0]);
             fuck.Checked = false;
@@ -453,27 +437,16 @@ namespace Voenkaff
             DirectoryInfo dirTests = new DirectoryInfo(new DynamicParams().GetPath());
             DirectoryInfo dirPics = new DirectoryInfo(new DynamicParams().GetPath() + "\\" + "picture");
 
-            foreach (FileInfo file in dirTests.GetFiles())
+            foreach (var keyValue in ListTests)
             {
-                file.Delete();
-            }
-            foreach (FileInfo file in dirPics.GetFiles())
-            {
-                file.Delete();
-            }
-            //string sadasd = new DynamicParams().GetPath() + "\\" + "picture";
-            //dirTests.CreateSubdirectory(sadasd);
-
-            foreach (KeyValuePair<Panel, Test> keyValue in ListTests)
-            {
-                string filename = new DynamicParams().GetPath() + "\\"+keyValue.Value.TestName+".test";
-                string testJson = new JsonCreator().CreateTestCollection(new List<Test>{ keyValue.Value });
+                var filename = new DynamicParams().GetPath() + "\\"+keyValue.Value.TestName+".test";
+                var testJson = new JsonCreator().CreateTestCollection(new List<Test>{ keyValue.Value });
                 // сохраняем текст в файл
                 File.WriteAllText(filename, testJson);
             }
 
             var picureCreator = new PictureCreator();
-            foreach (KeyValuePair<Panel, Test> keyValue in ListTests)
+            foreach (var keyValue in ListTests)
             {
                 picureCreator.CreatePictures(keyValue.Value, new DynamicParams().GetPath());
             }
@@ -542,7 +515,7 @@ namespace Voenkaff
                                 Width = taskElem.Width,
                                 Location = taskElem.Point,
                                 Text = taskElem.Text,
-                                Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
+                                Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204))),
                             }
                         };
                         _RTBInTask[paneltask].Add(bufTitle);
@@ -550,24 +523,20 @@ namespace Voenkaff
 
                     if (taskElem.Type.Equals("System.Windows.Forms.PictureBox"))
                     {
-                        using (var stream = File.Open(new  DynamicParams().GetPath()+"/" + taskElem.Media, FileMode.Open))
+                        using (var stream = File.Open(new DynamicParams().GetPath() + "\\" + taskElem.Media,
+                            FileMode.Open))
                         {
-                            var binaryFormatter = new BinaryFormatter();
-                            var image = ((SerializablePicture)binaryFormatter.Deserialize(stream)).Picture;
-
-                            
                             PictureBoxScalable bufPBS = new PictureBoxScalable(taskElem.Name)
                             {
                                 Instance =
                                 {
-                                    Size = new Size(taskElem.Width,taskElem.Height),
-                                    Image = image,
+                                    Size = new Size(taskElem.Width, taskElem.Height),
+                                    Image = new Bitmap(stream),
                                     Location = taskElem.Point
                                 }
                             };
                             _PBInTask[paneltask].Add(bufPBS);
                         }
-
                     }
 
                     if (taskElem.Type.Equals("System.Windows.Forms.TextBox"))

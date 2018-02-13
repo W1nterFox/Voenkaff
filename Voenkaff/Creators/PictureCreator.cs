@@ -21,13 +21,7 @@ namespace Voenkaff.Creators
                     {
                         PictureBox picture = (testElement as PictureBox);
                         var serializationFile = path + "\\picture\\" + picture.Name + ".bin";
-                        var serializationPicture = new SerializablePicture {Picture = picture.Image as Bitmap};
-                        using (var stream = File.Open(serializationFile, FileMode.Create))
-                        {
-                            var binaryFormatter = new BinaryFormatter();
-                            binaryFormatter.Serialize(stream, serializationPicture);
-                        }
-                        
+                        picture.Image.Save(serializationFile);
                     }
                 }
             }
