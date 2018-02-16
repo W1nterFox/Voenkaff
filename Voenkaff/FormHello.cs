@@ -523,15 +523,17 @@ namespace Voenkaff
 
                     if (taskElem.Type.Equals("System.Windows.Forms.PictureBox"))
                     {
-                        using (var stream = File.Open(new DynamicParams().GetPath() + "\\" + taskElem.Media,
-                            FileMode.Open))
+                        using (var stream = File.Open(new DynamicParams().GetPath() + "\\" + taskElem.Media, FileMode.Open))
                         {
+                            var ms = new MemoryStream((int)stream.Length);
+                            stream.CopyTo(ms);
+                            ms.Position = 0;
                             PictureBoxScalable bufPBS = new PictureBoxScalable(taskElem.Name)
                             {
                                 Instance =
                                 {
                                     Size = new Size(taskElem.Width, taskElem.Height),
-                                    Image = new Bitmap(stream),
+                                    Image = new Bitmap(ms),
                                     Location = taskElem.Point
                                 }
                             };

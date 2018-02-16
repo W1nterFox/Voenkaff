@@ -21,6 +21,8 @@ namespace Voenkaff.Creators
                     {
                         PictureBox picture = (testElement as PictureBox);
                         var serializationFile = path + "\\picture\\" + picture.Name + ".bin";
+                        
+
                         picture.Image.Save(serializationFile);
                     }
                 }
