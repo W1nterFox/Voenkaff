@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Microsoft.Office.Core;
 using Voenkaff.Creators;
 using Voenkaff.Entity;
+using Voenkaff.Initialization;
 using Voenkaff.Properties;
 using Voenkaff.Wrappers;
 
@@ -437,13 +438,15 @@ namespace Voenkaff
             DirectoryInfo dirTests = new DirectoryInfo(new DynamicParams().GetPath());
             DirectoryInfo dirPics = new DirectoryInfo(new DynamicParams().GetPath() + "\\" + "picture");
 
+            var jsonCreator = new JsonCreator();
             foreach (var keyValue in ListTests)
             {
                 var filename = new DynamicParams().GetPath() + "\\"+keyValue.Value.TestName+".test";
-                var testJson = new JsonCreator().CreateTestCollection(new List<Test>{ keyValue.Value });
+                var testJson = jsonCreator.CreateTestCollection(new List<Test>{ keyValue.Value });
                 // сохраняем текст в файл
                 File.WriteAllText(filename, testJson);
             }
+            File.WriteAllText(new DynamicParams().GetPath() + "\\PlatoonAndCourses.test",jsonCreator.CreatePlatoonAndCourses());
 
             var picureCreator = new PictureCreator();
             foreach (var keyValue in ListTests)

@@ -5,7 +5,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Voenkaff.Wrappers;
 
-namespace Voenkaff
+namespace Voenkaff.Initialization
 {
     public class TestLoader
     {

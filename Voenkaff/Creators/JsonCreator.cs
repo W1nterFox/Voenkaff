@@ -15,8 +15,12 @@ namespace Voenkaff.Creators
             {
                 jsonTests.Add(CreateTestJsonMessage(test));
             }
+            return JsonConvert.SerializeObject(new Tests{TestList = jsonTests},Formatting.Indented);
+        }
 
-            return JsonConvert.SerializeObject(new Tests{PlatoonList = VzvodAndLs.Get(),TestList = jsonTests, CourseList = Courses.Get()},Formatting.Indented);
+        public string CreatePlatoonAndCourses()
+        {
+            return JsonConvert.SerializeObject(new Tests { PlatoonList = VzvodAndLs.Get(), CourseList = Courses.Get() }, Formatting.Indented);
         }
         
 

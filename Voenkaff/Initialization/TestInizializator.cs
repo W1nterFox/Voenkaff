@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 using SerializablePicutre;
+using Voenkaff.Initialization;
 using Voenkaff.Properties;
 using Voenkaff.Wrappers;
 using Task = System.Threading.Tasks.Task;
