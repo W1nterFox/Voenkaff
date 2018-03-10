@@ -332,6 +332,17 @@ namespace Voenkaff
             ttl.Instance.BackColor = Color.White;
             ttl.Instance.Font = new Font("Times New Roman", 14f);
             ttl.Instance.Width = 500;
+            ttl.Instance.TextChanged += TextStyleEdit;
+        }
+
+        private void TextStyleEdit(object sender, EventArgs e)
+        {
+            if (sender is RichTextBox)
+            {
+                RichTextBox tb = (RichTextBox) sender;
+                tb.Font= new Font("Times New Roman", 14f);
+                tb.ResetForeColor();
+            }
         }
 
         private void buttonTaskCreate_Click(object sender, EventArgs e)
