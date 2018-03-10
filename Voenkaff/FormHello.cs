@@ -400,11 +400,10 @@ namespace Voenkaff
 
         private void openCurrentTest(object sender, EventArgs e)
         {
-            Panel parentPanel = (Panel)((Button)sender).Parent;
-
-
-            this.Visible = false;
+            var parentPanel = (Panel)((Button)sender).Parent;
+            Visible = false;
             ListTests[parentPanel].Visible = true;
+            ListTests[parentPanel].Editable = true;
             ListTests[parentPanel].Controls.Find("panelMiddle",false)[0].Controls[0].Visible = true;
         }
 
@@ -433,13 +432,13 @@ namespace Voenkaff
 
         private void сохранитьТестыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Directory.Delete(new DynamicParams().GetPath(), true);
 
-            DirectoryInfo dirTests = new DirectoryInfo(new DynamicParams().GetPath());
-            DirectoryInfo dirPics = new DirectoryInfo(new DynamicParams().GetPath() + "\\" + "picture");
+            var dirTests = new DirectoryInfo(new DynamicParams().GetPath());
+            var dirPics = new DirectoryInfo(new DynamicParams().GetPath() + "\\" + "picture");
 
+            var editableTests = ListTests.Where(p => p.Value.Editable);
             var jsonCreator = new JsonCreator();
-            foreach (var keyValue in ListTests)
+            foreach (var keyValue in editableTests)
             {
                 var filename = new DynamicParams().GetPath() + "\\"+keyValue.Value.TestName+".test";
                 var testJson = jsonCreator.CreateTestCollection(new List<Test>{ keyValue.Value });
@@ -449,7 +448,7 @@ namespace Voenkaff
             File.WriteAllText(new DynamicParams().GetPath() + "\\PlatoonAndCourses.test",jsonCreator.CreatePlatoonAndCourses());
 
             var picureCreator = new PictureCreator();
-            foreach (var keyValue in ListTests)
+            foreach (var keyValue in editableTests)
             {
                 picureCreator.CreatePictures(keyValue.Value, new DynamicParams().GetPath());
             }

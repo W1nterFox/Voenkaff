@@ -26,6 +26,7 @@ namespace Voenkaff
         public string TestName { get; set; }
         public List<int> ListMarks { get; set; }
         public string Course { get; set; }
+        public bool Editable { get; set; }
         public void setTestName(string testName)
         {
             TestName = testName;
