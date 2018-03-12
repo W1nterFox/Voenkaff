@@ -26,6 +26,7 @@ namespace Voenkaff
         public string TestName { get; set; }
         public List<int> ListMarks { get; set; }
         public string Course { get; set; }
+        public bool Editable { get; set; }
         public void setTestName(string testName)
         {
             TestName = testName;
@@ -111,12 +112,23 @@ namespace Voenkaff
             var image = new Bitmap(clipboard_image); //Bitmap для открываемого изображения
 
             pictureBoxScalable.Instance.Size = image.Size;
-            pictureBoxScalable.Instance.Size = new Size(pictureBoxScalable.Instance.Size.Width > 600 ? 600 : pictureBoxScalable.Instance.Size.Width,
-                pictureBoxScalable.Instance.Size.Height > 400 ? 400 : pictureBoxScalable.Instance.Size.Height);
+            PictureResizable(pictureBoxScalable.Instance);
             pictureBoxScalable.Instance.Image = image;
             pictureBoxScalable.Instance.Location = new Point(new Size(80, 80));
             pictureBoxScalable.Instance.Invalidate();
 
+        }
+
+        private void PictureResizable(PictureBox picture)
+        {
+            var ratio = (float)picture.Size.Width / picture.Size.Height;
+            var maxWidth = 600;
+            if (picture.Size.Width > maxWidth)
+            {
+                picture.Size = new Size(
+                    maxWidth,
+                    (int)(maxWidth / ratio));
+            }
         }
 
         public void panelQuestion_DragEnter(object sender, DragEventArgs e)
@@ -144,9 +156,9 @@ namespace Voenkaff
                 {
                     var image = new Bitmap(file); //Bitmap для открываемого изображения
 
+                    
                     pictureBoxScalable.Instance.Size = image.Size;
-                    pictureBoxScalable.Instance.Size = new Size(pictureBoxScalable.Instance.Size.Width > 600 ? 600 : pictureBoxScalable.Instance.Size.Width,
-                        pictureBoxScalable.Instance.Size.Height > 400 ? 400 : pictureBoxScalable.Instance.Size.Height);
+                    PictureResizable(pictureBoxScalable.Instance);
                     pictureBoxScalable.Instance.Image = image;
                     pictureBoxScalable.Instance.Location = new Point(new Size(80, 80));
                     pictureBoxScalable.Instance.Invalidate();
@@ -288,10 +300,6 @@ namespace Voenkaff
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            
-
-
             using (var openFileDialog = new OpenFileDialog {Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*"})
             {
                 if (openFileDialog.ShowDialog() != DialogResult.OK) return;
@@ -309,8 +317,7 @@ namespace Voenkaff
                     var image = new Bitmap(openFileDialog.FileName); //Bitmap для открываемого изображения
 
                     pictureBoxScalable.Instance.Size = image.Size;
-                    pictureBoxScalable.Instance.Size = new Size(pictureBoxScalable.Instance.Size.Width > 600 ? 600 : pictureBoxScalable.Instance.Size.Width,
-                        pictureBoxScalable.Instance.Size.Height > 400 ? 400 : pictureBoxScalable.Instance.Size.Height);
+                    PictureResizable(pictureBoxScalable.Instance);
                     pictureBoxScalable.Instance.Image = image;
                     pictureBoxScalable.Instance.Location= new Point(new Size(80,80));
                     pictureBoxScalable.Instance.Invalidate();
@@ -331,6 +338,17 @@ namespace Voenkaff
             ttl.Instance.BackColor = Color.White;
             ttl.Instance.Font = new Font("Times New Roman", 14f);
             ttl.Instance.Width = 500;
+            ttl.Instance.TextChanged += TextStyleEdit;
+        }
+
+        private void TextStyleEdit(object sender, EventArgs e)
+        {
+            if (sender is RichTextBox)
+            {
+                RichTextBox tb = (RichTextBox) sender;
+                tb.Font= new Font("Times New Roman", 14f);
+                tb.ResetForeColor();
+            }
         }
 
         private void buttonTaskCreate_Click(object sender, EventArgs e)
