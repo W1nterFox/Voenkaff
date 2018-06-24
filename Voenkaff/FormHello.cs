@@ -116,7 +116,7 @@ namespace Voenkaff
 
                     _buttonTestOpenNew.FlatStyle = FlatStyle.Flat;
                     _buttonTestOpenNew.Font = new Font("Century Gothic", 11.25F);
-                    _buttonTestOpenNew.Location = new Point(485, 5);
+                    _buttonTestOpenNew.Location = new Point(285, 5);
                     _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
                     _buttonTestOpenNew.Size = new Size(150, 40);
                     _buttonTestOpenNew.Text = "Открыть тест";
@@ -126,7 +126,7 @@ namespace Voenkaff
 
                     _buttonTestMarksNew.FlatStyle = FlatStyle.Flat;
                     _buttonTestMarksNew.Font = new Font("Century Gothic", 11.25F);
-                    _buttonTestMarksNew.Location = new Point(640, 5);
+                    _buttonTestMarksNew.Location = new Point(440, 5);
                     _buttonTestMarksNew.Name = "buttonTestMarks" + ListPanelsTestsOnPanel.Count;
                     _buttonTestMarksNew.Size = new Size(140, 40);
                     _buttonTestMarksNew.Text = "Параметры";
@@ -136,7 +136,7 @@ namespace Voenkaff
 
                     _buttonTestDownloadDoc.FlatStyle = FlatStyle.Flat;
                     _buttonTestDownloadDoc.Font = new Font("Century Gothic", 11.25F);
-                    _buttonTestDownloadDoc.Location = new Point(785, 5);
+                    _buttonTestDownloadDoc.Location = new Point(585, 5);
                     _buttonTestDownloadDoc.Name = "buttonTestDownloadDoc" + ListPanelsTestsOnPanel.Count;
                     _buttonTestDownloadDoc.Size = new Size(150, 40);
                     _buttonTestDownloadDoc.Text = "Скачать в Word";
@@ -147,7 +147,7 @@ namespace Voenkaff
 
                     _buttonTestDeleteNew.FlatStyle = FlatStyle.Flat;
                     _buttonTestDeleteNew.Font = new Font("Century Gothic", 11.25F);
-                    _buttonTestDeleteNew.Location = new Point(940, 5);
+                    _buttonTestDeleteNew.Location = new Point(740, 5);
                     _buttonTestDeleteNew.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
                     _buttonTestDeleteNew.Size = new Size(150, 40);
                     _buttonTestDeleteNew.Text = "Удалить";
@@ -236,7 +236,7 @@ namespace Voenkaff
 
             _buttonTestDownloadDoc.FlatStyle = FlatStyle.Flat;
             _buttonTestDownloadDoc.Font = new Font("Century Gothic", 11.25F);
-            _buttonTestDownloadDoc.Location = new Point(785, 5);
+            _buttonTestDownloadDoc.Location = new Point(585, 5);
             _buttonTestDownloadDoc.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
             _buttonTestDownloadDoc.Size = new Size(150, 40);
             _buttonTestDownloadDoc.TabIndex = 6;
@@ -248,7 +248,7 @@ namespace Voenkaff
 
             _buttonTestOpenNew.FlatStyle = FlatStyle.Flat;
             _buttonTestOpenNew.Font = new Font("Century Gothic", 11.25F);
-            _buttonTestOpenNew.Location = new Point(485, 5);
+            _buttonTestOpenNew.Location = new Point(285, 5);
             _buttonTestOpenNew.Name = "buttonTestOpen" + ListPanelsTestsOnPanel.Count;
             _buttonTestOpenNew.Size = new Size(150, 40);
             _buttonTestOpenNew.TabIndex = 2;
@@ -259,7 +259,7 @@ namespace Voenkaff
 
             _buttonTestMarksNew.FlatStyle = FlatStyle.Flat;
             _buttonTestMarksNew.Font = new Font("Century Gothic", 11.25F);
-            _buttonTestMarksNew.Location = new Point(640, 5);
+            _buttonTestMarksNew.Location = new Point(440, 5);
             _buttonTestMarksNew.Name = "buttonTestMarks" + ListPanelsTestsOnPanel.Count;
             _buttonTestMarksNew.Size = new Size(140, 40);
             _buttonTestMarksNew.TabIndex = 4;
@@ -270,7 +270,7 @@ namespace Voenkaff
 
             _buttonTestDeleteNew.FlatStyle = FlatStyle.Flat;
             _buttonTestDeleteNew.Font = new Font("Century Gothic", 11.25F);
-            _buttonTestDeleteNew.Location = new Point(940, 5);
+            _buttonTestDeleteNew.Location = new Point(740, 5);
             _buttonTestDeleteNew.Name = "buttonTestDelete" + ListPanelsTestsOnPanel.Count;
             _buttonTestDeleteNew.Size = new Size(150, 40);
             _buttonTestDeleteNew.Text = "Удалить";
@@ -535,7 +535,7 @@ namespace Voenkaff
                     BackColor = SystemColors.GradientInactiveCaption,
                     Location = new Point(5, 5),
                     Name = "panelQuestion",
-                    Size = new Size(761, 610),
+                    Size = new Size(666, 530),
                     TabIndex = 0,
                     AutoScroll = true,
                     AllowDrop = true

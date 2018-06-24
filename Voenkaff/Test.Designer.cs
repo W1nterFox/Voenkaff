@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBoxShowTBLabels = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonShowTBLabels = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -47,14 +50,11 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveTest = new System.Windows.Forms.SaveFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.groupBoxShowTBLabels = new System.Windows.Forms.GroupBox();
-            this.buttonShowTBLabels = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.groupBoxShowTBLabels.SuspendLayout();
             this.panelListOfTasks.SuspendLayout();
             this.panelTaskStart.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.groupBoxShowTBLabels.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -65,10 +65,43 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(939, 24);
+            this.panel1.Location = new System.Drawing.Point(839, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(145, 618);
+            this.panel1.Size = new System.Drawing.Size(145, 538);
             this.panel1.TabIndex = 0;
+            // 
+            // groupBoxShowTBLabels
+            // 
+            this.groupBoxShowTBLabels.Controls.Add(this.label1);
+            this.groupBoxShowTBLabels.Controls.Add(this.buttonShowTBLabels);
+            this.groupBoxShowTBLabels.Location = new System.Drawing.Point(6, 255);
+            this.groupBoxShowTBLabels.Name = "groupBoxShowTBLabels";
+            this.groupBoxShowTBLabels.Size = new System.Drawing.Size(136, 112);
+            this.groupBoxShowTBLabels.TabIndex = 3;
+            this.groupBoxShowTBLabels.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Номера ответов";
+            // 
+            // buttonShowTBLabels
+            // 
+            this.buttonShowTBLabels.BackColor = System.Drawing.Color.LightBlue;
+            this.buttonShowTBLabels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonShowTBLabels.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.buttonShowTBLabels.Location = new System.Drawing.Point(7, 40);
+            this.buttonShowTBLabels.Name = "buttonShowTBLabels";
+            this.buttonShowTBLabels.Size = new System.Drawing.Size(120, 64);
+            this.buttonShowTBLabels.TabIndex = 0;
+            this.buttonShowTBLabels.Text = "Сделать невидимыми";
+            this.buttonShowTBLabels.UseVisualStyleBackColor = false;
+            this.buttonShowTBLabels.Click += new System.EventHandler(this.buttonShowTBLabels_Click);
             // 
             // button3
             // 
@@ -118,7 +151,7 @@
             this.panelQuestion.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panelQuestion.Location = new System.Drawing.Point(5, 5);
             this.panelQuestion.Name = "panelQuestion";
-            this.panelQuestion.Size = new System.Drawing.Size(761, 610);
+            this.panelQuestion.Size = new System.Drawing.Size(666, 530);
             this.panelQuestion.TabIndex = 1;
             this.panelQuestion.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -130,7 +163,7 @@
             this.panelListOfTasks.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelListOfTasks.Location = new System.Drawing.Point(0, 24);
             this.panelListOfTasks.Name = "panelListOfTasks";
-            this.panelListOfTasks.Size = new System.Drawing.Size(165, 618);
+            this.panelListOfTasks.Size = new System.Drawing.Size(165, 538);
             this.panelListOfTasks.TabIndex = 4;
             // 
             // buttonTaskCreate
@@ -158,7 +191,7 @@
             this.panelTaskStart.Margin = new System.Windows.Forms.Padding(10);
             this.panelTaskStart.Name = "panelTaskStart";
             this.panelTaskStart.Padding = new System.Windows.Forms.Padding(5);
-            this.panelTaskStart.Size = new System.Drawing.Size(774, 618);
+            this.panelTaskStart.Size = new System.Drawing.Size(674, 538);
             this.panelTaskStart.TabIndex = 5;
             // 
             // panelMiddle
@@ -167,7 +200,7 @@
             this.panelMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMiddle.Location = new System.Drawing.Point(165, 24);
             this.panelMiddle.Name = "panelMiddle";
-            this.panelMiddle.Size = new System.Drawing.Size(774, 618);
+            this.panelMiddle.Size = new System.Drawing.Size(674, 538);
             this.panelMiddle.TabIndex = 6;
             // 
             // menuStrip1
@@ -179,7 +212,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1084, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -233,44 +266,11 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // groupBoxShowTBLabels
-            // 
-            this.groupBoxShowTBLabels.Controls.Add(this.label1);
-            this.groupBoxShowTBLabels.Controls.Add(this.buttonShowTBLabels);
-            this.groupBoxShowTBLabels.Location = new System.Drawing.Point(6, 255);
-            this.groupBoxShowTBLabels.Name = "groupBoxShowTBLabels";
-            this.groupBoxShowTBLabels.Size = new System.Drawing.Size(136, 112);
-            this.groupBoxShowTBLabels.TabIndex = 3;
-            this.groupBoxShowTBLabels.TabStop = false;
-            // 
-            // buttonShowTBLabels
-            // 
-            this.buttonShowTBLabels.BackColor = System.Drawing.Color.LightBlue;
-            this.buttonShowTBLabels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonShowTBLabels.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.buttonShowTBLabels.Location = new System.Drawing.Point(7, 40);
-            this.buttonShowTBLabels.Name = "buttonShowTBLabels";
-            this.buttonShowTBLabels.Size = new System.Drawing.Size(120, 64);
-            this.buttonShowTBLabels.TabIndex = 0;
-            this.buttonShowTBLabels.Text = "Сделать невидимыми";
-            this.buttonShowTBLabels.UseVisualStyleBackColor = false;
-            this.buttonShowTBLabels.Click += new System.EventHandler(this.buttonShowTBLabels_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Номера ответов";
-            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 642);
+            this.ClientSize = new System.Drawing.Size(984, 562);
             this.ControlBox = false;
             this.Controls.Add(this.panelTaskStart);
             this.Controls.Add(this.panelMiddle);
@@ -281,12 +281,12 @@
             this.Name = "Test";
             this.Text = "currentTest";
             this.panel1.ResumeLayout(false);
+            this.groupBoxShowTBLabels.ResumeLayout(false);
+            this.groupBoxShowTBLabels.PerformLayout();
             this.panelListOfTasks.ResumeLayout(false);
             this.panelTaskStart.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBoxShowTBLabels.ResumeLayout(false);
-            this.groupBoxShowTBLabels.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

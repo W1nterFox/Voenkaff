@@ -369,7 +369,7 @@ namespace Voenkaff
                 AutoScroll = true,
                 BackColor = SystemColors.GradientInactiveCaption,
                 Location = new Point(5, 5),
-                Size = new Size(761, 610 ),
+                Size = new Size(666, 530 ),
                 Name = "panelQuestion",
                 Text = "Задание №" + (ListPanelsTasks.Count + 1)
                 
