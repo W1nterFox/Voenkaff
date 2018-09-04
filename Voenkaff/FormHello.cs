@@ -59,9 +59,9 @@ namespace Voenkaff
             
             new TestInizializator().Initialize(this);
 
-            if (!Courses.Get().Contains("<Без предмета>"))
+            if (!Courses.Get().Contains("Без предмета"))
             {
-                Courses.Get().Add("<Без предмета>");
+                Courses.Get().Add("Без предмета");
             }
 
             comboBoxCourseFilter.Items.AddRange(Courses.Get().ToArray());

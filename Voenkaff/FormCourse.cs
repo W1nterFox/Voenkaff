@@ -113,7 +113,7 @@ namespace Voenkaff
         {
             if (listBoxCourse.SelectedItem != null)
             {
-                if (listBoxCourse.SelectedItem.ToString() == "<Без предмета>")
+                if (listBoxCourse.SelectedItem.ToString() == "Без предмета")
                 {
                     MessageBox.Show("Нельзя удалить стандартный элемент списка", "Ошибка", MessageBoxButtons.OK);
                 }

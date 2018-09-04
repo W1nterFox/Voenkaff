@@ -56,3 +56,22 @@ D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Новая папка\Voenkaff\Voenkaff\
 D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Новая папка\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.FormHello.resources
 D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Новая папка\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.Properties.Resources.resources
 D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Новая папка\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.csproj.GenerateResource.Cache
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\bin\x86\Debug\Voenkaff.exe.config
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.csproj.ResolveComReference.cache
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.exe
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.pdb
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\bin\x86\Debug\Voenkaff.exe
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\bin\x86\Debug\Voenkaff.pdb
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\bin\x86\Debug\Newtonsoft.Json.dll
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\bin\x86\Debug\SerializablePicutre.dll
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\bin\x86\Debug\Newtonsoft.Json.xml
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.csprojResolveAssemblyReference.cache
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.FormChooseTestName.resources
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.FormChooseVzvod.resources
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.FormCourse.resources
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.FormLSInputMany.resources
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.FormSettings.resources
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.Test.resources
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.FormHello.resources
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.Properties.Resources.resources
+D:\УЧЕБА\ВОЕНКА ПРОЕКТ\Конструктор\Voenkaff\Voenkaff\obj\x86\Debug\Voenkaff.csproj.GenerateResource.Cache
