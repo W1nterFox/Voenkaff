@@ -32,8 +32,8 @@
             this.buttonFilterOff = new System.Windows.Forms.Button();
             this.comboBoxCourseFilter = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonCreateTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonCreateTest = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.сохранитьТестыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.взводаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,6 +98,19 @@
             this.label2.Text = "Фильтр по предметам";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(564, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(194, 48);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Конструктор тестов\r\nСписок";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // buttonCreateTest
             // 
             this.buttonCreateTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -111,19 +124,6 @@
             this.buttonCreateTest.Text = "Добавить тест";
             this.buttonCreateTest.UseVisualStyleBackColor = true;
             this.buttonCreateTest.Click += new System.EventHandler(this.buttonCreateTest_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(564, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 48);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Конструктор тестов\r\nСписок";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip1
             // 
@@ -168,7 +168,11 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(79, 20);
             this.toolStripMenuItem1.Text = "Настройки";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(12, 20);
             // 
             // panel1
             // 
@@ -189,7 +193,7 @@
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FormHello";
-            this.Text = "Конструктор тестов";
+            this.Text = "Конструктор тестов (v1.0 от 08.2018)";
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
