@@ -61,6 +61,26 @@ namespace Voenkaff.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _57fd50a598d16157b58306fa {
+            get {
+                object obj = ResourceManager.GetObject("57fd50a598d16157b58306fa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Green_Camouflage_Background {
+            get {
+                object obj = ResourceManager.GetObject("Green-Camouflage-Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Тестовый файл(*.test)|*.test|All files(*.*)|*.*.
         /// </summary>
         internal static string SaveTestFilter {

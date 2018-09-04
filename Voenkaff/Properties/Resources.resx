@@ -117,14 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SaveTestFilter" xml:space="preserve">
-    <value>Тестовый файл(*.test)|*.test|All files(*.*)|*.*</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="X_Button-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\X_Button-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="x_button_256.tCwoi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x_button_256.tCwoi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SaveTestFilter" xml:space="preserve">
+    <value>Тестовый файл(*.test)|*.test|All files(*.*)|*.*</value>
+  </data>
+  <data name="57fd50a598d16157b58306fa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\57fd50a598d16157b58306fa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green-Camouflage-Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Green-Camouflage-Background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

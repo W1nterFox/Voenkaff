@@ -223,6 +223,8 @@
     <None Include="Resources\x_button_256.tCwoi.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\57fd50a598d16157b58306fa.png" />
+    <None Include="Resources\Green-Camouflage-Background.png" />
     <Content Include="simv_vs_Russia_4_39.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

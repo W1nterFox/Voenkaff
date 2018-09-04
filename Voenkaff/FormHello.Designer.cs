@@ -51,6 +51,7 @@
             // 
             this.panelMain.AutoScroll = true;
             this.panelMain.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelMain.BackgroundImage = global::Voenkaff.Properties.Resources._57fd50a598d16157b58306fa;
             this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMain.Controls.Add(this.buttonFilterOff);
             this.panelMain.Controls.Add(this.comboBoxCourseFilter);
